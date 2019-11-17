@@ -1,0 +1,68 @@
+
+$color-nav: #ffffff 
+$color-hover: #dddddd
+$color-shadow: #000000
+$color-border: #000000
+$color-text-nav: #000000
+
+*
+    box-sizing: border-box
+
+body
+    background-color: #ffffff 
+    width: vw
+    height: 800px
+    margin: 0
+    padding: 0  
+    font-family: Arial, Helvetica, sans-serif
+    
+    //border: 2px solid 
+
+
+.main-nav
+    height: 80px
+    width: vw
+    margin: 0px 0px
+    background-color: $color-nav
+    //border: solid 5px #000
+    box-shadow: 0px 5px 11px 1px $color-shadow
+    position: relative
+
+    .bar-nav
+        width: 60%
+        height: 100%
+        margin: auto
+        
+
+
+        .button
+            height: 100%
+            width: 100%
+            padding: 4% 0px 
+            margin: 0px 
+            //border: 1px solid #000000
+            text-align: center
+            
+
+            li
+                height: 40px
+                width: 50px
+                display: inline
+                //border: 1px solid #000000
+                margin: 0px 0px
+                padding: 30px 40px 30px
+
+                a
+                    text-decoration: none
+                    color: $color-text-nav
+                    font-weight: bold
+                    font-size: 12px
+                    text-align: center
+
+li:hover
+    background-color: $color-hover
+    
+
+.box
+    height: 100px
+    width: 100px
