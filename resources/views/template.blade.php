@@ -11,11 +11,11 @@
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
-                <a href="#"><li>OPTION 1</li></a>
+                <a href="{{route('clients')}}"><li>CLIENTES</li></a>
                 <a href="#"><li>OPTION 2</li></a>
                 <a href="#"><li>OPTION 3</li></a>
                 <a href="#"><li>OPTION 4</li></a>
-                <a href="{{route('login')}}"> <li>LOGIN</li> </a>
+                <a href="{{route('home')}}"> <li>LOGIN</li> </a>
                 
             </ul>
         </div>

@@ -32,4 +32,9 @@ class HomeController extends Controller
 
         return view('clients', compact('clients'));
     }
+
+    public function description($id){
+        $client = App\Client::findOrFail($id);
+        return view('description', compact('client'));
+    }
 }
