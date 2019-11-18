@@ -11,19 +11,24 @@
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
-                <li><a href="#">OPTION 1</a></li>
-                <li><a href="#">OPTION 2</a></li>
-                <li><a href="#">OPTION 3</a></li>
-                <li><a href="#">OPTION 4</a></li>
-                <li><a href="#">OPTION 4</a></li>
+                <a href="#"><li>OPTION 1</li></a>
+                <a href="#"><li>OPTION 2</li></a>
+                <a href="#"><li>OPTION 3</li></a>
+                <a href="#"><li>OPTION 4</li></a>
+                <a href="{{route('login')}}"> <li>LOGIN</li> </a>
+                
             </ul>
         </div>
+        
     </nav>
     <section>
-        <div class="box"></div>
+    
+        <div class="content">
+        
+            @yield('content')
+        </div>
     </section>
     <footer>
-        <a href="{{route('login')}}">Login</a>
     </footer>
 </body>
 </html>

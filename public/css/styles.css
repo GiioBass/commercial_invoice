@@ -42,7 +42,7 @@ body {
   padding: 30px 40px 30px;
 }
 
-.main-nav .bar-nav .button li a {
+a {
   text-decoration: none;
   color: #000000;
   font-weight: bold;
