@@ -12,6 +12,7 @@
         <li>Telefono: {{$client->phone_number}}</li>
         <li>Direccion: {{$client->address}}</li>
     </ul>
+    <a href="{{route('client_edit')}}">Editar</a>
 </div>
 
 @endsection
