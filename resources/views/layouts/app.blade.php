@@ -1,6 +1,5 @@
 
 <!-- 
--->
     <!doctype html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <head>
@@ -18,14 +17,12 @@
             <link rel="dns-prefetch" href="//fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
             
-
+            
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         </head>
         <body>
-            
-            
+            -->
             @section('content')
-            
             
             <div id="app">
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -79,12 +76,10 @@
             </nav>
         
             <main class="py-4">
-                <a href="{{route('clients')}}">VISTA CLIENTES</a>
-            @yield('content')
+                @yield('content')
             </main>
         </div>
     </body>
-    </html>
-            <!--
--->
+</html>
+            
     
