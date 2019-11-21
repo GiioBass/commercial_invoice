@@ -17,13 +17,13 @@
             <h1>Ingrese un ID</h1>
         @enderror
         <p>ID</p>
-        <input type="number" name="id" id="" style="text-align:center" value="{{old('id')}}">
+        <input type="text" name="id" id="" style="text-align:center" value="{{old('id')}}">
         <p>Nombres</p>
         <input type="text" name="first_name" id="">
         <p>Apellidos</p>
         <input type="text" name="last_name" id="">
         <p>Número Telefono</p>
-        <input type="number" name="phone_number" id="">
+        <input type="text" name="phone_number" id="">
         <p>Dirección</p>
         <input type="text" name="address" id="">
         <br>

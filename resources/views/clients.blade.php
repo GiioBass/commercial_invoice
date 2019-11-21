@@ -9,11 +9,12 @@
 <tr>
         <div style="width:50%; margin: 0px auto; font-size: 20px">
             <td>
-                <a href="{{route('description', $client)}}" style="font-size: 18px">
-                    {{$client->id}} - </td>
+                <a href="{{route('description', $client)}}" style="font-size: 18px ; color: #1f00ff ;">
+                    Ver </td>
                 </a>    
-            <td>{{$client->first_name}}</td>
-            <td>{{$client->last_name}} - </td>
+            <td>- {{$client->id}} - </td>
+            <td>{{$client->first_name}} -</td>
+            <td>{{$client->last_name}}  </td>
             <br>
         </tr>
     </div>
@@ -22,4 +23,5 @@
 <div style="text-align:center; margin:50px">
     <a href="{{route('add_client')}}">Añadir Nuevo Cliente</a>
 </div>
+
 @endsection

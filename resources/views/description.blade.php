@@ -12,7 +12,11 @@
         <li>Telefono: {{$client->phone_number}}</li>
         <li>Direccion: {{$client->address}}</li>
     </ul>
-    <a href="{{route('client_edit')}}">Editar</a>
+    <a href="{{route('edit_client', $client)}}">Editar</a>
 </div>
-
+<form  action="{{route('delete_client', $client)}}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button style="display: block; text-decoration: none;" type="submit">Eliminar Cliente</button>
+</form>
 @endsection

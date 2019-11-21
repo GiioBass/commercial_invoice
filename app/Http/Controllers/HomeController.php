@@ -65,8 +65,36 @@ class HomeController extends Controller
         return back()->with('message', 'Cliente Añadido');
     }
 
-    public function client_edit($id){
+    public function edit_client($id){
         $client = App\Client::findorfail($id);
-        return view('client_edit', compact($client));
+        return view('edit_client', compact('client'));
+    }
+    
+    public function update_client(Request $request, $id){
+
+        $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required'
+        ]);
+        $update_client = App\Client::findOrFail($id);
+        $update_client->first_name = $request->first_name;
+        $update_client->last_name = $request->last_name;
+        $update_client->phone_number = $request->phone_number;
+        $update_client->address = $request->address;
+
+        $update_client->save();
+
+        return back()->with('message', 'Cliente Actualizado');
+    }
+
+    public function delete_client($id){
+
+        $delete_client = App\Client::findOrFail($id);
+        $delete_client->delete();
+
+        return redirect('clients');
     }
 }
