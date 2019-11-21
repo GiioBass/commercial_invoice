@@ -51,11 +51,26 @@ a {
 }
 
 li:hover {
-  background-color: #dddddd;
+  background-color: #ffe4e4;
 }
 
-.box {
-  height: 100px;
-  width: 100px;
+.container-pagination {
+  width: vw;
+}
+
+.container-pagination .pagination {
+  list-style: none;
+  width: 20%;
+  margin: auto;
+}
+
+.container-pagination .pagination li {
+  display: inline-block;
+  font-size: 30px;
+  color: #ec0000;
+}
+
+.container-pagination .pagination li a {
+  font-size: 20px;
 }
 

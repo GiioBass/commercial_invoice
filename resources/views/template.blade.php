@@ -15,8 +15,11 @@
                 <a href="#"><li>OPTION 2</li></a>
                 <a href="#"><li>OPTION 3</li></a>
                 <a href="#"><li>OPTION 4</li></a>
-                <a href="{{route('home')}}"> <li>LOGIN</li> </a>
-                
+                <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"> <li>LOGOUT</li> </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
             </ul>
         </div>
         

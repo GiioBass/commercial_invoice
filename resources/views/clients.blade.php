@@ -23,5 +23,9 @@
 <div style="text-align:center; margin:50px">
     <a href="{{route('add_client')}}">Añadir Nuevo Cliente</a>
 </div>
-
+<div class="container-pagination">
+    
+        {{$clients->links()}}
+   
+</div>
 @endsection

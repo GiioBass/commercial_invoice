@@ -49488,17 +49488,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/styles.sass":
 /*!************************************!*\
   !*** ./resources/sass/styles.sass ***!
@@ -49511,14 +49500,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/styles.sass ***!
-  \******************************************************************************************/
+/*!****************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/styles.sass ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/html/commercial_invoice/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /var/www/html/commercial_invoice/resources/sass/app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! /var/www/html/commercial_invoice/resources/sass/styles.sass */"./resources/sass/styles.sass");
 
 

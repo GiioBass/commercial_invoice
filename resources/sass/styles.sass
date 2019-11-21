@@ -1,6 +1,6 @@
 
 $color-nav: #ffffff 
-$color-hover: #dddddd
+$color-hover: #ffe4e4
 $color-shadow: #000000
 $color-border: #000000
 $color-text-nav: #000000
@@ -8,17 +8,14 @@ $color-text-nav: #000000
 *
     box-sizing: border-box
     font-family: Arial, Helvetica, sans-serif
-    
-
+ 
 body
     background-color: #ffffff 
     width: vw
     height: 800px
     margin: 0
     padding: 0  
-    //border: 2px solid 
-
-
+    
 .main-nav
     height: 80px
     width: vw
@@ -26,7 +23,7 @@ body
     background-color: $color-nav
     box-shadow: 0px 5px 11px 1px $color-shadow
     position: relative
-    //border: solid 5px #000
+    
 
     .bar-nav
         width: 60%
@@ -39,13 +36,11 @@ body
             padding: 4% 0px 
             margin: 0px 
             text-align: center
-            //border: 1px solid #000000
-
+            
             li
                 height: 40px
                 width: 50px
                 display: inline
-                //border: 1px solid #000000
                 margin: 0px 0px
                 padding: 30px 40px 30px
 //change the name of selector
@@ -59,7 +54,18 @@ a
 li:hover
     background-color: $color-hover
     
+.container-pagination
+    width: vw
+   
+    .pagination
+        list-style: none
+        width: 20%
+        margin: auto
+        
+        li
+            display: inline-block
+            font-size: 30px
+            color: #ec0000
 
-.box
-    height: 100px
-    width: 100px
+            a
+                font-size: 20px
