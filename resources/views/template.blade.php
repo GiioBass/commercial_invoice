@@ -22,12 +22,9 @@
                                 </form>
             </ul>
         </div>
-        
     </nav>
     <section>
-    
         <div class="content">
-        
             @yield('content')
         </div>
     </section>

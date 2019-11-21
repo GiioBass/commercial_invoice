@@ -7,23 +7,13 @@ use App;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    
     public function __construct(){
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index(){
-       
-        return view('home');
+        return redirect('clients');
     }
     
     public function clients(){
@@ -41,8 +31,6 @@ class HomeController extends Controller
     }
 
     public function create_client(Request $request){
-        //return $request->all();
-
         $request->validate([
             'id' => 'required',
             'first_name' => 'required',
@@ -59,7 +47,6 @@ class HomeController extends Controller
         $addClient->address = $request->address;
 
         $addClient->save();
-
         return back()->with('message', 'Cliente Añadido');
     }
 
@@ -69,7 +56,6 @@ class HomeController extends Controller
     }
     
     public function update_client(Request $request, $id){
-
         $request->validate([
             'id' => 'required',
             'first_name' => 'required',
@@ -77,6 +63,7 @@ class HomeController extends Controller
             'phone_number' => 'required',
             'address' => 'required'
         ]);
+
         $update_client = App\Client::findOrFail($id);
         $update_client->first_name = $request->first_name;
         $update_client->last_name = $request->last_name;
@@ -84,15 +71,12 @@ class HomeController extends Controller
         $update_client->address = $request->address;
 
         $update_client->save();
-
         return back()->with('message', 'Cliente Actualizado');
     }
 
     public function delete_client($id){
-
         $delete_client = App\Client::findOrFail($id);
         $delete_client->delete();
-
         return redirect('clients');
     }
 }
