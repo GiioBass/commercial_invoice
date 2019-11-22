@@ -5,11 +5,11 @@
     <h1>MODULO CLIENTES</h1>
 </div>
 
-@foreach($clients ?? '' as $client)
+@foreach($clients as $client)
 <tr>
         <div style="width:50%; margin: 0px auto; font-size: 20px">
             <td>
-                <a href="{{route('description', $client)}}" style="font-size: 18px ; color: #1f00ff ;">
+                <a href="{{route('description_client', $client)}}" style="font-size: 18px ; color: #1f00ff ;">
                     Ver 
                 </a>    
             </td>
@@ -26,7 +26,7 @@
 </div>
 <div class="container-pagination">
     
-        {{$clients->links()}}
+       
    
 </div>
 @endsection

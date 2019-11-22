@@ -8,7 +8,7 @@
 <div>{{session('message')}}</div>
 @endif
 
-<div style="background-color:aquamarine; width:60%; margin: auto; ">
+<div style=" width:60%; margin: auto; ">
     <form action=" {{route('update_client', $client->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @method('PUT')
         @csrf
@@ -29,7 +29,7 @@
         <br>
         <button type="submit">Editar</button>
     </form>
-    <a href="{{route('description', $client)}}">Atras</a>
+    <a href="{{route('description_client', $client)}}">Atras</a>
 </div>
 
 @endsection

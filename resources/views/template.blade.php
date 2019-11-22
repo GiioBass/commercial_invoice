@@ -12,7 +12,7 @@
         <div class="bar-nav">
             <ul class="button">
                 <a href="{{route('clients')}}"><li>CLIENTES</li></a>
-                <a href="#"><li>OPTION 2</li></a>
+                <a href="{{route('products')}}"><li>PRODUCTOS</li></a>
                 <a href="#"><li>OPTION 3</li></a>
                 <a href="#"><li>OPTION 4</li></a>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
