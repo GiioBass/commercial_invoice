@@ -26,6 +26,11 @@ class HomeController extends Controller
         return view('products', compact('products'));
     }
 
+    public function sellers(){
+        $sellers = App\Seller::all();
+        return view('sellers', compact('sellers'));
+    }
+
     public function description_client($id){
         $client = App\Client::findOrFail($id);
         return view('description_client', compact('client'));
@@ -35,6 +40,11 @@ class HomeController extends Controller
         $product = App\Product::findOrFail($id);
         return view('description_product', compact('product'));
     }
+    
+    public function description_seller($id){
+        $seller = App\Seller::findOrFail($id);
+        return view('description_seller', compact('seller'));
+    }
 
     public function add_client(){
         return view('add_client');
@@ -42,6 +52,10 @@ class HomeController extends Controller
 
     public function add_product(){
         return view('add_product');
+    }
+
+    public function add_seller(){
+        return view('add_seller');
     }
 
     public function create_client(Request $request){
@@ -82,6 +96,26 @@ class HomeController extends Controller
         return back()->with('message', 'Producto Añadido');
     }
 
+    public function create_seller(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        $add_seller = new App\Seller;
+        $add_seller->id = $request->id;
+        $add_seller->first_name = $request->first_name;
+        $add_seller->last_name = $request->last_name;
+        $add_seller->email = $request->email;
+        $add_seller->phone_number = $request->phone_number;
+        
+        $add_seller->save();
+        return back()->with('message', 'Vendedor Añadido');
+    }
+
     public function edit_client($id){
         $client = App\Client::findorfail($id);
         return view('edit_client', compact('client'));
@@ -90,6 +124,11 @@ class HomeController extends Controller
     public function edit_product($id){
         $product = App\Product::findorfail($id);
         return view('edit_product', compact('product'));
+    }
+
+    public function edit_seller($id){
+        $seller = App\Seller::findorfail($id);
+        return view('edit_seller', compact('seller'));
     }
     
     public function update_client(Request $request, $id){
@@ -130,6 +169,27 @@ class HomeController extends Controller
         return back()->with('message', 'Producto Actualizado');
     }
 
+    
+    public function update_seller(Request $request, $id){
+        $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+        ]);
+        
+        $update_seller = App\Seller::findOrFail($id);
+        $update_seller->id = $request->id;
+        $update_seller->first_name = $request->first_name;
+        $update_seller->last_name = $request->last_name;
+        $update_seller->email = $request->email;
+        $update_seller->phone_number = $request->phone_number;
+
+        $update_seller->save();
+        return back()->with('message', 'Vendedor Actualizado');
+    }
+
     public function delete_client($id){
         $delete_client = App\Client::findOrFail($id);
         $delete_client->delete();
@@ -140,5 +200,11 @@ class HomeController extends Controller
         $delete_product = App\Product::findOrFail($id);
         $delete_product->delete();
         return redirect('products');
+    }
+
+    public function delete_seller($id){
+        $delete_seller = App\Seller::findOrFail($id);
+        $delete_seller->delete();
+        return redirect('sellers');
     }
 }

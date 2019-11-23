@@ -1,7 +1,8 @@
 @extends('template')
 @section('content')
-
-<h1>MODULO DE PRODUCTOS</h1>
+<div class="title"  style="width: 30%; margin:50px auto; text-align: center">
+    <h1>MODULO DE PRODUCTOS</h1>
+</div>
 
 @foreach($products as $product)
 <tr>
