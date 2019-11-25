@@ -22,6 +22,6 @@
 @endforeach()
 
 <div style="text-align:center; margin:50px">
-   <a href="{{route('add_seller')}}">Añadir Nuevo Producto</a>
+   <a href="{{route('add_seller')}}">Añadir Nuevo Vendedor</a>
 </div>
 @endsection

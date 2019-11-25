@@ -31,6 +31,11 @@ class HomeController extends Controller
         return view('sellers', compact('sellers'));
     }
 
+    public function invoices(){
+        $invoices = App\Invoice::all();
+        return view('invoices', compact('invoices'));
+    }
+
     public function description_client($id){
         $client = App\Client::findOrFail($id);
         return view('description_client', compact('client'));
@@ -45,6 +50,11 @@ class HomeController extends Controller
         $seller = App\Seller::findOrFail($id);
         return view('description_seller', compact('seller'));
     }
+    
+    public function description_invoice($id){
+        $invoice = App\Invoice::findOrFail($id);
+        return view('description_invoice', compact('invoice'));
+    }
 
     public function add_client(){
         return view('add_client');
@@ -56,6 +66,10 @@ class HomeController extends Controller
 
     public function add_seller(){
         return view('add_seller');
+    }
+
+    public function add_invoice(){
+        return view('add_invoice');
     }
 
     public function create_client(Request $request){
@@ -116,6 +130,31 @@ class HomeController extends Controller
         return back()->with('message', 'Vendedor Añadido');
     }
 
+    public function create_invoice(Request $request){
+        
+        $request -> validate([
+            'id' => 'required',
+            'expedition_date' => 'required',
+            'expiration_date' => 'required',
+            'iva' => 'required',
+            'total' => 'required',
+            'sellers_id' => 'required',
+            'clients_id' => 'required',
+        ]);
+
+        $add_invoice = new App\Invoice;
+        $add_invoice->id = $request->id;
+        $add_invoice->expedition_date = $request->expedition_date;
+        $add_invoice->expiration_date = $request->expiration_date;
+        $add_invoice->iva = $request->iva;
+        $add_invoice->total = $request->total;
+        $add_invoice->sellers_id = $request->sellers_id;
+        $add_invoice->clients_id = $request->clients_id;
+        
+        $add_invoice->save();
+        return back()->with('message', 'Factura Creada');
+    }
+
     public function edit_client($id){
         $client = App\Client::findorfail($id);
         return view('edit_client', compact('client'));
@@ -129,6 +168,11 @@ class HomeController extends Controller
     public function edit_seller($id){
         $seller = App\Seller::findorfail($id);
         return view('edit_seller', compact('seller'));
+    }
+
+    public function edit_invoice($id){
+        $invoice = App\Invoice::findorfail($id);
+        return view('edit_invoice', compact('invoice'));
     }
     
     public function update_client(Request $request, $id){
@@ -169,7 +213,6 @@ class HomeController extends Controller
         return back()->with('message', 'Producto Actualizado');
     }
 
-    
     public function update_seller(Request $request, $id){
         $request->validate([
             'id' => 'required',
@@ -190,6 +233,31 @@ class HomeController extends Controller
         return back()->with('message', 'Vendedor Actualizado');
     }
 
+    public function update_invoice(Request $request, $id){
+        
+        $request -> validate([
+            'id' => 'required',
+            'expedition_date' => 'required',
+            'expiration_date' => 'required',
+            'iva' => 'required',
+            'total' => 'required',
+            'sellers_id' => 'required',
+            'clients_id' => 'required',
+        ]);
+
+        $update_invoice = App\Invoice::findOrFail($id);
+        $update_invoice->id = $request->id;
+        $update_invoice->expedition_date = $request->expedition_date;
+        $update_invoice->expiration_date = $request->expiration_date;
+        $update_invoice->iva = $request->iva;
+        $update_invoice->total = $request->total;
+        $update_invoice->sellers_id = $request->sellers_id;
+        $update_invoice->clients_id = $request->clients_id;
+        
+        $update_invoice->save();
+        return back()->with('message', 'Factura Actualizada');
+    }
+
     public function delete_client($id){
         $delete_client = App\Client::findOrFail($id);
         $delete_client->delete();
@@ -206,5 +274,11 @@ class HomeController extends Controller
         $delete_seller = App\Seller::findOrFail($id);
         $delete_seller->delete();
         return redirect('sellers');
+    }
+
+    public function delete_invoice($id){
+        $delete_invoice = App\Invoice::findOrFail($id);
+        $delete_invoice->delete();
+        return redirect('invoices');
     }
 }
