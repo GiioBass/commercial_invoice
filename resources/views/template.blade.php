@@ -11,10 +11,10 @@
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
-                <a href="{{route('clients')}}"><li>CLIENTES</li></a>
-                <a href="{{route('products')}}"><li>PRODUCTOS</li></a>
-                <a href="{{route('sellers')}}"><li>VENDEDORES</li></a>
-                <a href="{{route('invoices')}}"><li>FACTURAS</li></a>
+                <a href="{{route('client.index')}}"><li>CLIENTES</li></a>
+                <a href=""><li>PRODUCTOS</li></a>
+                <a href=""><li>VENDEDORES</li></a>
+                <a href=""><li>FACTURAS</li></a>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"> <li>LOGOUT</li> </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

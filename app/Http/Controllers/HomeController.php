@@ -66,25 +66,7 @@ class HomeController extends Controller
         return view('add_invoice');
     }
 
-    public function create_client(Request $request){
-        $request->validate([
-            'id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone_number' => 'required',
-            'address' => 'required'
-        ]);
-
-        $add_client = new App\Client;
-        $add_client->id = $request->id;
-        $add_client->first_name = $request->first_name;
-        $add_client->last_name = $request->last_name;
-        $add_client->phone_number = $request->phone_number;
-        $add_client->address = $request->address;
-
-        $add_client->save();
-        return back()->with('message', 'Cliente Añadido');
-    }
+   
 
     public function create_product(Request $request){
         $request->validate([
@@ -150,8 +132,7 @@ class HomeController extends Controller
     }
 
     public function edit_client($id){
-        $client = App\Client::findorfail($id);
-        return view('edit_client', compact('client'));
+        
     }
 
     public function edit_product($id){

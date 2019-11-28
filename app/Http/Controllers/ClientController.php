@@ -27,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('Clients.create');
     }
 
     /**
@@ -38,7 +38,23 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required'
+        ]);
+
+        $add_client = new Client;
+        $add_client->id = $request->id;
+        $add_client->first_name = $request->first_name;
+        $add_client->last_name = $request->last_name;
+        $add_client->phone_number = $request->phone_number;
+        $add_client->address = $request->address;
+
+        $add_client->save();
+        return back()->with('message', 'Cliente Añadido');
     }
 
     /**
@@ -49,9 +65,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return view('Client.description', [
-            'client' => Client::finOrFail($id)
-        ]);
+        
     }
 
     /**
@@ -62,7 +76,10 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::findorfail($id);
+        return view('Clients.edit', [
+            'client' => $client
+        ]);
     }
 
     /**
@@ -74,7 +91,15 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->id = $request->get('id');
+        $client->first_name = $request->get('first_name');
+        $client->last_name = $request->get('last_name');
+        $client->phone_number = $request->get('phone_number');
+        $client->address = $request->get('address');
+
+        $client->save();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -85,6 +110,15 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect()->route('client.index');
+    }
+
+    public function confirmDelete($id){
+        $client = Client::findOrFail($id);
+        return view('Clients.confirmDelete',[
+            'client' => $client
+        ]);
     }
 }

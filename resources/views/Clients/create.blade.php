@@ -10,7 +10,7 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" {{route('create_client')}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
+    <form action=" {{route('client.store')}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @csrf
 
         @error('id') 
@@ -29,6 +29,7 @@
         <br>
         <button type="submit">Guardar</button>
     </form>
+    <a href="{{route('client.index')}}">Atras</a>
 </div>
 
 
