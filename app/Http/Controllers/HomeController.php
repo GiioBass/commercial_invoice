@@ -7,19 +7,13 @@ use App;
 
 class HomeController extends Controller
 {
-    
+    /*
     public function __construct(){
         $this->middleware('auth');
     }
-
-    public function index(){
-        return redirect('clients');
-    }
+    */
+   
     
-    public function clients(){
-        $clients = App\Client::all();
-        return view('clients', compact('clients'));
-    }
     
     public function products(){
         $products = App\Product::all();

@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+Use App\Client;
 
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return view('Clients.index', [
+            'clients' => Client::all()
+        ]);
     }
 
     /**
@@ -45,7 +49,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('Client.description', [
+            'client' => Client::finOrFail($id)
+        ]);
     }
 
     /**
