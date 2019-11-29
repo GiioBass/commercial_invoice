@@ -37,10 +37,6 @@ class HomeController extends Controller
         return view('description_product', compact('product'));
     }
     
-    public function description_seller($id){
-        $seller = App\Seller::findOrFail($id);
-        return view('description_seller', compact('seller'));
-    }
     
     public function description_invoice($id){
         $invoice = App\Invoice::findOrFail($id);
@@ -55,9 +51,6 @@ class HomeController extends Controller
         return view('add_product');
     }
 
-    public function add_seller(){
-        return view('add_seller');
-    }
 
     public function add_invoice(){
         return view('add_invoice');
@@ -116,10 +109,6 @@ class HomeController extends Controller
         return view('edit_product', compact('product'));
     }
 
-    public function edit_seller($id){
-        $seller = App\Seller::findorfail($id);
-        return view('edit_seller', compact('seller'));
-    }
 
     public function edit_invoice($id){
         $invoice = App\Invoice::findorfail($id);
@@ -164,25 +153,6 @@ class HomeController extends Controller
         return back()->with('message', 'Producto Actualizado');
     }
 
-    public function update_seller(Request $request, $id){
-        $request->validate([
-            'id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-        ]);
-        
-        $update_seller = App\Seller::findOrFail($id);
-        $update_seller->id = $request->id;
-        $update_seller->first_name = $request->first_name;
-        $update_seller->last_name = $request->last_name;
-        $update_seller->email = $request->email;
-        $update_seller->phone_number = $request->phone_number;
-
-        $update_seller->save();
-        return back()->with('message', 'Vendedor Actualizado');
-    }
 
     public function update_invoice(Request $request, $id){
         
@@ -221,11 +191,6 @@ class HomeController extends Controller
         return redirect('products');
     }
 
-    public function delete_seller($id){
-        $delete_seller = App\Seller::findOrFail($id);
-        $delete_seller->delete();
-        return redirect('sellers');
-    }
 
     public function delete_invoice($id){
         $delete_invoice = App\Invoice::findOrFail($id);
