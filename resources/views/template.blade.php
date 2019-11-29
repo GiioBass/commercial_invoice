@@ -13,7 +13,7 @@
             <ul class="button">
                 <a href="{{route('client.index')}}"><li>CLIENTES</li></a>
                 <a href=""><li>PRODUCTOS</li></a>
-                <a href=""><li>VENDEDORES</li></a>
+                <a href="{{route('seller.index')}}"><li>VENDEDORES</li></a>
                 <a href=""><li>FACTURAS</li></a>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"> <li>LOGOUT</li> </a>

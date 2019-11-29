@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Seller;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -13,7 +14,9 @@ class SellerController extends Controller
      */
     public function index()
     {
-        //
+        return view('Sellers.index', [
+            'sellers' => Seller::all()
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //
+        return view('Sellers.create');
     }
 
     /**
@@ -34,7 +37,23 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required'
+        ]);
+
+        $seller = new Seller;
+        $seller->id = $request->id;
+        $seller->first_name = $request->first_name;
+        $seller->last_name = $request->last_name;
+        $seller->email = $request->email;
+        $seller->phone_number = $request->phone_number;
+
+        $seller->save();
+        return back()->with('message', 'Vendedor Añadido');
     }
 
     /**
@@ -56,7 +75,10 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $seller = Seller::findOrFail($id);
+        return view('Sellers.edit', [
+            'seller' => $seller
+        ]);
     }
 
     /**
@@ -68,7 +90,17 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $seller = Seller::findOrFail($id);
+        $seller->id = $request->get('id');
+        $seller->first_name = $request->get('first_name');
+        $seller->last_name = $request->get('last_name');
+        $seller->email = $request->get('email');
+        $seller->phone_number = $request->get('phone_number');
+
+        $seller->save();
+        return redirect()->route('seller.index');
+        dd('Update seller');
     }
 
     /**
@@ -79,6 +111,16 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect()->route('seller.index');
+    }
+
+    public function confirmDelete($id)
+    {
+        $seller = Seller::findOrFail($id);
+        return view('Sellers.confirmDelete', [
+            'seller' => $seller
+        ]);
     }
 }

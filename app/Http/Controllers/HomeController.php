@@ -20,10 +20,7 @@ class HomeController extends Controller
         return view('products', compact('products'));
     }
 
-    public function sellers(){
-        $sellers = App\Seller::all();
-        return view('sellers', compact('sellers'));
-    }
+    
 
     public function invoices(){
         $invoices = App\Invoice::all();
@@ -86,25 +83,7 @@ class HomeController extends Controller
         return back()->with('message', 'Producto Añadido');
     }
 
-    public function create_seller(Request $request){
-        $request->validate([
-            'id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-        ]);
-
-        $add_seller = new App\Seller;
-        $add_seller->id = $request->id;
-        $add_seller->first_name = $request->first_name;
-        $add_seller->last_name = $request->last_name;
-        $add_seller->email = $request->email;
-        $add_seller->phone_number = $request->phone_number;
-        
-        $add_seller->save();
-        return back()->with('message', 'Vendedor Añadido');
-    }
+   
 
     public function create_invoice(Request $request){
         
@@ -131,10 +110,7 @@ class HomeController extends Controller
         return back()->with('message', 'Factura Creada');
     }
 
-    public function edit_client($id){
-        
-    }
-
+    
     public function edit_product($id){
         $product = App\Product::findorfail($id);
         return view('edit_product', compact('product'));
