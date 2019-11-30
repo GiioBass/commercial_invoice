@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -13,7 +14,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('Invoices.index',[
+            'invoices' => Invoice::all()
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('Invoices.create');
     }
 
     /**
@@ -34,7 +37,27 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'id' => 'required',
+            'expedition_date' => 'required',
+            'expiration_date' => 'required',
+            'iva' => 'required',
+            'total' => 'required',
+            'sellers_id' => 'required',
+            'clients_id' => 'required',
+        ]);
+
+        $invoice = new Invoice;
+        $invoice->id = $request->id;
+        $invoice->expedition_date = $request->expedition_date;
+        $invoice->expiration_date = $request->expiration_date;
+        $invoice->iva = $request->iva;
+        $invoice->total = $request->total;
+        $invoice->sellers_id = $request->sellers_id;
+        $invoice->clients_id = $request->clients_id;
+        
+        $invoice->save();
+        return back()->with('message', 'Factura Creada');
     }
 
     /**
@@ -45,7 +68,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +79,10 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+        return view('Invoices.edit', [
+            'invoice' => $invoice
+        ]);
     }
 
     /**
@@ -68,7 +94,17 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+        $invoice->id = $request->get('id');
+        $invoice->expedition_date = $request->get('expedition_date');
+        $invoice->expiration_date = $request->get('expiration_date');
+        $invoice->iva = $request->get('iva');
+        $invoice->total = $request->get('total');
+        $invoice->sellers_id = $request->get('sellers_id');
+        $invoice->clients_id = $request->get('clients_id');
+        
+        $invoice->save();
+        return redirect()->route('invoice.index');
     }
 
     /**
@@ -79,6 +115,17 @@ class InvoiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $invoice = Invoice::findOrFail($id);
+        $invoice->delete();
+        return redirect()->route('invoice.index');
+    }
+
+    public function confirmDelete($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        return view('Invoices.confirmDelete',[
+            'invoice' => $invoice
+        ]);
+        return redirect()->route('invoice.index');
     }
 }

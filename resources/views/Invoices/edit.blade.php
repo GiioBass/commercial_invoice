@@ -9,7 +9,7 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" {{route('update_invoice', $invoice->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
+    <form action=" {{route('invoice.update', $invoice->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @method('PUT')
         @csrf
 
@@ -32,8 +32,8 @@
         <input type="text" name="clients_id" id="" value="{{$invoice->clients_id}}">
         <br>
         <button type="submit">Editar</button>
+        <a href="{{route('invoice.index')}}">Atras</a>
     </form>
-    <a href="{{route('description_invoice', $invoice)}}">Atras</a>
 
 
 @endsection

@@ -8,22 +8,21 @@
 @foreach($invoices as $invoice)
 <tr>
         <div style="width:50%; margin: 0px auto; font-size: 20px">
-            <td>
-                <a href="{{route('description_invoice', $invoice)}}" style="font-size: 18px ; color: #1f00ff ;">
-                    Ver 
-                </a>    
-            </td>
-            <td>- {{$invoice->id}} - </td>
+            <td>* {{$invoice->id}} - </td>
             <td>- {{$invoice->expedition_date}} - </td>
             <td>- {{$invoice->expiration_date}} - </td>
             <td>- {{$invoice->total}} - </td>
+            <td>- {{$invoice->clients_id}} - </td>
+            <td>- {{$invoice->sellers_id}} - </td>
+            <td><a href="/invoice/{{$invoice->id}}/edit">Editar /</a></td>
+            <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
             <br>
         </tr>
     </div>
 @endforeach()
 
 <div style="text-align:center; margin:50px">
-   <a href="{{route('add_invoice')}}">Añadir Nueva Factura</a>
+   <a href="{{route('invoice.create')}}">Añadir Nueva Factura</a>
 </div>
 
 @endsection

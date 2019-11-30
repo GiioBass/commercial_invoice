@@ -9,9 +9,9 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" {{route('update_seller', $seller->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
-        @method('PUT')
+    <form action=" {{route('seller.update', $seller)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @csrf
+        @method('PUT')
 
         @error('id') 
             <h1>Ingrese un ID</h1>
@@ -29,7 +29,7 @@
         <br>
         <button type="submit">Editar</button>
     </form>
-    <a href="{{route('description_seller', $seller)}}">Atras</a>
+    <a href="{{route('seller.index')}}">Atras</a>
 
 
 @endsection
