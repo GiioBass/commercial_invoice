@@ -7,7 +7,7 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" {{route('update_product', $product->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
+    <form action=" {{route('product.update', $product)}} " method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @method('PUT')
         @csrf
 
@@ -25,6 +25,6 @@
         <br>
         <button type="submit">Editar</button>
     </form>
-    <a href="{{route('description_product', $product)}}">Atras</a>
+    <a href="{{route('product.index')}}">Atras</a>
 </div>
 @endsection
