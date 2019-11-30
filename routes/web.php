@@ -24,3 +24,9 @@ Route::resource('/seller', 'SellerController');
 Route::resource('/invoice', 'InvoiceController');
 
 Route::get('/client/{id}/confirmDelete', 'ClientController@confirmDelete');
+
+Route::get('/product/{id}/confirmDelete', 'ProductController@confirmDelete');
+
+Route::get('/seller/{id}/confirmDelete', 'SellerController@confirmDelete');
+
+Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete');

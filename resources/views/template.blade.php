@@ -12,9 +12,9 @@
         <div class="bar-nav">
             <ul class="button">
                 <a href="{{route('client.index')}}"><li>CLIENTES</li></a>
-                <a href=""><li>PRODUCTOS</li></a>
+                <a href="{{route('product.index')}}"><li>PRODUCTOS</li></a>
                 <a href="{{route('seller.index')}}"><li>VENDEDORES</li></a>
-                <a href=""><li>FACTURAS</li></a>
+                <a href="{{route('invoice.index')}}"><li>FACTURAS</li></a>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"> <li>LOGOUT</li> </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
