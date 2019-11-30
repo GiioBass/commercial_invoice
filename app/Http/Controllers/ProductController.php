@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('Products.index', [
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('Products.create');
     }
 
     /**
@@ -34,7 +37,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'unit_value' => 'required'
+        ]);
+
+        $product = new Product;
+        $product->id = $request->id;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->unit_value = $request->unit_value;
+        
+        $product->save();
+        return back()->with('message', 'Producto Añadido');
     }
 
     /**
@@ -56,7 +73,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('Products.edit',[
+            'products' => $product
+        ]);
     }
 
     /**
@@ -68,7 +88,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->id = $request->get('id');
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->unit_value = $request->get('unit_value');
+
+        $product->save();
+        return redirect()->route('product.index');
     }
 
     /**
@@ -79,6 +106,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('product.index');
+    }
+
+    public function confirmDelete($id){
+        $product = Product::findOrFail($id);
+        return view('Products.confirmDelete', [
+            'product' => $product
+        ]);
     }
 }

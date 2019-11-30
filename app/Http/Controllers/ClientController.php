@@ -75,7 +75,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::findorfail($id);
+        $client = Client::findOrfail($id);
         return view('Clients.edit', [
             'client' => $client
         ]);

@@ -111,8 +111,8 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        $client = Client::findOrFail($id);
-        $client->delete();
+        $seller = Seller::findOrFail($id);
+        $seller->delete();
         return redirect()->route('seller.index');
     }
 
