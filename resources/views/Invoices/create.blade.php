@@ -7,7 +7,7 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" {{route('create_invoice')}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
+    <form action=" {{route('invoice.store')}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @csrf
 
         @error('id') 
@@ -30,6 +30,9 @@
         <br>
         <button type="submit">Guardar</button>
     </form>
+</div>
+<div>
+<a href="{{route('invoice.index')}}">Atras</a>
 </div>
 
 @endsection
