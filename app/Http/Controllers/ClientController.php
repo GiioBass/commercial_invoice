@@ -39,7 +39,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validData = $request->validate([
             'id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
@@ -90,6 +90,13 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validData = $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required'
+        ]);
 
         $client = Client::findOrFail($id);
         $client->id = $request->get('id');

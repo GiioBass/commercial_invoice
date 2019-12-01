@@ -37,7 +37,7 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validData = $request->validate([
             'id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
@@ -90,6 +90,13 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validData = $request->validate([
+            'id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required'
+        ]);
 
         $seller = Seller::findOrFail($id);
         $seller->id = $request->get('id');

@@ -12,20 +12,25 @@
 <div style=" width:60%; margin: auto; ">
     <form action=" {{route('client.store')}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @csrf
-
-        @error('id') 
-            <h1>Ingrese un ID</h1>
-        @enderror
+        @if($errors->any())
+            <div>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <p>ID</p>
         <input type="text" name="id" id="" style="text-align:center" value="{{old('id')}}">
         <p>Nombres</p>
-        <input type="text" name="first_name" id="">
+        <input type="text" name="first_name" id="" value="{{old('first_name')}}">
         <p>Apellidos</p>
-        <input type="text" name="last_name" id="">
+        <input type="text" name="last_name" id="" value="{{old('last_name')}}">
         <p>Número Telefono</p>
-        <input type="text" name="phone_number" id="">
+        <input type="text" name="phone_number" id="" value="{{old('phone_number')}}">
         <p>Dirección</p>
-        <input type="text" name="address" id="">
+        <input type="text" name="address" id="" value="{{old('address')}}">
         <br>
         <button type="submit">Guardar</button>
     </form>

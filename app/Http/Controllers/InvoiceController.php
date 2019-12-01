@@ -37,7 +37,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
+        $validData = $request -> validate([
             'id' => 'required',
             'expedition_date' => 'required',
             'expiration_date' => 'required',
@@ -94,6 +94,16 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validData = $request -> validate([
+            'id' => 'required',
+            'expedition_date' => 'required',
+            'expiration_date' => 'required',
+            'iva' => 'required',
+            'total' => 'required',
+            'sellers_id' => 'required',
+            'clients_id' => 'required',
+        ]);
+        
         $invoice = Invoice::findOrFail($id);
         $invoice->id = $request->get('id');
         $invoice->expedition_date = $request->get('expedition_date');

@@ -12,10 +12,15 @@
     <form action=" {{route('invoice.update', $invoice->id)}}" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @method('PUT')
         @csrf
-
-        @error('id') 
-            <h1>Ingrese un ID</h1>
-        @enderror
+        @if($errors->any())
+            <div>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <p>ID</p>
         <input type="text" name="id" id="" style="text-align:center" value="{{$invoice->id}}">
         <p>Fecha de Expedición</p>
