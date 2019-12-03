@@ -21,8 +21,8 @@ class CreateAdminsTable extends Migration
             $table->string('password', 40);
             $table->timestamps();
 
-            $table->unsignedInteger('permits_id');
-            $table->foreign('permits_id')->references('id')->on('permits');
+            $table->unsignedInteger('permit_id');
+            $table->foreign('permit_id')->references('id')->on('permits');
         });
     }
 
