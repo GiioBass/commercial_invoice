@@ -39,22 +39,24 @@ class InvoiceController extends Controller
     {
         $validData = $request -> validate([
             'id' => 'required',
+            'state' => 'required',
             'expedition_date' => 'required',
             'expiration_date' => 'required',
             'iva' => 'required',
             'total' => 'required',
-            'sellers_id' => 'required',
-            'clients_id' => 'required',
+            'seller_id' => 'required',
+            'client_id' => 'required',
         ]);
 
         $invoice = new Invoice;
         $invoice->id = $request->id;
+        $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
         $invoice->iva = $request->iva;
         $invoice->total = $request->total;
-        $invoice->sellers_id = $request->sellers_id;
-        $invoice->clients_id = $request->clients_id;
+        $invoice->seller_id = $request->seller_id;
+        $invoice->client_id = $request->client_id;
         
         $invoice->save();
         return back()->with('message', 'Factura Creada');
@@ -96,22 +98,24 @@ class InvoiceController extends Controller
     {
         $validData = $request -> validate([
             'id' => 'required',
+            'state' => 'required',
             'expedition_date' => 'required',
             'expiration_date' => 'required',
             'iva' => 'required',
             'total' => 'required',
-            'sellers_id' => 'required',
-            'clients_id' => 'required',
+            'seller_id' => 'required',
+            'client_id' => 'required',
         ]);
         
         $invoice = Invoice::findOrFail($id);
         $invoice->id = $request->get('id');
+        $invoice->state = $request->get('state');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->expiration_date = $request->get('expiration_date');
         $invoice->iva = $request->get('iva');
         $invoice->total = $request->get('total');
-        $invoice->sellers_id = $request->get('sellers_id');
-        $invoice->clients_id = $request->get('clients_id');
+        $invoice->seller_id = $request->get('seller_id');
+        $invoice->client_id = $request->get('client_id');
         
         $invoice->save();
         return redirect()->route('invoice.index');
