@@ -32,9 +32,9 @@
         <p>Total</p>
         <input type="text" name="total" id="" value="{{$invoice->total}}">
         <p>vendedor</p>
-        <input type="text" name="sellers_id" id="" value="{{$invoice->sellers_id}}">
+        <input type="text" name="seller_id" id="" value="{{$invoice->seller_id}}">
         <p>cliente</p>
-        <input type="text" name="clients_id" id="" value="{{$invoice->clients_id}}">
+        <input type="text" name="client_id" id="" value="{{$invoice->client_id}}">
         <br>
         <button type="submit">Editar</button>
         <a href="{{route('invoice.index')}}">Atras</a>

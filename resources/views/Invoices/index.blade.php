@@ -12,8 +12,8 @@
             <td>- {{$invoice->expedition_date}} - </td>
             <td>- {{$invoice->expiration_date}} - </td>
             <td>- {{$invoice->total}} - </td>
-            <td>- {{$invoice->clients_id}} - </td>
-            <td>- {{$invoice->sellers_id}} - </td>
+            <td>- {{$invoice->client_id}} - </td>
+            <td>- {{$invoice->seller_id}} - </td>
             <td><a href="/invoice/{{$invoice->id}}/edit">Editar /</a></td>
             <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
             <br>
