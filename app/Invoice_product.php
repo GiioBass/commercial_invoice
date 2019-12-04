@@ -10,7 +10,7 @@ class Invoice_product extends Model
         return $this->belongsTo(Invoice::class);
     }
 
-    public function product(){
+    public function products(){
         return $this->belongsTo(Product::class);
     }
 }
