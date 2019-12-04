@@ -20,6 +20,8 @@
         @endif
         <p>ID</p>
         <input type="text" name="id" id=""  value="{{old('id')}}">
+        <p>State</p>
+        <input type="text" name="state" id=""  value="{{old('state')}}">
         <p>Fecha de Expedicion</p>
         <input type="date" name="expedition_date" id="" placeholder="aaaa-mm-dd" value="{{old('expedition_date')}}">
         <p>Fecha de Expiracion</p>
@@ -29,9 +31,9 @@
         <p>Total</p>
         <input type="text" name="total" id="" value="{{old('total')}}" >
         <p>vendedor</p> 
-        <input type="text" name="sellers_id" id="" value="{{old('sellers_id')}}" > 
+        <input type="text" name="seller_id" id="" value="{{old('seller_id')}}" > 
         <p>cliente</p>
-        <input type="text" name="clients_id" id="" value="{{old('clients_id')}}" > 
+        <input type="text" name="client_id" id="" value="{{old('client_id')}}" > 
         <br>
         <button type="submit">Guardar</button>
     </form>

@@ -22,10 +22,10 @@ class CreateInvoicesTable extends Migration
             $table->double('total');
             $table->timestamps();
             
-            $table->unsignedInteger('sellers_id');
-            $table->unsignedInteger('clients_id');
-            $table->foreign('sellers_id')->references('id')->on('sellers');
-            $table->foreign('clients_id')->references('id')->on('clients');
+            $table->unsignedInteger('seller_id');
+            $table->unsignedInteger('client_id');
+            $table->foreign('seller_id')->references('id')->on('sellers');
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
