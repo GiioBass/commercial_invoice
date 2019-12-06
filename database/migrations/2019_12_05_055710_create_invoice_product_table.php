@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceProductsTable extends Migration
+class CreateInvoiceProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateInvoiceProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_products', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('quantity');
-            $table->timestamps();
+        Schema::create('invoice_product', function (Blueprint $table) {
+            $table->bigIncrements('id')->unique();
+            
             
             $table->unsignedInteger('invoice_id');
             $table->unsignedInteger('product_id');
@@ -32,6 +31,6 @@ class CreateInvoiceProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_products');
+        Schema::dropIfExists('invoice_product');
     }
 }
