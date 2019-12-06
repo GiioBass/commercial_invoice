@@ -9,11 +9,7 @@
 <tr>
         <div style="width:50%; margin: 0px auto; font-size: 20px">
             <td>
-                <!--
-                <a href="" style="font-size: 18px ; color: #1f00ff ;">
-                    Ver 
-                </a>
-                -->    
+                   
             </td>
             <td> * {{$client->id}} - </td>
             <td>{{$client->first_name}} - </td>
