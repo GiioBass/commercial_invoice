@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -15,7 +16,7 @@ class InvoiceController extends Controller
     public function index()
     {
         return view('Invoices.index',[
-            'invoices' => Invoice::all()
+            'invoices' => Invoice::all(),
         ]);
     }
 
@@ -68,8 +69,12 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Invoice $invoice)
     {
+        return view('Invoices.show', [
+            'invoices' => $invoice
+        ]);
+    
         
     }
 
@@ -142,4 +147,5 @@ class InvoiceController extends Controller
         ]);
         return redirect()->route('invoice.index');
     }
+
 }
