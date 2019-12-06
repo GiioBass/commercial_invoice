@@ -22,7 +22,6 @@ Route::resource('/product', 'ProductController');
 Route::resource('/seller', 'SellerController');
 
 Route::resource('/invoice', 'InvoiceController');
-Route::resource('/invoiceProduct', 'Invoice_productController');
 
 Route::get('/client/{id}/confirmDelete', 'ClientController@confirmDelete');
 
@@ -31,3 +30,6 @@ Route::get('/product/{id}/confirmDelete', 'ProductController@confirmDelete');
 Route::get('/seller/{id}/confirmDelete', 'SellerController@confirmDelete');
 
 Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete');
+
+Route::get('/invoice/{id}/invoice_product/create', 'InvoiceProductController@create');
+Route::post('/invoice/{id}/invoice_product', 'InvoiceProductController@store');
