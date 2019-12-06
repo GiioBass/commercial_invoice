@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceProductController extends Controller
@@ -13,7 +14,7 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -21,9 +22,12 @@ class InvoiceProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Invoice $invoice)
     {
-        //
+        return view('InvoiceProducts.create',[
+            'invoice' => $invoice
+        ]);
+        
     }
 
     /**
@@ -34,7 +38,7 @@ class InvoiceProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

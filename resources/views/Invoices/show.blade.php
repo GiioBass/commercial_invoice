@@ -40,6 +40,8 @@
     </table>
     <div style="margin: 50px 350px">
       <a href="{{route('invoice.index')}}">Atras</a>
-    </div>
-        
+    <div>
+    <div>
+      <a href="/invoice/{{$invoices->id}}/invoice_product/create">Agregar Producto</a>
+    </div>    
 @endsection
