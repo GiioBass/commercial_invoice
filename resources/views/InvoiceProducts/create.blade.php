@@ -7,7 +7,7 @@
 @endif
 
 <div style=" width:60%; margin: auto; ">
-    <form action=" invoice/{{$invoice->id}}/invoice_product" method="POST" style="margin:0px 20%; padding: 0px 130px ">
+    <form action="/invoice/{{$invoice->id}}/invoice_product" method="POST" style="margin:0px 20%; padding: 0px 130px ">
         @csrf
         @if($errors->any())
             <div>
@@ -18,18 +18,18 @@
                 </ul>
             </div>
         @endif
-        <p>Id Producto</p>
+        <p>Id</p>
         <input type="text" name="id" id=""  value="">
         <p>Product id</p>
         <input type="text" name="product_id" id=""  value="">
         <p>Invoice id</p>
-        <input type="text" name="invoice_id" id=""  value="">
+        <input type="text" name="invoice_id" id=""  value="{{$invoice->id}}" readonly >
         
         <button type="submit">Guardar</button>
     </form>
 </div>
 <div>
-<a href="/invoice/{{$invoice->id}}">Atras</a>
+<a href="{{route('invoice.show', $invoice->id)}}">Atras</a>
 </div>
 
 @endsection
