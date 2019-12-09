@@ -18,10 +18,17 @@
                 </ul>
             </div>
         @endif
-        <p>ID</p>
+        
+        <p>id</p>
         <input type="text" name="id" id=""  value="{{old('id')}}">
         <p>State</p>
-        <input type="text" name="state" id=""  value="{{old('state')}}">
+        <div>
+            <select name="state" id="">
+                <option value="Pagado">Pagado</option>
+                <option value="Por pagar">Por Pagar</option>
+            </select>
+        </div>
+        
         <p>Fecha de Expedicion</p>
         <input type="date" name="expedition_date" id="" placeholder="aaaa-mm-dd" value="{{old('expedition_date')}}">
         <p>Fecha de Expiracion</p>
@@ -35,6 +42,7 @@
         <p>cliente</p>
         <input type="text" name="client_id" id="" value="{{old('client_id')}}" > 
         <br>
+        
         <button type="submit">Guardar</button>
     </form>
 </div>

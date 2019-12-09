@@ -23,6 +23,13 @@
         @endif
         <p>ID</p>
         <input type="text" name="id" id="" style="text-align:center" value="{{$invoice->id}}">
+        <div>
+            <select name="state" id="">
+                <option value="Pagado">Pagado</option>
+                <option value="Por Pagar">Por Pagar</option>
+            </select>
+        </div>
+        
         <p>Fecha de Expedición</p>
         <input type="text" name="expedition_date" id="" value="{{$invoice->expedition_date}}">
         <p>Fecha de Expiración</p>
