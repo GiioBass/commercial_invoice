@@ -13,4 +13,6 @@ class Invoice_product extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }*/
+
+    protected $table = 'invoice_product';
 }

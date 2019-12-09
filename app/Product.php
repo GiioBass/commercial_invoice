@@ -14,7 +14,7 @@ class Product extends Model
 
 
    public function invoices(){
-       return $this->belongsToMany(Invoice::class);
+       return $this->belongsToMany(Invoice::class)->withPivot(['unit_value']);
    }
    
 }

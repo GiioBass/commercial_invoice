@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Invoice;
-
+use App\Invoice_product;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,8 @@ class InvoiceController extends Controller
     public function index()
     {
         return view('Invoices.index',[
-            'invoices' => Invoice::all(),
+            'invoices' => Invoice::all()
+           
         ]);
     }
 
@@ -39,6 +45,7 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $validData = $request -> validate([
+            
             'id' => 'required',
             'state' => 'required',
             'expedition_date' => 'required',
@@ -50,6 +57,7 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
+        
         $invoice->id = $request->id;
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
@@ -73,6 +81,7 @@ class InvoiceController extends Controller
     {
         return view('Invoices.show', [
             'invoices' => $invoice
+            
         ]);
     
         
@@ -147,5 +156,8 @@ class InvoiceController extends Controller
         ]);
         return redirect()->route('invoice.index');
     }
+
+   
+  
 
 }

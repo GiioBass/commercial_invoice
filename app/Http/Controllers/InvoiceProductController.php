@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
+use App\Invoice_product;
 use Illuminate\Http\Request;
 
 class InvoiceProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -21,9 +27,12 @@ class InvoiceProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Invoice $invoice)
     {
-        //
+        return view('InvoiceProducts.create',[
+            'invoice' => $invoice
+        ]);
+        
     }
 
     /**
@@ -32,9 +41,15 @@ class InvoiceProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Invoice $invoice)
     {
-        //
+        
+        $invoice_product = new Invoice_product();
+        $invoice_product->id = $request->get('id');
+        $invoice_product->invoice_id = $request->get('invoice_id');
+        $invoice_product->product_id = $request->get('product_id');
+        $invoice_product->save();        
+        
     }
 
     /**
@@ -81,4 +96,5 @@ class InvoiceProductController extends Controller
     {
         //
     }
+
 }

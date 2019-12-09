@@ -14,13 +14,13 @@ class CreatePaymentIntentsTable extends Migration
     public function up()
     {
         Schema::create('payment_intents', function (Blueprint $table) {
-            $table->unsignedInteger('id',20)->unique();
+            $table->bigIncrements('id')->unique();
             $table->string('state');
             $table->unsignedInteger('number_intents');
             $table->timestamps();
 
-            $table->unsignedInteger('invoice_id');
-            $table->foreign('invoice_id')->references('id')->on('invoices');
+           // $table->unsignedInteger('invoice_id');
+            //$table->foreign('invoice_id')->references('id')->on('invoices');
         });
     }
 
