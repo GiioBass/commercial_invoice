@@ -15,6 +15,7 @@ class CreateInvoiceProductTable extends Migration
     {
         Schema::create('invoice_product', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
+            $table->timestamps();
             
             
             $table->unsignedInteger('invoice_id');
