@@ -15,6 +15,8 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::resource('/client', 'ClientController');
 
 Route::resource('/product', 'ProductController');
@@ -31,5 +33,9 @@ Route::get('/seller/{id}/confirmDelete', 'SellerController@confirmDelete');
 
 Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete');
 
-Route::get('/invoice/{id}/invoice_product/create', 'InvoiceProductController@create');
-Route::post('/invoice/{id}/invoice_product', 'InvoiceProductController@store');
+Route::get('/invoice/{invoice}/invoice_product/create', 'InvoiceProductController@create');
+
+Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@store');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
