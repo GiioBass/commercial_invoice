@@ -25,6 +25,9 @@
     </nav>
     <section>
         <div class="content">
+            <div class="div-module">
+                
+            </div>
             @yield('content')
         </div>
     </section>
