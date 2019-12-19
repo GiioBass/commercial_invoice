@@ -1,25 +1,37 @@
 @extends('template')
 @section('content')
-<div class="title"  style="width: 30%; margin:50px auto; text-align: center">
-    <h1>MODULO DE PRODUCTOS</h1>
+@include('styles')
+
+
+
+<div style="text-align:center; margin:10px">
+    <a href="{{route('product.create')}}">Añadir Producto</a>
 </div>
 
-@foreach($products as $product)
-<tr>
-        <div style="width:50%; margin: 0px auto; font-size: 20px">
-            <td>* {{$product->id}} - </td>
-            <td>{{$product->name}} - </td>
-            <td>{{$product->description}} - </td>
-            <td>{{$product->unit_value}}  </td>
-            <td><a href="/product/{{$product->id}}/edit">Editar /</a></td>
-            <td><a href="/product/{{$product->id}}/confirmDelete">Eliminar</a></td>
-            <br>
+<div>
+    <table>
+        <tr>
+            <th>Identificador</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Valor Unidad</th>
+            <th></th>
+            <th></th>
         </tr>
-    </div>
-@endforeach()
-
-<div style="text-align:center; margin:50px">
-<a href="{{route('product.create')}}">Añadir Nuevo Producto</a>
+        @foreach($products as $product)
+            <div style="width:50%; margin: 0px auto; font-size: 20px">
+                <tr>
+                    <td>{{$product->id}}</td>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->description}}</td>
+                    <td>{{$product->unit_value}}</td>
+                    <td><a href="/product/{{$product->id}}/edit">Editar</a></td>
+                    <td><a href="/product/{{$product->id}}/confirmDelete">Eliminar</a></td>
+                    <br>
+                </tr>
+            </div>
+        @endforeach()
+    </table>
 </div>
 
 @endsection
