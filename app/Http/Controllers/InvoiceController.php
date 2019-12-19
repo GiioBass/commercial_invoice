@@ -6,6 +6,7 @@ use App\Client;
 use App\Invoice;
 use App\Invoice_product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -157,7 +158,16 @@ class InvoiceController extends Controller
         return redirect()->route('invoice.index');
     }
 
-   
+   public function updateOrder($id){
+       $invoice = Invoice::findOrFail($id);
+
+        DB::table('invoices')
+            ->where('id', $invoice->id)
+            ->update(['total' => $invoice->total, 'iva' => $invoice->iva]);
+
+        return redirect()->route('invoice.index');
+   }
+
   
 
 }
