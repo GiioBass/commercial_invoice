@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  /*
-   public function invoice_products(){
-       return $this->hasMany(Invoice_product::class);
-   }
-  */
+  
+  
 
 
    public function invoices(){
-       return $this->belongsToMany(Invoice::class)->withPivot(['unit_value']);
+       return $this->belongsToMany(Invoice::class)->withPivot(['invoice_id', 'quantity', 'id']);
    }
    
 }

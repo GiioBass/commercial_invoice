@@ -14,27 +14,27 @@ class ClientsTableSeeders extends Seeder
     public function run()
     {
         DB::table('clients')->insert([
-            'id'=>'1',
-            'first_name'=>'Cliente 1',
-            'last_name'=>'Cliente 1',
+            'id'=>'1234567',
+            'first_name'=>'Joseph',
+            'last_name'=>'Snow',
             'phone_number'=>'111',
             'address'=>'Dir 1',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('clients')->insert([
-            'id'=>'2',
-            'first_name'=>'Cliente 2',
-            'last_name'=>'Cliente 2',
+            'id'=>'2345678',
+            'first_name'=>'Rose',
+            'last_name'=>'Target',
             'phone_number'=>'222',
             'address'=>'Dir 2',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('clients')->insert([
-            'id'=>'3',
-            'first_name'=>'Cliente 3',
-            'last_name'=>'Cliente 3',
+            'id'=>'34567890',
+            'first_name'=>'Julia',
+            'last_name'=>'String',
             'phone_number'=>'3',
             'address'=>'Dir 3',
             'created_at'=>NULL,
@@ -43,42 +43,42 @@ class ClientsTableSeeders extends Seeder
         
         DB::table('products')->insert([
             'id'=>'1',
-            'name'=>'Producto 1',
+            'name'=>'Tablet',
             'description'=>'Descripcion 1',
-            'unit_value'=>'1',
+            'unit_value'=>'10000',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('products')->insert([
             'id'=>'2',
-            'name'=>'Producto 2',
+            'name'=>'PC',
             'description'=>'Descripcion 2',
-            'unit_value'=>'2',
+            'unit_value'=>'20000',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('products')->insert([
             'id'=>'3',
-            'name'=>'Producto 3',
+            'name'=>'Cel Phone',
             'description'=>'Descripcion 3',
-            'unit_value'=>'3',
+            'unit_value'=>'30000',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('sellers')->insert([
             'id'=>'1',
-            'first_name'=>'Vendedor 1',
-            'last_name'=>'Vendedor 1',
-            'email'=>'vendedor1@email',
+            'first_name'=>'Michelle',
+            'last_name'=>'Glass',
+            'email'=>'michelle.glass@email',
             'phone_number'=>'1',
             'created_at'=>NULL,
             'updated_at'=>NULL,
         ]);
         DB::table('sellers')->insert([
             'id'=>'2',
-            'first_name'=>'Vendedor 2',
-            'last_name'=>'Vendedor 2',
-            'email'=>'vendedor2@email',
+            'first_name'=>'Alexander',
+            'last_name'=>'Vine',
+            'email'=>'alexander.vine@email',
             'phone_number'=>'2',
             'created_at'=>NULL,
             'updated_at'=>NULL,

@@ -24,18 +24,19 @@ class Invoice extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('product_id','quantity', 'id');
     }
+
+    public function getIvaAttribute($value){
+        $total = $this->total;
+        return $total * 0.19;
+    }
+
+    public function getTotalAttribute($value){
+        $total = $this->products->sum('unit_value');
+        return $total;
+    }    
 
     
-    public function getUnitValueAttribute(Invoice $invoice){
-        $total = 0;
-
-        foreach ($invoice->products as $product) {
-            $total += $product->unit_value;
-            return $total;
-            dd($total);
-        }
-    }
    
 }

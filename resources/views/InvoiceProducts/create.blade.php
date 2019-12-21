@@ -1,6 +1,9 @@
 @extends('template')
 @section('content')
 
+@php
+    $product = App\Product::all();
+@endphp
 
 @if(session('message'))
     {{session('message')}}
@@ -21,9 +24,14 @@
         <p>Id</p>
         <input type="text" name="id" id=""  value="">
         <p>Product id</p>
-        <input type="text" name="product_id" id=""  value="">
-        <p>Invoice id</p>
-        <input type="text" name="invoice_id" id=""  value="{{$invoice->id}}" readonly >
+        <select name="product_id" id="">
+            @foreach ($product as $products)
+                <option value="{{$products->id}}">{{$products->id . ' - ' . $products->name}}</option>
+            @endforeach
+        </select>
+        <p>Cantidad</p>
+        <input type="text" name="quantity" id=""  value="">
+        <input type="text" name="invoice_id" id=""  value="{{$invoice->id}}" style="visibility: hidden" >
         
         <button type="submit">Guardar</button>
     </form>

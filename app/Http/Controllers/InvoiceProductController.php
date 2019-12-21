@@ -48,7 +48,10 @@ class InvoiceProductController extends Controller
         $invoice_product->id = $request->get('id');
         $invoice_product->invoice_id = $request->get('invoice_id');
         $invoice_product->product_id = $request->get('product_id');
-        $invoice_product->save();        
+        $invoice_product->quantity = $request->get('quantity');
+        $invoice_product->save();  
+        
+        return redirect()->route('invoice.show', $invoice->id);
         
     }
 
@@ -92,9 +95,11 @@ class InvoiceProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Invoice $invoice, $id)
     {
-        //
+        $invoiceProduct = Invoice_product::findOrFail($id);
+        $invoiceProduct->delete();
+        return redirect()->route('invoice.show', $invoice->id);
     }
 
 }
