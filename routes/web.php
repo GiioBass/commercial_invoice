@@ -36,6 +36,7 @@ Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete');
 Route::get('/invoice/{invoice}/invoice_product/create', 'InvoiceProductController@create');
 
 Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,3 +44,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/invoice/{id}/updateOrder', 'InvoiceController@updateOrder');
 
 Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductController@destroy');
+
+Route::get('/invoices/export', 'InvoiceController@export');
+
