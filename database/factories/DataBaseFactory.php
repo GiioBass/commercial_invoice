@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Client::class, function (Faker $faker) {
     return [
-            'id'=>$faker->unique()->randomDigit(1000, 1000000),
+            'id'=>$faker->unique()->numberBetween($min = 100, $max = 99999999),
             'first_name'=> $faker->firstName,
             'last_name'=> $faker->lastName,
             'phone_number'=> $faker->randomDigit,
@@ -21,6 +21,10 @@ $factory->define(Client::class, function (Faker $faker) {
 
 $factory->define(Seller::class, function(Faker $faker){
     return [
-
+        'id'=>$faker->unique()->numberBetween($min = 100, $max = 99999999),
+            'first_name'=> $faker->firstName,
+            'last_name'=> $faker->lastName,
+            'email'=> $faker->safeEmail,
+            'phone_number'=> $faker->randomDigit,
     ];
 });
