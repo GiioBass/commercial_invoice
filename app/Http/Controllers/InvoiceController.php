@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
+
+use App\Exports\InvoicesExport;
 use App\Invoice;
-use App\Invoice_product;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
@@ -168,6 +170,11 @@ class InvoiceController extends Controller
         return redirect()->route('invoice.index');
    }
 
+   public function export(){
+        // return Excel::download(new InvoicesExport, 'invoices.csv');
+        (new InvoicesExport)->queue('invoices.csv');
+        return back()->withSuccess('Export Started!!');
+   }
   
 
 }
