@@ -4,7 +4,6 @@
 @include('styles')
 
 
-
 <div style="text-align:center; margin:10px">
     <a href="{{route('invoice.create')}}">Nueva Factura</a>
 </div>
@@ -43,6 +42,10 @@
             </tr>
         @endforeach()
     </table>
+</div>
+
+<div>
+    <a href="/invoices/export">Export</a>
 </div>
 
 @endsection
