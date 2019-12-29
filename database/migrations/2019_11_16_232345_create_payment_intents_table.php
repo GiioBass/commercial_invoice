@@ -14,7 +14,7 @@ class CreatePaymentIntentsTable extends Migration
     public function up()
     {
         Schema::create('payment_intents', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
+            $table->integerIncrements('id')->unique();
             $table->string('state');
             $table->unsignedInteger('number_intents');
             $table->timestamps();
