@@ -27,7 +27,7 @@
                     <td>{{$product->unit_value}}</td>
                     <td><a href="/product/{{$product->id}}/edit">Editar</a></td>
                     <td><a href="/product/{{$product->id}}/confirmDelete">Eliminar</a></td>
-                    <br>
+                    
                 </tr>
             </div>
         @endforeach()

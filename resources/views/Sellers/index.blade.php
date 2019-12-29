@@ -31,7 +31,7 @@
                         <td>{{$seller->phone_number}}</td>
                         <td><a href="/seller/{{$seller->id}}/edit">Editar</a></td>
                         <td><a href="/seller/{{$seller->id}}/confirmDelete">Eliminar</a></td>
-                        <br>
+                        
                     </tr>
                 </div>
             @endforeach()

@@ -38,7 +38,7 @@
                     <td>{{$invoice->seller->first_name}}</td>
                     <td><a href="/invoice/{{$invoice->id}}/edit">Editar</a></td>
                     <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
-                    <br>
+                    
                 </div>
             </tr>
         @endforeach()
