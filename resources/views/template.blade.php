@@ -23,11 +23,9 @@
             </ul>
         </div>
     </nav>
-    <section>
+    <section class="section-main">
         <div class="content">
-            <div class="div-module">
-                
-            </div>
+            
             @yield('content')
         </div>
     </section>
