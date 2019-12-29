@@ -39,13 +39,13 @@ $factory->define(Product::class, function (Faker $faker){
     ];
 });
 
-$factory->define(Invoice::class, function ( Faker $faker){
-    return[
-        'state'=> 'Por Pagar',
-        'total'=> 0,
-        'iva'=> 0,
-        'subtotal'=> 0,
-        'expedition_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
-        'expiration_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
-    ];
-});
+// $factory->define(Invoice::class, function ( Faker $faker){
+//     return[
+//         'state'=> 'Por Pagar',
+//         'total'=> 0,
+//         'iva'=> 0,
+//         'subtotal'=> 0,
+//         'expedition_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
+//         'expiration_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
+//     ];
+// });
