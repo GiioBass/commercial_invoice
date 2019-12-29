@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Client;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ClientController extends Controller
 {
@@ -20,8 +22,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        
         return view('Clients.index', [
-            'clients' => Client::all()
+            'clients' => Client::paginate(10)
         ]);
     }
 
