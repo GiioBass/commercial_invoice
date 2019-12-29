@@ -25,7 +25,7 @@
         @endif
         
         <p>id</p>
-        <input type="text" name="id" id=""  value="" >
+        <input type="text" name="id" id=""  value="" disabled>
         <p>State</p>
         <div>
             <select name="state" id="">
@@ -51,10 +51,7 @@
                 @endforeach
             </select>
             <br>
-            <input type="text" name="iva" id="" value="0" style="visibility: hidden">
-            <input type="text" name="total" id="" value="0" style="visibility: hidden" >
             
-        
         <button type="submit">Guardar</button>
     </form>
 </div>
