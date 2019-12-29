@@ -171,9 +171,9 @@ class InvoiceController extends Controller
    }
 
    public function export(){
-        // return Excel::download(new InvoicesExport, 'invoices.csv');
-        (new InvoicesExport)->queue('invoices.csv');
-        return back()->withSuccess('Export Started!!');
+        return Excel::download(new InvoicesExport, 'invoices.csv');
+        // (new InvoicesExport)->queue('invoices.csv');
+        // return back()->withSuccess('Export Started!!');
    }
   
 
