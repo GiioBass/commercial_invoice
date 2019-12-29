@@ -10,11 +10,11 @@
         border: 1px solid black;
     }
     th, td {
-        padding: 8px 25px;
+        padding: 8px 25px; 
     }
     .div-module{
         width: 30%;
-        margin:50px auto;
+        margin:20px auto;
         text-align: center;
     }
 </style>
