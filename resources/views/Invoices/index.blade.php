@@ -1,12 +1,16 @@
 @extends('template')
 
 @section('content')
-@include('styles')
 
 
-
-<div style="text-align:center; margin:10px">
-    <a href="{{route('invoice.create')}}">Nueva Factura</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="{{route('invoice.create')}}">
+            <div class="item-button">
+                Nueva Factura
+            </div>  
+        </a>
+    </div>
 </div>
 
 <div>
@@ -43,6 +47,9 @@
             </tr>
         @endforeach()
     </table>
+</div>
+<div class="container-pagination">
+    {{$invoices->links()}}
 </div>
 
 @endsection

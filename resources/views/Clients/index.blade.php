@@ -1,13 +1,14 @@
 @extends('template')
-
-@include('styles')
 @section('content')
 
-
-
-
-<div style="text-align:center; margin:10px">
-    <a href="{{route('client.create')}}">Añadir Cliente</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="{{route('client.create')}}">
+            <div class="item-button">
+                Añadir Cliente
+            </div>  
+        </a>
+    </div>
 </div>
 
 <div>

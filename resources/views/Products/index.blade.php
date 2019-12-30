@@ -1,11 +1,15 @@
 @extends('template')
 @section('content')
-@include('styles')
 
 
-
-<div style="text-align:center; margin:10px">
-    <a href="{{route('product.create')}}">Añadir Producto</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="{{route('product.create')}}">
+            <div class="item-button">
+                Añadir Producto
+            </div>  
+        </a>
+    </div>
 </div>
 
 <div>
@@ -33,5 +37,7 @@
         @endforeach()
     </table>
 </div>
-
+<div class="container-pagination">
+    {{$products->links()}}
+</div>
 @endsection

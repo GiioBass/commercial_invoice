@@ -1,11 +1,14 @@
 @extends('template')
 @section('content')
-@include('styles')
 
-
-
-    <div style="text-align:center; margin:50px">
-        <a href="{{route('seller.create')}}">Añadir Vendedor</a>
+    <div class="container-menu">
+        <div class="container-item">
+            <a  class="item-menu" href="{{route('seller.create')}}">
+                <div class="item-button">
+                    Añadir Vendedor
+                </div>  
+            </a>
+        </div>
     </div>
 
     <div>
@@ -38,5 +41,7 @@
 
         </table>
     </div>
-
+<div class="container-pagination">
+    {{$sellers->links()}}
+</div>
 @endsection
