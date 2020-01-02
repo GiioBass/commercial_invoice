@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Exports\InvoicesExport;
 use App\Invoice;
-
 use Illuminate\Http\Request;
+
+use App\Exports\InvoicesExport;
+use App\Imports\InvoicesImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -171,10 +172,17 @@ class InvoiceController extends Controller
    }
 
    public function export(){
-        // return Excel::download(new InvoicesExport, 'invoices.csv');
-        (new InvoicesExport)->queue('invoices.csv');
-        return back()->withSuccess('Export Started!!');
+        return Excel::download(new InvoicesExport, 'invoices.csv');
+        // (new InvoicesExport)->queue('invoices.csv');
+        // return back()->withSuccess('Export Started!!');
    }
+
+   public function import(Request $request){
+       $file = $request->file('file');
+
+       Excel::import(new InvoicesImport, $file);
+       return back();
+   } 
   
 
 }

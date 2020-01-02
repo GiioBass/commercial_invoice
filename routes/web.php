@@ -47,3 +47,5 @@ Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductCon
 
 Route::get('/invoices/export', 'InvoiceController@export');
 
+Route::post('/invoices/import', 'InvoiceController@import');
+
