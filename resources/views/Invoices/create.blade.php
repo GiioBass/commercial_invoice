@@ -20,20 +20,7 @@
                 </ul>
             </div>
         @endif
-        
-        <p>id</p>
-        <input type="text" name="id" id=""  value="" disabled>
-        <p>State</p>
-        <div>
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </select>
-            <br>
-            
-        <button type="submit">Guardar</button>
-    </form>
+    </div>
 </div>
 
 <div class="content-form">
