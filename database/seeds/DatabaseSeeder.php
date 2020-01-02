@@ -24,7 +24,5 @@ class DatabaseSeeder extends Seeder
         factory(App\Seller::class, 30)->create();
         factory(App\Product::class, 30)->create();
         
-        
-       
     }
 }

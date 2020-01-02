@@ -34,8 +34,8 @@
         <form class="form" action=" {{route('invoice.store')}}" method="POST" >
             @csrf
             <div class="items-form">
-                <label for="">Id</label>
-                    <input type="text" name="id" id=""  value="" >
+                    {{-- <label for="">Id</label>
+                    <input type="text" name="id" id=""  value="" > --}}
                     <label for="">Estado</label>
                     <div class="list">
                         <select class="list-select" name="state" id="">

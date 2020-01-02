@@ -21,8 +21,8 @@
                 </ul>
             </div>
         @endif
-        <p>Id</p>
-        <input type="text" name="id" id=""  value="">
+        {{-- <p>Id</p>
+        <input type="text" name="id" id=""  value=""> --}}
         <p>Product id</p>
         <select name="product_id" id="">
             @foreach ($product as $products)
