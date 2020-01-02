@@ -1,13 +1,14 @@
 @extends('template')
-
 @section('content')
 
-@include('styles')
-
-
-
-<div style="text-align:center; margin:10px">
-    <a href="{{route('client.create')}}">Añadir Cliente</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="{{route('client.create')}}">
+            <div class="item-button">
+                Añadir Cliente
+            </div>  
+        </a>
+    </div>
 </div>
 
 <div>
@@ -24,7 +25,7 @@
             </tr>
         </div>
         @foreach($clients as $client)
-            <div style="">       
+                  
                 <tr>
                     <td>{{$client->id}}</td>
                     <td>{{$client->first_name}}</td>
@@ -33,14 +34,13 @@
                     <td>{{$client->address}}</td>
                     <td><a href="/client/{{$client->id}}/edit">Editar</a></td>
                     <td><a href="/client/{{$client->id}}/confirmDelete">Eliminar</a></td>
-                    <br>
+                    
                 </tr>
-            </div>
-        @endforeach()
+            
+        @endforeach
     </table>
 </div>
-
 <div class="container-pagination">
-       
+    {{$clients->links()}}
 </div>
 @endsection

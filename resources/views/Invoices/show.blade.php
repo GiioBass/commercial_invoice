@@ -1,5 +1,5 @@
 @extends('template')
-@include('styles')
+
 @section('content')
 
    

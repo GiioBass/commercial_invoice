@@ -1,11 +1,14 @@
 @extends('template')
 @section('content')
-@include('styles')
 
-
-
-    <div style="text-align:center; margin:50px">
-        <a href="{{route('seller.create')}}">Añadir Vendedor</a>
+    <div class="container-menu">
+        <div class="container-item">
+            <a  class="item-menu" href="{{route('seller.create')}}">
+                <div class="item-button">
+                    Añadir Vendedor
+                </div>  
+            </a>
+        </div>
     </div>
 
     <div>
@@ -31,12 +34,14 @@
                         <td>{{$seller->phone_number}}</td>
                         <td><a href="/seller/{{$seller->id}}/edit">Editar</a></td>
                         <td><a href="/seller/{{$seller->id}}/confirmDelete">Eliminar</a></td>
-                        <br>
+                        
                     </tr>
                 </div>
             @endforeach()
 
         </table>
     </div>
-
+<div class="container-pagination">
+    {{$sellers->links()}}
+</div>
 @endsection

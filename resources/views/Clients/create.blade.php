@@ -5,7 +5,19 @@
 {{session('message')}}
 @endif
 {{--            --}}
-
+<div class="content-errors">
+    <div class="errors">
+        @if($errors->any())
+        <div>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+</div>
     <div class="content-form">
         <div class="board-form">
             <div class="content-title">
@@ -15,18 +27,9 @@
             </div>            
                 <form class="form" action=" {{route('client.store')}}" method="POST" >
                     @csrf
-                    @if($errors->any())
-                        <div>
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="items-form">
                         <label for="">Id</label>
-                        <input type="text" name="id" id="" style="text-align:center" value="{{old('id')}}">
+                        <input type="text" name="id" id=""  value="{{old('id')}}">
                         <label for="">Nombre</label>
                         <input type="text" name="first_name" id="" value="{{old('first_name')}}">
                         <label for="">Apellido</label>
@@ -39,7 +42,11 @@
                         <button class="button" type="submit">Guardar</button>
                     </div>
                 </form>
-            <a href="{{route('client.index')}}">Atras</a>
+            <a class="item-menu" href="{{route('client.index')}}">
+                <div class="item-button">
+                    Atras
+                </div>
+            </a>
         </div>
     </div>
 @endSection

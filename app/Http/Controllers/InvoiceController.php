@@ -24,7 +24,7 @@ class InvoiceController extends Controller
     public function index()
     {
         return view('Invoices.index',[
-            'invoices' => Invoice::all()
+            'invoices' => Invoice::paginate(10)
            
         ]);
     }

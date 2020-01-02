@@ -11,23 +11,35 @@
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
-                <a href="{{route('client.index')}}"><li>CLIENTES</li></a>
-                <a href="{{route('product.index')}}"><li>PRODUCTOS</li></a>
-                <a href="{{route('seller.index')}}"><li>VENDEDORES</li></a>
-                <a href="{{route('invoice.index')}}"><li>FACTURAS</li></a>
-                <a href="{{route('logout')}}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"> <li>LOGOUT</li> </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                <a class="title-button" href="{{route('client.index')}}"><li class="link" >CLIENTES</li></a>
+                <a class="title-button" href="{{route('product.index')}}"><li class="link" >PRODUCTOS</li></a>
+                <a class="title-button" href="{{route('seller.index')}}"><li class="link">VENDEDORES</li></a>
+                <a class="title-button" href="{{route('invoice.index')}}"><li class="link">FACTURAS</li></a>
+                
             </ul>
         </div>
-    </nav>
-    <section>
-        <div class="content">
-            <div class="div-module">
-                
+        <div class="login-nav">
+            <div class="login-button"></div>
+            <div class="login-button">
+            <div >
+
+                <p>Usuario: {{ Auth::user()->name }}</p>
             </div>
+            <div  >
+                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <p class="title-button">LOGOUT</p> 
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+            </div>
+            
+        </div>
+    </nav>
+    <section class="section-main ">
+        <div class="content">
+            
             @yield('content')
         </div>
     </section>

@@ -19,7 +19,7 @@ class SellerController extends Controller
     public function index()
     {
         return view('Sellers.index', [
-            'sellers' => Seller::all()
+            'sellers' => Seller::paginate(10)
         ]);
     }
 
