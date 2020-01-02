@@ -48,4 +48,10 @@
     <a href="/invoices/export">Export</a>
 </div>
 
+<form action="/invoices/import" method="post" enctype="multipart/form-data" >
+@csrf
+<input type="file" name="file" id="">
+<button type="submit">Importar</button>
+</form>
+
 @endsection
