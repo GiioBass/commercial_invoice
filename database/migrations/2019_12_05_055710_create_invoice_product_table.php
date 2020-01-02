@@ -14,12 +14,12 @@ class CreateInvoiceProductTable extends Migration
     public function up()
     {
         Schema::create('invoice_product', function (Blueprint $table) {
-            $table->integer('id')->unique();
+            $table->integerIncrements('id')->unique();
             $table->integer('quantity');
             $table->timestamps();
             
             
-            $table->integerIncrements('invoice_id');
+            $table->unsignedInteger('invoice_id');
             $table->unsignedInteger('product_id');
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->foreign('product_id')->references('id')->on('products');
