@@ -50,12 +50,11 @@ class InvoiceController extends Controller
     {
         $validData = $request -> validate([
             
-            'id' => 'required',
+            
             'state' => 'required',
             'expedition_date' => 'required',
             'expiration_date' => 'required',
-            'iva' => 'required',
-            'total' => 'required',
+            
             'seller_id' => 'required',
             'client_id' => 'required',
         ]);
@@ -66,8 +65,9 @@ class InvoiceController extends Controller
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
-        $invoice->iva = $request->iva;
-        $invoice->total = $request->total;
+        $invoice->iva = 0;
+        $invoice->total = 0;
+        $invoice->subtotal = 0;
         $invoice->seller_id = $request->seller_id;
         $invoice->client_id = $request->client_id;
         
@@ -121,6 +121,7 @@ class InvoiceController extends Controller
             'expiration_date' => 'required',
             'iva' => 'required',
             'total' => 'required',
+            'subtotal' => 'required',
             'seller_id' => 'required',
             'client_id' => 'required',
         ]);
@@ -132,6 +133,7 @@ class InvoiceController extends Controller
         $invoice->expiration_date = $request->get('expiration_date');
         $invoice->iva = $request->get('iva');
         $invoice->total = $request->get('total');
+        $invoice->subtotal = $request->get('subtotal');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->client_id = $request->get('client_id');
         

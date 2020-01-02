@@ -12,15 +12,28 @@
 <div class="content-errors">
     <div class="errors">
         @if($errors->any())
+            <div>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
+        <p>id</p>
+        <input type="text" name="id" id=""  value="" disabled>
+        <p>State</p>
         <div>
             <ul>
                 @foreach($errors->all() as $error)
                 <li>{{$error}}</li>
                 @endforeach
-            </ul>
-        </div>
-        @endif
-    </div>
+            </select>
+            <br>
+            
+        <button type="submit">Guardar</button>
+    </form>
 </div>
 
 <div class="content-form">
