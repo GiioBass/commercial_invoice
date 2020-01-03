@@ -50,17 +50,14 @@ class InvoiceController extends Controller
     {
         $validData = $request -> validate([
             
-            
             'state' => 'required',
             'expedition_date' => 'required',
             'expiration_date' => 'required',
-            
             'seller_id' => 'required',
             'client_id' => 'required',
         ]);
 
         $invoice = new Invoice;
-        
         $invoice->id = $request->id;
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
