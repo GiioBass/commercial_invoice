@@ -25,7 +25,11 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Client::class, 30)->create();
         factory(App\Seller::class, 30)->create();
+        factory(App\Invoice::class, 30)->create();
         factory(App\Product::class, 30)->create();
+        factory(App\Invoice_product::class, 100)->create();
+
+        
         
         
     }

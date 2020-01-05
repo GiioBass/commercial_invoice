@@ -3,9 +3,10 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Client;
+use App\Seller;
 use App\Invoice;
 use App\Product;
-use App\Seller;
+use App\Invoice_product;
 use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
@@ -39,13 +40,23 @@ $factory->define(Product::class, function (Faker $faker){
     ];
 });
 
-// $factory->define(Invoice::class, function ( Faker $faker){
-//     return[
-//         'state'=> 'Por Pagar',
-//         'total'=> 0,
-//         'iva'=> 0,
-//         'subtotal'=> 0,
-//         'expedition_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
-//         'expiration_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
-//     ];
-// });
+$factory->define(Invoice::class, function ( Faker $faker){
+    return[
+        'state'=> 'Por Pagar',
+        'total'=> 0,
+        'iva'=> 0,
+        'subtotal'=> 0,
+        'expedition_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
+        'expiration_date'=> $faker->date($format = 'y-m-d', $max = 'now'),
+        'seller_id' => Seller::all()->random()->id,
+        'client_id'=> Client::all()->random()->id
+    ];
+});
+
+$factory->define(Invoice_product::class, function ( Faker $faker){
+    return[
+        'quantity'=> $faker->numberBetween($min = 1, $max = 50),
+        'invoice_id'=> Invoice::all()->random()->id,
+        'product_id'=> Product::all()->random()->id
+    ];
+});
