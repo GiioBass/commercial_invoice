@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -128,4 +131,16 @@ class ProductController extends Controller
             'product' => $product
         ]);
     }
+
+
+   public function export(){
+    return Excel::download(new ProductsExport, 'products-' . date('Y-m-d') . '.xlsx');
+}
+
+public function import(Request $request){
+   $file = $request->file('file');
+
+   Excel::import(new ProductsImport, $file);
+   return back();
+} 
 }
