@@ -44,4 +44,14 @@
 <div class="container-pagination">
     {{$sellers->links()}}
 </div>
+
+<div>
+    <a href="/sellers/export">Export</a>
+</div>
+
+<form action="/sellers/import" method="post" enctype="multipart/form-data" >
+@csrf
+<input type="file" name="file" id="">
+<button type="submit">Importar</button>
+</form>
 @endsection
