@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Client;
 
 use Illuminate\Http\Request;
+
+use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ClientController extends Controller
@@ -136,4 +140,16 @@ class ClientController extends Controller
             'client' => $client
         ]);
     }
+
+
+   public function export(){
+    return Excel::download(new ClientsExport, 'clients-' . date('Y-m-d') . '.xlsx');
+    }
+
+    public function import(Request $request){
+        $file = $request->file('file');
+
+        Excel::import(new ClientsImport, $file);
+        return back();
+    } 
 }

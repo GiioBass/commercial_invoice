@@ -53,13 +53,25 @@
 </div>
 
 <div>
-    <a href="/invoices/export">Export</a>
+    <a href="/invoices/export">Exportar Facturas</a>
 </div>
-
-<form action="/invoices/import" method="post" enctype="multipart/form-data" >
-@csrf
-<input type="file" name="file" id="">
-<button type="submit">Importar</button>
-</form>
+<br>
+<div>
+    <label for="">Importar Facturas</label>
+    <form action="/invoices/import" method="post" enctype="multipart/form-data" >
+        @csrf
+        <input type="file" name="file" id="">
+        <button type="submit">Importar</button>
+    </form>
+</div>
+<br>
+<div>
+    <label for="">Importar Ordenes</label>
+    <form action="/orders/import" method="post" enctype="multipart/form-data" >
+        @csrf
+        <input type="file" name="file" id="">
+        <button type="submit">Importar</button>
+    </form>
+</div>
 
 @endsection

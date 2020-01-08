@@ -44,7 +44,6 @@ class Invoice extends Model
     //     $total = $this->total;
     //     return $total * 0.19;
     // }
-    
     // public function getTotalAttribute($value){
     //     $total = $this->products->sum('unit_value');
     //     return $total;

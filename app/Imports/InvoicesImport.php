@@ -22,12 +22,8 @@ class InvoicesImport implements ToModel
             'subtotal' => $row[4],
             'iva' => $row[5],
             'total' => $row[6],
-            'created_at' => $row[7],
-            'update_at' => $row[8],
-            'seller_id' => $row[9],
-            'client_id' => $row[10],
-
-
+            'seller_id' => $row[7],
+            'client_id' => $row[8],
         ]);
     }
 }

@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\Invoice;
-use Illuminate\Http\Request;
-
 use App\Exports\InvoicesExport;
 use App\Imports\InvoicesImport;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -67,7 +64,6 @@ class InvoiceController extends Controller
         $invoice->total = 0;
         $invoice->seller_id = $request->seller_id;
         $invoice->client_id = $request->client_id;
-        
         $invoice->save();
         return back()->with('message', 'Factura Creada');
     }
@@ -171,9 +167,7 @@ class InvoiceController extends Controller
    }
 
    public function export(){
-        return Excel::download(new InvoicesExport, 'invoices.csv');
-        // (new InvoicesExport)->queue('invoices.csv');
-        // return back()->withSuccess('Export Started!!');
+        return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.xlsx');
    }
 
    public function import(Request $request){
