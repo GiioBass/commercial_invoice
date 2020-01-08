@@ -56,7 +56,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <label for="">Vendedor</label>
+                    <label for="">Cliente</label>
                     <div class="list">
 
                         <select class="list-select" name="client_id" id="">
