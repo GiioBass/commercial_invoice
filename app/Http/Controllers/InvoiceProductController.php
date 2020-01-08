@@ -106,16 +106,28 @@ class InvoiceProductController extends Controller
         return redirect()->route('invoice.show', $invoice->id);
     }
 
-    public function import(Request $request){
+    public function import(Request $request, Invoice $invoice){
         $file = $request->file('file');
         Excel::import(new InvoiceProductsImport, $file);
+        
         return back();
     }  
 
     public function updateOrder(Invoice $invoice){
-                DB::table('invoices')
-                    ->where('id', $invoice->id)
-                    ->update(['total' => $invoice->total, 'iva' => $invoice->iva]); 
-           }
-    
+        DB::table('invoices')
+            ->where('id', $invoice->id)
+            ->update(['total' => $invoice->total, 'iva' => $invoice->iva, 'subTotal' => $invoice->subTotal]); 
+    }
+
+    public function updateInvoices(){
+
+        $invoice = Invoice::all();
+        foreach ($invoice as $invoices) {
+            $this->updateOrder($invoices);
+        }
+        return back();
+    }
+
+           
 }
+
