@@ -12,6 +12,9 @@
         </a>
     </div>
 </div>
+<div >
+    <a href="/orders/updateInvoices">Actualizar Facturas</a>
+<div>
 
 <div>
     <table>
@@ -38,7 +41,7 @@
                     <td>{{$invoice->client->first_name}}</td>
                     <td>{{$invoice->expedition_date}}</td>
                     <td>{{$invoice->expiration_date}}</td>
-                    <td>{{$invoice->total + $invoice->iva}}</td>
+                    <td>{{$invoice->total}}</td>
                     <td>{{$invoice->seller->first_name}}</td>
                     <td><a href="/invoice/{{$invoice->id}}/edit">Editar</a></td>
                     <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
