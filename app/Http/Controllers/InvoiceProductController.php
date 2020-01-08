@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Invoice;
 use App\Invoice_product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\InvoiceProductsImport;
 
@@ -52,7 +53,7 @@ class InvoiceProductController extends Controller
         $invoice_product->product_id = $request->get('product_id');
         $invoice_product->quantity = $request->get('quantity');
         $invoice_product->save();  
-        
+        $this->updateOrder($invoice);
         return redirect()->route('invoice.show', $invoice->id);
         
     }
@@ -101,14 +102,20 @@ class InvoiceProductController extends Controller
     {
         $invoiceProduct = Invoice_product::findOrFail($id);
         $invoiceProduct->delete();
+        $this->updateOrder($invoice);
         return redirect()->route('invoice.show', $invoice->id);
     }
 
     public function import(Request $request){
         $file = $request->file('file');
- 
         Excel::import(new InvoiceProductsImport, $file);
         return back();
     }  
 
+    public function updateOrder(Invoice $invoice){
+                DB::table('invoices')
+                    ->where('id', $invoice->id)
+                    ->update(['total' => $invoice->total, 'iva' => $invoice->iva]); 
+           }
+    
 }
