@@ -72,7 +72,7 @@
 
     <div style="margin: auto; width: 60%; background-color: aqua; text-align: right">
         <p style="font-style: oblique">
-            Total antes de Iva:  {{$invoices->total}}
+            Total antes de Iva:  {{$invoices->subtotal}}
         </p>
         <p>
             IVA: {{$invoices->iva}}
