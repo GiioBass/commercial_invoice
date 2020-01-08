@@ -81,7 +81,7 @@
             IVA: {{$invoices->iva}}
         </p>
         <h3>
-            Total:  {{$invoices->total + $invoices->iva}}
+            Total:  {{$invoices->total}}
         </h3>
     </div>
 
