@@ -44,10 +44,7 @@
     <div>
         <a href="/invoice/{{$invoices->id}}/invoice_product/create">Agregar Producto</a>
     </div>
-    <div>
-        <a href="/invoice/{{$invoices->id}}/updateOrder">Confirmar Compra</a>
-    </div>
-
+    
     <div>
     <h3 style="text-align: center">Detalles</h3>
     </div>
