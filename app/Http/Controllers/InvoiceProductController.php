@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Invoice;
 use App\Invoice_product;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\InvoiceProductsImport;
 
 class InvoiceProductController extends Controller
 {
@@ -101,5 +103,12 @@ class InvoiceProductController extends Controller
         $invoiceProduct->delete();
         return redirect()->route('invoice.show', $invoice->id);
     }
+
+    public function import(Request $request){
+        $file = $request->file('file');
+ 
+        Excel::import(new InvoiceProductsImport, $file);
+        return back();
+    }  
 
 }

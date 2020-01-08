@@ -39,7 +39,7 @@ Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@stor
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/invoice/{id}/updateOrder', 'InvoiceController@updateOrder');
 
@@ -48,4 +48,18 @@ Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductCon
 Route::get('/invoices/export', 'InvoiceController@export');
 
 Route::post('/invoices/import', 'InvoiceController@import');
+
+Route::get('/clients/export', 'ClientController@export');
+
+Route::post('/clients/import', 'ClientController@import');
+
+Route::get('/sellers/export', 'SellerController@export');
+
+Route::post('/sellers/import', 'SellerController@import');
+
+Route::get('/products/export', 'ProductController@export');
+
+Route::post('/products/import', 'ProductController@import');
+
+Route::post('/orders/import', 'InvoiceProductController@import');
 

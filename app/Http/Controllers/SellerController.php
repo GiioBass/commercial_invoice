@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Seller;
 use Illuminate\Http\Request;
+use App\Exports\SellersExport;
+use App\Imports\SellersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SellerController extends Controller
 {
@@ -134,4 +137,16 @@ class SellerController extends Controller
             'seller' => $seller
         ]);
     }
+
+
+    public function export(){
+        return Excel::download(new SellersExport, 'sellers-' . date('Y-m-d') . '.xlsx');
+    }
+
+    public function import(Request $request){
+        $file = $request->file('file');
+
+        Excel::import(new SellersImport, $file);
+        return back();
+    } 
 }

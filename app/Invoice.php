@@ -40,15 +40,15 @@ class Invoice extends Model
         return $this->belongsToMany(Product::class)->withPivot('product_id','quantity', 'id');
     }
 
-    public function getIvaAttribute($value){
-        $total = $this->total;
-        return $total * 0.19;
-    }
+    // public function getIvaAttribute($value){
+    //     $total = $this->total;
+    //     return $total * 0.19;
+    // }
 
-    public function getTotalAttribute($value){
-        $total = $this->products->sum('unit_value');
-        return $total;
-    }    
+    // public function getTotalAttribute($value){
+    //     $total = $this->products->sum('unit_value');
+    //     return $total;
+    // }    
 
     
    
