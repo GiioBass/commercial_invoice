@@ -156,16 +156,6 @@ class InvoiceController extends Controller
         return redirect()->route('invoice.index');
     }
 
-   public function updateOrder($id){
-       $invoice = Invoice::findOrFail($id);
-
-        DB::table('invoices')
-            ->where('id', $invoice->id)
-            ->update(['total' => $invoice->total, 'iva' => $invoice->iva]);
-
-        return redirect()->route('invoice.index');
-   }
-
    public function export(){
         return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.xlsx');
    }
@@ -176,5 +166,7 @@ class InvoiceController extends Controller
        return back();
    } 
   
+
+   
 
 }
