@@ -58,13 +58,13 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-        $invoice->id = $request->id;
+        
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
+        $invoice->subtotal = 0;
         $invoice->iva = 0;
         $invoice->total = 0;
-        $invoice->subtotal = 0;
         $invoice->seller_id = $request->seller_id;
         $invoice->client_id = $request->client_id;
         
@@ -178,7 +178,6 @@ class InvoiceController extends Controller
 
    public function import(Request $request){
        $file = $request->file('file');
-
        Excel::import(new InvoicesImport, $file);
        return back();
    } 
