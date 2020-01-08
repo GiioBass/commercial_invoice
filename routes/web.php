@@ -61,3 +61,5 @@ Route::get('/products/export', 'ProductController@export');
 
 Route::post('/products/import', 'ProductController@import');
 
+Route::post('/orders/import', 'InvoiceProductController@import');
+
