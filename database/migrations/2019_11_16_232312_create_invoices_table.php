@@ -18,7 +18,7 @@ class CreateInvoicesTable extends Migration
             $table->string('state');
             $table->date('expedition_date');
             $table->date('expiration_date');
-            $table->double('subtotal');
+            $table->double('subTotal');
             $table->double('iva');
             $table->double('total');
             $table->timestamps();
