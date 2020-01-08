@@ -39,9 +39,7 @@ Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@stor
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/invoice/{id}/updateOrder', 'InvoiceController@updateOrder');
+Route::get('/home', 'ClientController@index')->name('home');
 
 Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductController@destroy');
 
