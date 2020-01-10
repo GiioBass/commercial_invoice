@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container-menu">
     <div class="container-item">
         <a  class="item-menu" href="{{route('invoice.create')}}">
@@ -10,10 +9,14 @@
                 Nueva Factura
             </div>  
         </a>
+        <a class="item-menu" href="/orders/updateInvoices">
+            <div class="item-button">
+                Actualizar Facturas
+            </div>
+        </a>
     </div>
 </div>
 <div >
-    <a href="/orders/updateInvoices">Actualizar Facturas</a>
 <div>
     <br>
 <div>
@@ -52,6 +55,7 @@
     <table>
         <tr>
             <th>Ver</th>
+            <th>Id</th>
             <th>Estado</th>
             <th>Cliente</th>
             <th>Fecha de Expedición</th>
@@ -69,6 +73,7 @@
                                 + 
                         </a>
                     </td>
+                    <td>{{$invoice->id}}</td>
                     <td>{{$invoice->state}}</td>
                     <td>{{$invoice->client->first_name}}</td>
                     <td>{{$invoice->expedition_date}}</td>
@@ -86,10 +91,17 @@
 <div class="container-pagination">
     {{$invoices->links()}}
 </div>
-
-<div>
-    <a href="/invoices/export">Exportar Facturas</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a class="item-menu" href="/invoices/export">
+            <div class="item-button">
+                Exportar Factura
+            </div>  
+        </a>
+    </div>
 </div>
+
+
 <br>
 <div>
     <label for="">Importar Facturas</label>
