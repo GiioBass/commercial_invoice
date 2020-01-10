@@ -22,7 +22,7 @@
             </div>
         @endif
         <p>ID</p>
-        <input type="text" name="id" id="" style="text-align:center" value="{{$invoice->id}}">
+        <input type="text" name="id" id="" style="text-align:center" value="{{$invoice->id}}" readonly>
         <div>
             <select name="state" id="">
                 <option value="Pagado">Pagado</option>
@@ -31,13 +31,15 @@
         </div>
         
         <p>Fecha de Expedición</p>
-        <input type="text" name="expedition_date" id="" value="{{$invoice->expedition_date}}">
+        <input type="date" name="expedition_date" id="" value="{{$invoice->expedition_date}}">
         <p>Fecha de Expiración</p>
-        <input type="text" name="expiration_date" id="" value="{{$invoice->expiration_date}}">
+        <input type="date" name="expiration_date" id="" value="{{$invoice->expiration_date}}">
+        <p>Sub-Total</p>
+        <input type="text" name="subTotal" id="" value="{{$invoice->subTotal}}" readonly>
         <p>iva</p>
-        <input type="text" name="iva" id="" value="{{$invoice->iva}}">
+        <input type="text" name="iva" id="" value="{{$invoice->iva}}" readonly>
         <p>Total</p>
-        <input type="text" name="total" id="" value="{{$invoice->total}}">
+        <input type="text" name="total" id="" value="{{$invoice->total}}" readonly>
         <p>vendedor</p>
         <input type="text" name="seller_id" id="" value="{{$invoice->seller_id}}">
         <p>cliente</p>
