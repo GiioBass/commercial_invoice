@@ -19,5 +19,11 @@ class Product extends Model
    public function invoices(){
        return $this->belongsToMany(Invoice::class)->withPivot(['invoice_id', 'quantity', 'id']);
    }
+
+   public function scopeId($query, $id){
+       
+        if(trim($id) != "")
+            return $query->where('id', "$id");
+   }
    
 }

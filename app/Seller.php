@@ -18,4 +18,9 @@ class Seller extends Model
         return $this->hasMany(Invoice::class);
        
     }
+
+    public function scopeId($query, $id){
+        if(trim($id) != "")
+            return $query->where('id', "$id");
+    }
 }
