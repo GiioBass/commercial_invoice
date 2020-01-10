@@ -34,7 +34,7 @@
         @foreach($clients as $client)
                   
                 <tr>
-                    <td>{{$client->id}}</td>
+                    <td>{{number_format($client->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$client->first_name}}</td>
                     <td>{{$client->last_name}}</td>
                     <td>{{$client->phone_number}}</td>

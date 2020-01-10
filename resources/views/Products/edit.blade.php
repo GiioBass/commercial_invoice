@@ -20,13 +20,13 @@
             </div>
         @endif
         <p>ID</p>
-        <input type="text" name="id" id="" style="text-align:center" value="{{$product->id}}">
+        <input type="text" name="id" id="" style="text-align:center" value="{{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
         <p>Nombre</p>
         <input type="text" name="name" id="" value="{{$product->name}}">
         <p>Descripcion</p>
         <input type="text" name="description" id="" value="{{$product->description}}">
         <p>Valor Unidad</p>
-        <input type="text" name="unit_value" id="" value="{{$product->unit_value}}">
+        <input type="text" name="unit_value" id="" value="{{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
         <br>
         <button type="submit">Editar</button>
     </form>

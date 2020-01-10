@@ -34,7 +34,7 @@
             @foreach($sellers as $seller)
                 <div>
                     <tr>            
-                        <td>{{$seller->id}}</td>
+                        <td>{{number_format($seller->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                         <td>{{$seller->first_name}}</td>
                         <td>{{$seller->last_name}}</td>
                         <td>{{$seller->email}}</td>

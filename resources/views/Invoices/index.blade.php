@@ -73,12 +73,12 @@
                                 + 
                         </a>
                     </td>
-                    <td>{{$invoice->id}}</td>
+                    <td>{{number_format($invoice->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$invoice->state}}</td>
                     <td>{{$invoice->client->first_name}}</td>
                     <td>{{$invoice->expedition_date}}</td>
                     <td>{{$invoice->expiration_date}}</td>
-                    <td>{{$invoice->total}}</td>
+                    <td>${{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$invoice->seller->first_name}}</td>
                     <td><a href="/invoice/{{$invoice->id}}/edit">Editar</a></td>
                     <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
