@@ -10,7 +10,14 @@
             </a>
         </div>
     </div>
+    <div>
+        <form action="/seller" method="get">
+            <label for="">Buscar:</label>
+            <input type="search" name="id" id="" placeholder="Id Vendedor">
+            <button type="submit">Buscar</button>
+        </form>
 
+    </div>
     <div>
         <table>
             <div>

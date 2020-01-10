@@ -15,7 +15,39 @@
 <div >
     <a href="/orders/updateInvoices">Actualizar Facturas</a>
 <div>
-
+    <br>
+<div>
+    <div>
+        <h2>Buscar:</h2>
+    </div>
+    <div>
+        <form action="/invoice" method="get">
+            <div class="list">
+                <select class="list-select" name="state" id="" placeholder="Estado" style="width: 120px " >
+                    <option value="" > </option>
+                    <option value="Por pagar">Por Pagar</option>
+                    <option value="Pagado">Pagado</option>
+                </select>
+                <label for="">Buscar: </label>
+                <input type="search" name="id" placeholder="Id Factura">
+                <input type="search" name="seller_id" placeholder="Id Vendedor">
+                <input type="search" name="client_id" placeholder="Id Clientes">
+            </div>
+            <div>
+                <label for="">Desde: </label>
+                <input type="date" name="dateStart" id="" >
+                <label for="">Hasta: </label>
+                <input type="date" name="dateFinish" id="">
+            </div>
+            <div>
+                <input type="submit" value="Buscar">
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <br>
+</div>
 <div>
     <table>
         <tr>

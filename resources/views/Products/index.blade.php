@@ -11,7 +11,13 @@
         </a>
     </div>
 </div>
-
+<div>
+    <form action="/product" method="get">
+        <label for="">Buscar:</label>
+        <input type="search" name="id" id="" placeholder="Id Producto">
+        <button type="submit">Buscar</button>
+    </form>
+</div>
 <div>
     <table>
         <tr>
