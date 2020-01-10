@@ -19,10 +19,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->get('id');
         return view('Products.index', [
-            'products' => Product::paginate(10)
+            'products' => Product::orderBy('id', 'asc')
+                ->id($id)
+                ->paginate(10)
         ]);
     }
 

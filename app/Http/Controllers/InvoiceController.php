@@ -19,10 +19,23 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $state = $request->get('state');
+        $id = $request->get('id');
+        $dateStart = $request->get('dateStart');
+        $dateFinish = $request->get('dateFinish');
+        $seller_id = $request->get('seller_id');
+        $client_id = $request->get('client_id');
+        
         return view('Invoices.index',[
-            'invoices' => Invoice::paginate(10)
+            'invoices' => Invoice::orderBy('id', 'asc')
+                ->state($state)
+                ->id($id)
+                ->dates($dateStart, $dateFinish)
+                ->seller($seller_id)
+                ->client($client_id)
+                ->paginate(10)
            
         ]);
     }
@@ -114,7 +127,7 @@ class InvoiceController extends Controller
             'expiration_date' => 'required',
             'iva' => 'required',
             'total' => 'required',
-            'subtotal' => 'required',
+            'subTotal' => 'required',
             'seller_id' => 'required',
             'client_id' => 'required',
         ]);
@@ -126,7 +139,7 @@ class InvoiceController extends Controller
         $invoice->expiration_date = $request->get('expiration_date');
         $invoice->iva = $request->get('iva');
         $invoice->total = $request->get('total');
-        $invoice->subtotal = $request->get('subtotal');
+        $invoice->subTotal = $request->get('subTotal');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->client_id = $request->get('client_id');
         
@@ -165,7 +178,8 @@ class InvoiceController extends Controller
        Excel::import(new InvoicesImport, $file);
        return back();
    } 
-  
+
+   
 
    
 

@@ -24,11 +24,13 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        $id = $request->get('id');
         return view('Clients.index', [
-            'clients' => Client::paginate(10)
+            'clients' => Client::orderBy('id', 'asc')
+                ->id($id)
+                ->paginate(10)
         ]);
     }
 

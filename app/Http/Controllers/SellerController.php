@@ -19,10 +19,14 @@ class SellerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->get('id');
+
         return view('Sellers.index', [
-            'sellers' => Seller::paginate(10)
+            'sellers' => Seller::orderBy('id', 'asc')
+                ->id($id)
+                ->paginate(10)
         ]);
     }
 
