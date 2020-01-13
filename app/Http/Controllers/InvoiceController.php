@@ -60,11 +60,11 @@ class InvoiceController extends Controller
     {
         $validData = $request -> validate([
             
-            'state' => 'required',
-            'expedition_date' => 'required',
-            'expiration_date' => 'required',
-            'seller_id' => 'required',
-            'client_id' => 'required',
+            'state' => 'required|string',
+            'expedition_date' => 'required|date',
+            'expiration_date' => 'required|date',
+            'seller_id' => 'required|numeric',
+            'client_id' => 'required|numeric',
         ]);
 
         $invoice = new Invoice;
@@ -121,15 +121,15 @@ class InvoiceController extends Controller
     public function update(Request $request, $id)
     {
         $validData = $request -> validate([
-            'id' => 'required',
-            'state' => 'required',
-            'expedition_date' => 'required',
-            'expiration_date' => 'required',
-            'iva' => 'required',
-            'total' => 'required',
-            'subTotal' => 'required',
-            'seller_id' => 'required',
-            'client_id' => 'required',
+            'id' => 'required|numeric',
+            'state' => 'required|string',
+            'expedition_date' => 'required|date',
+            'expiration_date' => 'required|date',
+            // 'iva' => 'required',
+            // 'total' => 'required',
+            // 'subTotal' => 'required',
+            'seller_id' => 'required|numeric',
+            'client_id' => 'required|numeric',
         ]);
         
         $invoice = Invoice::findOrFail($id);
@@ -137,9 +137,9 @@ class InvoiceController extends Controller
         $invoice->state = $request->get('state');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->expiration_date = $request->get('expiration_date');
-        $invoice->iva = $request->get('iva');
-        $invoice->total = $request->get('total');
-        $invoice->subTotal = $request->get('subTotal');
+        // $invoice->iva = $request->get('iva');
+        // $invoice->total = $request->get('total');
+        // $invoice->subTotal = $request->get('subTotal');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->client_id = $request->get('client_id');
         

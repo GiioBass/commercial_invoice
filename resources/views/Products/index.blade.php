@@ -25,8 +25,8 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Valor Unidad</th>
-            <th></th>
-            <th></th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach($products as $product)
             <div style="width:50%; margin: 0px auto; font-size: 20px">
@@ -34,9 +34,23 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
+<<<<<<< Updated upstream
                     <td>{{$product->unit_value}}</td>
                     <td><a href="/product/{{$product->id}}/edit">Editar</a></td>
                     <td><a href="/product/{{$product->id}}/confirmDelete">Eliminar</a></td>
+=======
+                    <td>$ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
+                    <td>
+                        <a href="/product/{{$product->id}}/edit">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/product/{{$product->id}}/confirmDelete">
+                            <i class="material-icons">delete_outline</i>
+                        </a>
+                    </td>
+>>>>>>> Stashed changes
                     
                 </tr>
             </div>
@@ -44,11 +58,16 @@
     </table>
 </div>
 <div class="container-pagination">
-    {{$products->links()}}
+    {{$products->appends($_GET)->links()}}
 </div>
-
-<div>
-    <a href="/products/export">Export</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="/products/export">
+            <div class="item-button">
+                Exportar
+            </div>  
+        </a>
+    </div>
 </div>
 
 <form action="/products/import" method="post" enctype="multipart/form-data" >
