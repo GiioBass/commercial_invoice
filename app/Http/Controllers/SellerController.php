@@ -49,11 +49,11 @@ class SellerController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
-            'id' => 'required',
+            'id' => 'required|numeric',
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required'
+            'email' => 'required|email:rfc',
+            'phone_number' => 'required|numeric'
         ]);
 
         $seller = new Seller;
