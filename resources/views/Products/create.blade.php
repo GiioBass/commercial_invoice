@@ -30,7 +30,7 @@
                 @csrf
                 <div class="items-form">
                     <label for="">Id</label>
-                    <input type="text" name="id" id=""  value="{{old('id')}}">
+                    <input type="text" name="id" id=""  value="{{number_format(old('id'), $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
                     <label for="">Nombre</label>
                     <input type="text" name="name" id="" value="{{old('name')}}">
                     <label for="">Descripción</label>

@@ -26,7 +26,9 @@
         <p>Product id</p>
         <select name="product_id" id="">
             @foreach ($product as $products)
-                <option value="{{$products->id}}">{{$products->id . ' - ' . $products->name}}</option>
+                <option value="{{$products->id}}">
+                    {{number_format($products->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.') . ' - ' . $products->name}}
+                </option>
             @endforeach
         </select>
         <p>Cantidad</p>
