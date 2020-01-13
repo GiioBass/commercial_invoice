@@ -14,3 +14,4 @@ resources/views/styles.blade.php
 database/seeds/DatabaseSeeder.php
 composer.lock
 composer.json
+*.json
