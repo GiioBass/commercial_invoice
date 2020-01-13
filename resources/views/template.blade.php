@@ -5,16 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Facturación</title>
 </head>
 <body>
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
-                <a class="title-button" href="{{route('client.index')}}"><li class="link" >CLIENTES</li></a>
-                <a class="title-button" href="{{route('product.index')}}"><li class="link" >PRODUCTOS</li></a>
-                <a class="title-button" href="{{route('seller.index')}}"><li class="link">VENDEDORES</li></a>
-                <a class="title-button" href="{{route('invoice.index')}}"><li class="link">FACTURAS</li></a>
+                <a class="title-button" href="{{route('client.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link" >
+                        CLIENTES
+                    </li>
+                </a>
+                <a class="title-button" href="{{route('product.index')}}">
+                    <i class="material-icons">local_grocery_store</i>
+                    <li class="link" >
+                        PRODUCTOS
+                    </li>
+                </a>
+                <a class="title-button" href="{{route('seller.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        VENDEDORES
+                    </li>
+                </a>
+                <a class="title-button" href="{{route('invoice.index')}}">
+                    <i class="material-icons">event_note</i>
+                    <li class="link">
+                        FACTURAS
+                    </li>
+                </a>
                 
             </ul>
         </div>
@@ -22,12 +43,12 @@
             <div class="login-button"></div>
             <div class="login-button">
             <div >
-
-                <p>Usuario: {{ Auth::user()->name }}</p>
+                <i class="material-icons">account_circle</i>
+                <p>{{ Auth::user()->name }}</p>
             </div>
-            <div  >
+            <div style="margin-left: 40px" >
                 <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <p class="title-button">LOGOUT</p> 
+                    <i style="font-size: 40px" class="material-icons">exit_to_app</i>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

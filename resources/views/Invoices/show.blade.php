@@ -5,13 +5,13 @@
    
 
     <div style="text-align: center">
-        <h1>Detalles Factura {{$invoices->id}}</h1>
+        <h1>Detalles Factura {{number_format($invoices->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</h1>
     </div>
 
-    <div style="margin: auto; background-color: aliceblue ; width: 60%">
+    <div style="margin: auto; background-color: aliceblue ; width: 80%">
         <div>
             <p>
-                Cliente:  {{$invoices->client->id}}
+                Cliente:  {{number_format($invoices->client->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
             </p>
         </div>
         <div>
@@ -59,32 +59,32 @@
         </tr>
         @foreach ($invoices->products as $product)
             <tr style="text-align: center">
-                <td >{{$product->id}}</td>
+                <td >{{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                 <td>{{$product->name}}</td>
                 <td>{{$product->pivot->quantity}}</td>
-                <td>{{$product->unit_value}}</td>
-                <td>{{$product->unit_value * $product->pivot->quantity}}</td>
+                <td>$ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
+                <td>$ {{number_format($product->unit_value * $product->pivot->quantity, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                 <td><a href="/invoice/{{$invoices->id}}/invoice_product/{{$product->pivot->id}}/destroy">Eliminar</a></td>
             </tr>
             @endforeach
             
         </table>
 
-    <div style="margin: auto; width: 60%; background-color: aqua; text-align: right">
+    <div style="margin: auto; width: 60%;  text-align: right">
         <p style="font-style: oblique">
-            Total antes de Iva:  {{$invoices->subtotal}}
+            Total antes de Iva: $ {{number_format($invoices->subtotal, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
         </p>
         <p>
-            IVA: {{$invoices->iva}}
+            IVA: $ {{number_format($invoices->iva, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
         </p>
         <h3>
-            Total:  {{$invoices->total}}
+            Total: $ {{number_format($invoices->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
         </h3>
     </div>
 
 
 <div style="width: 100%; ">
-    <div style="margin: 50px 0px; background-color: blueviolet; width: 60px; height: 30px; ">
+    <div style="margin: 50px 0px;  width: 60px; height: 30px; ">
         <a style="font-size: 20px" href="{{route('invoice.index')}}">Atras</a>
     <div>
     

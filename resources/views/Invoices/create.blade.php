@@ -52,7 +52,9 @@
 
                         <select class="list-select" name="seller_id" id="">
                             @foreach ($seller as $sellers)
-                            <option value="{{$sellers->id}}">{{$sellers->id . ' - ' . $sellers->first_name . ' ' . $sellers->last_name}}</option>
+                                <option value="{{$sellers->id}}">
+                                    {{number_format($sellers->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.') . ' - ' . $sellers->first_name . ' ' . $sellers->last_name}}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -61,7 +63,9 @@
 
                         <select class="list-select" name="client_id" id="">
                             @foreach ($client as $clients)
-                            <option value="{{$clients->id}}">{{$clients->id . ' - ' . $clients->first_name . ' ' . $clients->last_name}}</option>
+                                <option value="{{$clients->id}}">
+                                    {{number_format($clients->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.') . ' - ' . $clients->first_name . ' ' . $clients->last_name}}
+                                </option>
                             @endforeach
                         </select>
                     </div>

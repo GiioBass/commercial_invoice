@@ -31,16 +31,14 @@
         @foreach($products as $product)
             <div style="width:50%; margin: 0px auto; font-size: 20px">
                 <tr>
-                    <td>{{$product->id}}</td>
+                    <td>{{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
-<<<<<<< Updated upstream
+
+
                     <td>{{$product->unit_value}}</td>
-                    <td><a href="/product/{{$product->id}}/edit">Editar</a></td>
-                    <td><a href="/product/{{$product->id}}/confirmDelete">Eliminar</a></td>
-=======
-                    <td>$ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
-                    <td>
+
+                     <td>
                         <a href="/product/{{$product->id}}/edit">
                             <i class="material-icons">edit</i>
                         </a>
@@ -50,8 +48,6 @@
                             <i class="material-icons">delete_outline</i>
                         </a>
                     </td>
->>>>>>> Stashed changes
-                    
                 </tr>
             </div>
         @endforeach()

@@ -27,20 +27,28 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Número Tel</th>
-                    <th></th>
-                    <th></th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </div>
             @foreach($sellers as $seller)
                 <div>
                     <tr>            
-                        <td>{{$seller->id}}</td>
+                        <td>{{number_format($seller->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                         <td>{{$seller->first_name}}</td>
                         <td>{{$seller->last_name}}</td>
                         <td>{{$seller->email}}</td>
                         <td>{{$seller->phone_number}}</td>
-                        <td><a href="/seller/{{$seller->id}}/edit">Editar</a></td>
-                        <td><a href="/seller/{{$seller->id}}/confirmDelete">Eliminar</a></td>
+                        <td>
+                            <a href="/seller/{{$seller->id}}/edit">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/seller/{{$seller->id}}/confirmDelete">
+                                <i class="material-icons">delete_outline</i>
+                            </a>
+                        </td>
                         
                     </tr>
                 </div>
@@ -51,9 +59,14 @@
 <div class="container-pagination">
     {{$sellers->links()}}
 </div>
-
-<div>
-    <a href="/sellers/export">Export</a>
+<div class="container-menu">
+    <div class="container-item">
+        <a  class="item-menu" href="/sellers/export">
+            <div class="item-button">
+                Exportar
+            </div>  
+        </a>
+    </div>
 </div>
 
 <form action="/sellers/import" method="post" enctype="multipart/form-data" >
