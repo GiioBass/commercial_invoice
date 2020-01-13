@@ -48,10 +48,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
-            'id' => 'required',
+            'id' => 'required|numeric',
             'name' => 'required',
             'description' => 'required',
-            'unit_value' => 'required'
+            'unit_value' => 'required|numeric'
         ]);
 
         $product = new Product;
