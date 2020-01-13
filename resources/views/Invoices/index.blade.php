@@ -18,7 +18,15 @@
 </div>
 <div >
 <div>
-    <br>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div>
     <div>
         <h2>Buscar:</h2>
@@ -62,26 +70,34 @@
             <th>Fecha de Vencimiento</th>
             <th>Total</th>
             <th>Vendedor</th>
-            <th></th>
-            <th></th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach($invoices as $invoice)
             <tr>
                 <div style="width:50%; margin: 0px auto; font-size: 20px">
                     <td>
                         <a href="{{route('invoice.show', $invoice->id)}}">
-                                + 
+                            <i  class="material-icons">visibility</i>
                         </a>
                     </td>
-                    <td>{{$invoice->id}}</td>
+                    <td>{{number_format($invoice->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$invoice->state}}</td>
                     <td>{{$invoice->client->first_name}}</td>
                     <td>{{$invoice->expedition_date}}</td>
                     <td>{{$invoice->expiration_date}}</td>
-                    <td>{{$invoice->total}}</td>
+                    <td>${{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$invoice->seller->first_name}}</td>
-                    <td><a href="/invoice/{{$invoice->id}}/edit">Editar</a></td>
-                    <td><a href="/invoice/{{$invoice->id}}/confirmDelete">Eliminar</a></td>
+                    <td>
+                        <a href="/invoice/{{$invoice->id}}/edit">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/invoice/{{$invoice->id}}/confirmDelete">
+                            <i class="material-icons">delete_outline</i>
+                        </a>
+                    </td>
                     
                 </div>
             </tr>
@@ -89,7 +105,7 @@
     </table>
 </div>
 <div class="container-pagination">
-    {{$invoices->links()}}
+    {{$invoices->appends($_GET)->links()}}
 </div>
 <div class="container-menu">
     <div class="container-item">
@@ -112,13 +128,5 @@
     </form>
 </div>
 <br>
-<div>
-    <label for="">Importar Ordenes</label>
-    <form action="/orders/import" method="post" enctype="multipart/form-data" >
-        @csrf
-        <input type="file" name="file" id="">
-        <button type="submit">Importar</button>
-    </form>
-</div>
 
 @endsection

@@ -13,3 +13,4 @@ yarn-error.log
 resources/views/styles.blade.php
 database/seeds/DatabaseSeeder.php
 *.json
+

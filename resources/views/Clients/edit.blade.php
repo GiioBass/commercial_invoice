@@ -22,7 +22,7 @@
             </div>
         @endif
         <p>ID</p>
-        <input type="text" name="id" id="" style="text-align:center" value="{{$client->id}}">
+        <input type="text" name="id" id="" style="text-align:center" value="{{number_format($client->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
         <p>Nombres</p>
         <input type="text" name="first_name" id="" value="{{$client->first_name}}">
         <p>Apellidos</p>
