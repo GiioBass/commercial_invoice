@@ -12,4 +12,6 @@ npm-debug.log
 yarn-error.log
 resources/views/styles.blade.php
 database/seeds/DatabaseSeeder.php
-composer.lock
+
+*.json
+
