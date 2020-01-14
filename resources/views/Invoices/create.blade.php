@@ -25,17 +25,16 @@
 
 <div class="content-form">
     <div class="board-form">
-    <div class="content-title">
-    <div class="title">
-    <h1>CREAR FACTURA</h1>
-    </div>
-    </div>
+        <div class="content-title">
+            <div class="title">
+                <h1>CREAR FACTURA</h1>
+            </div>
+        </div>
 
         <form class="form" action=" {{route('invoice.store')}}" method="POST" >
             @csrf
             <div class="items-form">
-                    {{-- <label for="">Id</label>
-                    <input type="text" name="id" id=""  value="" > --}}
+                    
                     <label for="">Estado</label>
                     <div class="list">
                         <select class="list-select" name="state" id="">
