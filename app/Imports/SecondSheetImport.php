@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Invoice_product;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class SecondSheetImport implements ToCollection
+class SecondSheetImport implements ToCollection, WithHeadingRow
 {
     
     public function collection(Collection $rows)
@@ -14,9 +15,9 @@ class SecondSheetImport implements ToCollection
         foreach ($rows as $row) {
         
             Invoice_product::create([
-                'quantity' => $row[0],
-                'invoice_id' => $row[1],
-                'product_id' => $row[2]
+                'quantity' => $row['quantity'],
+                'invoice_id' => $row['invoice_id'],
+                'product_id' => $row['product_id']
     
                 ]);
         }
