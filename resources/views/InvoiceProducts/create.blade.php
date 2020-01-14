@@ -1,9 +1,7 @@
 @extends('template')
 @section('content')
 
-@php
-    $product = App\Product::all();
-@endphp
+
 
 @if(session('message'))
     {{session('message')}}
