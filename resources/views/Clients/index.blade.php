@@ -10,17 +10,17 @@
         </a>
     </div>
 </div>
-        <form class="form" action="/client" method="get">
-            <div class="items-form">
-                
-                <label for="">
-                    <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
-                    Buscar:
-                </label>
-                <input type="search" name="id" id="" placeholder="Id Cliente" >
-                <button class="button" type="submit">Buscar</button>
-            </div>
-        </form>
+    <form class="form" action="/client" method="get">
+        <div class="items-form">
+            
+            <label for="">
+                <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
+                Buscar:
+            </label>
+            <input type="search" name="id" id="" placeholder="Id Cliente" >
+            <button class="button" type="submit">Buscar</button>
+        </div>
+    </form>
 <div>
     <table>
         <div>
@@ -70,13 +70,15 @@
         </a>
     </div>
 </div>
+<div>
 
-<form class="form" action="/clients/import" method="post" enctype="multipart/form-data" >
-@csrf
-<div class="items-form">
-
-    <input type="file" name="file" id="">
-    <button class="button" type="submit">Importar</button>
+    <form class="form" action="/clients/import" method="post" enctype="multipart/form-data" >
+        @csrf
+        <div class="items-form">
+            
+            <input type="file" name="file" id="">
+            <button class="button" type="submit">Importar</button>
+        </div>
+    </form>
 </div>
-</form>
 @endsection
