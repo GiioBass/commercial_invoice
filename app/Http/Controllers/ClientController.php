@@ -53,10 +53,10 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
-            'id' => 'required|numeric',
+            'id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone_number' => 'required|numeric',
+            'phone_number' => 'required',
             'address' => 'required'
         ]);
 

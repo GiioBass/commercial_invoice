@@ -108,8 +108,7 @@ class InvoiceProductController extends Controller
 
     public function import(Request $request, Invoice $invoice){
         $file = $request->file('file');
-        
-        $import = Excel::import(new InvoiceProductsImport, $file);
+        Excel::import(new InvoiceProductsImport, $file);
         
         return back();
     }  

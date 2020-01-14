@@ -42,7 +42,7 @@ $factory->define(Product::class, function (Faker $faker){
 
 $factory->define(Invoice::class, function ( Faker $faker){
     return[
-        'state'=> $faker->randomElement($array = array ('Por Pagar','Pagado')),
+        'state'=> 'Por Pagar',
         'total'=> 0,
         'iva'=> 0,
         'subtotal'=> 0,

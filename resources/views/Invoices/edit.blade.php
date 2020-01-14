@@ -24,13 +24,9 @@
         <p>ID</p>
         <input type="text" name="id" id="" style="text-align:center" value="{{$invoice->id}}" readonly>
         <div>
-            <select name="state" id="" value="{{old($invoice->state)}}">
-                <option >{{$invoice->state}}</option>
-                @if ($invoice->state == "Pagado")
-                    <option value="Por Pagar">Por Pagar</option>
-                @else
-                    <option value="Pagado">Pagado</option>
-                @endif
+            <select name="state" id="">
+                <option value="Pagado">Pagado</option>
+                <option value="Por Pagar">Por Pagar</option>
             </select>
         </div>
         
@@ -38,21 +34,16 @@
         <input type="date" name="expedition_date" id="" value="{{$invoice->expedition_date}}">
         <p>Fecha de Expiración</p>
         <input type="date" name="expiration_date" id="" value="{{$invoice->expiration_date}}">
-
         <p>Sub-Total</p>
-
-
-        <input type="text" name="subTotal" id="" value="{{$invoice->subTotal}}" readonly>
-
+        <input type="text" name="subTotal" id="" value="{{number_format ($invoice->subTotal, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}" readonly>
         <p>iva</p>
         <input type="text" name="iva" id="" value="{{number_format($invoice->iva, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}" readonly>
         <p>Total</p>
-
-        <input type="text" name="total" id="" value="{{$invoice->total}}" readonly>
-        <p>vendedor</p>
-        <input type="text" name="seller_id" id="" value="{{$invoice->seller_id}}">
-        <p>cliente</p>
-        <input type="text" name="client_id" id="" value="{{$invoice->client_id}}">
+        <input type="text" name="total" id="" value="{{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}" readonly>
+        <p>Id Vendedor</p>
+        <input type="text" name="seller_id" id="" value="{{number_format($invoice->seller_id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
+        <p>Id Cliente</p>
+        <input type="text" name="client_id" id="" value="{{number_format($invoice->client_id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
         <br>
         <button type="submit">Editar</button>
         <a href="{{route('invoice.index')}}">Atras</a>
