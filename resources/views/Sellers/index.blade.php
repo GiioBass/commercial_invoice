@@ -11,10 +11,15 @@
         </div>
     </div>
     <div>
-        <form action="/seller" method="get">
-            <label for="">Buscar:</label>
-            <input type="search" name="id" id="" placeholder="Id Vendedor">
-            <button type="submit">Buscar</button>
+        <form class="form" action="/seller" method="get">
+            <div class="items-form">
+                <label for="">
+                    <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
+                    Buscar:
+                </label>
+                <input type="search" name="id" id="" placeholder="Id Vendedor">
+                <button class="button" type="submit">Buscar</button>
+            </div>
         </form>
 
     </div>
@@ -68,10 +73,14 @@
         </a>
     </div>
 </div>
+<div>
 
-<form action="/sellers/import" method="post" enctype="multipart/form-data" >
-@csrf
-<input type="file" name="file" id="">
-<button type="submit">Importar</button>
-</form>
+    <form class="form" action="/sellers/import" method="post" enctype="multipart/form-data" >
+        @csrf
+        <div class="items-form">
+            <input type="file" name="file" id="">
+            <button class="button" type="submit">Importar</button>
+        </div>
+    </form>
+</div>
 @endsection

@@ -28,30 +28,31 @@
     </div>
 @endif
 <div>
+    <label for="">
+        <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
+        Buscar:
+    </label>
     <div>
-        <h2>Buscar:</h2>
-    </div>
-    <div>
-        <form action="/invoice" method="get">
-            <div class="list">
-                <select class="list-select" name="state" id="" placeholder="Estado" style="width: 120px " >
-                    <option value="" > </option>
-                    <option value="Por pagar">Por Pagar</option>
-                    <option value="Pagado">Pagado</option>
-                </select>
-                <label for="">Buscar: </label>
-                <input type="search" name="id" placeholder="Id Factura">
-                <input type="search" name="seller_id" placeholder="Id Vendedor">
-                <input type="search" name="client_id" placeholder="Id Clientes">
-            </div>
-            <div>
-                <label for="">Desde: </label>
-                <input type="date" name="dateStart" id="" >
-                <label for="">Hasta: </label>
-                <input type="date" name="dateFinish" id="">
-            </div>
-            <div>
-                <input type="submit" value="Buscar">
+        <form class="form"  action="/invoice" method="get">
+            <div class="items-form">
+                <div class="list">
+                    <select class="list-select" name="state" id="" placeholder="Estado" style="width: 20% " >
+                        <option value="" > </option>
+                        <option value="Por pagar">Por Pagar</option>
+                        <option value="Pagado">Pagado</option>
+                    </select>
+                    <input type="search" name="id" placeholder="Id Factura" style="width: 20% ">
+                    <input type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
+                    <input type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                </div>
+                <label for="">Fecha de Expedición: </label>
+                <div>
+                    <label for="">Desde: </label>
+                    <input style="width: 20% " type="date" name="dateStart" id="" >
+                    <label for="">Hasta: </label>
+                    <input style="width: 20% " type="date" name="dateFinish" id="">
+                </div>
+                <button class="button" type="submit">Buscar</button>
             </div>
         </form>
     </div>
@@ -120,11 +121,12 @@
 
 <br>
 <div>
-    <label for="">Importar Facturas</label>
-    <form action="/invoices/import" method="post" enctype="multipart/form-data" >
-        @csrf
-        <input type="file" name="file" id="">
-        <button type="submit">Importar</button>
+    <form class="form" action="/invoices/import" method="post" enctype="multipart/form-data" >
+        <div class="items-form">
+            @csrf
+            <input type="file" name="file" id="">
+            <button class="button" type="submit">Importar</button>
+        </div>
     </form>
 </div>
 <br>

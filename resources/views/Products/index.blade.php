@@ -12,10 +12,16 @@
     </div>
 </div>
 <div>
-    <form action="/product" method="get">
-        <label for="">Buscar:</label>
-        <input type="search" name="id" id="" placeholder="Id Producto">
-        <button type="submit">Buscar</button>
+    <form  class="form" action="/product" method="get">
+        <div class="items-form">
+
+            <label for="">
+                <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
+                Buscar:
+            </label>
+            <input type="search" name="id" id="" placeholder="Id Producto">
+            <button class="button" type="submit">Buscar</button>
+        </div>
     </form>
 </div>
 <div>
@@ -29,7 +35,7 @@
             <th>Eliminar</th>
         </tr>
         @foreach($products as $product)
-            <div style="width:50%; margin: 0px auto; font-size: 20px">
+            <div >
                 <tr>
                     <td>{{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                     <td>{{$product->name}}</td>
@@ -53,22 +59,27 @@
         @endforeach()
     </table>
 </div>
+
 <div class="container-pagination">
     {{$products->appends($_GET)->links()}}
 </div>
+
 <div class="container-menu">
     <div class="container-item">
-        <a  class="item-menu" href="/products/export">
+        <a class="item-menu" href="/products/export">
             <div class="item-button">
-                Exportar
-            </div>  
+                Export
+            </div>
         </a>
     </div>
 </div>
-
-<form action="/products/import" method="post" enctype="multipart/form-data" >
-@csrf
-<input type="file" name="file" id="">
-<button type="submit">Importar</button>
-</form>
+<div>
+    <form class="form" action="/products/import" method="post" enctype="multipart/form-data" >
+        @csrf
+        <div class="items-form">
+            <input type="file" name="file" id="">
+            <button class="button" type="submit">Importar</button>
+        </div>
+    </form>
+</div>
 @endsection
