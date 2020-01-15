@@ -1,7 +1,6 @@
 *node_modules
 *vendor
 npm-debug.log
-
 node_modules/@types/node/README.md
 node_modules/caniuse-lite/CHANGELOG.md
 node_modules/caniuse-lite/package.json
