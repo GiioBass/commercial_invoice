@@ -5,22 +5,26 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
-{   
+{
     protected $fillable = [
-        'id' ,
+        'id',
         'first_name',
         'last_name',
         'phone_number',
-        'address'
+        'address',
     ];
 
-    public function invoices(){
+    public function invoices()
+    {
         return $this->hasMany(Invoice::class);
-       
+
     }
 
-    public function scopeId($query, $id){
-        if(trim($id) != "")
+    public function scopeId($query, $id)
+    {
+        if (trim($id) != "") {
             return $query->where('id', "$id");
+        }
+
     }
 }

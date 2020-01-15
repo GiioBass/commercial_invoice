@@ -1,15 +1,23 @@
 @extends('template')
 @section('content')
 
-<div class="title" style="width: 30%; margin:50px auto;  text-align:center ">
-    <h1>ELIMINAR CLIENTE</h1>
+<div class="content-form">
+    <div class="board-form">
+        <div class="content-title">
+            <h1>ELIMINAR CLIENTE</h1>
+        </div>
+    </div>
+    <form class="form" action="{{route('client.destroy', $client)}} " method="POST">
+        @method('DELETE')
+        @csrf
+        <div class="items-form">
+            <button class="button" type="submit">Eliminar</button>
+        </div>
+    </form>
+    <a class="item-menu" href="{{route('client.index')}}">
+        <div class="item-button">
+            Atras
+        </div>
+    </a>
 </div>
-
-
-<form  action="{{route('client.destroy', $client)}} " method="POST">
-    @method('DELETE')
-    @csrf
-    <button style="display: block; text-decoration: none;" type="submit">Eliminar</button>
-</form>
-<a href="{{route('client.index')}}">Atras</a>
 @endsection

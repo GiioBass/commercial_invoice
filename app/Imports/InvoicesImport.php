@@ -7,17 +7,17 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class InvoicesImport implements WithMultipleSheets, WithChunkReading
 {
-    
+
     public function sheets(): array
     {
-        return[
+        return [
             new FirstSheetImport(),
-            new SecondSheetImport()
-            
+            new SecondSheetImport(),
+
         ];
     }
 
-    public function chunkSize():int
+    public function chunkSize(): int
     {
         return 200;
     }

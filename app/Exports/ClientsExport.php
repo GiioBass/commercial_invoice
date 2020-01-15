@@ -3,30 +3,30 @@
 namespace App\Exports;
 
 use App\Client;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class ClientsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return Client::all();
     }
 
-    public function headings():array
+    public function headings(): array
     {
-        return[
+        return [
             'Id',
             'Nombres',
             'Apellidos',
             'Número Telefonico',
             'Dirección',
             'Fecha Creación',
-            'Ultima Actualización'
+            'Ultima Actualización',
         ];
     }
 }

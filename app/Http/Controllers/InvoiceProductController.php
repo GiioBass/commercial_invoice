@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\InvoiceProductsImport;
 use App\Invoice;
 use App\Invoice_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\InvoiceProductsImport;
 
 class InvoiceProductController extends Controller
 {
@@ -22,7 +22,7 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -32,10 +32,10 @@ class InvoiceProductController extends Controller
      */
     public function create(Invoice $invoice)
     {
-        return view('InvoiceProducts.create',[
-            'invoice' => $invoice
+        return view('InvoiceProducts.create', [
+            'invoice' => $invoice,
         ]);
-        
+
     }
 
     /**
@@ -46,16 +46,16 @@ class InvoiceProductController extends Controller
      */
     public function store(Request $request, Invoice $invoice)
     {
-        
+
         $invoice_product = new Invoice_product();
         $invoice_product->id = $request->get('id');
         $invoice_product->invoice_id = $request->get('invoice_id');
         $invoice_product->product_id = $request->get('product_id');
         $invoice_product->quantity = $request->get('quantity');
-        $invoice_product->save();  
+        $invoice_product->save();
         $this->updateOrder($invoice);
         return redirect()->route('invoice.show', $invoice->id);
-        
+
     }
 
     /**
@@ -106,21 +106,24 @@ class InvoiceProductController extends Controller
         return redirect()->route('invoice.show', $invoice->id);
     }
 
-    public function import(Request $request, Invoice $invoice){
+    public function import(Request $request, Invoice $invoice)
+    {
         $file = $request->file('file');
-        
-        $import = Excel::import(new InvoiceProductsImport, $file);
-        
-        return back();
-    }  
 
-    public function updateOrder(Invoice $invoice){
-        DB::table('invoices')
-            ->where('id', $invoice->id)
-            ->update(['total' => $invoice->total, 'iva' => $invoice->iva, 'subTotal' => $invoice->subTotal]); 
+        $import = Excel::import(new InvoiceProductsImport, $file);
+
+        return back();
     }
 
-    public function updateInvoices(){
+    public function updateOrder(Invoice $invoice)
+    {
+        DB::table('invoices')
+            ->where('id', $invoice->id)
+            ->update(['total' => $invoice->total, 'iva' => $invoice->iva, 'subTotal' => $invoice->subTotal]);
+    }
+
+    public function updateInvoices()
+    {
 
         $invoice = Invoice::all();
         foreach ($invoice as $invoices) {
@@ -129,6 +132,4 @@ class InvoiceProductController extends Controller
         return back();
     }
 
-           
 }
-

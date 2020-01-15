@@ -11,11 +11,12 @@ class Invoice_product extends Model
     protected $fillable = [
         'quantity',
         'invoice_id',
-        'product_id'
+        'product_id',
     ];
 
-    public function invoice(){
+    public function invoice()
+    {
         return $this->belongsTo(Invoice::class);
-        
+
     }
 }
