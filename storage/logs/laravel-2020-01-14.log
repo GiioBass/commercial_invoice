@@ -1,0 +1,2 @@
+[2020-01-14 23:33:05] local.ERROR: Debugbar exception: filemtime(): stat failed for /var/www/html/commercial_invoice/vendor/barryvdh/laravel-debugbar/src/Resources/vendor/font-awesome/style.css  
+[2020-01-14 23:33:11] local.ERROR: Debugbar exception: filemtime(): stat failed for /var/www/html/commercial_invoice/vendor/barryvdh/laravel-debugbar/src/Resources/vendor/font-awesome/style.css  
