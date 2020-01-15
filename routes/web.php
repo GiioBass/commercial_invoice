@@ -9,13 +9,11 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-use App\Http\Controllers\HomeController;
+ */
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'ClientController@index')->name('home');
 
 Route::resource('/client', 'ClientController');
 
@@ -36,10 +34,6 @@ Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete');
 Route::get('/invoice/{invoice}/invoice_product/create', 'InvoiceProductController@create');
 
 Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@store');
-
-Auth::routes();
-
-Route::get('/home', 'ClientController@index')->name('home');
 
 Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductController@destroy');
 
@@ -62,4 +56,3 @@ Route::post('/products/import', 'ProductController@import');
 Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices');
 
 Route::post('/orders/import', 'InvoiceProductController@import');
-
