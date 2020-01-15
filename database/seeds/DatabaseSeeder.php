@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Schema::disableForeignKeyConstraints();        
+        Schema::disableForeignKeyConstraints();
 
         DB::table('clients')->truncate();
         DB::table('sellers')->truncate();
@@ -21,7 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('invoices')->truncate();
         DB::table('invoice_product')->truncate();
 
-        Schema::enableForeignKeyConstraints();        
+        Schema::enableForeignKeyConstraints();
 
         factory(App\Client::class, 30)->create();
         factory(App\Seller::class, 30)->create();
@@ -29,8 +28,5 @@ class DatabaseSeeder extends Seeder
         factory(App\Product::class, 30)->create();
         factory(App\Invoice_product::class, 100)->create();
 
-        
-        
-        
     }
 }

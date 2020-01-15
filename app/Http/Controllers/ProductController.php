@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Illuminate\Http\Request;
 use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
+use App\Product;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
@@ -25,7 +25,7 @@ class ProductController extends Controller
         return view('Products.index', [
             'products' => Product::orderBy('id', 'asc')
                 ->id($id)
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 
@@ -51,7 +51,7 @@ class ProductController extends Controller
             'id' => 'required|numeric',
             'name' => 'required',
             'description' => 'required',
-            'unit_value' => 'required|numeric'
+            'unit_value' => 'required|numeric',
         ]);
 
         $product = new Product;
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->unit_value = $request->unit_value;
-        
+
         $product->save();
         return back()->with('message', 'Producto Añadido');
     }
@@ -84,8 +84,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('Products.edit',[
-            'product' => $product
+        return view('Products.edit', [
+            'product' => $product,
         ]);
     }
 
@@ -102,9 +102,9 @@ class ProductController extends Controller
             'id' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'unit_value' => 'required'
+            'unit_value' => 'required',
         ]);
-        
+
         $product = Product::findOrFail($id);
         $product->id = $request->get('id');
         $product->name = $request->get('name');
@@ -128,22 +128,24 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function confirmDelete($id){
+    public function confirmDelete($id)
+    {
         $product = Product::findOrFail($id);
         return view('Products.confirmDelete', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'products-' . date('Y-m-d') . '.xlsx');
+    }
 
-   public function export(){
-    return Excel::download(new ProductsExport, 'products-' . date('Y-m-d') . '.xlsx');
-}
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
 
-public function import(Request $request){
-   $file = $request->file('file');
-
-   Excel::import(new ProductsImport, $file);
-   return back();
-} 
+        Excel::import(new ProductsImport, $file);
+        return back();
+    }
 }

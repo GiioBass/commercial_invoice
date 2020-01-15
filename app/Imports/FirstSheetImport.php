@@ -10,11 +10,11 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 
 class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
 {
-    
+
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-        
+
             Invoice::create([
                 'id' => $row['id'],
                 'state' => $row['state'],
@@ -25,23 +25,25 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
                 'total' => $row['total'],
                 'seller_id' => $row['seller_id'],
                 'client_id' => $row['client_id'],
-                ]);
+            ]);
         }
     }
-    public function rules():array{
-        
+    public function rules(): array
+    {
+
         return [
-          
+
             'id' => 'required|numeric',
             'state' => 'required|string',
-            
+
         ];
     }
 
-    public function customValidationMessages(){
-        return[
-          'id.required' => 'El id es requerido' ,
-          'state.required' => 'El estado es requerido' 
+    public function customValidationMessages()
+    {
+        return [
+            'id.required' => 'El id es requerido',
+            'state.required' => 'El estado es requerido',
         ];
     }
 

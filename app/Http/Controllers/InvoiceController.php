@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Invoice;
+
 use App\Exports\InvoicesExport;
 use App\Imports\InvoicesImport;
+use App\Invoice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
@@ -27,16 +27,16 @@ class InvoiceController extends Controller
         $dateFinish = $request->get('dateFinish');
         $seller_id = $request->get('seller_id');
         $client_id = $request->get('client_id');
-        
-        return view('Invoices.index',[
+
+        return view('Invoices.index', [
             'invoices' => Invoice::orderBy('id', 'asc')
                 ->state($state)
                 ->id($id)
                 ->dates($dateStart, $dateFinish)
                 ->seller($seller_id)
                 ->client($client_id)
-                ->paginate(10)
-           
+                ->paginate(10),
+
         ]);
     }
 
@@ -58,8 +58,8 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $validData = $request -> validate([
-            
+        $validData = $request->validate([
+
             'state' => 'required|string',
             'expedition_date' => 'required|date',
             'expiration_date' => 'required|date',
@@ -68,7 +68,7 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-        
+
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
@@ -90,11 +90,10 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         return view('Invoices.show', [
-            'invoices' => $invoice
-            
+            'invoices' => $invoice,
+
         ]);
-    
-        
+
     }
 
     /**
@@ -107,7 +106,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::findOrFail($id);
         return view('Invoices.edit', [
-            'invoice' => $invoice
+            'invoice' => $invoice,
         ]);
     }
 
@@ -120,7 +119,7 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validData = $request -> validate([
+        $validData = $request->validate([
             'id' => 'required|numeric',
             'state' => 'required|string',
             'expedition_date' => 'required|date',
@@ -131,7 +130,7 @@ class InvoiceController extends Controller
             'seller_id' => 'required|numeric',
             'client_id' => 'required|numeric',
         ]);
-        
+
         $invoice = Invoice::findOrFail($id);
         $invoice->id = $request->get('id');
         $invoice->state = $request->get('state');
@@ -142,7 +141,7 @@ class InvoiceController extends Controller
         // $invoice->subTotal = $request->get('subTotal');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->client_id = $request->get('client_id');
-        
+
         $invoice->save();
         return redirect()->route('invoice.index');
     }
@@ -163,24 +162,22 @@ class InvoiceController extends Controller
     public function confirmDelete($id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('Invoices.confirmDelete',[
-            'invoice' => $invoice
+        return view('Invoices.confirmDelete', [
+            'invoice' => $invoice,
         ]);
         return redirect()->route('invoice.index');
     }
 
-   public function export(){
+    public function export()
+    {
         return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.xlsx');
-   }
+    }
 
-   public function import(Request $request){
-       $file = $request->file('file');
-       Excel::import(new InvoicesImport, $file);
-       return back();
-   } 
-
-   
-
-   
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new InvoicesImport, $file);
+        return back();
+    }
 
 }

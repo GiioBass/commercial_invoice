@@ -9,17 +9,17 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class SecondSheetImport implements ToCollection, WithHeadingRow
 {
-    
+
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-        
+
             Invoice_product::create([
                 'quantity' => $row['quantity'],
                 'invoice_id' => $row['invoice_id'],
-                'product_id' => $row['product_id']
-    
-                ]);
+                'product_id' => $row['product_id'],
+
+            ]);
         }
     }
 

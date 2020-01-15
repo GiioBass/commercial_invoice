@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-
-use Illuminate\Http\Request;
-
 use App\Exports\ClientsExport;
 use App\Imports\ClientsImport;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 class ClientController extends Controller
 {
@@ -30,7 +26,7 @@ class ClientController extends Controller
         return view('Clients.index', [
             'clients' => Client::orderBy('id', 'asc')
                 ->id($id)
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 
@@ -57,7 +53,7 @@ class ClientController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required|numeric',
-            'address' => 'required'
+            'address' => 'required',
         ]);
 
         $client = new Client;
@@ -78,7 +74,7 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { }
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -90,7 +86,7 @@ class ClientController extends Controller
     {
         $client = Client::findOrfail($id);
         return view('Clients.edit', [
-            'client' => $client
+            'client' => $client,
         ]);
     }
 
@@ -108,7 +104,7 @@ class ClientController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required',
-            'address' => 'required'
+            'address' => 'required',
         ]);
 
         $client = Client::findOrFail($id);
@@ -139,19 +135,20 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         return view('Clients.confirmDelete', [
-            'client' => $client
+            'client' => $client,
         ]);
     }
 
-
-   public function export(){
-    return Excel::download(new ClientsExport, 'clients-' . date('Y-m-d') . '.xlsx');
+    public function export()
+    {
+        return Excel::download(new ClientsExport, 'clients-' . date('Y-m-d') . '.xlsx');
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         $file = $request->file('file');
 
         Excel::import(new ClientsImport, $file);
         return back();
-    } 
+    }
 }

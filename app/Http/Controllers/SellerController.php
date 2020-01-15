@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Seller;
-use Illuminate\Http\Request;
 use App\Exports\SellersExport;
 use App\Imports\SellersImport;
+use App\Seller;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SellerController extends Controller
@@ -26,7 +26,7 @@ class SellerController extends Controller
         return view('Sellers.index', [
             'sellers' => Seller::orderBy('id', 'asc')
                 ->id($id)
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 
@@ -53,7 +53,7 @@ class SellerController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email:rfc',
-            'phone_number' => 'required|numeric'
+            'phone_number' => 'required|numeric',
         ]);
 
         $seller = new Seller;
@@ -88,7 +88,7 @@ class SellerController extends Controller
     {
         $seller = Seller::findOrFail($id);
         return view('Sellers.edit', [
-            'seller' => $seller
+            'seller' => $seller,
         ]);
     }
 
@@ -106,7 +106,7 @@ class SellerController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'phone_number' => 'required'
+            'phone_number' => 'required',
         ]);
 
         $seller = Seller::findOrFail($id);
@@ -138,19 +138,20 @@ class SellerController extends Controller
     {
         $seller = Seller::findOrFail($id);
         return view('Sellers.confirmDelete', [
-            'seller' => $seller
+            'seller' => $seller,
         ]);
     }
 
-
-    public function export(){
+    public function export()
+    {
         return Excel::download(new SellersExport, 'sellers-' . date('Y-m-d') . '.xlsx');
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         $file = $request->file('file');
 
         Excel::import(new SellersImport, $file);
         return back();
-    } 
+    }
 }
