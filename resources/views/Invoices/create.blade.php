@@ -34,7 +34,7 @@
         <form class="form" action=" {{route('invoice.store')}}" method="POST" >
             @csrf
             <div class="items-form">
-                    
+
                     <label for="">Estado</label>
                     <div class="list">
                         <select class="list-select" name="state" id="">
@@ -42,11 +42,11 @@
                             <option value="Pagado">Pagado</option>
                         </select>
                     </div>
-                    <label for="">Fecha de Expedición</label>
+                    <label for="">Fecha Expedición</label>
                     <input type="date" name="expedition_date" id="" placeholder="aaaa-mm-dd" value="{{old('expedition_date')}}">
-                    <label for="">Fecha de Expiración</label>
+                    <label for="">Fecha Expiración</label>
                     <input type="date" name="expiration_date" id="" placeholder="aaaa-mm-dd" value="{{old('expiration_date')}}" >
-                    <label for="">Vendedor</label> 
+                    <label for="">Vendedor</label>
                     <div class="list">
 
                         <select class="list-select" name="seller_id" id="">
@@ -69,13 +69,13 @@
                         </select>
                     </div>
                     <br>
-                    
+
                 <button class="button" type="submit">Guardar</button>
             </div>
         </form>
         <a class="item-menu" href="{{route('invoice.index')}}">
             <div class="item-button">
-                Atras        
+                Atras
             </div>
         </a>
     </div>
