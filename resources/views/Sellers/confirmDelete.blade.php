@@ -5,7 +5,7 @@
     <div class="board-form">
         <div class="content-title">
             <div class="title">
-                <h1>ELIMINAR VENDEDOR</h1>
+                <h1>¿Desea Eliminar el Vendedor?</h1>
             </div>
         </div>
         <form class="form" action="{{route('seller.destroy', $seller)}} " method="POST">

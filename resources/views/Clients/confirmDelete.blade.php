@@ -5,7 +5,7 @@
     <div class="board-form">
         <div class="content-title">
             <div class="title">
-                <h1>ELIMINAR CLIENTE</h1>
+                <h1>¿Desea Eliminar el Cliente?</h1>
             </div>
         </div>
         <form class="form" action="{{route('client.destroy', $client)}} " method="POST">
