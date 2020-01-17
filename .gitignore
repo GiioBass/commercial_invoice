@@ -3,3 +3,4 @@
 npm-debug.log
 *.xml
 *.iml
+public/js/app.js
