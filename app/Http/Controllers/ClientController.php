@@ -22,7 +22,8 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request->get('id');
+        $id = $request->get('id' );
+        
         return view('Clients.index', [
             'clients' => Client::orderBy('id', 'asc')
                 ->id($id)
@@ -100,10 +101,10 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $validData = $request->validate([
-            'id' => 'required',
+            'id' => 'required|numeric',
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone_number' => 'required',
+            'phone_number' => 'required|numeric',
             'address' => 'required',
         ]);
 

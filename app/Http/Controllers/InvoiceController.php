@@ -68,7 +68,6 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
