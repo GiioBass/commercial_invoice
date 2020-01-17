@@ -10,3 +10,4 @@ node_modules/es-abstract/package.json
 *.iml
 *.xml
 
+.env
