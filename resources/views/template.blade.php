@@ -12,31 +12,37 @@
     <nav class="main-nav">
         <div class="bar-nav">
             <ul class="button">
+                <a class="title-button" href="{{route('home')}}">
+                    <i class="material-icons">house</i>
+                    <li class="link" >
+                        Inicio
+                    </li>
+                </a>
                 <a class="title-button" href="{{route('client.index')}}">
                     <i class="material-icons">person_outline</i>
                     <li class="link" >
-                        CLIENTES
+                        Clientes
                     </li>
                 </a>
                 <a class="title-button" href="{{route('product.index')}}">
                     <i class="material-icons">local_grocery_store</i>
                     <li class="link" >
-                        PRODUCTOS
+                        Productos
                     </li>
                 </a>
                 <a class="title-button" href="{{route('seller.index')}}">
                     <i class="material-icons">person_outline</i>
                     <li class="link">
-                        VENDEDORES
+                        Vendedores
                     </li>
                 </a>
                 <a class="title-button" href="{{route('invoice.index')}}">
                     <i class="material-icons">event_note</i>
                     <li class="link">
-                        FACTURAS
+                        Facturas
                     </li>
                 </a>
-                
+
             </ul>
         </div>
         <div class="login-nav">
@@ -54,13 +60,13 @@
                     @csrf
                 </form>
             </div>
-            </div>
-            
+        </div>
+
         </div>
     </nav>
     <section class="section-main ">
         <div class="content">
-            
+
             @yield('content')
         </div>
     </section>
