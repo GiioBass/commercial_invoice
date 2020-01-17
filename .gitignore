@@ -3,3 +3,9 @@
 npm-debug.log
 *.iml
 *.xml
+.env
+
+composer.json
+composer.json
+composer.lock
+config/app.php
