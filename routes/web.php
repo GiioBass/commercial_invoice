@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'ClientController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/client', 'ClientController');
 

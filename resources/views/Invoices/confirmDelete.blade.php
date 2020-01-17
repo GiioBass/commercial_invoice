@@ -5,7 +5,7 @@
     <div class="board-form">
         <div class="content-title">
             <div class="title">
-                <h1>ELIMINAR FACTURA</h1>
+                <h1>¿Desea Eliminar la Factura?</h1>
             </div>
         </div>
         <form class="form" action="{{route('invoice.destroy', $invoice)}} " method="POST">

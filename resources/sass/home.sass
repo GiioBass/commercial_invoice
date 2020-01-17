@@ -1,0 +1,148 @@
+$shadow-color: #919191
+$border-color: #000000
+$text-color: #ffffff
+$back-color: #522fd1
+$back-hover: #2a07aa
+
+=hover
+    background-color: $back-hover
+
+=item
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    font-size: 2em
+    font-weight: bold
+    text-decoration: none
+    text-align: center
+    color: $text-color
+    background-color: $back-color
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-size: 16px
+    font-family: Arial, Helvetica, sans-serif
+
+.main
+    width: vw
+    height: 50em
+    display: flex
+    justify-content: center
+
+    .container
+        width: 80%
+        height: 100%
+        display: flex
+        flex-direction: column
+
+        .login-nav
+            width: 100%
+            height: 5%
+            display: flex
+            flex-direction: row
+            align-items: center
+
+            .item
+                font-size: 1.2em
+                margin: 0 0.5em
+
+            .icon
+                font-size: 2em
+                color: $border-color
+
+        .container-title
+            width: 100%
+            height: 20%
+            display: flex
+            align-items: center
+            justify-content: center
+
+            .title
+                font-size: 5em
+                font-family: 'Ibarra Real Nova', sans-serif
+
+        .container-content
+            width: 100%
+            height: 80%
+            //box-shadow: 0em 0em 1em $shadow-color
+            //border-radius: 1em
+            margin-top: 1em
+            border-top: solid 0.5em $back-color
+
+            .content-top
+                width: 100%
+                height: 40%
+                display: flex
+                justify-content: center
+                align-items: center
+
+                .menu-top
+                    width: 80%
+                    height: 70%
+                    display: flex
+                    justify-content: center
+                    flex-direction: column
+                    list-style-type: none
+
+                    .item-li
+                        width: 100%
+                        height: 50%
+                        display: flex
+
+                        .item-a
+                            +item()
+
+                        .item-a:hover
+                            +hover()
+
+            .content-bottom
+                width: 100%
+                height: 50%
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+
+                .menu-bottom
+                    width: 80%
+                    height: 70%
+                    display: flex
+                    justify-content: center
+                    flex-direction: row
+                    list-style-type: none
+
+                    .item-li
+                        width: 70%
+                        height: 100%
+                        display: flex
+
+                        .item-a
+                            +item()
+
+                        .item-a:hover
+                            +hover()
+
+.icon
+    font-size: 1.5em
+
+.radius-tl
+    border-radius: 0.5em 0 0 0
+
+.radius-tr
+    border-radius: 0 0.5em 0 0
+
+.radius-bl
+    border-radius: 0 0 0 0.5em
+
+.radius-br
+    border-radius: 0 0 0.5em 0
+
+.radius-t
+    border-radius: 0.5em 0.5em 0 0
+
+.radius-b
+    border-radius: 0 0 0.5em 0.5em

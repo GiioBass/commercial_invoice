@@ -1,12 +1,12 @@
 
-$color-nav: #ffffff 
+$color-nav: #ffffff
 $color-hover: #e4e4e4
 $color-shadow: #000000
 $color-border: #000000
 $color-text-nav: #000000
 $background-page: #ffffff
 $board-form: #ffffff9c
-$input-border: #e4e4e4
+$input-border: #5e5e5e
 $input-border-focus: #000000
 $color-button: #522fd1
 $button-hover:#2a07aa
@@ -16,7 +16,15 @@ $color-table: #ececec
 
 $test: #63db00
 
-// Change px for em 
+=board
+    height: 90%
+    width: 80%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    border-radius: 1em
+    background-color: $board-form
+    box-shadow: 0em 0em 1em $shadow-board
 *
     margin: 0
     padding: 0
@@ -27,12 +35,10 @@ $test: #63db00
 body
     background-color: #ffffff
     width: vw
-    height: 800px
-    margin: 0
-    padding: 0
+    height: 50em
 
 .main-nav
-    height: 60px
+    height: 4em
     width: vw
     background-color: $color-nav
     border-bottom: solid 0.2em $color-border
@@ -74,7 +80,7 @@ a
     text-decoration: none
     color: $color-text-nav
     font-weight: bold
-    font-size: 12px
+    font-size: 0.8em
     text-align: center
 
 .title-button:hover
@@ -95,7 +101,7 @@ a
 
         li
             display: inline-block
-            font-size: 2em
+            font-size: 1.5em
             color: #ec0000
             margin: 0 0.2em
 
@@ -107,24 +113,18 @@ a
     justify-content: center
 
     .board-form
-        height: 90%
-        width: 80%
-        display: flex
-        justify-content: center
-        flex-direction: column
-        border-radius: 1em
-        background-color: $board-form
-        box-shadow: 0em 0em 1em $shadow-board
+        +board
+
 
         .content-title
             height: 5%
             width: 100%
             margin: 1em 0em
             display: flex
-            align-content: center
+            justify-content: center
 
             .title
-                margin: auto
+                margin-top: 0.5em
                 font-size: 1.5em
 
         .form
@@ -134,15 +134,6 @@ a
             display: block
 
 .items-form
-    input
-        width: 100%
-        padding: 0.3em
-        border: 0.5px solid $input-border
-        border-radius: 0.2em
-        margin: 0.5em 0
-
-    input[type=text]:focus
-        border: 1px solid $input-border-focus
 
     .button
         width: 100%
@@ -156,28 +147,27 @@ a
     .button:hover
         background-color: $button-hover
         box-shadow: 0em 0em 0.5em #000000
-        //font-weight: bold
 
 .section-main
-    margin: 10px 0px
+    margin-top: 0.8em
 
 table
     width: 80%
-    margin: 0.5em auto
+    margin: 1em auto
     border-collapse: collapse
     border-radius: 1em
     background-color: $color-table
-    font-size: 20px
 
     th, td
-        border: 1px solid #ffffff
-        font-size: 12px
-        padding: 10px 25px
+        border: 0.1em solid #ffffff
+        font-size: 0.8em
+        padding: 0.8em 1.5em
+        text-align: center
 
         .div-module
             width: 30%
-            margin: 20px auto
-            text-align: center
+            margin: 1.3em auto
+
 
 .container-menu
     height: 2.5em
@@ -188,6 +178,7 @@ table
         width: 100%
         height: 100%
         display: flex
+
 
 .item-menu
     width: 10em
@@ -222,5 +213,75 @@ table
     .list-select
         width: 20em
         height: 2em
-        margin: 0.5em 0
+        margin-top: 0.5em
         background-color: #ffffff
+
+=item-input
+    width: 20em
+    height: 2em
+    border: 0.1em solid $input-border
+    border-radius: 0.5em
+    text-align: center
+
+input[type=search]
+    +item-input
+
+input[type=date]
+    +item-input
+
+select
+    +item-input
+
+input[type=text]
+    +item-input
+
+input[type=text]:focus
+    border: 1px solid $input-border-focus
+
+.content-detail
+    width: vw
+    height: vh
+    margin-bottom: 2em
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .board-detail
+        width: 90%
+        height: 100%
+
+        display: flex
+        justify-content: center
+        flex-direction: column
+        border-radius: 1em
+        background-color: $board-form
+        box-shadow: 0em 0em 1em $shadow-board
+
+        .title-detail
+            width: 100%
+            margin: 1em 0
+            display: flex
+            justify-content: center
+            align-content: center
+
+        .info
+            width: 70%
+            height: 20%
+            margin: 0.5em auto
+
+.content-total
+    width: 100%
+    height: 5em
+    display: flex
+    margin-bottom: 1em
+
+    .content-empty
+        width: 60%
+        height: 100%
+
+    .detail-total
+        width: 40%
+        height: 100%
+        display: flex
+        //align-items: center
+        flex-direction: column

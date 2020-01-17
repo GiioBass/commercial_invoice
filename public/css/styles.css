@@ -9,13 +9,11 @@
 body {
   background-color: #ffffff;
   width: vw;
-  height: 800px;
-  margin: 0;
-  padding: 0;
+  height: 50em;
 }
 
 .main-nav {
-  height: 60px;
+  height: 4em;
   width: vw;
   background-color: #ffffff;
   border-bottom: solid 0.2em #000000;
@@ -72,7 +70,7 @@ a {
   text-decoration: none;
   color: #000000;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.8em;
   text-align: center;
 }
 
@@ -100,7 +98,7 @@ a {
 
 .container-pagination .pagination li {
   display: inline-block;
-  font-size: 2em;
+  font-size: 1.5em;
   color: #ec0000;
   margin: 0 0.2em;
 }
@@ -137,11 +135,12 @@ a {
   margin: 1em 0em;
   display: -webkit-box;
   display: flex;
-  align-content: center;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 .content-form .board-form .content-title .title {
-  margin: auto;
+  margin-top: 0.5em;
   font-size: 1.5em;
 }
 
@@ -151,18 +150,6 @@ a {
           align-items: center;
   margin: 2em auto;
   display: block;
-}
-
-.items-form input {
-  width: 100%;
-  padding: 0.3em;
-  border: 0.5px solid #e4e4e4;
-  border-radius: 0.2em;
-  margin: 0.5em 0;
-}
-
-.items-form input[type=text]:focus {
-  border: 1px solid #000000;
 }
 
 .items-form .button {
@@ -181,30 +168,29 @@ a {
 }
 
 .section-main {
-  margin: 10px 0px;
+  margin-top: 0.8em;
 }
 
 table {
   width: 80%;
-  margin: 0.5em auto;
+  margin: 1em auto;
   border-collapse: collapse;
   border-radius: 1em;
   background-color: #ececec;
-  font-size: 20px;
 }
 
 table th,
 table td {
-  border: 1px solid #ffffff;
-  font-size: 12px;
-  padding: 10px 25px;
+  border: 0.1em solid #ffffff;
+  font-size: 0.8em;
+  padding: 0.8em 1.5em;
+  text-align: center;
 }
 
 table th .div-module,
 table td .div-module {
   width: 30%;
-  margin: 20px auto;
-  text-align: center;
+  margin: 1.3em auto;
 }
 
 .container-menu {
@@ -261,7 +247,109 @@ table td .div-module {
 .list .list-select {
   width: 20em;
   height: 2em;
-  margin: 0.5em 0;
+  margin-top: 0.5em;
   background-color: #ffffff;
+}
+
+input[type=search] {
+  width: 20em;
+  height: 2em;
+  border: 0.1em solid #5e5e5e;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+input[type=date] {
+  width: 20em;
+  height: 2em;
+  border: 0.1em solid #5e5e5e;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+select {
+  width: 20em;
+  height: 2em;
+  border: 0.1em solid #5e5e5e;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+input[type=text] {
+  width: 20em;
+  height: 2em;
+  border: 0.1em solid #5e5e5e;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+input[type=text]:focus {
+  border: 1px solid #000000;
+}
+
+.content-detail {
+  width: vw;
+  height: vh;
+  margin-bottom: 2em;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.content-detail .board-detail {
+  width: 90%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  border-radius: 1em;
+  background-color: #ffffff9c;
+  box-shadow: 0em 0em 1em #b4b4b4;
+}
+
+.content-detail .board-detail .title-detail {
+  width: 100%;
+  margin: 1em 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  align-content: center;
+}
+
+.content-detail .board-detail .info {
+  width: 70%;
+  height: 20%;
+  margin: 0.5em auto;
+}
+
+.content-total {
+  width: 100%;
+  height: 5em;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.content-total .content-empty {
+  width: 60%;
+  height: 100%;
+}
+
+.content-total .detail-total {
+  width: 40%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 

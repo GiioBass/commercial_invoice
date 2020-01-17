@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -24,8 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Clients.index', [
-            'clients' => Client::all()
-        ]);
+        return view('home');
     }
 }
