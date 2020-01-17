@@ -6,3 +6,5 @@ node_modules/caniuse-lite/CHANGELOG.md
 node_modules/caniuse-lite/package.json
 node_modules/es-abstract/CHANGELOG.md
 node_modules/es-abstract/package.json
+*.iml
+*.xml
