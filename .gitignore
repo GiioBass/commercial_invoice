@@ -11,3 +11,4 @@ node_modules/es-abstract/package.json
 *.xml
 
 .env
+.phpunit.result.cache
