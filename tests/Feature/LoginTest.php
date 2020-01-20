@@ -16,18 +16,14 @@ class LoginTest extends TestCase
 
     public function testLoginUnathorized()
     {
-
         $response = $this->get(route('client.index'));
-
         $response->assertRedirect(route('login'));
     }
 
     public function testLoginSuccess()
     {
         $user = factory(User::class)->create();
-
         $this->actingAs($user)->get(route('client.index'));
-
         $this->assertAuthenticatedAs($user);
     }
 
@@ -35,18 +31,15 @@ class LoginTest extends TestCase
     public function testViewClientIndexExist()
     {
         $user = factory(User::class)->create();
-
         $response = $this->actingAs($user)->get(route('client.index'));
-
         $response->assertOk();
     }
 
     public function testViewCreateClient()
     {
         $user = factory(User::class)->create();
-
+        $client = factory(Client::class)->create();
         $response = $this->actingAs($user)->get(route('client.create'));
-
         $response->assertOk();
     }
 
@@ -55,7 +48,6 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
         $client = Client::first();
         $response = $this->actingAs($user)->get(route('client.edit', $client));
-
         $response->assertOk();
     }
 
@@ -64,17 +56,15 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
         $client = Client::first();
         $response = $this->actingAs($user)->get(route('client.destroy', $client));
-
         $response->assertOk();
     }
+
     public function testViewConfirmDeleteClientExist()
     {
         $user = factory(User::class)->create();
         $client = Client::first();
         $response = $this->actingAs($user)->get("client/$client->id/confirmDelete");
         $response = $this->actingAs($user)->get(route('client.destroy', $client));
-
-
         $response->assertOk();
     }
 
