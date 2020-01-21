@@ -14,6 +14,7 @@ class SellerController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +44,7 @@ class SellerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,7 +71,7 @@ class SellerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +82,7 @@ class SellerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,8 +96,8 @@ class SellerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -124,7 +125,7 @@ class SellerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -134,6 +135,10 @@ class SellerController extends Controller
         return redirect()->route('seller.index');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function confirmDelete($id)
     {
         $seller = Seller::findOrFail($id);
@@ -142,11 +147,18 @@ class SellerController extends Controller
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function export()
     {
         return Excel::download(new SellersExport, 'sellers-' . date('Y-m-d') . '.xlsx');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function import(Request $request)
     {
         $file = $request->file('file');

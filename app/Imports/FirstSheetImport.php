@@ -11,6 +11,9 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
 {
 
+    /**
+     * @param Collection $rows
+     */
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
@@ -28,6 +31,10 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
             ]);
         }
     }
+
+    /**
+     * @return array
+     */
     public function rules(): array
     {
 
@@ -39,6 +46,9 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
         ];
     }
 
+    /**
+     * @return array
+     */
     public function customValidationMessages()
     {
         return [

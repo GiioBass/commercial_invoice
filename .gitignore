@@ -12,3 +12,7 @@ node_modules/es-abstract/package.json
 tests*
 .env
 .phpunit.result.cache
+phpunit.xml
+
+tests/Feature/LoginTest.php
+tests/Feature/ViewsTest.php

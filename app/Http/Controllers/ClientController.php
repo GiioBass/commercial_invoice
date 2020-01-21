@@ -10,6 +10,9 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ClientController extends Controller
 {
+    /**
+     * ClientController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -43,7 +46,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,16 +73,17 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {}
+    {
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -93,8 +97,8 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -121,7 +125,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -131,6 +135,10 @@ class ClientController extends Controller
         return redirect()->route('client.index');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function confirmDelete($id)
     {
         $client = Client::findOrFail($id);
@@ -139,11 +147,18 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function export()
     {
         return Excel::download(new ClientsExport, 'clients-' . date('Y-m-d') . '.xlsx');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function import(Request $request)
     {
         $file = $request->file('file');

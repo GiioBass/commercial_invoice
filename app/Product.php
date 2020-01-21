@@ -14,11 +14,19 @@ class Product extends Model
         'unit_value',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function invoices()
     {
         return $this->belongsToMany(Invoice::class)->withPivot(['invoice_id', 'quantity', 'id']);
     }
 
+    /**
+     * @param $query
+     * @param $id
+     * @return mixed
+     */
     public function scopeId($query, $id)
     {
 
