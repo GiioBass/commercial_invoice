@@ -4,7 +4,7 @@ npm-debug.log
 *.iml
 *.xml
 .env
-
+tests/
 composer.json
 composer.json
 composer.lock
