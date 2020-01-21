@@ -9,6 +9,6 @@ node_modules/es-abstract/CHANGELOG.md
 node_modules/es-abstract/package.json
 *.iml
 *.xml
-
+tests*
 .env
 .phpunit.result.cache

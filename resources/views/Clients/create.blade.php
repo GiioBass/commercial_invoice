@@ -2,7 +2,7 @@
 @section('content')
 {{--            --}}
 @if(session('message'))
-{{session('message')}}
+    {{session('message')}}
 @endif
 {{--            --}}
 <div class="content-errors">
@@ -24,7 +24,7 @@
                 <div class="title">
                     <h1>AÑADIR CLIENTE</h1>
                 </div>
-            </div>            
+            </div>
                 <form class="form" action=" {{route('client.store')}}" method="POST" >
                     @csrf
                     <div class="items-form">
