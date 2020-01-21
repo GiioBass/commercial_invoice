@@ -23,6 +23,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id');
+
         return view('Products.index', [
             'products' => Product::orderBy('id', 'asc')
                 ->id($id)
@@ -100,10 +101,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validData = $request->validate([
-            'id' => 'required',
+            'id' => 'required|numeric',
             'name' => 'required',
             'description' => 'required',
-            'unit_value' => 'required',
+            'unit_value' => 'required|numeric',
         ]);
 
         $product = Product::findOrFail($id);

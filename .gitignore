@@ -1,6 +1,8 @@
 *node_modules
 *vendor
 npm-debug.log
+composer.json
+composer.lock
 public/js/app.js
 node_modules/@types/node/README.md
 node_modules/caniuse-lite/CHANGELOG.md
@@ -16,3 +18,4 @@ phpunit.xml
 
 tests/Feature/LoginTest.php
 tests/Feature/ViewsTest.php
+

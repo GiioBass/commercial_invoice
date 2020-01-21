@@ -18,7 +18,7 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index(Request $request)
     {
@@ -31,6 +31,7 @@ class InvoiceController extends Controller
 
         return view('Invoices.index', [
             'invoices' => Invoice::orderBy('id', 'asc')
+                ->with('client', 'seller', 'products' )
                 ->state($state)
                 ->id($id)
                 ->dates($dateStart, $dateFinish)
@@ -69,7 +70,6 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;
