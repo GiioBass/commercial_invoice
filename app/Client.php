@@ -14,12 +14,20 @@ class Client extends Model
         'address',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
 
     }
 
+    /**
+     * @param $query
+     * @param $id
+     * @return mixed
+     */
     public function scopeId($query, $id)
     {
         if (trim($id) != "") {

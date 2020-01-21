@@ -19,27 +19,44 @@ class Invoice extends Model
         'client_id',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function client()
     {
         return $this->belongsTo(Client::class);
 
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function seller()
     {
         return $this->belongsTo(Seller::class);
 
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function invoice_products()
     {
         return $this->hasMany(Invoice_product::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('product_id', 'quantity', 'id');
     }
 
+    /**
+     * @param $value
+     * @return float|int
+     */
     public function getSubTotalAttribute($value)
     {
 
@@ -52,18 +69,31 @@ class Invoice extends Model
 
     }
 
+    /**
+     * @param $value
+     * @return float
+     */
     public function getIvaAttribute($value)
     {
         $iva = $this->subTotal * 0.19;
         return $iva;
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     */
     public function getTotalAttribute($value)
     {
         $total = $this->subTotal + $this->iva;
         return $total;
     }
 
+    /**
+     * @param $query
+     * @param $state
+     * @return mixed
+     */
     public function scopeState($query, $state)
     {
         if (trim($state) != "") {
@@ -72,6 +102,11 @@ class Invoice extends Model
 
     }
 
+    /**
+     * @param $query
+     * @param $id
+     * @return mixed
+     */
     public function scopeId($query, $id)
     {
         if (trim($id) != "") {
@@ -80,6 +115,11 @@ class Invoice extends Model
 
     }
 
+    /**
+     * @param $query
+     * @param $seller_id
+     * @return mixed
+     */
     public function scopeSeller($query, $seller_id)
     {
         if (trim($seller_id) != "") {
@@ -88,6 +128,11 @@ class Invoice extends Model
 
     }
 
+    /**
+     * @param $query
+     * @param $client_id
+     * @return mixed
+     */
     public function scopeClient($query, $client_id)
     {
         if (trim($client_id) != "") {
@@ -96,6 +141,12 @@ class Invoice extends Model
 
     }
 
+    /**
+     * @param $query
+     * @param $dateStart
+     * @param $dateFinish
+     * @return mixed
+     */
     public function scopeDates($query, $dateStart, $dateFinish)
     {
         if ($dateStart && $dateFinish) {

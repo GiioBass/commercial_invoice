@@ -8,13 +8,13 @@
     <div class="content-errors">
         <div class="errors">
             @if($errors->any())
-            <div>
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
         </div>
     </div>
@@ -26,11 +26,12 @@
                 </div>
             </div>
 
-            <form class="form" action=" {{route('product.store')}}" method="POST" >
+            <form class="form" action=" {{route('product.store')}}" method="POST">
                 @csrf
                 <div class="items-form">
                     <label for="">Id</label>
-                    <input type="text" name="id" id=""  value="{{number_format(old('id'), $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
+                    <input type="text" name="id" id=""
+                           value="{{number_format(old('id'), $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
                     <label for="">Nombre</label>
                     <input type="text" name="name" id="" value="{{old('name')}}">
                     <label for="">Descripción</label>
@@ -43,8 +44,8 @@
             </form>
             <a class="item-menu" href="{{route('product.index')}}">
                 <div class="item-button">
-                    Atras        
-                </div> 
+                    Atras
+                </div>
             </a>
         </div>
     </div>

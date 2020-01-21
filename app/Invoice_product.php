@@ -14,6 +14,9 @@ class Invoice_product extends Model
         'product_id',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);

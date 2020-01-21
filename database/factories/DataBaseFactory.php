@@ -9,6 +9,7 @@ use App\Product;
 use App\Seller;
 use Faker\Generator as Faker;
 
+/** @var TYPE_NAME $factory */
 $factory->define(Client::class, function (Faker $faker) {
     return [
         'id' => $faker->unique()->numberBetween($min = 100, $max = 99999999),
@@ -21,6 +22,7 @@ $factory->define(Client::class, function (Faker $faker) {
     ];
 });
 
+/** @var TYPE_NAME $factory */
 $factory->define(Seller::class, function (Faker $faker) {
     return [
         'id' => $faker->unique()->numberBetween($min = 100, $max = 99999999),
@@ -31,6 +33,7 @@ $factory->define(Seller::class, function (Faker $faker) {
     ];
 });
 
+/** @var TYPE_NAME $factory */
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'id' => $faker->unique()->numberBetween($min = 1000000, $max = 9999999),
@@ -40,6 +43,7 @@ $factory->define(Product::class, function (Faker $faker) {
     ];
 });
 
+/** @var TYPE_NAME $factory */
 $factory->define(Invoice::class, function (Faker $faker) {
     return [
         'state' => $faker->randomElement($array = array('Por Pagar', 'Pagado')),
@@ -53,6 +57,7 @@ $factory->define(Invoice::class, function (Faker $faker) {
     ];
 });
 
+/** @var TYPE_NAME $factory */
 $factory->define(Invoice_product::class, function (Faker $faker) {
     return [
         'quantity' => $faker->numberBetween($min = 1, $max = 50),
