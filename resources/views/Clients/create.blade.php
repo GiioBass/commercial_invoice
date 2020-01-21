@@ -1,5 +1,6 @@
 @extends('template')
 @section('content')
+
     {{--            --}}
     @if(session('message'))
         {{session('message')}}
@@ -25,6 +26,7 @@
                     <h1>AÑADIR CLIENTE</h1>
                 </div>
             </div>
+
             <form class="form" action=" {{route('client.store')}}" method="POST">
                 @csrf
                 <div class="items-form">
