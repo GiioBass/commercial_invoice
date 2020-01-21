@@ -13,17 +13,21 @@ use Tests\TestCase;
 
 class ViewsTest extends TestCase
 {
-    /*
+    /**
+     * @test
      * Test Views Client
      * */
-    public function testViewClientIndexExist()
+    public function ViewClientIndexExist()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('client.index'));
         $response->assertOk();
     }
 
-    public function testViewCreateClient()
+    /**
+     * @test
+     */
+    public function ViewCreateClient()
     {
         $user = factory(User::class)->create();
         $client = factory(Client::class)->create();
@@ -31,7 +35,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewEditClientExist()
+    /**
+     * @test
+     */
+    public function ViewEditClientExist()
     {
         $user = factory(User::class)->create();
         $client = Client::first();
@@ -39,8 +46,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-
-    public function testViewConfirmDeleteClientExist()
+    /**
+     * @test
+     */
+    public function ViewConfirmDeleteClientExist()
     {
         $user = factory(User::class)->create();
         $client = Client::first();
@@ -49,7 +58,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewDeleteClientExist()
+    /**
+     * @test
+     */
+    public function ViewDeleteClientExist()
     {
         $user = factory(User::class)->create();
         $client = Client::first();
@@ -58,17 +70,21 @@ class ViewsTest extends TestCase
     }
 
     /*
+     * @test
      * Test Views Products
      * */
 
-    public function testViewProductsIndexExist()
+    public function ViewProductsIndexExist()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('product.index'));
         $response->assertOk();
     }
 
-    public function testViewCreateProducts()
+    /**
+     * @test
+     */
+    public function ViewCreateProducts()
     {
         $user = factory(User::class)->create();
         $product = factory(Product::class)->create();
@@ -76,7 +92,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewEditProductExist()
+    /**
+     * @test
+     */
+    public function ViewEditProductExist()
     {
         $user = factory(User::class)->create();
         $product = Product::first();
@@ -84,8 +103,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-
-    public function testViewConfirmDeleteProductExist()
+    /**
+     * @test
+     */
+    public function ViewConfirmDeleteProductExist()
     {
         $user = factory(User::class)->create();
         $product = Product::first();
@@ -94,7 +115,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewDeleteProductExist()
+    /**
+     * @test
+     */
+    public function ViewDeleteProductExist()
     {
         $user = factory(User::class)->create();
         $product = Product::first();
@@ -102,18 +126,22 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    /*
+    /**
+     * @test
      * Test Views Sellers
      * */
 
-    public function testViewSellerIndexExist()
+    public function ViewSellerIndexExist()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('seller.index'));
         $response->assertOk();
     }
 
-    public function testViewSellerCreate()
+    /**
+     * @test
+     */
+    public function ViewSellerCreate()
     {
         $user = factory(User::class)->create();
         $seller = factory(Seller::class)->create();
@@ -121,7 +149,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewEditSellerExist()
+    /**
+     * @test
+     */
+    public function ViewEditSellerExist()
     {
         $user = factory(User::class)->create();
         $seller = Seller::first();
@@ -129,8 +160,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-
-    public function testViewConfirmDeleteSellerExist()
+    /**
+     * @test
+     */
+    public function ViewConfirmDeleteSellerExist()
     {
         $user = factory(User::class)->create();
         $seller = Seller::first();
@@ -139,7 +172,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewDeleteSellerExist()
+    /**
+     * @test
+     */
+    public function ViewDeleteSellerExist()
     {
         $user = factory(User::class)->create();
         $seller = Seller::first();
@@ -147,18 +183,21 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    /*
-     * Test View Invoices
-     * */
-
-    public function testViewInvoiceIndexExist()
+    /**
+     * Test Views Invoices
+     * @test
+     */
+    public function ViewInvoiceIndexExist()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('invoice.index'));
         $response->assertOk();
     }
 
-    public function testViewCreateInvoice()
+    /**
+     * @test
+     */
+    public function ViewCreateInvoice()
     {
         $user = factory(User::class)->create();
         $invoice = factory(Invoice::class)->create();
@@ -166,7 +205,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewEditInvoiceExist()
+    /**
+     * @test
+     */
+    public function ViewEditInvoiceExist()
     {
         $user = factory(User::class)->create();
         $invoice = Invoice::first();
@@ -174,8 +216,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-
-    public function testViewConfirmDeleteInvoiceExist()
+    /**
+     * @test
+     */
+    public function ViewConfirmDeleteInvoiceExist()
     {
         $user = factory(User::class)->create();
         $invoice = Invoice::first();
@@ -184,7 +228,10 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 
-    public function testViewDeleteInvoiceExist()
+    /**
+     * @test
+     */
+    public function ViewDeleteInvoiceExist()
     {
         $user = factory(User::class)->create();
         $invoice = Invoice::first();

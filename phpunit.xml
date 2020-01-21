@@ -14,7 +14,6 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
@@ -24,6 +23,9 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    <!--<logging>
+        <log type="coverage-html" target="./tests/coverage"></log>
+    </logging>-->
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>

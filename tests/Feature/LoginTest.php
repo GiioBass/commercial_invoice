@@ -7,17 +7,20 @@ use App\User;
 
 class LoginTest extends TestCase
 {
-    /*
+    /**
      * @test
      */
 
-    public function testLoginUnauthorized()
+    public function LoginUnauthorized()
     {
         $response = $this->get(route('client.index'));
         $response->assertRedirect(route('login'));
     }
 
-    public function testLoginSuccess()
+    /**
+     * @test
+     */
+    public function LoginSuccess()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user)->get(route('client.index'));
