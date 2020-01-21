@@ -11,9 +11,12 @@
 |
  */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
-Route::get('/', 'ClientController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/client', 'ClientController');
 

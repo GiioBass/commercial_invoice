@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  width: vw;
+  height: 50em;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.main .container {
+  width: 80%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.main .container .login-nav {
+  width: 100%;
+  height: 5%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.main .container .login-nav .item {
+  font-size: 1.2em;
+  margin: 0 0.5em;
+}
+
+.main .container .login-nav .icon {
+  font-size: 2em;
+  color: #000000;
+}
+
+.main .container .container-title {
+  width: 100%;
+  height: 20%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.main .container .container-title .title {
+  font-size: 5em;
+  font-family: "Ibarra Real Nova", sans-serif;
+}
+
+.main .container .container-content {
+  width: 100%;
+  height: 80%;
+  margin-top: 1em;
+  border-top: solid 0.5em #522fd1;
+}
+
+.main .container .container-content .content-top {
+  width: 100%;
+  height: 40%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.main .container .container-content .content-top .menu-top {
+  width: 80%;
+  height: 70%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  list-style-type: none;
+}
+
+.main .container .container-content .content-top .menu-top .item-li {
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  display: flex;
+}
+
+.main .container .container-content .content-top .menu-top .item-li .item-a {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #522fd1;
+}
+
+.main .container .container-content .content-top .menu-top .item-li .item-a:hover {
+  background-color: #2a07aa;
+}
+
+.main .container .container-content .content-bottom {
+  width: 100%;
+  height: 50%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.main .container .container-content .content-bottom .menu-bottom {
+  width: 80%;
+  height: 70%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  list-style-type: none;
+}
+
+.main .container .container-content .content-bottom .menu-bottom .item-li {
+  width: 70%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+}
+
+.main .container .container-content .content-bottom .menu-bottom .item-li .item-a {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #522fd1;
+}
+
+.main .container .container-content .content-bottom .menu-bottom .item-li .item-a:hover {
+  background-color: #2a07aa;
+}
+
+.icon {
+  font-size: 1.5em;
+}
+
+.radius-tl {
+  border-radius: 0.5em 0 0 0;
+}
+
+.radius-tr {
+  border-radius: 0 0.5em 0 0;
+}
+
+.radius-bl {
+  border-radius: 0 0 0 0.5em;
+}
+
+.radius-br {
+  border-radius: 0 0 0.5em 0;
+}
+
+.radius-t {
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.radius-b {
+  border-radius: 0 0 0.5em 0.5em;
+}
+

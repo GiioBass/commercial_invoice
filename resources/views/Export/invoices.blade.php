@@ -19,7 +19,7 @@
             <td>{{ $invoice->seller->id}}</td>
         </tr>
     @endforeach
-    
-    
+
+
     </tbody>
 </table>

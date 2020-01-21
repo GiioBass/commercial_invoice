@@ -11,10 +11,14 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceProductController extends Controller
 {
+    /**
+     * InvoiceProductController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +45,7 @@ class InvoiceProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Invoice $invoice)
@@ -67,7 +71,7 @@ class InvoiceProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,7 +82,7 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,8 +93,8 @@ class InvoiceProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -101,7 +105,7 @@ class InvoiceProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Invoice $invoice, $id)
@@ -112,6 +116,11 @@ class InvoiceProductController extends Controller
         return redirect()->route('invoice.show', $invoice->id);
     }
 
+    /**
+     * @param Request $request
+     * @param Invoice $invoice
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function import(Request $request, Invoice $invoice)
     {
         $file = $request->file('file');
@@ -121,6 +130,9 @@ class InvoiceProductController extends Controller
         return back();
     }
 
+    /**
+     * @param Invoice $invoice
+     */
     public function updateOrder(Invoice $invoice)
     {
         DB::table('invoices')
@@ -128,9 +140,11 @@ class InvoiceProductController extends Controller
             ->update(['total' => $invoice->total, 'iva' => $invoice->iva, 'subTotal' => $invoice->subTotal]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateInvoices()
     {
-
         $invoice = Invoice::all();
         foreach ($invoice as $invoices) {
             $this->updateOrder($invoices);

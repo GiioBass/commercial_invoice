@@ -3,10 +3,10 @@
 
     <div class="container-menu">
         <div class="container-item">
-            <a  class="item-menu" href="{{route('seller.create')}}">
+            <a class="item-menu" href="{{route('seller.create')}}">
                 <div class="item-button">
                     Añadir Vendedor
-                </div>  
+                </div>
             </a>
         </div>
     </div>
@@ -38,7 +38,7 @@
             </div>
             @foreach($sellers as $seller)
                 <div>
-                    <tr>            
+                    <tr>
                         <td>{{number_format($seller->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                         <td>{{$seller->first_name}}</td>
                         <td>{{$seller->last_name}}</td>
@@ -54,33 +54,33 @@
                                 <i class="material-icons">delete_outline</i>
                             </a>
                         </td>
-                        
+
                     </tr>
                 </div>
             @endforeach()
 
         </table>
     </div>
-<div class="container-pagination">
-    {{$sellers->links()}}
-</div>
-<div class="container-menu">
-    <div class="container-item">
-        <a  class="item-menu" href="/sellers/export">
-            <div class="item-button">
-                Exportar
-            </div>  
-        </a>
+    <div class="container-pagination">
+        {{$sellers->links()}}
     </div>
-</div>
-<div>
-
-    <form class="form" action="/sellers/import" method="post" enctype="multipart/form-data" >
-        @csrf
-        <div class="items-form">
-            <input type="file" name="file" id="">
-            <button class="button" type="submit">Importar</button>
+    <div class="container-menu">
+        <div class="container-item">
+            <a class="item-menu" href="/sellers/export">
+                <div class="item-button">
+                    Exportar
+                </div>
+            </a>
         </div>
-    </form>
-</div>
+    </div>
+    <div>
+
+        <form class="form" action="/sellers/import" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="items-form">
+                <input type="file" name="file" id="">
+                <button class="button" type="submit">Importar</button>
+            </div>
+        </form>
+    </div>
 @endsection
