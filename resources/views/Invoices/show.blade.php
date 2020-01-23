@@ -101,4 +101,10 @@
                     </div>
                 </a>
             </div>
+            <div>
+                <a href="/json/{{$invoices->id}}/createJson">JSON</a>
+
+            </div>
+        </div>
+    </div>
 @endsection
