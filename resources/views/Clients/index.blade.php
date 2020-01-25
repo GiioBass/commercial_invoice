@@ -33,6 +33,7 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Número Tel</th>
+                    <th>e-mail</th>
                     <th>Dirección</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -46,6 +47,7 @@
                     <td>{{$client->first_name}}</td>
                     <td>{{$client->last_name}}</td>
                     <td>{{$client->phone_number}}</td>
+                    <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
                     <td>
                         <a href="/client/{{$client->id}}/edit">

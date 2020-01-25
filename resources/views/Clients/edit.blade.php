@@ -50,6 +50,8 @@
                     <input type="text" name="last_name" id="" value="{{$client->last_name}}">
                     <label for="">Número Telefono:</label>
                     <input type="text" name="phone_number" id="" value="{{$client->phone_number}}">
+                    <label for="">e-mail:</label>
+                    <input type="text" name="email" id="" value="{{$client->email}}">
                     <label for="">Dirección:</label>
                     <input type="text" name="address" id="" value="{{$client->address}}">
                     <br>
