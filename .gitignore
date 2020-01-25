@@ -19,3 +19,4 @@ phpunit.xml
 tests/Feature/LoginTest.php
 tests/Feature/ViewsTest.php
 
+database/seeds/UserDev.php
