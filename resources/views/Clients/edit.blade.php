@@ -1,6 +1,9 @@
 @extends('template')
 @section('content')
-
+    {{--TODO provisional--}}
+    @php
+        $documentType = App\DocumentType::all();
+    @endphp
     @if(session('message'))
         <div>{{session('message')}}</div>
     @endif
@@ -32,12 +35,23 @@
                 <div class="items-form">
                     <label for="">Id:</label>
                     <input type="text" name="id" id="" value="{{$client->id}}">
+                    <div class="list">
+                        <select class="list-select" name="document_type_id" id="">
+                            @foreach ($documentType as $documentTypes)
+                                <option value="{{$documentTypes->id}}">
+                                    {{$documentTypes->documentName}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                     <label for="">Nombres:</label>
                     <input type="text" name="first_name" id="" value="{{$client->first_name}}">
                     <label for="">Apellidos:</label>
                     <input type="text" name="last_name" id="" value="{{$client->last_name}}">
                     <label for="">Número Telefono:</label>
                     <input type="text" name="phone_number" id="" value="{{$client->phone_number}}">
+                    <label for="">e-mail:</label>
+                    <input type="text" name="email" id="" value="{{$client->email}}">
                     <label for="">Dirección:</label>
                     <input type="text" name="address" id="" value="{{$client->address}}">
                     <br>

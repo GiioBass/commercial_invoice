@@ -17,6 +17,12 @@
                 </div>
                 <div>
                     <p>
+                        Tipo
+                        Id: {{$invoices->client->document_type->documentName}}
+                    </p>
+                </div>
+                <div>
+                    <p>
                         Cliente: {{$invoices->client->first_name . ' ' . $invoices->client->last_name}}
                     </p>
                 </div>

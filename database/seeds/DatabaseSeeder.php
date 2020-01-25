@@ -26,8 +26,11 @@ class DatabaseSeeder extends Seeder
         DB::table('products')->truncate();
         DB::table('invoices')->truncate();
         DB::table('invoice_product')->truncate();
+        DB::table('document_types')->truncate();
 
         Schema::enableForeignKeyConstraints();
+
+        DocumentTypeSeeder::seederDocumentType();
 
         factory(Client::class, 30)->create();
         factory(Seller::class, 30)->create();
