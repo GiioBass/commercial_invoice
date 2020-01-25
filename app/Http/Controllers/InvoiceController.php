@@ -58,6 +58,7 @@ class InvoiceController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+//    TODO añadir fecha mas codigo de factura : codigo + fecha
     public function store(Request $request)
     {
         $validData = $request->validate([
