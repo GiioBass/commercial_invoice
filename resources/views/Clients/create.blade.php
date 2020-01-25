@@ -51,6 +51,8 @@
                     <input type="text" name="last_name" id="" value="{{old('last_name')}}">
                     <label for="">Telefono</label>
                     <input type="text" name="phone_number" id="" value="{{old('phone_number')}}">
+                    <label for="">e-mail</label>
+                    <input type="text" name="email" id="" value="{{old('email')}}">
                     <label for="">Direccion</label>
                     <input type="text" name="address" id="" value="{{old('address')}}">
                     <br>
