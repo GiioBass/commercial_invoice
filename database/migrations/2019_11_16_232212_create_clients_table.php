@@ -21,6 +21,9 @@ class CreateClientsTable extends Migration
             $table->string('email',80)->unique();
             $table->string('address', 100);
             $table->timestamps();
+
+            $table->integer('document_type_id');
+            $table->foreign('document_type_id')->references('id')->on('document_types');
         });
     }
 
