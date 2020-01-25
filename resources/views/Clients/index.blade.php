@@ -1,6 +1,9 @@
 @extends('template')
 @section('content')
-
+    {{--TODO provisional--}}
+    @php
+        $documentType = App\DocumentType::all();
+    @endphp
     <div class="container-menu">
         <div class="container-item">
             <a class="item-menu" href="{{route('client.create')}}">
@@ -26,6 +29,7 @@
             <div>
                 <tr>
                     <th>Identificación</th>
+                    <th>Tipo</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Número Tel</th>
@@ -38,6 +42,7 @@
 
                 <tr>
                     <td>{{number_format($client->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
+                    <td>{{$client->document_type->documentName}}</td>
                     <td>{{$client->first_name}}</td>
                     <td>{{$client->last_name}}</td>
                     <td>{{$client->phone_number}}</td>
@@ -53,8 +58,8 @@
                         </a>
                     </td>
 
-                </tr>
 
+                </tr>
             @endforeach
         </table>
     </div>
