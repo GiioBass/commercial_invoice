@@ -31,6 +31,7 @@ class ClientController extends Controller
 
         return view('Clients.index', [
             'clients' => Client::orderBy('id', 'asc')
+                ->with('document_type')
                 ->id($id)
                 ->paginate(10),
         ]);
