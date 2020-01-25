@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\DocumentType;
 use App\Exports\ClientsExport;
 use App\Imports\ClientsImport;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id' );
-        
+
+
         return view('Clients.index', [
             'clients' => Client::orderBy('id', 'asc')
                 ->id($id)
@@ -53,18 +55,23 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
+//            TODO error Method Illuminate\Validation\Validator::validateRequires does not exist.
             'id' => 'required|numeric',
+            'document_type_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required|numeric',
+            'email' => 'requires|email:rfc,dns',
             'address' => 'required',
         ]);
 
         $client = new Client;
         $client->id = $request->id;
+        $client->document_type_id = $request->document_type_id;
         $client->first_name = $request->first_name;
         $client->last_name = $request->last_name;
         $client->phone_number = $request->phone_number;
+        $client->email = $request->email;
         $client->address = $request->address;
 
         $client->save();
@@ -105,18 +112,22 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $validData = $request->validate([
-            'id' => 'required|numeric',
+            'id' => 'required',
+            'document_type_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required|numeric',
+            'email' => 'requires|email:rfc,dns',
             'address' => 'required',
         ]);
 
         $client = Client::findOrFail($id);
         $client->id = $request->get('id');
+        $client->document_type_id = $request->document_type_id;
         $client->first_name = $request->get('first_name');
         $client->last_name = $request->get('last_name');
         $client->phone_number = $request->get('phone_number');
+        $client->email = $request->email;
         $client->address = $request->get('address');
 
         $client->save();
