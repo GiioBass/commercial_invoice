@@ -22,3 +22,4 @@ tests/Feature/ViewsTest.php
 database/seeds/UserDev.php
 composer.json
 composer.lock
+dump.html
