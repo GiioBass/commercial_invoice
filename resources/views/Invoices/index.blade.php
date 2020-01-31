@@ -41,7 +41,7 @@
                                     <option value="Por pagar">Por Pagar</option>
                                     <option value="Pagado">Pagado</option>
                                 </select>
-                                <input type="search" name="id" placeholder="Id Factura" style="width: 20% ">
+                                <input type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
                                 <input type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
                                 <input type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
                             </div>
@@ -82,7 +82,7 @@
                                         <i class="material-icons">visibility</i>
                                     </a>
                                 </td>
-                                <td>{{number_format($invoice->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
+                                <td>{{$invoice->code}}</td>
                                 <td>{{$invoice->state}}</td>
                                 <td>{{$invoice->client->first_name}}</td>
                                 <td>{{$invoice->expedition_date}}</td>

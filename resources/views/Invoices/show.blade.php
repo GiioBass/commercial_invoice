@@ -6,7 +6,7 @@
         <div class="board-detail">
             <div class="title-detail">
                 <h1>Detalles
-                    Factura {{number_format($invoices->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</h1>
+                    Factura {{$invoices->code}}</h1>
             </div>
             <div class="info">
                 <div>
@@ -18,6 +18,11 @@
                 <div>
                     <p>
                         Cliente: {{$invoices->client->first_name . ' ' . $invoices->client->last_name}}
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        Telefono: {{$invoices->client->phone_number }}
                     </p>
                 </div>
                 <div>
@@ -101,4 +106,20 @@
                     </div>
                 </a>
             </div>
+
+            <div class="item">
+                <a class="item-menu" href="/json/{{$invoices->id}}/createJson">
+                    <div class="item-button">
+                        Realizar Pago
+                    </div>
+                </a>
+               {{-- <a class="item-menu" href="/json/{{$invoices->id}}/createJson">
+                    <div class="item-button">
+                        Realizar Pago
+                    </div>
+                </a>--}}
+            </div>
+        </div>
+    </div>
+
 @endsection
