@@ -132,13 +132,16 @@ class JsonController extends Controller
 
 
 
+
+//                dd($this->requestInformation($response, $placetopay));
+
         try {
 
             $response = $placetopay->request($request);
+
             if ($response->isSuccessful()) {
-                // STORE THE $response->requestId() and $response->processUrl() on your DB associated with the payment order
                 // Redirect the client to the processUrl or display it on the JS extension
-//                dd($this->requestInformation($response, $placetopay));
+                // $response->processUrl();
                 $this->createReport(
                     $response->requestId,
                     $response->status()->status(),
@@ -146,22 +149,15 @@ class JsonController extends Controller
                     $invoice->id
                 );
 
-//                header('Location: ' . $response->processUrl());
                 return redirect($response->processUrl());
-
             } else {
-                // There was some error so check the message and log it
-                $response->status()->message();
+                // There was some error so check the message
+                // $response->status()->message();
             }
-
-
+            var_dump($response);
         } catch (Exception $e) {
             var_dump($e->getMessage());
-
         }
-
-
-        dd();
 
     }
 
@@ -179,7 +175,7 @@ class JsonController extends Controller
 
     }
 
-    public function requestInformation($response2)
+   /* public function requestInformation($response2)
     {
 
         $response = $placetopay->query($response2);
@@ -193,10 +189,10 @@ class JsonController extends Controller
         } else {
             // There was some error with the connection so check the message
             print_r($response->status()->message() . "\n");
-        }
+        }*/
 
-        return;
-    }
+
+
 
 
 
