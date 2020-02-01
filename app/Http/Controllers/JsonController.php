@@ -130,29 +130,25 @@ class JsonController extends Controller
             "paymentMethod" => null
         ];
 
-
-
-
-//                dd($this->requestInformation($response, $placetopay));
-
         try {
 
             $response = $placetopay->request($request);
 
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
-                // $response->processUrl();
-                $this->createReport(
+                $response = $placetopay->query($response->requestId);
+
+                /*  $this->createReport(
                     $response->requestId,
                     $response->status()->status(),
                     $response->processUrl,
                     $invoice->id
-                );
+                );*/
+//                return redirect($response->processUrl());
 
-                return redirect($response->processUrl());
             } else {
                 // There was some error so check the message
-                // $response->status()->message();
+                $response->status()->message();
             }
             var_dump($response);
         } catch (Exception $e) {
@@ -175,26 +171,21 @@ class JsonController extends Controller
 
     }
 
-   /* public function requestInformation($response2)
-    {
+    /* public function requestInformation($response2)
+     {
 
-        $response = $placetopay->query($response2);
+         $response = $placetopay->query($response2);
 
-        if ($response->isSuccessful()) {
-            // In order to use the functions please refer to the Dnetix\Redirection\Message\RedirectInformation class
+         if ($response->isSuccessful()) {
+             // In order to use the functions please refer to the Dnetix\Redirection\Message\RedirectInformation class
 
-            if ($response->status()->isApproved()) {
-                // The payment has been approved
-            }
-        } else {
-            // There was some error with the connection so check the message
-            print_r($response->status()->message() . "\n");
-        }*/
-
-
-
-
-
+             if ($response->status()->isApproved()) {
+                 // The payment has been approved
+             }
+         } else {
+             // There was some error with the connection so check the message
+             print_r($response->status()->message() . "\n");
+         }*/
 
 
 }
