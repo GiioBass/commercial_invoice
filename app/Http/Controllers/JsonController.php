@@ -121,7 +121,8 @@ class JsonController extends Controller
             "expiration" => date('c', strtotime('+1 hour')),
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
-            "returnUrl" => "/json/$invoice->id/requestInformation/response?reference=" . $reference,
+            "returnUrl" => route('invoice.show', $invoice->id),
+// "/json/$invoice->id/requestInformation/response?reference=" . $reference,
             "cancelUrl" => route('invoice.show', $invoice->id),
             "skipResult" => false,
             "noBuyerFill" => false,
@@ -160,7 +161,7 @@ class JsonController extends Controller
         }
 
 
-
+        dd();
 
     }
 
