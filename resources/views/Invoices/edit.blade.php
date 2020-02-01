@@ -23,7 +23,7 @@
         <div class="board-form">
             <div class="content-title">
                 <div class="title">
-                    <h1>EDITAR FACTURA {{$invoice->id}}</h1>
+                    <h1>EDITAR FACTURA {{$invoice->code}}</h1>
                 </div>
             </div>
             <form class="form" action=" {{route('invoice.update', $invoice->id)}}" method="POST">
