@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Client;
+use App\DocumentType;
 use App\Invoice;
 use App\Invoice_product;
 use App\Product;
@@ -16,7 +17,9 @@ $factory->define(Client::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'phone_number' => $faker->numberBetween($min = 100, $max = 999),
+        'email' => $faker->safeEmail,
         'address' => $faker->address,
+        'document_type_id' => DocumentType::all()->random()->id
         // 'updated_at'=>'NULL',
         // 'created_at'=>'NULL',
     ];
