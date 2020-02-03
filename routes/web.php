@@ -61,3 +61,5 @@ Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices');
 Route::post('/orders/import', 'InvoiceProductController@import');
 
 Route::get('/json/{invoice}/createJson', 'JsonController@createJson');
+
+Route::get('/json/{invoice}/information', 'JsonController@information');
