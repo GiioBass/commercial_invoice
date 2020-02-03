@@ -119,11 +119,11 @@
                         Realizar Pago
                     </div>
                 </a>
-               {{-- <a class="item-menu" href="/json/{{$invoices->id}}/createJson">
+                <a class="item-menu" href="/json/{{$invoices->id}}/information">
                     <div class="item-button">
-                        Realizar Pago
+                        Consultar Transaccion
                     </div>
-                </a>--}}
+                </a>
             </div>
         </div>
     </div>
