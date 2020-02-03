@@ -53,6 +53,11 @@ class Invoice extends Model
         return $this->belongsToMany(Product::class)->withPivot('product_id', 'quantity', 'id');
     }
 
+    public function controlReport()
+    {
+        return $this->belongsToMany(ControlReport::class, 'control_report_invoices');
+    }
+
     /**
      * @param $value
      * @return float|int
