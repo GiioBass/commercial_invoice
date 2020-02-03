@@ -121,9 +121,11 @@ class JsonController extends Controller
             "expiration" => date('c', strtotime('+1 hour')),
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
-            "returnUrl" => route('invoice.show', $invoice->id),
-// "/json/$invoice->id/requestInformation/response?reference=" . $reference,
-            "cancelUrl" => route('invoice.show', $invoice->id),
+            "returnUrl" =>
+                route('invoice.show', $invoice->id),
+
+            "cancelUrl" =>
+                route('invoice.show',$invoice->id),
             "skipResult" => false,
             "noBuyerFill" => false,
             "captureAddress" => false,
@@ -136,16 +138,14 @@ class JsonController extends Controller
 
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
-                $response = $placetopay->query($response->requestId);
-
-                /*  $this->createReport(
+                // $response->processUrl();
+                 $this->createReport(
                     $response->requestId,
                     $response->status()->status(),
                     $response->processUrl,
                     $invoice->id
-                );*/
-//                return redirect($response->processUrl());
-
+                    );
+                return redirect($response->processUrl());
             } else {
                 // There was some error so check the message
                 $response->status()->message();
@@ -156,6 +156,11 @@ class JsonController extends Controller
         }
 
     }
+
+
+
+//return redirect($response->processUrl());
+
 
 
     public function createReport($requestReportId, $requestStatus, $requestUrl, $id)
@@ -171,21 +176,48 @@ class JsonController extends Controller
 
     }
 
-    /* public function requestInformation($response2)
-     {
+    public function information(Invoice $invoice)
+    {
 
-         $response = $placetopay->query($response2);
 
-         if ($response->isSuccessful()) {
-             // In order to use the functions please refer to the Dnetix\Redirection\Message\RedirectInformation class
+        $placetopay = new PlacetoPay([
+            'login' => '6dd490faf9cb87a9862245da41170ff2',
+            'tranKey' => '024h1IlD',
+            'url' => 'https://test.placetopay.com/redirection/',
+        ]);
 
-             if ($response->status()->isApproved()) {
-                 // The payment has been approved
-             }
-         } else {
-             // There was some error with the connection so check the message
-             print_r($response->status()->message() . "\n");
-         }*/
+        $requestId = $invoice->controlReport->last()->requestId;
+
+        try {
+            $response = $placetopay->query($requestId);
+
+            if ($response->isSuccessful()) {
+                // In order to use the functions please refer to the RedirectInformation class
+
+                if ($response->status()->isApproved()) {
+                    // The payment has been approved
+                    print_r($requestId . " PAYMENT APPROVED\n");
+                        return redirect()->route('invoice.show', $invoice->id);
+                    // This is additional information about it
+//                    print_r($response->toArray());
+
+                } else {
+                    print_r($requestId . ' ' . $response->status()->message() . "\n");
+                }
+
+                print_r($response);
+
+            } else {
+                // There was some error with the connection so check the message
+                print_r($response->status()->message() . "\n");
+            }
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
+
+
+
 
 
 }
