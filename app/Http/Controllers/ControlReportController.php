@@ -4,29 +4,43 @@ namespace App\Http\Controllers;
 
 use App\ControlReport;
 use App\Invoice;
-use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Dnetix\Redirection\PlacetoPay;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
-class JsonController extends Controller
+class ControlReportController extends Controller
 {
 
-
-    /*
-     * Identificador: 6dd490faf9cb87a9862245da41170ff2
-        SecretKey: 024h1IlD
-        Endpoint: https://test.placetopay.com/redirection/
-     * */
-
-    public function createJson(Invoice $invoice)
+    /**
+     * ControlReportController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
 
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Invoice $invoice)
+    {
         $placetopay = new PlacetoPay([
             'login' => '6dd490faf9cb87a9862245da41170ff2',
             'tranKey' => '024h1IlD',
             'url' => 'https://test.placetopay.com/redirection/',
         ]);
+
         $reference = $invoice->code;
 //            'TEST_' . time();
 
@@ -122,10 +136,12 @@ class JsonController extends Controller
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
             "returnUrl" =>
-                route('invoice.show', $invoice->id),
+                "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
+//                route('invoice.show', $invoice->id),
 
             "cancelUrl" =>
-                route('invoice.show',$invoice->id),
+            "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
+//                route('invoice.show',$invoice->id),
             "skipResult" => false,
             "noBuyerFill" => false,
             "captureAddress" => false,
@@ -139,12 +155,12 @@ class JsonController extends Controller
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
                 // $response->processUrl();
-                 $this->createReport(
+                $this->store(
                     $response->requestId,
                     $response->status()->status(),
                     $response->processUrl,
                     $invoice->id
-                    );
+                );
                 return redirect($response->processUrl());
             } else {
                 // There was some error so check the message
@@ -154,16 +170,16 @@ class JsonController extends Controller
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
-
     }
 
 
-
-//return redirect($response->processUrl());
-
-
-
-    public function createReport($requestReportId, $requestStatus, $requestUrl, $id)
+    /**
+     * @param $requestReportId
+     * @param $requestStatus
+     * @param $requestUrl
+     * @param $id
+     */
+    public function store($requestReportId, $requestStatus, $requestUrl, $id)
     {
         $controlReport = new ControlReport;
 
@@ -176,11 +192,35 @@ class JsonController extends Controller
 
     }
 
-    public function information(Invoice $invoice)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
 
+        return view( 'ControlReport.show', [
 
-        $placetopay = new PlacetoPay([
+        'invoices' => Invoice::findOrFail($id)
+
+        ]);
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Invoice $invoice)
+    {
+//        return view('ControlReport.update');
+
+       $placetopay = new PlacetoPay([
             'login' => '6dd490faf9cb87a9862245da41170ff2',
             'tranKey' => '024h1IlD',
             'url' => 'https://test.placetopay.com/redirection/',
@@ -196,28 +236,59 @@ class JsonController extends Controller
 
                 if ($response->status()->isApproved()) {
                     // The payment has been approved
-                    print_r($requestId . " PAYMENT APPROVED\n");
-                        return redirect()->route('invoice.show', $invoice->id);
+//                    $message = ($requestId .$response->status()->message() . "\n");
+//                    return $message;
+                    $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
+                    $state = Invoice::findOrFail($invoice->id);
+                    $state->state = "Pagado";
+                    $state->save();
                     // This is additional information about it
 //                    print_r($response->toArray());
 
                 } else {
-                    print_r($requestId . ' ' . $response->status()->message() . "\n");
+//                    $message = ($requestId . ' ' . $response->status()->message() . "\n");
+//                    return $message;
+                    $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
                 }
 
-                print_r($response);
+                $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
+                return redirect()->route('invoice.show',  $invoice->id);
 
             } else {
                 // There was some error with the connection so check the message
-                print_r($response->status()->message() . "\n");
+                print_r($response->status()->message() . " Error de conexion \n");
+
             }
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
+
+
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit( $status, $id)
+    {
 
+        $report = ControlReport::findOrFail($id);
+        $report->status = $status;
+        $report->save();
 
+    }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

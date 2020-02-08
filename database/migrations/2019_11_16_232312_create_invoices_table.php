@@ -15,6 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->integerIncrements('id')->unique();
+            $table->unsignedInteger('code');
             $table->string('state');
             $table->date('expedition_date');
             $table->date('expiration_date');
@@ -22,7 +23,7 @@ class CreateInvoicesTable extends Migration
             $table->double('iva');
             $table->double('total');
             $table->timestamps();
-            
+
             $table->unsignedInteger('seller_id');
             $table->unsignedInteger('client_id');
             $table->foreign('seller_id')->references('id')->on('sellers');
