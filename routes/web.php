@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/client', 'ClientController');
 
@@ -25,6 +25,14 @@ Route::resource('/product', 'ProductController');
 Route::resource('/seller', 'SellerController');
 
 Route::resource('/invoice', 'InvoiceController');
+
+Route::resource('/report', 'ControlReportController');
+
+Route::get('/invoice/{invoice}/report/update', 'ControlReportController@update');
+
+Route::get('/invoice/{id}/report/show', 'ControlReportController@show');
+
+Route::get('/invoice/{invoice}/report/create', 'ControlReportController@create');
 
 Route::get('/client/{id}/confirmDelete', 'ClientController@confirmDelete');
 
@@ -60,4 +68,5 @@ Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices');
 
 Route::post('/orders/import', 'InvoiceProductController@import');
 
-Route::get('/json/{invoice}/createJson', 'JsonController@createJson');
+//Route::redirect('/invoice/{invoice}/report/update', '/invoice/{invoice}/report/show');
+

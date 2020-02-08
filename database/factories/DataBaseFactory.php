@@ -16,7 +16,7 @@ $factory->define(Client::class, function (Faker $faker) {
         'id' => $faker->unique()->numberBetween($min = 100, $max = 99999999),
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'phone_number' => $faker->numberBetween($min = 100, $max = 999),
+        'phone_number' => $faker->e164PhoneNumber ,
         'email' => $faker->safeEmail,
         'address' => $faker->address,
         'document_type_id' => DocumentType::all()->random()->id
@@ -32,7 +32,7 @@ $factory->define(Seller::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->safeEmail,
-        'phone_number' => $faker->numberBetween($min = 100, $max = 999),
+        'phone_number' => $faker->e164PhoneNumber ,
     ];
 });
 
@@ -49,6 +49,7 @@ $factory->define(Product::class, function (Faker $faker) {
 /** @var TYPE_NAME $factory */
 $factory->define(Invoice::class, function (Faker $faker) {
     return [
+        'code' => $faker->numberBetween($min = 10000000, $max = 99999999),
         'state' => $faker->randomElement($array = array('Por Pagar', 'Pagado')),
         'total' => 0,
         'iva' => 0,

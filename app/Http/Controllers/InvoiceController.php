@@ -58,6 +58,30 @@ class InvoiceController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
+    public function createCode()
+    {
+        $invoice = Invoice::all()->last()->id;
+
+        if ($invoice === null){
+
+            $invoice = 1;
+
+            $code = date('y') . date('d') . date('H') . $invoice;
+
+            return $code;
+
+        }else{
+            $invoice += 1;
+            $code = date('y') . date('d') . date('H') . $invoice;
+
+            return $code;
+        }
+
+
+    }
+
+
 //    TODO añadir fecha mas codigo de factura : codigo + fecha
     public function store(Request $request)
     {
@@ -71,6 +95,7 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
+        $invoice->code = $this->createCode();
         $invoice->state = $request->state;
         $invoice->expedition_date = $request->expedition_date;
         $invoice->expiration_date = $request->expiration_date;

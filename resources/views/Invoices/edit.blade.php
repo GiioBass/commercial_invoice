@@ -31,21 +31,16 @@
                 @csrf
                 <div class="items-form">
                     <label for="">Estado:</label>
-                    <div class="list">
-                        <select class="list-select" name="state" id="">
-                            <option value="Pagado">Pagado</option>
-                            <option value="Por Pagar">Por Pagar</option>
-                        </select>
-                    </div>
+                    <input type="text" name="state" value="{{$invoice->state}}" readonly >
                     <label for="">Fecha de Expedición:</label>
                     <input type="date" name="expedition_date" id="" value="{{$invoice->expedition_date}}">
                     <label for="">Fecha de Expiración:</label>
                     <input type="date" name="expiration_date" id="" value="{{$invoice->expiration_date}}">
-
+                    <label for="">Subtotal:</label>
                     <input type="text" name="subTotal" id="" value="{{$invoice->subTotal}}" readonly>
-
+                    <label for="">IVA:</label>
                     <input type="text" name="iva" id="" value="{{$invoice->iva}}" readonly>
-
+                    <label for="">Total:</label>
                     <input type="text" name="total" id="" value="{{$invoice->total}}" readonly>
 
                     <label for="">Id Vendedor:</label>
