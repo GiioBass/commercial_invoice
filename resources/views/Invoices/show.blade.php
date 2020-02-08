@@ -61,6 +61,16 @@
                             Agregar Producto
                         </div>
                     </a>
+                    <a class="item-menu" href="/invoice/{{$invoices->id}}/report/show">
+                        <div class="item-button">
+                            Ver Historico de Pagos
+                        </div>
+                    </a>
+                    <a class="item-menu" href="/invoice/{{$invoices->id}}/report/create">
+                        <div class="item-button">
+                            Realizar Pago
+                        </div>
+                    </a>
                 </div>
                 <table>
                     <tr>
@@ -114,16 +124,7 @@
             </div>
 
             <div class="item">
-                <a class="item-menu" href="/json/{{$invoices->id}}/createJson">
-                    <div class="item-button">
-                        Realizar Pago
-                    </div>
-                </a>
-                <a class="item-menu" href="/json/{{$invoices->id}}/information">
-                    <div class="item-button">
-                        Consultar Transaccion
-                    </div>
-                </a>
+
             </div>
         </div>
     </div>
