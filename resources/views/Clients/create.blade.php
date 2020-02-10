@@ -4,15 +4,6 @@
 @php
     $documentType = App\DocumentType::all();
 @endphp
-<script !src="">
-    import { ValidationProvider } from 'vee-validate';
-
-    export default {
-        components: {
-            ValidationProvider
-        }
-    };
-</script>
 
     {{--            --}}
     @if(session('message'))
