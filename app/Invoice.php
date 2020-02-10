@@ -25,7 +25,6 @@ class Invoice extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
-
     }
 
     /**
@@ -34,7 +33,6 @@ class Invoice extends Model
     public function seller()
     {
         return $this->belongsTo(Seller::class);
-
     }
 
     /**
@@ -64,14 +62,12 @@ class Invoice extends Model
      */
     public function getSubTotalAttribute($value)
     {
-
         $subTotal = 0;
         foreach ($this->products as $product) {
             $subTotal += $product->pivot->quantity * $product->unit_value;
         }
 
         return $subTotal;
-
     }
 
     /**
@@ -104,7 +100,6 @@ class Invoice extends Model
         if (trim($state) != "") {
             return $query->where('state', "$state");
         }
-
     }
 
     /**
@@ -117,7 +112,6 @@ class Invoice extends Model
         if (trim($id) != "") {
             return $query->where('id', "$id");
         }
-
     }
 
     /**
@@ -130,7 +124,6 @@ class Invoice extends Model
         if (trim($seller_id) != "") {
             return $query->where('seller_id', "$seller_id");
         }
-
     }
 
     /**
@@ -143,7 +136,6 @@ class Invoice extends Model
         if (trim($client_id) != "") {
             return $query->where('client_id', "$client_id");
         }
-
     }
 
     /**
@@ -157,7 +149,5 @@ class Invoice extends Model
         if ($dateStart && $dateFinish) {
             return $query->whereBetween('expedition_date', ["$dateStart", "$dateFinish"]);
         }
-
     }
-
 }

@@ -26,6 +26,4 @@ class LoginTest extends TestCase
         $this->actingAs($user)->get(route('client.index'));
         $this->assertAuthenticatedAs($user);
     }
-
-
 }

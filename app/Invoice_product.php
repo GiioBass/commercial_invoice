@@ -20,6 +20,5 @@ class Invoice_product extends Model
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);
-
     }
 }

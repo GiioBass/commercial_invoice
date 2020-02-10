@@ -25,7 +25,6 @@ class ControlReportController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -44,7 +43,7 @@ class ControlReportController extends Controller
         $reference = $invoice->code;
 //            'TEST_' . time();
 
-// Request Information
+        // Request Information
         $request = [
 //            Opcional
             "locale" => "es_CO",
@@ -149,7 +148,6 @@ class ControlReportController extends Controller
         ];
 
         try {
-
             $response = $placetopay->request($request);
 
             if ($response->isSuccessful()) {
@@ -189,7 +187,6 @@ class ControlReportController extends Controller
         $controlReport->save();
 
         $controlReport->invoices()->attach($id);
-
     }
 
     /**
@@ -200,13 +197,11 @@ class ControlReportController extends Controller
      */
     public function show($id)
     {
-
-        return view( 'ControlReport.show', [
+        return view('ControlReport.show', [
 
         'invoices' => Invoice::findOrFail($id)
 
         ]);
-
     }
 
     /**
@@ -220,7 +215,7 @@ class ControlReportController extends Controller
     {
 //        return view('ControlReport.update');
 
-       $placetopay = new PlacetoPay([
+        $placetopay = new PlacetoPay([
             'login' => '6dd490faf9cb87a9862245da41170ff2',
             'tranKey' => '024h1IlD',
             'url' => 'https://test.placetopay.com/redirection/',
@@ -238,32 +233,27 @@ class ControlReportController extends Controller
                     // The payment has been approved
 //                    $message = ($requestId .$response->status()->message() . "\n");
 //                    return $message;
-                    $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
                     $state->save();
-                    // This is additional information about it
+                // This is additional information about it
 //                    print_r($response->toArray());
-
                 } else {
 //                    $message = ($requestId . ' ' . $response->status()->message() . "\n");
 //                    return $message;
-                    $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                 }
 
-                $this->edit($response->status()->status() , $invoice->controlReport->last()->id);
-                return redirect()->route('invoice.show',  $invoice->id);
-
+                $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
+                return redirect()->route('invoice.show', $invoice->id);
             } else {
                 // There was some error with the connection so check the message
                 print_r($response->status()->message() . " Error de conexion \n");
-
             }
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
-
-
     }
 
     /**
@@ -272,13 +262,11 @@ class ControlReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $status, $id)
+    public function edit($status, $id)
     {
-
         $report = ControlReport::findOrFail($id);
         $report->status = $status;
         $report->save();
-
     }
 
     /**

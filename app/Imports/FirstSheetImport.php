@@ -17,7 +17,6 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-
             Invoice::create([
                 'id' => $row['id'],
                 'state' => $row['state'],
@@ -37,7 +36,6 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
      */
     public function rules(): array
     {
-
         return [
 
             'id' => 'required|numeric',
@@ -56,5 +54,4 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
             'state.required' => 'El estado es requerido',
         ];
     }
-
 }
