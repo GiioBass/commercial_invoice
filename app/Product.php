@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-
     protected $fillable = [
         'id',
         'name',
@@ -29,11 +28,8 @@ class Product extends Model
      */
     public function scopeId($query, $id)
     {
-
         if (trim($id) != "") {
             return $query->where('id', "$id");
         }
-
     }
-
 }

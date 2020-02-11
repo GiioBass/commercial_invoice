@@ -4,6 +4,7 @@
 @php
     $documentType = App\DocumentType::all();
 @endphp
+
     {{--            --}}
     @if(session('message'))
         {{session('message')}}
@@ -46,7 +47,9 @@
                         </select>
                     </div>
                     <label for="">Nombre</label>
+
                     <input type="text" name="first_name" id="" value="{{old('first_name')}}">
+
                     <label for="">Apellido</label>
                     <input type="text" name="last_name" id="" value="{{old('last_name')}}">
                     <label for="">Telefono</label>

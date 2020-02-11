@@ -26,7 +26,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request->get('id' );
+        $id = $request->get('id');
 
 
         return view('Clients.index', [

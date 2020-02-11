@@ -20,8 +20,6 @@ class JsonController extends Controller
 
     public function createJson(Invoice $invoice)
     {
-
-
         $placetopay = new PlacetoPay([
             'login' => '6dd490faf9cb87a9862245da41170ff2',
             'tranKey' => '024h1IlD',
@@ -30,7 +28,7 @@ class JsonController extends Controller
         $reference = $invoice->code;
 //            'TEST_' . time();
 
-// Request Information
+        // Request Information
         $request = [
 //            Opcional
             "locale" => "es_CO",
@@ -125,7 +123,7 @@ class JsonController extends Controller
                 route('invoice.show', $invoice->id),
 
             "cancelUrl" =>
-                route('invoice.show',$invoice->id),
+                route('invoice.show', $invoice->id),
             "skipResult" => false,
             "noBuyerFill" => false,
             "captureAddress" => false,
@@ -133,18 +131,17 @@ class JsonController extends Controller
         ];
 
         try {
-
             $response = $placetopay->request($request);
 
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
                 // $response->processUrl();
-                 $this->createReport(
+                $this->createReport(
                     $response->requestId,
                     $response->status()->status(),
                     $response->processUrl,
                     $invoice->id
-                    );
+                );
                 return redirect($response->processUrl());
             } else {
                 // There was some error so check the message
@@ -154,12 +151,11 @@ class JsonController extends Controller
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
-
     }
 
 
 
-//return redirect($response->processUrl());
+    //return redirect($response->processUrl());
 
 
 
@@ -173,13 +169,10 @@ class JsonController extends Controller
         $controlReport->save();
 
         $controlReport->invoices()->attach($id);
-
     }
 
     public function information(Invoice $invoice)
     {
-
-
         $placetopay = new PlacetoPay([
             'login' => '6dd490faf9cb87a9862245da41170ff2',
             'tranKey' => '024h1IlD',
@@ -197,16 +190,14 @@ class JsonController extends Controller
                 if ($response->status()->isApproved()) {
                     // The payment has been approved
                     print_r($requestId . " PAYMENT APPROVED\n");
-                        return redirect()->route('invoice.show', $invoice->id);
-                    // This is additional information about it
+                    return redirect()->route('invoice.show', $invoice->id);
+                // This is additional information about it
 //                    print_r($response->toArray());
-
                 } else {
                     print_r($requestId . ' ' . $response->status()->message() . "\n");
                 }
 
                 print_r($response);
-
             } else {
                 // There was some error with the connection so check the message
                 print_r($response->status()->message() . "\n");
@@ -215,9 +206,4 @@ class JsonController extends Controller
             var_dump($e->getMessage());
         }
     }
-
-
-
-
-
 }

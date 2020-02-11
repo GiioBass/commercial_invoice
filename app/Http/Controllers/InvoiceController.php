@@ -31,7 +31,7 @@ class InvoiceController extends Controller
 
         return view('Invoices.index', [
             'invoices' => Invoice::orderBy('id', 'asc')
-                ->with('client', 'seller', 'products' )
+                ->with('client', 'seller', 'products')
                 ->state($state)
                 ->id($id)
                 ->dates($dateStart, $dateFinish)
@@ -63,22 +63,18 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::all()->last()->id;
 
-        if ($invoice === null){
-
+        if ($invoice === null) {
             $invoice = 1;
 
             $code = date('y') . date('d') . date('H') . $invoice;
 
             return $code;
-
-        }else{
+        } else {
             $invoice += 1;
             $code = date('y') . date('d') . date('H') . $invoice;
 
             return $code;
         }
-
-
     }
 
 
@@ -120,7 +116,6 @@ class InvoiceController extends Controller
             'invoices' => $invoice,
 
         ]);
-
     }
 
     /**
@@ -217,5 +212,4 @@ class InvoiceController extends Controller
         Excel::import(new InvoicesImport, $file);
         return back();
     }
-
 }

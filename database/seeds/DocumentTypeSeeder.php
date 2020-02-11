@@ -14,8 +14,9 @@ class DocumentTypeSeeder extends Seeder
 
 
 
-   public static function seederDocumentType(){
-       DB::table('document_types')->insert([
+    public static function seederDocumentType()
+    {
+        DB::table('document_types')->insert([
            ['id' => 1, 'documentType' => 'CC', 'documentName' => 'Cedula de Ciudadania'],
            ['id' => 2, 'documentType' => 'CE', 'documentName' => 'Cedula de Extranjeria'],
            ['id' => 3, 'documentType' => 'NIT', 'documentName' => 'Numero de Identificacion Tributaria'],
@@ -51,7 +52,5 @@ class DocumentTypeSeeder extends Seeder
 //           ]);
 //
 //       }
-
-
-   }
+    }
 }

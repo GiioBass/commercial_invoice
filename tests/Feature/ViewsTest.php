@@ -6,7 +6,7 @@ use App\Client;
 use App\Invoice;
 use App\Seller;
 use App\User;
-Use App\Product;
+use App\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -286,4 +286,3 @@ class ViewsTest extends TestCase
         $response->assertOk();
     }
 }
-

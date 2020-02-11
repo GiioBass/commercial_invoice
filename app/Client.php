@@ -22,13 +22,11 @@ class Client extends Model
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
-
     }
 
     public function document_type()
     {
         return $this->belongsTo(DocumentType::class);
-
     }
 
     /**
@@ -41,6 +39,5 @@ class Client extends Model
         if (trim($id) != "") {
             return $query->where('id', "$id");
         }
-
     }
 }

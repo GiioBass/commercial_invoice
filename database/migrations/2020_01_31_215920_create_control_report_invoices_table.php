@@ -17,10 +17,10 @@ class CreateControlReportInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
-           $table->unsignedInteger('control_report_id');
-           $table->unsignedInteger('invoice_id');
-           $table->foreign('control_report_id')->references('id')->on('control_reports');
-           $table->foreign('invoice_id')->references('id')->on('invoices');
+            $table->unsignedInteger('control_report_id');
+            $table->unsignedInteger('invoice_id');
+            $table->foreign('control_report_id')->references('id')->on('control_reports');
+            $table->foreign('invoice_id')->references('id')->on('invoices');
         });
     }
 

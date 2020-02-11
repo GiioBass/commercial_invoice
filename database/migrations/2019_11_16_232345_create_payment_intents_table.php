@@ -19,7 +19,7 @@ class CreatePaymentIntentsTable extends Migration
             $table->unsignedInteger('number_intents');
             $table->timestamps();
 
-           // $table->unsignedInteger('invoice_id');
+            // $table->unsignedInteger('invoice_id');
             //$table->foreign('invoice_id')->references('id')->on('invoices');
         });
     }

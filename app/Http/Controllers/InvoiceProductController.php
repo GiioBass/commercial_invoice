@@ -26,7 +26,6 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -39,7 +38,6 @@ class InvoiceProductController extends Controller
         return view('InvoiceProducts.create', [
             'invoice' => $invoice,
         ]);
-
     }
 
     /**
@@ -65,7 +63,6 @@ class InvoiceProductController extends Controller
         $invoice_product->save();
         $this->updateOrder($invoice);
         return redirect()->route('invoice.show', $invoice->id);
-
     }
 
     /**
@@ -151,5 +148,4 @@ class InvoiceProductController extends Controller
         }
         return back();
     }
-
 }
