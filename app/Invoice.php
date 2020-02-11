@@ -9,6 +9,7 @@ class Invoice extends Model
     protected $fillable = [
 
         'id',
+        'code',
         'state',
         'expedition_date',
         'expiration_date',
@@ -107,10 +108,10 @@ class Invoice extends Model
      * @param $id
      * @return mixed
      */
-    public function scopeId($query, $id)
+    public function scopeCode($query, $code)
     {
-        if (trim($id) != "") {
-            return $query->where('id', "$id");
+        if (trim($code) != "") {
+            return $query->where('code', "$code");
         }
     }
 

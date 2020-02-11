@@ -14,7 +14,11 @@ class DocumentTypeSeeder extends Seeder
 
 
 
-    public static function seederDocumentType()
+//    public static function seederDocumentType()
+
+
+    public function run ()
+
     {
         DB::table('document_types')->insert([
            ['id' => 1, 'documentType' => 'CC', 'documentName' => 'Cedula de Ciudadania'],

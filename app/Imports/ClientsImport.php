@@ -19,7 +19,9 @@ class ClientsImport implements ToModel
             'first_name' => $row[1],
             'last_name' => $row[2],
             'phone_number' => $row[3],
-            'address' => $row[4],
+            'email'=>$row[4],
+            'address' => $row[5],
+            'document_type_id' => $row[8]
         ]);
     }
 }

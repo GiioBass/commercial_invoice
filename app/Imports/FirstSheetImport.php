@@ -18,7 +18,7 @@ class FirstSheetImport implements ToCollection, WithValidation, WithHeadingRow
     {
         foreach ($rows as $row) {
             Invoice::create([
-                'id' => $row['id'],
+                'code' => $row['code'],
                 'state' => $row['state'],
                 'expedition_date' => $row['expedition_date'],
                 'expiration_date' => $row['expiration_date'],

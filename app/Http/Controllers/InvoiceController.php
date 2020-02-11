@@ -23,7 +23,7 @@ class InvoiceController extends Controller
     public function index(Request $request)
     {
         $state = $request->get('state');
-        $id = $request->get('id');
+        $code = $request->get('code');
         $dateStart = $request->get('dateStart');
         $dateFinish = $request->get('dateFinish');
         $seller_id = $request->get('seller_id');
@@ -33,7 +33,7 @@ class InvoiceController extends Controller
             'invoices' => Invoice::orderBy('id', 'asc')
                 ->with('client', 'seller', 'products')
                 ->state($state)
-                ->id($id)
+                ->code($code)
                 ->dates($dateStart, $dateFinish)
                 ->seller($seller_id)
                 ->client($client_id)

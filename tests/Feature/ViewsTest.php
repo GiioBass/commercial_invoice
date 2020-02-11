@@ -96,6 +96,8 @@ class ViewsTest extends TestCase
     /**
      * @test
      */
+
+// TODO  peticion de tipo delete
     public function ViewConfirmDeleteClientExist()
     {
         $user = factory(User::class)->create();
@@ -103,6 +105,7 @@ class ViewsTest extends TestCase
         $response = $this->actingAs($user)->get("client/$client->id/confirmDelete");
         $response = $this->actingAs($user)->get(route('client.destroy', $client));
         $response->assertOk();
+//       TODO databasemising
     }
 
     /**
