@@ -68,5 +68,5 @@ Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices');
 
 Route::post('/orders/import', 'InvoiceProductController@import');
 
-//Route::redirect('/invoice/{invoice}/report/update', '/invoice/{invoice}/report/show');
+Route::redirect('/', '/home');
 
