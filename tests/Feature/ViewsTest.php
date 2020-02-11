@@ -15,6 +15,53 @@ class ViewsTest extends TestCase
 {
     /**
      * @test
+     */
+    public function userAuthenticated()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user);
+        $response->assertAuthenticatedAs($user, $guard = null);
+    }
+
+    /**
+     * @test
+     */
+    public function viewLogin()
+    {
+        $response = $this->get('/login');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
+    public function testViewHomeSuccess()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user)->get('/home');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
+    public function viewRootRedirectHome()
+    {
+        $user=factory(User::class)->create();
+        $response = $this->actingAs($user)->get('/');
+        $response->assertRedirect('/home');
+    }
+
+    /**
+     * @test
+     */
+    public function viewHomeDeniedUserLogout()
+    {
+        $response = $this->get('/home');
+        $response->assertRedirect('/login');
+    }
+    /**
+     * @test
      * Test Views Client
      * */
     public function ViewClientIndexExist()
