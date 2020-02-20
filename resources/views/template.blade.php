@@ -68,12 +68,15 @@
 
 <section class="section-main ">
     <div class="content">
+        <div id="app">
 
-        @yield('content')
+            @yield('content')
+        </div>
+
     </div>
 </section>
 <footer>
 </footer>
-
+<script src="{{asset('./js/app.js')}}"></script>
 </body>
 </html>

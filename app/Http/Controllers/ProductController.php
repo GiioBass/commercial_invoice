@@ -57,10 +57,10 @@ class ProductController extends Controller
         ]);
 
         $product = new Product;
-        $product->id = $request->id;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->unit_value = $request->unit_value;
+        $product->id = $validData->id;
+        $product->name = $validData->name;
+        $product->description = $validData->description;
+        $product->unit_value = $validData->unit_value;
 
         $product->save();
         return back()->with('message', 'Producto Añadido');
@@ -108,10 +108,10 @@ class ProductController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
-        $product->id = $request->get('id');
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->unit_value = $request->get('unit_value');
+        $product->id = $validData->get('id');
+        $product->name = $validData->get('name');
+        $product->description = $validData->get('description');
+        $product->unit_value = $validData->get('unit_value');
 
         $product->save();
         return redirect()->route('product.index');

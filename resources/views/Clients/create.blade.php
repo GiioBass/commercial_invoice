@@ -10,19 +10,19 @@
         {{session('message')}}
     @endif
     {{--            --}}
-    <div class="content-errors">
-        <div class="errors">
-            @if($errors->any())
-                <div>
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        </div>
-    </div>
+{{--    <div class="content-errors">--}}
+{{--        <div class="errors">--}}
+{{--            @if($errors->any())--}}
+{{--                <div>--}}
+{{--                    <ul>--}}
+{{--                        @foreach($errors->all() as $error)--}}
+{{--                            <li>{{$error}}</li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            @endif--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="content-form">
         <div class="board-form">
             <div class="content-title">
@@ -35,7 +35,10 @@
                 @csrf
                 <div class="items-form">
                     <label for="">Id</label>
-                    <input type="text" name="id" id="" value="{{old('id')}}">
+                    <validation-provider name="id" rules="required" v-slot="v">
+                        <input v-model="value" type="text" name="id" id="" value="{{old('id')}}">
+                        <span> @{{ v.errors[0] }}</span>
+                    </validation-provider>
                     <label for="">Tipo</label>
                     <div class="list">
                         <select class="list-select" name="document_type_id" id="">

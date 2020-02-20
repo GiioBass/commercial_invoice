@@ -20,10 +20,11 @@
                 <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
                 Buscar:
             </label>
-            <input type="search" name="id" id="" placeholder="Id Cliente">
+            <input type="text" name="id" id="" placeholder="Id Cliente" value="">
             <button class="button" type="submit">Buscar</button>
         </div>
     </form>
+
     <div>
         <table>
             <div>

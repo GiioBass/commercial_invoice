@@ -30,7 +30,7 @@ class Seller extends Model
     public function scopeId($query, $id)
     {
         if (trim($id) != "") {
-            return $query->where('id', "$id");
+            return $query->where('id', "${id}");
         }
     }
 }

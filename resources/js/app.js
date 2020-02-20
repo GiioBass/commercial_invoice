@@ -18,8 +18,33 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import { ValidationProvider, extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
+
+extend('required', {
+    ...required,
+    message: 'This field is required'
+});
+
+// Vue.component('ValidationProvider', ValidationProvider);
+//
+// import { ValidationProvider } from 'vee-validate';
+// import { extend } from 'vee-validate';
+//
+// extend('positive', value => {
+//     if (value >= 0) {
+//         return true;
+//     }
+//
+//     return 'The {_field_} field must be a positive number';
+// });
+/*
+<validation-provider name="numero" rules="positive" v-slot="v">
+    <input v-model="value" type="text">
+    <span> @{{ v.errors[0] }}</span>
+</validation-provider>*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +54,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data:{
+        value: '',
+    }
 });

@@ -57,12 +57,12 @@ class SellerController extends Controller
             'phone_number' => 'required|numeric',
         ]);
 
-        $seller = new Seller;
-        $seller->id = $request->id;
-        $seller->first_name = $request->first_name;
-        $seller->last_name = $request->last_name;
-        $seller->email = $request->email;
-        $seller->phone_number = $request->phone_number;
+        $seller = new Seller();
+        $seller->id = $validData->id;
+        $seller->first_name = $validData->first_name;
+        $seller->last_name = $validData->last_name;
+        $seller->email = $validData->email;
+        $seller->phone_number = $validData->phone_number;
 
         $seller->save();
         return back()->with('message', 'Vendedor Añadido');
@@ -111,15 +111,14 @@ class SellerController extends Controller
         ]);
 
         $seller = Seller::findOrFail($id);
-        $seller->id = $request->get('id');
-        $seller->first_name = $request->get('first_name');
-        $seller->last_name = $request->get('last_name');
-        $seller->email = $request->get('email');
-        $seller->phone_number = $request->get('phone_number');
+        $seller->id = $validData->get('id');
+        $seller->first_name = $validData->get('first_name');
+        $seller->last_name = $validData->get('last_name');
+        $seller->email = $validData->get('email');
+        $seller->phone_number = $validData->get('phone_number');
 
         $seller->save();
         return redirect()->route('seller.index');
-        dd('Update seller');
     }
 
     /**
@@ -152,7 +151,7 @@ class SellerController extends Controller
      */
     public function export()
     {
-        return Excel::download(new SellersExport, 'sellers-' . date('Y-m-d') . '.xlsx');
+        return Excel::download(new SellersExport(), 'sellers-' . date('Y-m-d') . '.xlsx');
     }
 
     /**
@@ -163,7 +162,7 @@ class SellerController extends Controller
     {
         $file = $request->file('file');
 
-        Excel::import(new SellersImport, $file);
+        Excel::import(new SellersImport(), $file);
         return back();
     }
 }

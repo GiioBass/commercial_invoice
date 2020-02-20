@@ -134,13 +134,8 @@ class ControlReportController extends Controller
             "expiration" => date('c', strtotime('+1 hour')),
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
-            "returnUrl" =>
-                "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
-//                route('invoice.show', $invoice->id),
-
-            "cancelUrl" =>
-            "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
-//                route('invoice.show',$invoice->id),
+            "returnUrl" => "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
+            "cancelUrl" => "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
             "skipResult" => false,
             "noBuyerFill" => false,
             "captureAddress" => false,
@@ -198,10 +193,8 @@ class ControlReportController extends Controller
     public function show($id)
     {
         return view('ControlReport.show', [
-
         'invoices' => Invoice::findOrFail($id)
-
-        ]);
+    ]);
     }
 
     /**
@@ -237,7 +230,7 @@ class ControlReportController extends Controller
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
                     $state->save();
-                // This is additional information about it
+                    // This is additional information about it
 //                    print_r($response->toArray());
                 } else {
 //                    $message = ($requestId . ' ' . $response->status()->message() . "\n");

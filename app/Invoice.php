@@ -58,10 +58,10 @@ class Invoice extends Model
     }
 
     /**
-     * @param $value
+     * @param
      * @return float|int
      */
-    public function getSubTotalAttribute($value)
+    public function getSubTotalAttribute()
     {
         $subTotal = 0;
         foreach ($this->products as $product) {
@@ -72,23 +72,21 @@ class Invoice extends Model
     }
 
     /**
-     * @param $value
+     * @param
      * @return float
      */
-    public function getIvaAttribute($value)
+    public function getIvaAttribute()
     {
-        $iva = $this->subTotal * 0.19;
-        return $iva;
+         return $this->subTotal * 0.19;
     }
 
     /**
-     * @param $value
+     * @param
      * @return mixed
      */
-    public function getTotalAttribute($value)
+    public function getTotalAttribute()
     {
-        $total = $this->subTotal + $this->iva;
-        return $total;
+        return $this->subTotal + $this->iva;
     }
 
     /**
@@ -148,7 +146,7 @@ class Invoice extends Model
     public function scopeDates($query, $dateStart, $dateFinish)
     {
         if ($dateStart && $dateFinish) {
-            return $query->whereBetween('expedition_date', ["$dateStart", "$dateFinish"]);
+            return $query->whereBetween('expedition_date', ["${dateStart}", "${dateFinish}"]);
         }
     }
 }

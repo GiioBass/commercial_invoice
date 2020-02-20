@@ -65,15 +65,11 @@ class InvoiceController extends Controller
 
         if ($invoice === null) {
             $invoice = 1;
-
-            $code = date('y') . date('d') . date('H') . $invoice;
-
+            return date('y') . date('d') . date('H') . $invoice;
             return $code;
         } else {
             $invoice += 1;
-            $code = date('y') . date('d') . date('H') . $invoice;
-
-            return $code;
+            return date('y') . date('d') . date('H') . $invoice;
         }
     }
 

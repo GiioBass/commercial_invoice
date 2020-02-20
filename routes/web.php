@@ -69,4 +69,3 @@ Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices');
 Route::post('/orders/import', 'InvoiceProductController@import');
 
 Route::redirect('/', '/home');
-

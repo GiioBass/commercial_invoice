@@ -53,13 +53,13 @@ class InvoiceProductController extends Controller
             'invoice_id' => 'required',
             'product_id' => 'required',
             'quantity' => 'required|numeric'
-            ]);
+        ]);
 
         $invoice_product = new Invoice_product();
-        $invoice_product->id = $request->get('id');
-        $invoice_product->invoice_id = $request->get('invoice_id');
-        $invoice_product->product_id = $request->get('product_id');
-        $invoice_product->quantity = $request->get('quantity');
+        $invoice_product->id = $validData->get('id');
+        $invoice_product->invoice_id = $validData->get('invoice_id');
+        $invoice_product->product_id = $validData->get('product_id');
+        $invoice_product->quantity = $validData->get('quantity');
         $invoice_product->save();
         $this->updateOrder($invoice);
         return redirect()->route('invoice.show', $invoice->id);
