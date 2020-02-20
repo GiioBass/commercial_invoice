@@ -67,7 +67,7 @@ class ClientController extends Controller
         ]);
 
         $client = new Client;
-        $client->id = $request->id;
+        $client->id = $validData->id;
         $client->document_type_id = $request->document_type_id;
         $client->first_name = $request->first_name;
         $client->last_name = $request->last_name;

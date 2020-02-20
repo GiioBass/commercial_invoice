@@ -19,7 +19,11 @@
                     <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
                     Buscar:
                 </label>
-                <input type="search" name="id" id="" placeholder="Id Producto">
+                <validation-provider rules="number" v-slot="v">
+                    <input v-model="value" type="search" name="id" id="" placeholder="Id Producto">
+                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                </validation-provider>
+
                 <button class="button" type="submit">Buscar</button>
             </div>
         </form>

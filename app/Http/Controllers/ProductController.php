@@ -57,10 +57,10 @@ class ProductController extends Controller
         ]);
 
         $product = new Product;
-        $product->id = $validData->id;
-        $product->name = $validData->name;
-        $product->description = $validData->description;
-        $product->unit_value = $validData->unit_value;
+        $product->id = $request->id;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->unit_value = $request->unit_value;
 
         $product->save();
         return back()->with('message', 'Producto Añadido');

@@ -41,9 +41,19 @@
                                     <option value="Por pagar">Por Pagar</option>
                                     <option value="Pagado">Pagado</option>
                                 </select>
-                                <input type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
-                                <input type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
-                                <input type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
+                                </validation-provider>
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
+                                </validation-provider>
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                                </validation-provider>
+
                             </div>
                             <label for="">Fecha de Expedición: </label>
                             <div>
