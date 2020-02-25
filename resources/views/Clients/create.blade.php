@@ -35,7 +35,7 @@
                 @csrf
                 <div class="items-form">
                     <label for="">Id</label>
-                    <validation-provider rules="required" v-slot="v">
+                    <validation-provider rules="required|number" v-slot="v">
                         <span class="validate-input"> @{{ v.errors[0] }}</span>
                         <input v-model="value" type="text" name="id" id="" value="{{old('id')}}">
                     </validation-provider>
