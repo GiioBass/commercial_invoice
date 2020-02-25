@@ -18,6 +18,15 @@ class ControlReportController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function credentials(){
+       return new PlacetoPay([
+            'login' =>config('redirection_credentials.login'),
+            'tranKey' => config('redirection_credentials.trankey'),
+            'url' => config('redirection_credentials.url'),
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,18 +36,15 @@ class ControlReportController extends Controller
     {
     }
 
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Invoice $invoice
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Dnetix\Redirection\Exceptions\PlacetoPayException
      */
     public function create(Invoice $invoice)
     {
-        $placetopay = new PlacetoPay([
-            'login' => '6dd490faf9cb87a9862245da41170ff2',
-            'tranKey' => '024h1IlD',
-            'url' => 'https://test.placetopay.com/redirection/',
-        ]);
+        $placetopay = $this->credentials();
 
         $reference = $invoice->code;
 //            'TEST_' . time();
@@ -197,22 +203,16 @@ class ControlReportController extends Controller
     ]);
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Invoice $invoice
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Invoice $invoice)
     {
 //        return view('ControlReport.update');
 
-        $placetopay = new PlacetoPay([
-            'login' => '6dd490faf9cb87a9862245da41170ff2',
-            'tranKey' => '024h1IlD',
-            'url' => 'https://test.placetopay.com/redirection/',
-        ]);
+        $placetopay = $this.$this->credentials();
 
         $requestId = $invoice->controlReport->last()->requestId;
 
