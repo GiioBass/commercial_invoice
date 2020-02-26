@@ -101,12 +101,12 @@
                                     ${{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                                 <td>{{$invoice->seller->first_name}}</td>
                                 <td>
-                                    <a href="/invoice/{{$invoice->id}}/edit">
+                                    <a href="{{route('invoice.edit', $invoice->id)}}">
                                         <i class="material-icons">edit</i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/invoice/{{$invoice->id}}/confirmDelete">
+                                    <a href="{{route('invoice.delete', $invoice->id )}}">
                                         <i class="material-icons">delete_outline</i>
                                     </a>
                                 </td>
@@ -121,7 +121,7 @@
             </div>
             <div class="container-menu">
                 <div class="container-item">
-                    <a class="item-menu" href="/invoices/export">
+                    <a class="item-menu" href="{{route('invoice.export')}}">
                         <div class="item-button">
                             Exportar Factura
                         </div>
@@ -132,7 +132,7 @@
 
             <br>
             <div>
-                <form class="form" action="/invoices/import" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
                     <div class="items-form">
                         @csrf
                         <input type="file" name="file" id="">

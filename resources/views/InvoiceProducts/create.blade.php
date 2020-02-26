@@ -25,7 +25,7 @@
                     <h1>AÑADIR PRODUCTO</h1>
                 </div>
             </div>
-            <form class="form" action="/invoice/{{$invoice->id}}/invoice_product" method="POST">
+            <form class="form" action="{{route('order.store', $invoice->id)}}" method="POST">
                 @csrf
                 <div class="items-form">
 

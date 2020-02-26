@@ -54,12 +54,12 @@
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
                     <td>
-                        <a href="/client/{{$client->id}}/edit">
+                        <a href="{{route('client.edit', $client->id)}}">
                             <i class="material-icons">edit</i>
                         </a>
                     </td>
                     <td>
-                        <a href="/client/{{$client->id}}/confirmDelete">
+                        <a href="{{route('client.delete', $client->id)}}">
                             <i class="material-icons">delete_outline</i>
                         </a>
                     </td>
@@ -74,7 +74,7 @@
     </div>
     <div class="container-menu">
         <div class="container-item">
-            <a class="item-menu" href="/clients/export">
+            <a class="item-menu" href="{{route('client.export')}}">
                 <div class="item-button">
                     Exportar
                 </div>
@@ -83,7 +83,7 @@
     </div>
     <div>
 
-        <form class="form" action="/clients/import" method="post" enctype="multipart/form-data">
+        <form class="form" action="{{route('client.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="items-form">
 
