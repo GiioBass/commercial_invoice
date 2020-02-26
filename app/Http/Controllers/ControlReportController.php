@@ -140,8 +140,8 @@ class ControlReportController extends Controller
             "expiration" => date('c', strtotime('+1 hour')),
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
-            "returnUrl" => "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
-            "cancelUrl" => "http://127.0.0.1:8000/invoice/$invoice->id/report/update",
+            "returnUrl" => route('url.redirection', $invoice->id),
+            "cancelUrl" => route('url.redirection', $invoice->id),
             "skipResult" => false,
             "noBuyerFill" => false,
             "captureAddress" => false,
@@ -212,7 +212,7 @@ class ControlReportController extends Controller
     {
 //        return view('ControlReport.update');
 
-        $placetopay = $this.$this->credentials();
+        $placetopay = $this->credentials();
 
         $requestId = $invoice->controlReport->last()->requestId;
 

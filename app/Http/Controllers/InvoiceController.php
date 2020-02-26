@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Exports\InvoicesExport;
 use App\Imports\InvoicesImport;
 use App\Invoice;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class InvoiceController extends Controller
 {
@@ -18,7 +23,8 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @param Request $request
+     * @return Factory|Response|View
      */
     public function index(Request $request)
     {
@@ -45,7 +51,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -55,8 +61,7 @@ class InvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     public function createCode()
@@ -88,14 +93,14 @@ class InvoiceController extends Controller
 
         $invoice = new Invoice;
         $invoice->code = $this->createCode();
-        $invoice->state = $request->state;
-        $invoice->expedition_date = $request->expedition_date;
-        $invoice->expiration_date = $request->expiration_date;
+        $invoice->state = $validData['state'];
+        $invoice->expedition_date = $validData['expedition_date'];
+        $invoice->expiration_date = $validData['expiration_date'];
         $invoice->subtotal = 0;
         $invoice->iva = 0;
         $invoice->total = 0;
-        $invoice->seller_id = $request->seller_id;
-        $invoice->client_id = $request->client_id;
+        $invoice->seller_id = $validData['seller_id'];
+        $invoice->client_id = $validData['client_id'];
         $invoice->save();
         return back()->with('message', 'Factura Creada');
     }
@@ -103,8 +108,8 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Invoice $invoice
+     * @return Response
      */
     public function show(Invoice $invoice)
     {
@@ -118,7 +123,7 @@ class InvoiceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -131,9 +136,9 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -150,15 +155,15 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = Invoice::findOrFail($id);
-        $invoice->id = $request->get('id');
-        $invoice->state = $request->get('state');
-        $invoice->expedition_date = $request->get('expedition_date');
-        $invoice->expiration_date = $request->get('expiration_date');
+        $invoice->id = $validData['id'];
+        $invoice->state = $validData['state'];
+        $invoice->expedition_date = $validData['expedition_date'];
+        $invoice->expiration_date = $validData['expiration_date'];
         // $invoice->iva = $request->get('iva');
         // $invoice->total = $request->get('total');
         // $invoice->subTotal = $request->get('subTotal');
-        $invoice->seller_id = $request->get('seller_id');
-        $invoice->client_id = $request->get('client_id');
+        $invoice->seller_id = $validData['seller_id'];
+        $invoice->client_id = $validData['client_id'];
 
         $invoice->save();
         return redirect()->route('invoice.index');
@@ -168,7 +173,7 @@ class InvoiceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -179,7 +184,7 @@ class InvoiceController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return Factory|RedirectResponse|View
      */
     public function confirmDelete($id)
     {
@@ -191,7 +196,7 @@ class InvoiceController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
      */
     public function export()
     {
@@ -200,7 +205,7 @@ class InvoiceController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function import(Request $request)
     {
