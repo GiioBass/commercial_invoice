@@ -34,7 +34,9 @@
                 @method('PUT')
                 <div class="items-form">
                     <label for="">Id:</label>
-                    <input type="text" name="id" id="" value="{{$client->id}}">
+
+                        <input  type="text" name="id" id="" value="{{$client->id}}">
+
                     <div class="list">
                         <select class="list-select" name="document_type_id" id="">
                             @foreach ($documentType as $documentTypes)

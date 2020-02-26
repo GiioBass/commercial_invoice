@@ -12,11 +12,7 @@
 </head>
 
 <body>
-@php
-    $login = config('redirection_credentials.login');
 
-    dd($login);
-@endphp
     <div class="main">
         <div class="container">
             <div class="login-nav">

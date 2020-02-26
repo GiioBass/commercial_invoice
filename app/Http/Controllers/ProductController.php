@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
 use App\Product;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ProductController extends Controller
 {
@@ -15,10 +20,10 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Factory|View
      */
     public function index(Request $request)
     {
@@ -34,7 +39,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -44,8 +49,8 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -57,10 +62,10 @@ class ProductController extends Controller
         ]);
 
         $product = new Product;
-        $product->id = $request->id;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->unit_value = $request->unit_value;
+        $product->id = $validData['id'];
+        $product->name = $validData['name'];
+        $product->description = $validData['description'];
+        $product->unit_value = $validData['unit_value'];
 
         $product->save();
         return back()->with('message', 'Producto Añadido');
@@ -70,7 +75,7 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function show($id)
     {
@@ -81,7 +86,7 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -94,9 +99,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -108,10 +113,10 @@ class ProductController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
-        $product->id = $request->get('id');
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->unit_value = $request->get('unit_value');
+        $product->id = $validData['id'];
+        $product->name = $validData['name'];
+        $product->description = $validData['description'];
+        $product->unit_value = $validData['unit_value'];
 
         $product->save();
         return redirect()->route('product.index');
@@ -121,7 +126,7 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -132,7 +137,7 @@ class ProductController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function confirmDelete($id)
     {
@@ -143,7 +148,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
      */
     public function export()
     {
@@ -152,7 +157,7 @@ class ProductController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function import(Request $request)
     {

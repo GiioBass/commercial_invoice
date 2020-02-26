@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Seller extends Model
 {
@@ -15,7 +16,7 @@ class Seller extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function invoices()
     {
@@ -30,7 +31,7 @@ class Seller extends Model
     public function scopeId($query, $id)
     {
         if (trim($id) != "") {
-            return $query->where('id', "$id");
+            return $query->where('id', "${id}");
         }
     }
 }

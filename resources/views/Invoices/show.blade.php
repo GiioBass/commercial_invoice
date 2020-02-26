@@ -56,17 +56,17 @@
 
 
                 <div>
-                    <a class="item-menu" href="/invoice/{{$invoices->id}}/invoice_product/create">
+                    <a class="item-menu" href="{{route('order.create', $invoices->id)}}">
                         <div class="item-button">
                             Agregar Producto
                         </div>
                     </a>
-                    <a class="item-menu" href="/invoice/{{$invoices->id}}/report/show">
+                    <a class="item-menu" href="{{route('report.show', $invoices->id)}}">
                         <div class="item-button">
                             Ver Historico de Pagos
                         </div>
                     </a>
-                    <a class="item-menu" href="/invoice/{{$invoices->id}}/report/create">
+                    <a class="item-menu" href="{{route('report.create', $invoices->id)}}">
                         <div class="item-button">
                             Realizar Pago
                         </div>
@@ -90,7 +90,7 @@
                                 $ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                             <td>
                                 $ {{number_format($product->unit_value * $product->pivot->quantity, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
-                            <td><a href="/invoice/{{$invoices->id}}/invoice_product/{{$product->pivot->id}}/destroy">
+                            <td><a href="{{route('order.delete', [$invoices->id ,$product->pivot->id])}}">
                                     <i class="material-icons">delete_outline</i>
                                 </a>
                             </td>

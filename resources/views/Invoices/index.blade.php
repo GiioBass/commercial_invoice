@@ -41,9 +41,19 @@
                                     <option value="Por pagar">Por Pagar</option>
                                     <option value="Pagado">Pagado</option>
                                 </select>
-                                <input type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
-                                <input type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
-                                <input type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
+                                </validation-provider>
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
+                                </validation-provider>
+                                <validation-provider rules="number" v-slot="v">
+                                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                                    <input v-model="value" type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                                </validation-provider>
+
                             </div>
                             <label for="">Fecha de Expedición: </label>
                             <div>
@@ -91,12 +101,12 @@
                                     ${{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                                 <td>{{$invoice->seller->first_name}}</td>
                                 <td>
-                                    <a href="/invoice/{{$invoice->id}}/edit">
+                                    <a href="{{route('invoice.edit', $invoice->id)}}">
                                         <i class="material-icons">edit</i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/invoice/{{$invoice->id}}/confirmDelete">
+                                    <a href="{{route('invoice.delete', $invoice->id )}}">
                                         <i class="material-icons">delete_outline</i>
                                     </a>
                                 </td>
@@ -111,7 +121,7 @@
             </div>
             <div class="container-menu">
                 <div class="container-item">
-                    <a class="item-menu" href="/invoices/export">
+                    <a class="item-menu" href="{{route('invoice.export')}}">
                         <div class="item-button">
                             Exportar Factura
                         </div>
@@ -122,7 +132,7 @@
 
             <br>
             <div>
-                <form class="form" action="/invoices/import" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
                     <div class="items-form">
                         @csrf
                         <input type="file" name="file" id="">
