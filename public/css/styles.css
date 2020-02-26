@@ -105,7 +105,7 @@ a {
 
 .content-form {
   width: vw;
-  height: 45em;
+  height: 55em;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -351,5 +351,11 @@ input[type=text]:focus {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
+}
+
+.validate-input {
+  color: #cb0000;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 

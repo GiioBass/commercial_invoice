@@ -17,7 +17,11 @@
                     <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
                     Buscar:
                 </label>
-                <input type="search" name="id" id="" placeholder="Id Vendedor">
+                <validation-provider rules="number" v-slot="v">
+                    <input v-model="value" type="search" name="id" id="" placeholder="Id Vendedor">
+                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                </validation-provider>
+
                 <button class="button" type="submit">Buscar</button>
             </div>
         </form>
@@ -45,12 +49,12 @@
                         <td>{{$seller->email}}</td>
                         <td>{{$seller->phone_number}}</td>
                         <td>
-                            <a href="/seller/{{$seller->id}}/edit">
+                            <a href="{{route('seller.edit', $seller->id)}}">
                                 <i class="material-icons">edit</i>
                             </a>
                         </td>
                         <td>
-                            <a href="/seller/{{$seller->id}}/confirmDelete">
+                            <a href="{{route('seller.delete',$seller->id)}}">
                                 <i class="material-icons">delete_outline</i>
                             </a>
                         </td>
@@ -66,7 +70,7 @@
     </div>
     <div class="container-menu">
         <div class="container-item">
-            <a class="item-menu" href="/sellers/export">
+            <a class="item-menu" href="{{route('seller.export')}}">
                 <div class="item-button">
                     Exportar
                 </div>
@@ -75,7 +79,7 @@
     </div>
     <div>
 
-        <form class="form" action="/sellers/import" method="post" enctype="multipart/form-data">
+        <form class="form" action="{{route('seller.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="items-form">
                 <input type="file" name="file" id="">

@@ -20,10 +20,14 @@
                 <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
                 Buscar:
             </label>
-            <input type="search" name="id" id="" placeholder="Id Cliente">
+            <validation-provider rules="number" v-slot="v">
+                <input v-model="value" type="text" name="id" id="" placeholder="Id Cliente" value="">
+                <span class="validate-input">@{{ v.errors[0] }}</span>
+            </validation-provider>
             <button class="button" type="submit">Buscar</button>
         </div>
     </form>
+
     <div>
         <table>
             <div>
@@ -50,12 +54,12 @@
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
                     <td>
-                        <a href="/client/{{$client->id}}/edit">
+                        <a href="{{route('client.edit', $client->id)}}">
                             <i class="material-icons">edit</i>
                         </a>
                     </td>
                     <td>
-                        <a href="/client/{{$client->id}}/confirmDelete">
+                        <a href="{{route('client.delete', $client->id)}}">
                             <i class="material-icons">delete_outline</i>
                         </a>
                     </td>
@@ -70,7 +74,7 @@
     </div>
     <div class="container-menu">
         <div class="container-item">
-            <a class="item-menu" href="/clients/export">
+            <a class="item-menu" href="{{route('client.export')}}">
                 <div class="item-button">
                     Exportar
                 </div>
@@ -79,7 +83,7 @@
     </div>
     <div>
 
-        <form class="form" action="/clients/import" method="post" enctype="multipart/form-data">
+        <form class="form" action="{{route('client.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="items-form">
 

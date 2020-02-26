@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Exports\SellersExport;
 use App\Imports\SellersImport;
 use App\Seller;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SellerController extends Controller
 {
@@ -18,7 +23,8 @@ class SellerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -34,18 +40,17 @@ class SellerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
         return view('Sellers.create');
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -57,12 +62,12 @@ class SellerController extends Controller
             'phone_number' => 'required|numeric',
         ]);
 
-        $seller = new Seller;
-        $seller->id = $request->id;
-        $seller->first_name = $request->first_name;
-        $seller->last_name = $request->last_name;
-        $seller->email = $request->email;
-        $seller->phone_number = $request->phone_number;
+        $seller = new Seller();
+        $seller->id = $validData['id'];
+        $seller->first_name = $validData['first_name'];
+        $seller->last_name = $validData['last_name'];
+        $seller->email = $validData['email'];
+        $seller->phone_number = $validData['phone_number'];
 
         $seller->save();
         return back()->with('message', 'Vendedor Añadido');
@@ -72,7 +77,7 @@ class SellerController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function show($id)
     {
@@ -83,7 +88,7 @@ class SellerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -96,9 +101,9 @@ class SellerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -111,22 +116,21 @@ class SellerController extends Controller
         ]);
 
         $seller = Seller::findOrFail($id);
-        $seller->id = $request->get('id');
-        $seller->first_name = $request->get('first_name');
-        $seller->last_name = $request->get('last_name');
-        $seller->email = $request->get('email');
-        $seller->phone_number = $request->get('phone_number');
+        $seller->id = $validData['id'];
+        $seller->first_name = $validData['first_name'];
+        $seller->last_name = $validData['last_name'];
+        $seller->email = $validData['email'];
+        $seller->phone_number = $validData['phone_number'];
 
         $seller->save();
         return redirect()->route('seller.index');
-        dd('Update seller');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -137,7 +141,7 @@ class SellerController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function confirmDelete($id)
     {
@@ -148,22 +152,22 @@ class SellerController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
      */
     public function export()
     {
-        return Excel::download(new SellersExport, 'sellers-' . date('Y-m-d') . '.xlsx');
+        return Excel::download(new SellersExport(), 'sellers-' . date('Y-m-d') . '.xlsx');
     }
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function import(Request $request)
     {
         $file = $request->file('file');
 
-        Excel::import(new SellersImport, $file);
+        Excel::import(new SellersImport(), $file);
         return back();
     }
 }

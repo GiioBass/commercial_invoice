@@ -30,14 +30,31 @@
                 @csrf
                 <div class="items-form">
                     <label for="">Id</label>
-                    <input type="text" name="id" id=""
-                           value="{{number_format(old('id'), $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}">
+                    <validation-provider rules="required|number" v-slot="v">
+                        <span class="validate-input">@{{ v.errors[0] }}</span>
+                        <input v-model="value" type="text" name="id" id=""
+                               value="{{old('id')}}">
+                    </validation-provider>
+
+
                     <label for="">Nombre</label>
-                    <input type="text" name="name" id="" value="{{old('name')}}">
+                    <validation-provider rules="required" v-slot="v">
+                        <span class="validate-input">@{{ v.errors[0] }}</span>
+                        <input v-model="value" type="text" name="name" id="" value="{{old('name')}}">
+                    </validation-provider>
+
                     <label for="">Descripción</label>
-                    <input type="text" name="description" id="" value="{{old('description')}}">
+                    <validation-provider rules="required" v-slot="v">
+                        <span class="validate-input">@{{ v.errors[0] }}</span>
+                        <input v-model="value" type="text" name="description" id="" value="{{old('description')}}">
+                    </validation-provider>
+
                     <label for="">Valor</label>
-                    <input type="text" name="unit_value" id="" value="{{old('unit_value')}}">
+                    <validation-provider rules="required|number" v-slot="v">
+                        <span class="validate-input">@{{ v.errors[0] }}</span>
+                        <input v-model="value" type="text" name="unit_value" id="" value="{{old('unit_value')}}">
+                    </validation-provider>
+
                     <br>
                     <button class="button" type="submit">Guardar</button>
                 </div>

@@ -25,7 +25,7 @@
                     <h1>AÑADIR PRODUCTO</h1>
                 </div>
             </div>
-            <form class="form" action="/invoice/{{$invoice->id}}/invoice_product" method="POST">
+            <form class="form" action="{{route('order.store', $invoice->id)}}" method="POST">
                 @csrf
                 <div class="items-form">
 
@@ -40,7 +40,11 @@
                         </select>
                     </div>
                     <label for="">Cantidad</label>
-                    <input type="text" name="quantity" id="" value="">
+                    <validation-provider rules="required|number" v-slot="v">
+                        <span class="validate-input">@{{ v.errors[0] }}</span>
+                        <input v-model="value" type="text" name="quantity" id="" value="">
+                    </validation-provider>
+
                     <input type="text" name="invoice_id" id="" value="{{$invoice->id}}" style="visibility: hidden">
                     <button class="button" type="submit">Guardar</button>
                 </div>

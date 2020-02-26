@@ -43,6 +43,7 @@
                         </select>
                     </div>
                     <label for="">Fecha Expedición</label>
+
                     <input type="date" name="expedition_date" id="" placeholder="aaaa-mm-dd"
                            value="{{old('expedition_date')}}">
                     <label for="">Fecha Expiración</label>

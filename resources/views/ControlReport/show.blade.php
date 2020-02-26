@@ -23,7 +23,7 @@
         </div>
     </form>--}}
     <div>
-        <h1 ">Reporte de Pagos Factura </h1>
+        <h1>Reporte de Pagos Factura </h1>
         <table>
             <div>
                 <tr>

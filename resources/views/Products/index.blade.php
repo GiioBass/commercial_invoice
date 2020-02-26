@@ -19,7 +19,11 @@
                     <i class="material-icons" style="color: rgba(0, 0, 0, 0.5)">find_in_page</i>
                     Buscar:
                 </label>
-                <input type="search" name="id" id="" placeholder="Id Producto">
+                <validation-provider rules="number" v-slot="v">
+                    <input v-model="value" type="search" name="id" id="" placeholder="Id Producto">
+                    <span class="validate-input">@{{ v.errors[0] }}</span>
+                </validation-provider>
+
                 <button class="button" type="submit">Buscar</button>
             </div>
         </form>
@@ -45,12 +49,12 @@
                         <td>{{$product->unit_value}}</td>
 
                         <td>
-                            <a href="/product/{{$product->id}}/edit">
+                            <a href="{{route('product.edit', $product->id)}}">
                                 <i class="material-icons">edit</i>
                             </a>
                         </td>
                         <td>
-                            <a href="/product/{{$product->id}}/confirmDelete">
+                            <a href="{{route('product.delete', $product->id)}}">
                                 <i class="material-icons">delete_outline</i>
                             </a>
                         </td>
@@ -66,7 +70,7 @@
 
     <div class="container-menu">
         <div class="container-item">
-            <a class="item-menu" href="/products/export">
+            <a class="item-menu" href="{{route('product.export')}}">
                 <div class="item-button">
                     Export
                 </div>
@@ -74,7 +78,7 @@
         </div>
     </div>
     <div>
-        <form class="form" action="/products/import" method="post" enctype="multipart/form-data">
+        <form class="form" action="{{route('product.import')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="items-form">
                 <input type="file" name="file" id="">
