@@ -23,9 +23,9 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
-    <!--<logging>
+    <logging>
         <log type="coverage-html" target="./tests/coverage"></log>
-    </logging>-->
+    </logging>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>

@@ -69,16 +69,19 @@ class ClientController extends Controller
         ]);
 
         $client = new Client();
-        $client->id = $validData['id'];
-        $client->document_type_id = $validData['document_type_id'];
-        $client->first_name = $validData['first_name'];
-        $client->last_name = $validData['last_name'];
-        $client->phone_number = $validData['phone_number'];
-        $client->email = $validData['email'];
-        $client->address = $validData['address'];
+        $client->id = $request->input('id');
+        $client->document_type_id = $request->input('document_type_id');
+        $client->first_name = $request->input('first_name');
+        $client->last_name = $request->input('last_name');
+        $client->phone_number = $request->input('phone_number');
+        $client->email = $request->input('email');
+        $client->address = $request->input('address');
+
+
 
         $client->save();
-        return back()->with('message', 'Cliente Añadido');
+        return redirect()->route('client.create');
+//            back()->with('message', 'Cliente Añadido');
     }
 
     /**

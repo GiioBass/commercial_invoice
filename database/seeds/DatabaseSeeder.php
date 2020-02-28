@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Schema::disableForeignKeyConstraints();
+       /* Schema::disableForeignKeyConstraints();
 
         DB::table('clients')->truncate();
         DB::table('sellers')->truncate();
@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
         factory(Seller::class, 30)->create();
         factory(Invoice::class, 30)->create();
         factory(Product::class, 30)->create();
-        factory(Invoice_product::class, 100)->create();
+        factory(Invoice_product::class, 100)->create();*/
     }
 }

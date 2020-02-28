@@ -14,7 +14,7 @@ class DocumentTypeSeeder extends Seeder
 
 
 
-    public static function seederDocumentType(){
+    public function run(){
 
 
 
