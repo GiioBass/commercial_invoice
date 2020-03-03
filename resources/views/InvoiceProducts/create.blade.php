@@ -25,30 +25,32 @@
                     <h1>AÑADIR PRODUCTO</h1>
                 </div>
             </div>
-            <form class="form" action="{{route('order.store', $invoice->id)}}" method="POST">
-                @csrf
-                <div class="items-form">
+            @can('order.create')
+                <form class="form" action="{{route('order.store', $invoice->id)}}" method="POST">
+                    @csrf
+                    <div class="items-form">
 
-                    <label for="">Id Producto:</label>
-                    <div class="list">
-                        <select class="list-select" name="product_id" id="">
-                            @foreach ($product as $products)
-                                <option value="{{$products->id}}">
-                                    {{number_format($products->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.') . ' - ' . $products->name}}
-                                </option>
-                            @endforeach
-                        </select>
+                        <label for="">Id Producto:</label>
+                        <div class="list">
+                            <select class="list-select" name="product_id" id="">
+                                @foreach ($product as $products)
+                                    <option value="{{$products->id}}">
+                                        {{number_format($products->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.') . ' - ' . $products->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <label for="">Cantidad</label>
+                        <validation-provider rules="required|number" v-slot="v">
+                            <span class="validate-input">@{{ v.errors[0] }}</span>
+                            <input v-model="value" type="text" name="quantity" id="" value="">
+                        </validation-provider>
+
+                        <input type="text" name="invoice_id" id="" value="{{$invoice->id}}" style="visibility: hidden">
+                        <button class="button" type="submit">Guardar</button>
                     </div>
-                    <label for="">Cantidad</label>
-                    <validation-provider rules="required|number" v-slot="v">
-                        <span class="validate-input">@{{ v.errors[0] }}</span>
-                        <input v-model="value" type="text" name="quantity" id="" value="">
-                    </validation-provider>
-
-                    <input type="text" name="invoice_id" id="" value="{{$invoice->id}}" style="visibility: hidden">
-                    <button class="button" type="submit">Guardar</button>
-                </div>
-            </form>
+                </form>
+            @endcan
             <a class="item-menu" href="{{route('invoice.show', $invoice->id)}}">
                 <div class="item-button">
                     Atras

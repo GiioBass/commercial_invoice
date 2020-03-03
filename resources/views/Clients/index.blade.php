@@ -4,15 +4,17 @@
     @php
         $documentType = App\DocumentType::all();
     @endphp
-    <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('client.create')}}">
-                <div class="item-button">
-                    Añadir Cliente
-                </div>
-            </a>
+    @can('client.create')
+        <div class="container-menu">
+            <div class="container-item">
+                <a class="item-menu" href="{{route('client.create')}}">
+                    <div class="item-button">
+                        Añadir Cliente
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
+    @endcan
     <form class="form" action="/client" method="get">
         <div class="items-form">
 
@@ -39,8 +41,12 @@
                     <th>Número Tel</th>
                     <th>e-mail</th>
                     <th>Dirección</th>
+                    @can('client.edit')
                     <th>Editar</th>
-                    <th>Eliminar</th>
+                    @endcan
+                    @can('client.delete')
+                        <th>Eliminar</th>
+                    @endcan
                 </tr>
             </div>
             @foreach($clients as $client)
@@ -53,16 +59,20 @@
                     <td>{{$client->phone_number}}</td>
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
-                    <td>
-                        <a href="{{route('client.edit', $client->id)}}">
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{route('client.delete', $client->id)}}">
-                            <i class="material-icons">delete_outline</i>
-                        </a>
-                    </td>
+                    @can('client.edit')
+                        <td>
+                            <a href="{{route('client.edit', $client->id)}}">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                    @endcan
+                    @can('client.delete')
+                        <td>
+                            <a href="{{route('client.delete', $client->id)}}">
+                                <i class="material-icons">delete_outline</i>
+                            </a>
+                        </td>
+                    @endcan
 
 
                 </tr>
@@ -72,24 +82,28 @@
     <div class="container-pagination">
         {{$clients->links()}}
     </div>
-    <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('client.export')}}">
-                <div class="item-button">
-                    Exportar
-                </div>
-            </a>
-        </div>
-    </div>
-    <div>
-
-        <form class="form" action="{{route('client.import')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="items-form">
-
-                <input type="file" name="file" id="">
-                <button class="button" type="submit">Importar</button>
+    @can('client.export')
+        <div class="container-menu">
+            <div class="container-item">
+                <a class="item-menu" href="{{route('client.export')}}">
+                    <div class="item-button">
+                        Exportar
+                    </div>
+                </a>
             </div>
-        </form>
-    </div>
+        </div>
+    @endcan
+    @can('client.import')
+        <div>
+
+            <form class="form" action="{{route('client.import')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="items-form">
+
+                    <input type="file" name="file" id="">
+                    <button class="button" type="submit">Importar</button>
+                </div>
+            </form>
+        </div>
+    @endcan
 @endsection
