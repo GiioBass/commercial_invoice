@@ -53,14 +53,14 @@ class InvoiceProductController extends Controller
     public function store(Request $request, Invoice $invoice)
     {
         $validData = $request->validate([
-            'id' => 'numeric',
+//            'id' => 'numeric',
             'invoice_id' => 'required',
             'product_id' => 'required',
             'quantity' => 'required|numeric'
         ]);
 
         $invoice_product = new Invoice_product();
-        $invoice_product->id = $validData['id'];
+//        $invoice_product->id = $validData['id'];
         $invoice_product->invoice_id = $validData['invoice_id'];
         $invoice_product->product_id = $validData['product_id'];
         $invoice_product->quantity = $validData['quantity'];
