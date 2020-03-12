@@ -4,14 +4,16 @@ namespace App\Http\Controllers\api;
 
 use App\Seller;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApiSellerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Seller[]|Collection
      */
     public function index()
     {
@@ -21,7 +23,7 @@ class ApiSellerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -31,8 +33,8 @@ class ApiSellerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -52,26 +54,26 @@ class ApiSellerController extends Controller
         $seller->phone_number = $validData['phone_number'];
 
         $seller->save();
-        return back()->with('message', 'Vendedor Añadido');
+        return response(['message' => 'Vendedor Añadido']);
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
-        //
+        return Seller::findOrFail($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function edit($id)
     {
@@ -81,9 +83,9 @@ class ApiSellerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -103,19 +105,19 @@ class ApiSellerController extends Controller
         $seller->phone_number = $validData['phone_number'];
 
         $seller->save();
-        return redirect()->route('seller.index');
+        return response(['message' => 'Vendedor Actualizado']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {
         $seller = Seller::findOrFail($id);
         $seller->delete();
-        return redirect()->route('seller.index');
+        return response(['message' => 'Vendedor Eliminado']);
     }
 }
