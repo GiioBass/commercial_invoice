@@ -16,13 +16,12 @@ class Invoice extends Model
         'state',
         'expedition_date',
         'expiration_date',
-
+        'total',
+        'iva',
+        'subtotal',
         'seller_id',
         'client_id',
     ];
-    private $total;
-    private $iva;
-    private $subTotal;
 
     /**
      * @return BelongsTo
