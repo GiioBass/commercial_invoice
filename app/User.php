@@ -5,11 +5,13 @@ namespace App;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use HasRolesAndPermissions;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
