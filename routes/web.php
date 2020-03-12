@@ -204,6 +204,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/import', 'InvoiceProductController@import')->name('orders.import')
         ->middleware('can:orders.import');
 
+//
+    Route::get('control_panel', function () {
+        return view('Passport.control_panel');
+    });
 
 });
 
