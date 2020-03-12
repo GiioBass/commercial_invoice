@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Invoice;
 use App\Invoice_product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class ApiInvoiceProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Invoice_product[]|Collection
      */
     public function index()
     {
@@ -21,7 +25,7 @@ class ApiInvoiceProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -31,10 +35,10 @@ class ApiInvoiceProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Invoice $invoice)
     {
         $validData = $request->validate([
             'id' => 'numeric',
@@ -50,14 +54,15 @@ class ApiInvoiceProductController extends Controller
         $invoice_product->quantity = $validData['quantity'];
         $invoice_product->save();
         $this->updateOrder($invoice);
-        return redirect()->route('invoice.show', $invoice->id);
+        return response(['message' => 'Producto Añadido']);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function show($id)
     {
@@ -67,8 +72,8 @@ class ApiInvoiceProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function edit($id)
     {
@@ -78,9 +83,9 @@ class ApiInvoiceProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return void
      */
     public function update(Request $request, $id)
     {
@@ -90,14 +95,22 @@ class ApiInvoiceProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param Invoice $invoice
+     * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Invoice $invoice)
     {
         $invoiceProduct = Invoice_product::findOrFail($id);
         $invoiceProduct->delete();
         $this->updateOrder($invoice);
-        return redirect()->route('invoice.show', $invoice->id);
+        return response(['message' => 'Producto Eliminado']);
+    }
+
+    public function updateOrder(Invoice $invoice)
+    {
+        DB::table('invoices')
+            ->where('id', $invoice->id)
+            ->update(['total' => $invoice->total, 'iva' => $invoice->iva, 'subTotal' => $invoice->subTotal]);
     }
 }
