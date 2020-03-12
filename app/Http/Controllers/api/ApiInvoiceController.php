@@ -4,14 +4,16 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Invoice;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApiInvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Invoice[]|Collection
      */
     public function index()
     {
@@ -21,7 +23,7 @@ class ApiInvoiceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
@@ -31,8 +33,8 @@ class ApiInvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -56,14 +58,15 @@ class ApiInvoiceController extends Controller
         $invoice->seller_id = $validData['seller_id'];
         $invoice->client_id = $validData['client_id'];
         $invoice->save();
-        return back()->with('message', 'Factura Creada');
+
+        return response(['message' => 'Factura Almacenada']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function show($id)
     {
@@ -73,8 +76,8 @@ class ApiInvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function edit($id)
     {
@@ -84,23 +87,23 @@ class ApiInvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
         $validData = $request->validate([
-        'id' => 'required|numeric',
-        'state' => 'required|string',
-        'expedition_date' => 'required|date',
-        'expiration_date' => 'required|date',
-        // 'iva' => 'required',
-        // 'total' => 'required',
-        // 'subTotal' => 'required',
-        'seller_id' => 'required|numeric',
-        'client_id' => 'required|numeric',
-    ]);
+            'id' => 'required|numeric',
+            'state' => 'required|string',
+            'expedition_date' => 'required|date',
+            'expiration_date' => 'required|date',
+            // 'iva' => 'required',
+            // 'total' => 'required',
+            // 'subTotal' => 'required',
+            'seller_id' => 'required|numeric',
+            'client_id' => 'required|numeric',
+        ]);
 
         $invoice = Invoice::findOrFail($id);
         $invoice->id = $validData['id'];
@@ -114,19 +117,19 @@ class ApiInvoiceController extends Controller
         $invoice->client_id = $validData['client_id'];
 
         $invoice->save();
-        return redirect()->route('invoice.index');
+        return response(['message' => 'Factura Actualizada']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {
         $invoice = Invoice::findOrFail($id);
         $invoice->delete();
-        return redirect()->route('invoice.index');
+        return response(['message' => 'Factura Eliminada']);
     }
 }
