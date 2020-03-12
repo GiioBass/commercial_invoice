@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
@@ -13,15 +16,16 @@ class Invoice extends Model
         'state',
         'expedition_date',
         'expiration_date',
-        'subtotal',
-        'iva',
-        'total',
+
         'seller_id',
         'client_id',
     ];
+    private $total;
+    private $iva;
+    private $subTotal;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function client()
     {
@@ -29,7 +33,7 @@ class Invoice extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function seller()
     {
@@ -37,7 +41,7 @@ class Invoice extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function invoice_products()
     {
@@ -45,7 +49,7 @@ class Invoice extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function products()
     {
@@ -103,7 +107,7 @@ class Invoice extends Model
 
     /**
      * @param $query
-     * @param $id
+     * @param $code
      * @return mixed
      */
     public function scopeCode($query, $code)
