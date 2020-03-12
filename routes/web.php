@@ -204,9 +204,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/import', 'InvoiceProductController@import')->name('orders.import')
         ->middleware('can:orders.import');
 
-//
-    Route::get('control_panel', function () {
-        return view('Passport.control_panel');
+//  Panel control de accesos
+    Route::get('access_control', function () {
+        return view('ApiAccess.control_panel');
     });
 
 });
