@@ -118,9 +118,9 @@ class ClientController extends Controller
             'document_type_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone_number' => 'required|numeric',
-            'email' => 'requires|email:rfc,dns',
+            'phone_number' => 'required',
             'address' => 'required',
+            'email' => 'required'
         ]);
 
         $client = Client::findOrFail($id);
@@ -129,10 +129,10 @@ class ClientController extends Controller
         $client->first_name = $validData['first_name'];
         $client->last_name = $validData['last_name'];
         $client->phone_number = $validData['phone_number'];
-        $client->email = $validData['email'];
         $client->address = $validData['address'];
-
+        $client->email  = $validData['email'];
         $client->save();
+
         return redirect()->route('client.index');
     }
 
