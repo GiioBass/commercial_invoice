@@ -70,7 +70,7 @@ class ApiInvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Invoice::findOrFail($id);
     }
 
     /**
