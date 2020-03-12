@@ -42,7 +42,11 @@
                 <passport-personal-access-tokens></passport-personal-access-tokens>
             </div>
         </div>
-
+        <a class="item-menu" href="{{route('home')}}">
+            <div class="item-button">
+                Atras
+            </div>
+        </a
     </div>
 </div>
 </body>
