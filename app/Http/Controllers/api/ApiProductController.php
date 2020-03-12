@@ -63,7 +63,7 @@ class ApiProductController extends Controller
      */
     public function show($id)
     {
-        return Product::finOrFail($id);
+        return Product::findOrFail($id);
     }
 
     /**
