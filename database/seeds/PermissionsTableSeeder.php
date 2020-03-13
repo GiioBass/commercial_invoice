@@ -226,5 +226,11 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Eliminar Orden',
         ]);
 
+        Permission::create([
+            'name' => 'Accesos API',
+            'slug' => 'access_api',
+            'description' => 'Panel de permisos API',
+        ]);
+
     }
 }
