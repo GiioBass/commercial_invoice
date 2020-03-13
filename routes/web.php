@@ -205,7 +205,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:orders.import');
 
 //  Panel control de accesos
-    Route::get('access_api', function () {
+    Route::middleware('can:access_api')->get('access_api', function () {
         return view('ApiAccess.control_panel');
     })->name('access_api');
 
