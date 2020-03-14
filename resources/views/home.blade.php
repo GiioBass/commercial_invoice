@@ -13,11 +13,25 @@
 
 <body>
 
-<div class="main">
-    <div class="container">
-        <div class="login-nav">
-            <div>
-                <i class="material-icons icon">account_circle</i>
+
+    <div class="main">
+        <div class="container">
+            <div class="login-nav">
+                <div >
+                    <i class="material-icons icon">account_circle</i>
+                </div>
+                <div >
+                    <p class="item">{{ Auth::user()->name }}</p>
+                </div>
+                <div >
+                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i  class="material-icons icon">exit_to_app</i>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                        @csrf
+                    </form>
+                </div>
+
             </div>
             <div>
                 <p class="item">{{ Auth::user()->name }}</p>
