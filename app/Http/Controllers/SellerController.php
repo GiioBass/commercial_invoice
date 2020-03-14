@@ -17,7 +17,6 @@ class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -34,7 +33,7 @@ class SellerController extends Controller
             'sellers' => Seller::orderBy('id', 'asc')
                 ->id($id)
                 ->paginate(10),
-        ]);
+        ], compact('id'));
     }
 
     /**

@@ -17,7 +17,6 @@ class InvoiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -45,7 +44,7 @@ class InvoiceController extends Controller
                 ->client($client_id)
                 ->paginate(10),
 
-        ]);
+        ], compact('code', 'dateStart', 'dateFinish', 'seller_id', 'client_id'));
     }
 
     /**

@@ -20,7 +20,7 @@
                     Buscar:
                 </label>
                 <validation-provider rules="number" v-slot="v">
-                    <input v-model="value" type="search" name="id" id="" placeholder="Id Producto">
+                    <input v-model="value" type="text" name="id" id="" placeholder="Id Producto {{$id}}" value="">
                     <span class="validate-input">@{{ v.errors[0] }}</span>
                 </validation-provider>
 

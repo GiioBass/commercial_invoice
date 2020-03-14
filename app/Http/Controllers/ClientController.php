@@ -20,7 +20,6 @@ class ClientController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -37,7 +36,7 @@ class ClientController extends Controller
                 ->with('document_type')
                 ->id($id)
                 ->paginate(10),
-        ]);
+        ], compact('id'));
     }
 
     /**

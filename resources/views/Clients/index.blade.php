@@ -21,7 +21,7 @@
                 Buscar:
             </label>
             <validation-provider rules="number" v-slot="v">
-                <input v-model="value" type="text" name="id" id="" placeholder="Id Cliente" value="">
+                <input v-model="value" type="text" name="id" id="" placeholder="Id Cliente {{$id}}" >
                 <span class="validate-input">@{{ v.errors[0] }}</span>
             </validation-provider>
             <button class="button" type="submit">Buscar</button>
@@ -53,24 +53,27 @@
                     <td>{{$client->phone_number}}</td>
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
-                    <td>
-                        <a href="{{route('client.edit', $client->id)}}">
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{route('client.delete', $client->id)}}">
-                            <i class="material-icons">delete_outline</i>
-                        </a>
-                    </td>
 
-
+                    @can('client.edit')
+                        <td>
+                            <a href="{{route('client.edit', $client->id)}}">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                    @endcan
+                    @can('client.delete')
+                        <td>
+                            <a href="{{route('client.delete', $client->id)}}">
+                                <i class="material-icons">delete_outline</i>
+                            </a>
+                        </td>
+                    @endcan
                 </tr>
             @endforeach
         </table>
     </div>
     <div class="container-pagination">
-        {{$clients->links()}}
+        {{ $clients->appends($_GET)->links() }}
     </div>
     <div class="container-menu">
         <div class="container-item">
