@@ -37,7 +37,7 @@ class ClientController extends Controller
                 ->with('document_type')
                 ->id($id)
                 ->paginate(10),
-        ]);
+        ], compact('id'));
     }
 
     /**

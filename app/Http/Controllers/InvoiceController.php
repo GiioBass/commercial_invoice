@@ -45,7 +45,7 @@ class InvoiceController extends Controller
                 ->client($client_id)
                 ->paginate(10),
 
-        ]);
+        ], compact('code', 'dateStart', 'dateFinish', 'seller_id', 'client_id'));
     }
 
     /**

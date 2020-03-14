@@ -21,7 +21,7 @@
                 Buscar:
             </label>
             <validation-provider rules="number" v-slot="v">
-                <input v-model="value" type="text" name="id" id="" placeholder="Id Cliente" value="">
+                <input v-model="value" type="text" name="id" id="" placeholder="Id Cliente {{$id}}" >
                 <span class="validate-input">@{{ v.errors[0] }}</span>
             </validation-provider>
             <button class="button" type="submit">Buscar</button>
@@ -65,7 +65,7 @@
                         <td>
                             <a href="{{route('client.delete', $client->id)}}">
                                 <i class="material-icons">delete_outline</i>
-                            </a>cto
+                            </a>
                         </td>
                     @endcan
                 </tr>

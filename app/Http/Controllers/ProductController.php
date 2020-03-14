@@ -33,7 +33,7 @@ class ProductController extends Controller
             'products' => Product::orderBy('id', 'asc')
                 ->id($id)
                 ->paginate(10),
-        ]);
+        ],compact('id'));
     }
 
     /**
