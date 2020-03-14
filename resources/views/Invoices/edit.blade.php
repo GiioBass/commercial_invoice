@@ -26,10 +26,12 @@
                     <h1>EDITAR FACTURA {{$invoice->code}}</h1>
                 </div>
             </div>
+            @can('invoice.edit')
             <form class="form" action=" {{route('invoice.update', $invoice->id)}}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="items-form">
+                    <input type="text" name="id" value="{{$invoice->id}}" hidden >
                     <label for="">Estado:</label>
                     <input type="text" name="state" value="{{$invoice->state}}" readonly >
                     <label for="">Fecha de Expedición:</label>
@@ -51,6 +53,7 @@
                     <button class="button" type="submit">Editar</button>
                 </div>
             </form>
+            @endcan
             <a class="item-menu" href="{{route('invoice.index')}}">
                 <div class="item-button">
                     Atras

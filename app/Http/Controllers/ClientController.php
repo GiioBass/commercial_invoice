@@ -57,30 +57,26 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
-//            TODO error Method Illuminate\Validation\Validator::validateRequires does not exist.
-            'id' => 'required|numeric',
+            'id' => 'required',
             'document_type_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone_number' => 'required|numeric',
-            'email' => 'requires|email:rfc,dns',
+            'phone_number' => 'required',
             'address' => 'required',
+            'email' => 'required'
         ]);
 
         $client = new Client();
-        $client->id = $request->input('id');
-        $client->document_type_id = $request->input('document_type_id');
-        $client->first_name = $request->input('first_name');
-        $client->last_name = $request->input('last_name');
-        $client->phone_number = $request->input('phone_number');
-        $client->email = $request->input('email');
-        $client->address = $request->input('address');
-
-
-
+        $client->id = $validData['id'];
+        $client->document_type_id = $validData['document_type_id'];
+        $client->first_name = $validData['first_name'];
+        $client->last_name = $validData['last_name'];
+        $client->phone_number = $validData['phone_number'];
+        $client->address = $validData['address'];
+        $client->email  = $validData['email'];
         $client->save();
+
         return redirect()->route('client.create');
-//            back()->with('message', 'Cliente Añadido');
     }
 
     /**
@@ -121,9 +117,9 @@ class ClientController extends Controller
             'document_type_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone_number' => 'required|numeric',
-            'email' => 'requires|email:rfc,dns',
+            'phone_number' => 'required',
             'address' => 'required',
+            'email' => 'required'
         ]);
 
         $client = Client::findOrFail($id);
@@ -132,10 +128,10 @@ class ClientController extends Controller
         $client->first_name = $validData['first_name'];
         $client->last_name = $validData['last_name'];
         $client->phone_number = $validData['phone_number'];
-        $client->email = $validData['email'];
         $client->address = $validData['address'];
-
+        $client->email  = $validData['email'];
         $client->save();
+
         return redirect()->route('client.index');
     }
 

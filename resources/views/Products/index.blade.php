@@ -3,13 +3,15 @@
 
 
     <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('product.create')}}">
-                <div class="item-button">
-                    Añadir Producto
-                </div>
-            </a>
-        </div>
+        @can('product.create')
+            <div class="container-item">
+                <a class="item-menu" href="{{route('product.create')}}">
+                    <div class="item-button">
+                        Añadir Producto
+                    </div>
+                </a>
+            </div>
+        @endcan
     </div>
     <div>
         <form class="form" action="/product" method="get">
@@ -35,8 +37,12 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Valor Unidad</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                @can('product.edit')
+                    <th>Editar</th>
+                @endcan
+                @can('product.delete')
+                    <th>Eliminar</th>
+                @endcan
             </tr>
             @foreach($products as $product)
                 <div>
@@ -47,17 +53,20 @@
 
 
                         <td>{{$product->unit_value}}</td>
-
-                        <td>
-                            <a href="{{route('product.edit', $product->id)}}">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{route('product.delete', $product->id)}}">
-                                <i class="material-icons">delete_outline</i>
-                            </a>
-                        </td>
+                        @can('product.edit')
+                            <td>
+                                <a href="{{route('product.edit', $product->id)}}">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </td>
+                        @endcan
+                        @can('product.delete')
+                            <td>
+                                <a href="{{route('product.delete', $product->id)}}">
+                                    <i class="material-icons">delete_outline</i>
+                                </a>
+                            </td>
+                        @endcan
                     </tr>
                 </div>
             @endforeach()
@@ -68,22 +77,26 @@
         {{$products->appends($_GET)->links()}}
     </div>
 
-    <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('product.export')}}">
-                <div class="item-button">
-                    Export
-                </div>
-            </a>
-        </div>
-    </div>
-    <div>
-        <form class="form" action="{{route('product.import')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="items-form">
-                <input type="file" name="file" id="">
-                <button class="button" type="submit">Importar</button>
+    @can('product.export')
+        <div class="container-menu">
+            <div class="container-item">
+                <a class="item-menu" href="{{route('product.export')}}">
+                    <div class="item-button">
+                        Export
+                    </div>
+                </a>
             </div>
-        </form>
-    </div>
+        </div>
+    @endcan
+    @can('product.import')
+        <div>
+            <form class="form" action="{{route('product.import')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="items-form">
+                    <input type="file" name="file" id="">
+                    <button class="button" type="submit">Importar</button>
+                </div>
+            </form>
+        </div>
+    @endcan
 @endsection

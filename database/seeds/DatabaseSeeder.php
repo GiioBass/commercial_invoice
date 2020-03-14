@@ -18,23 +18,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       /* Schema::disableForeignKeyConstraints();
 
+        Schema::disableForeignKeyConstraints();
         DB::table('clients')->truncate();
         DB::table('sellers')->truncate();
         DB::table('products')->truncate();
         DB::table('invoices')->truncate();
         DB::table('invoice_product')->truncate();
         DB::table('document_types')->truncate();
-
         Schema::enableForeignKeyConstraints();
 
-        DocumentTypeSeeder::seederDocumentType();
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(DocumentTypeSeeder::class);
 
         factory(Client::class, 30)->create();
         factory(Seller::class, 30)->create();
         factory(Invoice::class, 30)->create();
         factory(Product::class, 30)->create();
-        factory(Invoice_product::class, 100)->create();*/
+        factory(Invoice_product::class, 100)->create();
     }
 }

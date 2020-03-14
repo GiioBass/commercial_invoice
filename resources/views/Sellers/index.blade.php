@@ -2,13 +2,15 @@
 @section('content')
 
     <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('seller.create')}}">
-                <div class="item-button">
-                    Añadir Vendedor
-                </div>
-            </a>
-        </div>
+        @can('seller.create')
+            <div class="container-item">
+                <a class="item-menu" href="{{route('seller.create')}}">
+                    <div class="item-button">
+                        Añadir Vendedor
+                    </div>
+                </a>
+            </div>
+        @endcan
     </div>
     <div>
         <form class="form" action="/seller" method="get">
@@ -36,8 +38,12 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Número Tel</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    @can('seller.edit')
+                        <th>Editar</th>
+                    @endcan
+                    @can('seller.delete')
+                        <th>Eliminar</th>
+                    @endcan
                 </tr>
             </div>
             @foreach($sellers as $seller)
@@ -48,43 +54,48 @@
                         <td>{{$seller->last_name}}</td>
                         <td>{{$seller->email}}</td>
                         <td>{{$seller->phone_number}}</td>
-                        <td>
-                            <a href="{{route('seller.edit', $seller->id)}}">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{route('seller.delete',$seller->id)}}">
-                                <i class="material-icons">delete_outline</i>
-                            </a>
-                        </td>
-
+                        @can('seller.edit')
+                            <td>
+                                <a href="{{route('seller.edit', $seller->id)}}">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </td>
+                        @endcan
+                        @can('seller.delete')
+                            <td>
+                                <a href="{{route('seller.delete',$seller->id)}}">
+                                    <i class="material-icons">delete_outline</i>
+                                </a>
+                            </td>
+                        @endcan
                     </tr>
                 </div>
             @endforeach()
-
         </table>
     </div>
     <div class="container-pagination">
         {{$sellers->links()}}
     </div>
-    <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('seller.export')}}">
-                <div class="item-button">
-                    Exportar
-                </div>
-            </a>
-        </div>
-    </div>
-    <div>
-
-        <form class="form" action="{{route('seller.import')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="items-form">
-                <input type="file" name="file" id="">
-                <button class="button" type="submit">Importar</button>
+    @can('seller.export')
+        <div class="container-menu">
+            <div class="container-item">
+                <a class="item-menu" href="{{route('seller.export')}}">
+                    <div class="item-button">
+                        Exportar
+                    </div>
+                </a>
             </div>
-        </form>
-    </div>
+        </div>
+    @endcan
+    @can('seller.import')
+        <div>
+            <form class="form" action="{{route('seller.import')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="items-form">
+                    <input type="file" name="file" id="">
+                    <button class="button" type="submit">Importar</button>
+                </div>
+            </form>
+        </div>
+    @endcan
 @endsection
