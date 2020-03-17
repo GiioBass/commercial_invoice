@@ -17,7 +17,6 @@ class InvoiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -45,7 +44,7 @@ class InvoiceController extends Controller
                 ->client($client_id)
                 ->paginate(10),
 
-        ]);
+        ], compact('code', 'dateStart', 'dateFinish', 'seller_id', 'client_id'));
     }
 
     /**
@@ -196,11 +195,14 @@ class InvoiceController extends Controller
     }
 
     /**
-     * @return BinaryFileResponse
+     * @param Request $request
+     * @return void
      */
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.xlsx');
+        $typeFile = $request->get('typeFile');
+
+       return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
     }
 
     /**

@@ -6,11 +6,13 @@ use App\Invoice_product;
 use App\Product;
 use App\Seller;
 use Illuminate\Database\Seeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
+    use RefreshDatabase;
     /**
      * Seed the application's database.
      *
@@ -18,18 +20,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Schema::disableForeignKeyConstraints();
 
-        DB::table('clients')->truncate();
-        DB::table('sellers')->truncate();
-        DB::table('products')->truncate();
-        DB::table('invoices')->truncate();
-        DB::table('invoice_product')->truncate();
-        DB::table('document_types')->truncate();
+//        Schema::disableForeignKeyConstraints();
+//        DB::table('clients')->truncate();
+//        DB::table('sellers')->truncate();
+//        DB::table('products')->truncate();
+//        DB::table('invoices')->truncate();
+//        DB::table('invoice_product')->truncate();
+//        DB::table('document_types')->truncate();
+//        Schema::enableForeignKeyConstraints();
 
-        Schema::enableForeignKeyConstraints();
-
-        DocumentTypeSeeder::seederDocumentType();
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(UserAdminSeeder::class);
+        $this->call(DocumentTypeSeeder::class);
 
         factory(Client::class, 30)->create();
         factory(Seller::class, 30)->create();

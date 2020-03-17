@@ -22,6 +22,11 @@ window.Vue = require('vue');
 
 Vue.component('ValidationProvider', ValidationProvider);
 
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+
 import { ValidationProvider } from 'vee-validate';
 import { extend } from 'vee-validate';
 

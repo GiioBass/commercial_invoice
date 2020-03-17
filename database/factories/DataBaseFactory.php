@@ -1,6 +1,6 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
 use App\Client;
 use App\DocumentType;
@@ -9,6 +9,7 @@ use App\Invoice_product;
 use App\Product;
 use App\Seller;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 /** @var TYPE_NAME $factory */
 $factory->define(Client::class, function (Faker $faker) {

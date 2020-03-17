@@ -4,11 +4,13 @@
 
     <div class="container-menu">
         <div class="container-item">
-            <a class="item-menu" href="{{route('invoice.create')}}">
-                <div class="item-button">
-                    Nueva Factura
-                </div>
-            </a>
+            @can('invoice.create')
+                <a class="item-menu" href="{{route('invoice.create')}}">
+                    <div class="item-button">
+                        Nueva Factura
+                    </div>
+                </a>
+            @endcan
             <a class="item-menu" href="/orders/updateInvoices">
                 <div class="item-button">
                     Actualizar Facturas
@@ -36,22 +38,24 @@
                     <form class="form" action="/invoice" method="get">
                         <div class="items-form">
                             <div class="list">
-                                <select class="list-select" name="state" id="" placeholder="Estado" style="width: 20% ">
+                                <select class="list-select" name="state" id="" placeholder=""  style="width: 20% ">
                                     <option value=""></option>
                                     <option value="Por pagar">Por Pagar</option>
                                     <option value="Pagado">Pagado</option>
                                 </select>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
-                                    <input v-model="value" type="search" name="code" placeholder="Codigo Factura" style="width: 20% ">
+
+                                    <input v-model="value" type="search" name="code" placeholder="Codigo Factura {{$code}} " style="width: 20% ">
                                 </validation-provider>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
-                                    <input v-model="value" type="search" name="seller_id" placeholder="Id Vendedor" style="width: 20% ">
+                                    <input v-model="value" type="search" name="seller_id" placeholder="Id Vendedor {{$seller_id}}" style="width: 20% ">
                                 </validation-provider>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
-                                    <input v-model="value" type="search" name="client_id" placeholder="Id Clientes" style="width: 20% ">
+                                    <input v-model="value" type="search" name="client_id" placeholder="Id Cliente {{$client_id}}" style="width: 20% ">
+
                                 </validation-provider>
 
                             </div>
@@ -73,7 +77,9 @@
             <div>
                 <table>
                     <tr>
-                        <th>Ver</th>
+                        @can('invoice.show')
+                            <th>Ver</th>
+                        @endcan
                         <th>Id</th>
                         <th>Estado</th>
                         <th>Cliente</th>
@@ -81,17 +87,23 @@
                         <th>Fecha de Vencimiento</th>
                         <th>Total</th>
                         <th>Vendedor</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        @can('invoice.edit')
+                            <th>Editar</th>
+                        @endcan
+                        @can('invoice.delete')
+                            <th>Eliminar</th>
+                        @endcan
                     </tr>
                     @foreach($invoices as $invoice)
                         <tr>
                             <div style="width:50%; margin: 0px auto; font-size: 20px">
-                                <td>
-                                    <a href="{{route('invoice.show', $invoice->id)}}">
-                                        <i class="material-icons">visibility</i>
-                                    </a>
-                                </td>
+                                @can('invoice.show')
+                                    <td>
+                                        <a href="{{route('invoice.show', $invoice->id)}}">
+                                            <i class="material-icons">visibility</i>
+                                        </a>
+                                    </td>
+                                @endcan
                                 <td>{{$invoice->code}}</td>
                                 <td>{{$invoice->state}}</td>
                                 <td>{{$invoice->client->first_name}}</td>
@@ -100,16 +112,20 @@
                                 <td>
                                     ${{number_format($invoice->total, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
                                 <td>{{$invoice->seller->first_name}}</td>
-                                <td>
-                                    <a href="{{route('invoice.edit', $invoice->id)}}">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{route('invoice.delete', $invoice->id )}}">
-                                        <i class="material-icons">delete_outline</i>
-                                    </a>
-                                </td>
+                                @can('invoice.edit')
+                                    <td>
+                                        <a href="{{route('invoice.edit', $invoice->id)}}">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                @endcan
+                                @can('invoice.delete')
+                                    <td>
+                                        <a href="{{route('invoice.delete', $invoice->id )}}">
+                                            <i class="material-icons">delete_outline</i>
+                                        </a>
+                                    </td>
+                                @endcan
 
                             </div>
                         </tr>
@@ -119,27 +135,38 @@
             <div class="container-pagination">
                 {{$invoices->appends($_GET)->links()}}
             </div>
-            <div class="container-menu">
-                <div class="container-item">
-                    <a class="item-menu" href="{{route('invoice.export')}}">
-                        <div class="item-button">
-                            Exportar Factura
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-
-            <br>
-            <div>
-                <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
-                    <div class="items-form">
-                        @csrf
-                        <input type="file" name="file" id="">
-                        <button class="button" type="submit">Importar</button>
+            @can('invoice.export')
+                    <form action="{{route('invoice.export')}}" method="get">
+                        <select name="typeFile" id="">
+                            <option value="csv">CSV</option>
+                            <option value="xlsx">XLSX</option>
+                            <option value="txt">TXT</option>
+                        </select>
+                        <input type="submit" value="Exportar">
+                    </form>
+               {{-- <div class="container-menu">
+                    <div class="container-item">
+                        <a class="item-menu" href="{{route('invoice.export')}}">
+                            <div class="item-button">
+                                Exportar Factura
+                            </div>
+                        </a>
                     </div>
-                </form>
-            </div>
+                </div>--}}
+            @endcan
             <br>
-
+            @can('invoice.import')
+                <div>
+                    <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
+                        <div class="items-form">
+                            @csrf
+                            <input type="file" name="file" id="">
+                            <button class="button" type="submit">Importar</button>
+                        </div>
+                    </form>
+                </div>
+            @endcan
+            <br>
+        </div>
+    </div>
 @endsection
