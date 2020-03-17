@@ -56,21 +56,27 @@
 
 
                 <div>
-                    <a class="item-menu" href="{{route('order.create', $invoices->id)}}">
-                        <div class="item-button">
-                            Agregar Producto
-                        </div>
-                    </a>
-                    <a class="item-menu" href="{{route('report.show', $invoices->id)}}">
-                        <div class="item-button">
-                            Ver Historico de Pagos
-                        </div>
-                    </a>
-                    <a class="item-menu" href="{{route('report.create', $invoices->id)}}">
-                        <div class="item-button">
-                            Realizar Pago
-                        </div>
-                    </a>
+                    @can('order.create')
+                        <a class="item-menu" href="{{route('order.create', $invoices->id)}}">
+                            <div class="item-button">
+                                Agregar Producto
+                            </div>
+                        </a>
+                    @endcan
+                    @can('report.show')
+                        <a class="item-menu" href="{{route('report.show', $invoices->id)}}">
+                            <div class="item-button">
+                                Ver Historico de Pagos
+                            </div>
+                        </a>
+                    @endcan
+                    @can('report.create')
+                        <a class="item-menu" href="{{route('report.create', $invoices->id)}}">
+                            <div class="item-button">
+                                Realizar Pago
+                            </div>
+                        </a>
+                    @endcan
                 </div>
                 <table>
                     <tr>
@@ -79,21 +85,34 @@
                         <th>Cantidad</th>
                         <th>Valor Unidad</th>
                         <th>Total Producto</th>
-                        <th>Eliminar</th>
+                        @can('order.delete')
+                            <th>Eliminar</th>
+                        @endcan
                     </tr>
                     @foreach ($invoices->products as $product)
                         <tr>
-                            <td>{{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
-                            <td>{{$product->name}}</td>
-                            <td>{{$product->pivot->quantity}}</td>
                             <td>
-                                $ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
-                            <td>
-                                $ {{number_format($product->unit_value * $product->pivot->quantity, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}</td>
-                            <td><a href="{{route('order.delete', [$invoices->id ,$product->pivot->id])}}">
-                                    <i class="material-icons">delete_outline</i>
-                                </a>
+                                {{number_format($product->id, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
                             </td>
+                            <td>
+                                {{$product->name}}
+                            </td>
+                            <td>
+                                {{$product->pivot->quantity}}
+                            </td>
+                            <td>
+                                $ {{number_format($product->unit_value, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
+                            </td>
+                            <td>
+                                $ {{number_format($product->unit_value * $product->pivot->quantity, $decimals = 0, $dec_point = '.', $thousands_sep = '.')}}
+                            </td>
+                            @can('order.delete')
+                                <td>
+                                    <a href="{{route('order.delete', [$invoices->id ,$product->pivot->id])}}">
+                                        <i class="material-icons">delete_outline</i>
+                                    </a>
+                                </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </table>

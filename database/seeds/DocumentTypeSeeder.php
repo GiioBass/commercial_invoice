@@ -14,9 +14,13 @@ class DocumentTypeSeeder extends Seeder
 
 
 
-    public static function seederDocumentType(){
+    public function run(){
 
+        Schema::disableForeignKeyConstraints();
 
+        DB::table('document_types')->truncate();
+
+        Schema::enableForeignKeyConstraints();
 
         DB::table('document_types')->insert([
            ['id' => 1, 'documentType' => 'CC', 'documentName' => 'Cedula de Ciudadania'],
@@ -26,33 +30,5 @@ class DocumentTypeSeeder extends Seeder
 
        ]);
 
-//       $documents = [
-//            [1,'CC', 'Cedula de Ciudadania'],
-//            [2, 'CE', 'Cedula de Extranjeria'],
-//            [3, 'NIT', 'Numero de Identificacion Tributaria'],
-//            [4, 'RUT', 'Registro Unico Tributario'],
-//       ];
-//
-//       $type = [
-//           'id',
-//           'documentType',
-//           'documentName',
-//       ];
-
-//        $sizeArray = sizeof($documents);
-//
-//       for ($i = 0; $i < $sizeArray; $i ++)
-//       {
-//           DB::table('document_types')->insert(Array[
-//
-//               for ($j = 0; $j <= 2; $j++){
-//
-//                   $type[$j]  => $documents[$i][$j];
-//               }
-//
-//
-//           ]);
-//
-//       }
     }
 }

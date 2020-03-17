@@ -17,7 +17,6 @@ class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -34,7 +33,7 @@ class SellerController extends Controller
             'sellers' => Seller::orderBy('id', 'asc')
                 ->id($id)
                 ->paginate(10),
-        ]);
+        ], compact('id'));
     }
 
     /**
@@ -63,14 +62,16 @@ class SellerController extends Controller
         ]);
 
         $seller = new Seller();
-        $seller->id = $validData['id'];
-        $seller->first_name = $validData['first_name'];
-        $seller->last_name = $validData['last_name'];
-        $seller->email = $validData['email'];
-        $seller->phone_number = $validData['phone_number'];
+        $seller->id = $request->input('id');
+        $seller->first_name = $request->input('first_name');
+        $seller->last_name = $request->input('last_name');
+        $seller->email = $request->input('email');
+        $seller->phone_number = $request->input('phone_number');
 
         $seller->save();
-        return back()->with('message', 'Vendedor Añadido');
+        return
+            redirect()->route('seller.create') ;
+//            back()->with('message', 'Vendedor Añadido');
     }
 
     /**

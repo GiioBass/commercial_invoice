@@ -18,30 +18,62 @@
                     Inicio
                 </li>
             </a>
-            <a class="title-button" href="{{route('client.index')}}">
-                <i class="material-icons">person_outline</i>
-                <li class="link">
-                    Clientes
-                </li>
-            </a>
-            <a class="title-button" href="{{route('product.index')}}">
-                <i class="material-icons">local_grocery_store</i>
-                <li class="link">
-                    Productos
-                </li>
-            </a>
-            <a class="title-button" href="{{route('seller.index')}}">
-                <i class="material-icons">person_outline</i>
-                <li class="link">
-                    Vendedores
-                </li>
-            </a>
-            <a class="title-button" href="{{route('invoice.index')}}">
-                <i class="material-icons">event_note</i>
-                <li class="link">
-                    Facturas
-                </li>
-            </a>
+            @can('client.index')
+                <a class="title-button" href="{{route('client.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        Clientes
+                    </li>
+                </a>
+            @endcan
+            @can('product.index')
+                <a class="title-button" href="{{route('product.index')}}">
+                    <i class="material-icons">local_grocery_store</i>
+                    <li class="link">
+                        Productos
+                    </li>
+                </a>
+            @endcan
+            @can('seller.index')
+                <a class="title-button" href="{{route('seller.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        Vendedores
+                    </li>
+                </a>
+            @endcan
+            @can('invoice.index')
+                <a class="title-button" href="{{route('invoice.index')}}">
+                    <i class="material-icons">event_note</i>
+                    <li class="link">
+                        Facturas
+                    </li>
+                </a>
+            @endcan
+            @can('user.index')
+                <a class="title-button" href="{{route('user.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        Usuarios
+                    </li>
+                </a>
+            @endcan
+            @can('role.index')
+                <a class="title-button" href="{{route('role.index')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        Roles
+                    </li>
+                </a>
+            @endcan
+            @can('access_api')
+                <a class="title-button" href="{{route('access_api')}}">
+                    <i class="material-icons">person_outline</i>
+                    <li class="link">
+                        Accesos API
+                    </li>
+                </a>
+            @endcan
 
         </ul>
     </div>

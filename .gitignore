@@ -22,3 +22,7 @@ composer.lock
 dump.html
 config/debug-server.php
 
+
+storage/oauth-public.key
+storage/oauth-private.key
+
