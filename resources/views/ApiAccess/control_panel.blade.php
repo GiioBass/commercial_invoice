@@ -35,7 +35,14 @@
         <div class="container-title">
             <h1 class="title">Control de Accesos Api</h1>
         </div>
-
+        <div>
+            <h3>Crear Usuario</h3>
+            <form action="{{route('user.store')}}" method="POST">
+                <input type="text" name="name" id="" placeholder="Nombre">
+                <input type="text" name="email" id="" placeholder="e-mail">
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
 
         <div class="container-content">
             <div id="app">
