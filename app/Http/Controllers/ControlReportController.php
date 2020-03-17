@@ -18,8 +18,9 @@ class ControlReportController extends Controller
     {
     }
 
-    public function credentials(){
-       return new PlacetoPay([
+    public function credentials()
+    {
+        return new PlacetoPay([
             'login' =>config('redirection_credentials.login'),
             'tranKey' => config('redirection_credentials.trankey'),
             'url' => config('redirection_credentials.url'),
@@ -229,7 +230,7 @@ class ControlReportController extends Controller
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
                     $state->save();
-                    // This is additional information about it
+                // This is additional information about it
 //                    print_r($response->toArray());
                 } else {
 //                    $message = ($requestId . ' ' . $response->status()->message() . "\n");

@@ -76,7 +76,7 @@ Route::redirect('/', '/home');
 
 
 Route::middleware(['auth'])->group(function () {
-//  Routes Clients
+    //  Routes Clients
     Route::get('/client', 'ClientController@index')->name('client.index')
         ->middleware('can:client.index');
     Route::get('/client/create', 'ClientController@create')->name('client.create')
@@ -95,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:client.import');
     Route::get('/client/export', 'ClientController@export')->name('client.export')
         ->middleware('can:client.export');
-//  Routes Products
+    //  Routes Products
     Route::get('/product', 'ProductController@index')->name('product.index')
         ->middleware('can:product.index');
     Route::get('/product/create', 'ProductController@create')->name('product.create')
@@ -135,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/seller/export', 'SellerController@export')->name('seller.export')
         ->middleware('can:seller.export');
 
-//  Routes invoice
+    //  Routes invoice
     Route::get('/invoice', 'InvoiceController@index')->name('invoice.index')
         ->middleware('can:invoice.index');
     Route::get('/invoice/{invoice}/show', 'InvoiceController@show')->name('invoice.show')
@@ -157,7 +157,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoice/export', 'InvoiceController@export')->name('invoice.export')
         ->middleware('can:invoice.export');
 
-//  Routes user
+    //  Routes user
     Route::get('/user', 'UserController@index')->name('user.index')
         ->middleware('can:user.index');
     Route::get('/user/create', 'UserController@create')->name('user.create')
@@ -171,7 +171,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/user/{id}', 'UserController@update')->name('user.update')
         ->middleware('can:user.edit');
 
-//  Routes role
+    //  Routes role
     Route::get('/role', 'RoleController@index')->name('role.index')
         ->middleware('can:role.index');
     Route::get('/role/create', 'RoleController@create')->name('role.create')
@@ -185,7 +185,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/role/{id}', 'RoleController@update')->name('role.update')
         ->middleware('can:role.edit');
 
-//  Routes report
+    //  Routes report
 
     Route::get('/invoice/{invoice}/report/update', 'ControlReportController@update')->name('url.redirection')
         ->middleware('can:report.create');
@@ -204,12 +204,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/import', 'InvoiceProductController@import')->name('orders.import')
         ->middleware('can:orders.import');
 
-//  Panel control de accesos
+    //  Panel control de accesos
     Route::middleware('can:access_api')->get('access_api', function () {
         return view('ApiAccess.control_panel');
     })->name('access_api');
-
 });
-
-
-

@@ -81,7 +81,6 @@ class ApiInvoiceController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**

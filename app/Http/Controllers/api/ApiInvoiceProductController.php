@@ -55,7 +55,6 @@ class ApiInvoiceProductController extends Controller
         $invoice_product->save();
         $this->updateOrder($invoice);
         return response(['message' => 'Producto Añadido']);
-
     }
 
     /**

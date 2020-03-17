@@ -9,7 +9,6 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -55,7 +54,6 @@ class UserController extends Controller
         $user->email = $validData['email'];
         $user->getAuthPassword();
         $user->save();
-
     }
 
     /**

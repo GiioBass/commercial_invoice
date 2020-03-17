@@ -9,13 +9,12 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class FirstSheetImport implements ToModel,  WithValidation, WithHeadingRow
+class FirstSheetImport implements ToModel, WithValidation, WithHeadingRow
 {
     use Importable;
 
-    public function model(Array $row)
+    public function model(array $row)
     {
-
         return new Invoice([
                 'code' => $row['code'],
                 'state' => $row['state'],
@@ -27,11 +26,11 @@ class FirstSheetImport implements ToModel,  WithValidation, WithHeadingRow
                 'seller_id' => $row['seller_id'],
                 'client_id' => $row['client_id'],
             ]);
-        }
+    }
 
-        public function rules(): array
-        {
-            return[
+    public function rules(): array
+    {
+        return[
                 'code' => 'required|numeric',
                 'state' => 'required|string',
                 'expedition_date' => 'required|date',
@@ -42,12 +41,11 @@ class FirstSheetImport implements ToModel,  WithValidation, WithHeadingRow
                 'seller_id' => 'required|numeric',
                 'client_id' => 'required|numeric',
             ];
+    }
 
-        }
-
-        public function customValidationMessages()
-        {
-            return [
+    public function customValidationMessages()
+    {
+        return [
                 'code.required' => 'El código es requerido.',
                 'code.numeric' => 'El código debe ser númerico.',
                 'state.required' => 'El Estado de la factura es requerido.',
@@ -61,10 +59,11 @@ class FirstSheetImport implements ToModel,  WithValidation, WithHeadingRow
                 'client.required' => 'El codigo del cliente es requerido.',
                 'client.numeric' => 'El codigo del cliente debe ser númerico.',
             ];
-        }
+    }
 
-        public function customValidationAttributes(){
-            return[
+    public function customValidationAttributes()
+    {
+        return[
                 'code' => 'codigo',
                 'state' => 'estado',
                 'expedition_date' => 'fecha de expedicion',
@@ -75,5 +74,5 @@ class FirstSheetImport implements ToModel,  WithValidation, WithHeadingRow
                 'seller_id' => 'vendedor',
                 'client_id' => 'cliente',
             ];
-        }
+    }
 }

@@ -16,7 +16,6 @@ class UserAdminSeeder extends Seeder
      */
     public function run()
     {
-
         Schema::disableForeignKeyConstraints();
 
         DB::table('users')->truncate();

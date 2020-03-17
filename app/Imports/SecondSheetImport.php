@@ -11,12 +11,12 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
 {
     use Importable;
-//TODO No importa la segunda hoja de excel, queda en blanco
+    //TODO No importa la segunda hoja de excel, queda en blanco
 
     /**
      * @inheritDoc
      */
-    public function model(Array $row)
+    public function model(array $row)
     {
         return new invoice_product([
             'quantity' => $row['quantity'],

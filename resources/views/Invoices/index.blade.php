@@ -140,7 +140,7 @@
                         <select name="typeFile" id="">
                             <option value="csv">CSV</option>
                             <option value="xlsx">XLSX</option>
-                            <option value="txt">TXT</option>
+{{--                            <option value="txt">TXT</option>--}}
                         </select>
                         <input type="submit" value="Exportar">
                     </form>

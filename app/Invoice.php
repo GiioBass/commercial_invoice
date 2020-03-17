@@ -80,7 +80,7 @@ class Invoice extends Model
      */
     public function getIvaAttribute()
     {
-         return $this->subTotal * 0.19;
+        return $this->subTotal * 0.19;
     }
 
     /**

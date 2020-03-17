@@ -196,13 +196,13 @@ class InvoiceController extends Controller
 
     /**
      * @param Request $request
-     * @return void
+     * @return BinaryFileResponse
      */
     public function export(Request $request)
     {
         $typeFile = $request->get('typeFile');
 
-       return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
+        return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
     }
 
     /**
