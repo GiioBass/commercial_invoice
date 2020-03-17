@@ -136,7 +136,15 @@
                 {{$invoices->appends($_GET)->links()}}
             </div>
             @can('invoice.export')
-                <div class="container-menu">
+                    <form action="{{route('invoice.export')}}" method="get">
+                        <select name="typeFile" id="">
+                            <option value="csv">CSV</option>
+                            <option value="xlsx">XLSX</option>
+                            <option value="txt">TXT</option>
+                        </select>
+                        <input type="submit" value="Exportar">
+                    </form>
+               {{-- <div class="container-menu">
                     <div class="container-item">
                         <a class="item-menu" href="{{route('invoice.export')}}">
                             <div class="item-button">
@@ -144,7 +152,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div>--}}
             @endcan
             <br>
             @can('invoice.import')
