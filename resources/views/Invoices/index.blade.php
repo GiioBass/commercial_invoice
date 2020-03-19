@@ -157,7 +157,7 @@
             <br>
             @can('invoice.import')
                 <div>
-                    <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
+                    <form class="form" action="{{route('invoice.import')}}" method="POST" enctype="multipart/form-data">
                         <div class="items-form">
                             @csrf
                             <input type="file" name="file" id="">
