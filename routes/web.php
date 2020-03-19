@@ -91,7 +91,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:client.edit');
     Route::get('/client{id}/confirmDelete', 'ClientController@confirmDelete')->name('client.delete')
         ->middleware('can:client.delete');
-    Route::get('/client/import', 'ClientController@import')->name('client.import')
+    Route::post('/client/import', 'ClientController@import')->name('client.import')
         ->middleware('can:client.import');
     Route::get('/client/export', 'ClientController@export')->name('client.export')
         ->middleware('can:client.export');
@@ -110,7 +110,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:product.edit');
     Route::get('/product/{id}/confirmDelete', 'ProductController@confirmDelete')->name('product.delete')
         ->middleware('can:product.delete');
-    Route::get('/product/import', 'ProductController@import')->name('product.import')
+    Route::post('/product/import', 'ProductController@import')->name('product.import')
         ->middleware('can:product.import');
     Route::get('/product/export', 'ProductController@export')->name('product.export')
         ->middleware('can:product.export');
@@ -130,7 +130,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:seller.edit');
     Route::get('/seller/{id}/confirmDelete', 'SellerController@confirmDelete')->name('seller.delete')
         ->middleware('can:seller.delete');
-    Route::get('/seller/import', 'SellerController@import')->name('seller.import')
+    Route::post('/seller/import', 'SellerController@import')->name('seller.import')
         ->middleware('can:seller.import');
     Route::get('/seller/export', 'SellerController@export')->name('seller.export')
         ->middleware('can:seller.export');
@@ -152,7 +152,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:invoice.edit');
     Route::get('/invoice/{id}/confirmDelete', 'InvoiceController@confirmDelete')->name('invoice.delete')
         ->middleware('can:invoice.delete');
-    Route::get('/invoice/import', 'InvoiceController@import')->name('invoice.import')
+    Route::post('/invoice/import', 'InvoiceController@import')->name('invoice.import')
         ->middleware('can:invoice.import');
     Route::get('/invoice/export', 'InvoiceController@export')->name('invoice.export')
         ->middleware('can:invoice.export');
