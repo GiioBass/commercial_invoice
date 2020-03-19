@@ -46,7 +46,7 @@ class ControlReportController extends Controller
     {
         $placetopay = $this->credentials();
 
-        $reference = $invoice->code;
+        $reference = $invoice->id;
 //            'TEST_' . time();
 
         // Request Information
