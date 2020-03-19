@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\invoice_product;
+use App\Invoice_product;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -16,9 +16,9 @@ class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
     /**
      * @inheritDoc
      */
-    public function model(array $row)
+    public function model(Array $row)
     {
-        return new invoice_product([
+        return new Invoice_product([
             'quantity' => $row['quantity'],
             'invoice_id' => $row['invoice_id'],
             'product_id' => $row['product_id'],
