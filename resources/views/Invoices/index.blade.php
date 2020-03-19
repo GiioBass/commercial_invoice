@@ -47,7 +47,7 @@
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
 
                                     <input v-model="value" type="text" name="id"
-                                           placeholder="Codigo Factura  " style="width: 20% ">
+                                           placeholder="Codigo Factura {{$id}} " style="width: 20% ">
                                 </validation-provider>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
