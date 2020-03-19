@@ -106,13 +106,13 @@ class Invoice extends Model
 
     /**
      * @param $query
-     * @param $code
+     * @param $id
      * @return mixed
      */
-    public function scopeCode($query, $code)
+    public function scopeId($query, $id)
     {
-        if (trim($code) != "") {
-            return $query->where('code', "$code");
+        if (trim($id) != "") {
+            return $query->where('id', "$id");
         }
     }
 
