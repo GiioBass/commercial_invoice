@@ -65,15 +65,16 @@ class InvoiceController extends Controller
 
     public function createCode()
     {
-        $invoice = Invoice::all()->last()->id;
+        $invoice = Invoice::all()->last();
 
         if ($invoice === null) {
             $invoice = 1;
             return date('y') . date('d') . date('H') . $invoice;
-            return $code;
         } else {
-            $invoice += 1;
-            return date('y') . date('d') . date('H') . $invoice;
+            $lastDigit = Invoice::all()->last()->id;
+            $lastDigit = substr($lastDigit, -1);
+            $lastDigit += 1;
+            return date('y') . date('d') . date('H') . $lastDigit;
         }
     }
 
@@ -91,7 +92,7 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-        $invoice->code = $this->createCode();
+        $invoice->id = $this->createCode();
         $invoice->state = $validData['state'];
         $invoice->expedition_date = $validData['expedition_date'];
         $invoice->expiration_date = $validData['expiration_date'];
