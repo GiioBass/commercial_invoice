@@ -89,9 +89,9 @@ class InvoiceController extends Controller
             'seller_id' => 'required|numeric',
             'client_id' => 'required|numeric',
         ]);
-
+        $code = $this->createCode();
         $invoice = new Invoice;
-        $invoice->id = $this->createCode();
+        $invoice->id = $code;
         $invoice->state = $validData['state'];
         $invoice->expedition_date = $validData['expedition_date'];
         $invoice->expiration_date = $validData['expiration_date'];
@@ -101,7 +101,7 @@ class InvoiceController extends Controller
         $invoice->seller_id = $validData['seller_id'];
         $invoice->client_id = $validData['client_id'];
         $invoice->save();
-        return back()->with('message', 'Factura Creada');
+        return redirect()->route('invoice.show', $code)->with('message', 'Factura Creada');
     }
 
     /**
