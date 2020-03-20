@@ -12,7 +12,6 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
     /**
      * Display a listing of the resource.
@@ -69,9 +68,8 @@ class RoleController extends Controller
      * @param $id
      * @return Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-
         $role = Role::find($id);
         $permissions = Permission::get();
 
@@ -101,7 +99,6 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-
         Role::find($id)->delete();
 
         return back()->with('info', 'Eliminado correctamente');

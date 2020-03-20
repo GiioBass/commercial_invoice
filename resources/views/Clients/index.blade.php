@@ -2,7 +2,7 @@
 @section('content')
     {{--TODO provisional--}}
     @php
-        $documentType = App\DocumentType::all();
+
     @endphp
     @can('client.create')
         <div class="container-menu">
@@ -59,21 +59,6 @@
                     <td>{{$client->phone_number}}</td>
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
-
-                    @can('client.edit')
-                        <td>
-                            <a href="{{route('client.edit', $client->id)}}">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        </td>
-                    @endcan
-                    @can('client.delete')
-                        <td>
-                            <a href="{{route('client.delete', $client->id)}}">
-                                <i class="material-icons">delete_outline</i>
-                            </a>
-                        </td>
-                    @endcan
 
                     @can('client.edit')
                         <td>

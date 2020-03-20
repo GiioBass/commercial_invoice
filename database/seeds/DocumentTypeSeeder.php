@@ -14,8 +14,8 @@ class DocumentTypeSeeder extends Seeder
 
 
 
-    public function run(){
-
+    public function run()
+    {
         Schema::disableForeignKeyConstraints();
 
         DB::table('document_types')->truncate();
@@ -29,6 +29,5 @@ class DocumentTypeSeeder extends Seeder
            ['id' => 4, 'documentType' => 'RUT', 'documentName' =>  'Registro Unico Tributario'],
 
        ]);
-
     }
 }

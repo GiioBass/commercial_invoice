@@ -38,7 +38,7 @@
                     <form class="form" action="/invoice" method="get">
                         <div class="items-form">
                             <div class="list">
-                                <select class="list-select" name="state" id="" placeholder=""  style="width: 20% ">
+                                <select class="list-select" name="state" id="" placeholder="" style="width: 20% ">
                                     <option value=""></option>
                                     <option value="Por pagar">Por Pagar</option>
                                     <option value="Pagado">Pagado</option>
@@ -46,15 +46,18 @@
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
 
-                                    <input v-model="value" type="search" name="code" placeholder="Codigo Factura {{$code}} " style="width: 20% ">
+                                    <input v-model="value" type="text" name="id"
+                                           placeholder="Codigo Factura {{$id}} " style="width: 20% ">
                                 </validation-provider>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
-                                    <input v-model="value" type="search" name="seller_id" placeholder="Id Vendedor {{$seller_id}}" style="width: 20% ">
+                                    <input v-model="value" type="search" name="seller_id"
+                                           placeholder="Id Vendedor {{$seller_id}}" style="width: 20% ">
                                 </validation-provider>
                                 <validation-provider rules="number" v-slot="v">
                                     <span class="validate-input">@{{ v.errors[0] }}</span>
-                                    <input v-model="value" type="search" name="client_id" placeholder="Id Cliente {{$client_id}}" style="width: 20% ">
+                                    <input v-model="value" type="search" name="client_id"
+                                           placeholder="Id Cliente {{$client_id}}" style="width: 20% ">
 
                                 </validation-provider>
 
@@ -104,7 +107,7 @@
                                         </a>
                                     </td>
                                 @endcan
-                                <td>{{$invoice->code}}</td>
+                                <td>{{$invoice->id}}</td>
                                 <td>{{$invoice->state}}</td>
                                 <td>{{$invoice->client->first_name}}</td>
                                 <td>{{$invoice->expedition_date}}</td>
@@ -136,28 +139,28 @@
                 {{$invoices->appends($_GET)->links()}}
             </div>
             @can('invoice.export')
-                    <form action="{{route('invoice.export')}}" method="get">
-                        <select name="typeFile" id="">
-                            <option value="csv">CSV</option>
-                            <option value="xlsx">XLSX</option>
-                            <option value="txt">TXT</option>
-                        </select>
-                        <input type="submit" value="Exportar">
-                    </form>
-               {{-- <div class="container-menu">
-                    <div class="container-item">
-                        <a class="item-menu" href="{{route('invoice.export')}}">
-                            <div class="item-button">
-                                Exportar Factura
-                            </div>
-                        </a>
-                    </div>
-                </div>--}}
+                <form action="{{route('invoice.export')}}" method="get">
+                    <select name="typeFile" id="">
+                        <option value="csv">CSV</option>
+                        <option value="xlsx">XLSX</option>
+                        {{--                            <option value="txt">TXT</option>--}}
+                    </select>
+                    <input type="submit" value="Exportar">
+                </form>
+                {{-- <div class="container-menu">
+                     <div class="container-item">
+                         <a class="item-menu" href="{{route('invoice.export')}}">
+                             <div class="item-button">
+                                 Exportar Factura
+                             </div>
+                         </a>
+                     </div>
+                 </div>--}}
             @endcan
             <br>
             @can('invoice.import')
                 <div>
-                    <form class="form" action="{{route('invoice.import')}}" method="post" enctype="multipart/form-data">
+                    <form class="form" action="{{route('invoice.import')}}" method="POST" enctype="multipart/form-data">
                         <div class="items-form">
                             @csrf
                             <input type="file" name="file" id="">

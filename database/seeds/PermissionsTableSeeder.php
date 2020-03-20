@@ -231,6 +231,5 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'access_api',
             'description' => 'Panel de permisos API',
         ]);
-
     }
 }

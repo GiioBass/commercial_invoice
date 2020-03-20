@@ -31,5 +31,4 @@ class CreatePermissionUserTable extends Migration
 
         Schema::drop($name);
     }
-
 }

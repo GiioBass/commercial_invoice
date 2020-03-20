@@ -6,7 +6,7 @@
         <div class="board-detail">
             <div class="title-detail">
                 <h1>Detalles
-                    Factura {{$invoices->code}}</h1>
+                    Factura {{$invoices->id}}</h1>
             </div>
             <div class="info">
                 <div>

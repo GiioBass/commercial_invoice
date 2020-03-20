@@ -20,7 +20,6 @@ class LoginTest extends TestCase
     {
         $response = $this->get(route('home'));
         $response->assertRedirect(route('login'));
-
     }
 
     /**
@@ -67,7 +66,6 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('home'));
         $response->assertOk(route('home'));
-
     }
 
     /**
@@ -78,7 +76,6 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('home'));
         $response->assertDontSeeText('Facturas');
-
     }
 
     /**
@@ -94,7 +91,6 @@ class LoginTest extends TestCase
         ]);
         $response = $this->actingAs($user)->get(route('home'));
         $response->assertSeeText('Facturas');
-
     }
 
     /**
@@ -105,7 +101,6 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('client.index'));
         $response->assertStatus(403);
-
     }
 
     /**
@@ -143,7 +138,6 @@ class LoginTest extends TestCase
      */
     public function SuccessViewClientsIndexAsignedRole()
     {
-
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
 
@@ -153,7 +147,6 @@ class LoginTest extends TestCase
         ]);
         $response = $this->actingAs($user)->get(route('client.index'));
         $response->assertOk();
-
     }
 
     /**
@@ -161,7 +154,6 @@ class LoginTest extends TestCase
      */
     public function SuccessViewInvoicesIndexAsignedRole()
     {
-
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
 
@@ -171,7 +163,6 @@ class LoginTest extends TestCase
         ]);
         $response = $this->actingAs($user)->get(route('invoice.index'));
         $response->assertOk();
-
     }
 
     /**
@@ -179,7 +170,6 @@ class LoginTest extends TestCase
      */
     public function SuccessViewClientsCreateAsignedRole()
     {
-
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
 
@@ -189,8 +179,5 @@ class LoginTest extends TestCase
         ]);
         $response = $this->actingAs($user)->get(route('client.create'));
         $response->assertOk();
-
     }
-
-
 }

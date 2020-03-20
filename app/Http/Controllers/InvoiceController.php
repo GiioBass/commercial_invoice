@@ -28,7 +28,7 @@ class InvoiceController extends Controller
     public function index(Request $request)
     {
         $state = $request->get('state');
-        $code = $request->get('code');
+        $id = $request->get('id');
         $dateStart = $request->get('dateStart');
         $dateFinish = $request->get('dateFinish');
         $seller_id = $request->get('seller_id');
@@ -38,13 +38,13 @@ class InvoiceController extends Controller
             'invoices' => Invoice::orderBy('id', 'asc')
                 ->with('client', 'seller', 'products')
                 ->state($state)
-                ->code($code)
+                ->id($id)
                 ->dates($dateStart, $dateFinish)
                 ->seller($seller_id)
                 ->client($client_id)
                 ->paginate(10),
 
-        ], compact('code', 'dateStart', 'dateFinish', 'seller_id', 'client_id'));
+        ], compact('id', 'dateStart', 'dateFinish', 'seller_id', 'client_id'));
     }
 
     /**
@@ -65,20 +65,20 @@ class InvoiceController extends Controller
 
     public function createCode()
     {
-        $invoice = Invoice::all()->last()->id;
+        $invoice = Invoice::all()->last();
 
         if ($invoice === null) {
             $invoice = 1;
             return date('y') . date('d') . date('H') . $invoice;
-            return $code;
         } else {
-            $invoice += 1;
-            return date('y') . date('d') . date('H') . $invoice;
+            $lastDigit = Invoice::all()->last()->id;
+            $lastDigit = substr($lastDigit, -1);
+            $lastDigit += 1;
+            return date('y') . date('d') . date('H') . $lastDigit;
         }
     }
 
 
-//    TODO añadir fecha mas codigo de factura : codigo + fecha
     public function store(Request $request)
     {
         $validData = $request->validate([
@@ -91,7 +91,7 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = new Invoice;
-        $invoice->code = $this->createCode();
+        $invoice->id = $this->createCode();
         $invoice->state = $validData['state'];
         $invoice->expedition_date = $validData['expedition_date'];
         $invoice->expiration_date = $validData['expiration_date'];
@@ -196,13 +196,13 @@ class InvoiceController extends Controller
 
     /**
      * @param Request $request
-     * @return void
+     * @return BinaryFileResponse
      */
     public function export(Request $request)
     {
         $typeFile = $request->get('typeFile');
 
-       return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
+        return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
     }
 
     /**

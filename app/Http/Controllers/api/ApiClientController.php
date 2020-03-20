@@ -59,8 +59,6 @@ class ApiClientController extends Controller
         $client->save();
 
         return response(['message' => 'Cliente Añadido']);
-
-
     }
 
     /**
@@ -94,7 +92,6 @@ class ApiClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validData = $request->validate([
            'id' => 'required|numeric',
            'document_type_id' => 'required|numeric',

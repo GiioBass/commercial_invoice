@@ -9,7 +9,6 @@ use Illuminate\View\View;
 
 class CachedDocumentType
 {
-
     protected $documentType;
 
 
@@ -35,5 +34,4 @@ class CachedDocumentType
             return $this->documentType->all();
         }));
     }
-
 }

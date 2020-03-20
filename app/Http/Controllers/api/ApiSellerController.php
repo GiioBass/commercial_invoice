@@ -55,7 +55,6 @@ class ApiSellerController extends Controller
 
         $seller->save();
         return response(['message' => 'Vendedor Añadido']);
-
     }
 
     /**
@@ -77,7 +76,6 @@ class ApiSellerController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
