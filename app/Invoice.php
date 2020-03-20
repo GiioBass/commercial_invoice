@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
+
     protected $fillable = [
 
         'id',
-        'code',
         'state',
         'expedition_date',
         'expiration_date',
@@ -80,7 +80,7 @@ class Invoice extends Model
      */
     public function getIvaAttribute()
     {
-         return $this->subTotal * 0.19;
+        return $this->subTotal * 0.19;
     }
 
     /**
@@ -106,13 +106,13 @@ class Invoice extends Model
 
     /**
      * @param $query
-     * @param $code
+     * @param $id
      * @return mixed
      */
-    public function scopeCode($query, $code)
+    public function scopeId($query, $id)
     {
-        if (trim($code) != "") {
-            return $query->where('code', "$code");
+        if (trim($id) != "") {
+            return $query->where('id', "$id");
         }
     }
 

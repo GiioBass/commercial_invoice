@@ -1,6 +1,6 @@
 @extends('template')
 @section('content')
-    {{--TODO provisional--}}
+
 
     @if(session('message'))
         <div>{{session('message')}}</div>

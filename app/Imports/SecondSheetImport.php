@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\invoice_product;
+use App\Invoice_product;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -11,14 +11,13 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
 {
     use Importable;
-//TODO No importa la segunda hoja de excel, queda en blanco
 
     /**
      * @inheritDoc
      */
     public function model(Array $row)
     {
-        return new invoice_product([
+        return new Invoice_product([
             'quantity' => $row['quantity'],
             'invoice_id' => $row['invoice_id'],
             'product_id' => $row['product_id'],
@@ -40,12 +39,12 @@ class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
     public function customValidationMessages()
     {
         return[
-            'quantity.required' => 'la cantidad es requerida',
-            'quantity.numeric' => 'la cantidad debe ser númerica',
-            'invoice_id.required' => 'El id de la factura es requerido',
-            'invoice_id.numeric' => 'El id de la factura debe ser númerico ',
-            'product_id.required' => 'El id del producto es requerido',
-            'product_id.numeric' => 'El id del producto debe ser númerico',
+            'quantity.required' => 'la cantidad de la orden es requerida',
+            'quantity.numeric' => 'la cantidad de la orden debe ser númerica',
+            'invoice_id.required' => 'El id de la factura en la orden es requerido',
+            'invoice_id.numeric' => 'El id de la factura en la orden debe ser númerico ',
+            'product_id.required' => 'El id del producto en la orden es requerido',
+            'product_id.numeric' => 'El id del producto en la orden debe ser númerico',
         ];
     }
 

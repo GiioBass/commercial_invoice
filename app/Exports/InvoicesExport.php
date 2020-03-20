@@ -3,12 +3,14 @@
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class InvoicesExport implements FromQuery, WithHeadings, ShouldAutoSize
 {
+    use exportable;
     public function query()
     {
         $invoice_product = DB::table('invoice_product')
