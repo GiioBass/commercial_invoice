@@ -17,8 +17,7 @@
                 </div>
                 <div>
                     <p>
-                        Tipo
-                        Id: {{$invoices->client->document_type->documentName}}
+                        Tipo Cliente: {{$invoices->client->document_type->documentName}}
                     </p>
                 </div>
                 <div>
@@ -31,11 +30,18 @@
                         Telefono: {{$invoices->client->phone_number }}
                     </p>
                 </div>
+                <br>
+                <div>
+                    <p>
+                        Id Vendedor: {{$invoices->seller->id }}
+                    </p>
+                </div>
                 <div>
                     <p>
                         Vendedor: {{$invoices->seller->first_name . ' ' . $invoices->seller->last_name}}
                     </p>
                 </div>
+                <br>
                 <div>
                     <p>
                         Fecha Creación: {{$invoices->created_at}}
@@ -63,6 +69,7 @@
                             </div>
                         </a>
                     @endcan
+                    <br>
                     @can('report.show')
                         <a class="item-menu" href="{{route('report.show', $invoices->id)}}">
                             <div class="item-button">
@@ -70,6 +77,7 @@
                             </div>
                         </a>
                     @endcan
+                    <br>
                     @can('report.create')
                         <a class="item-menu" href="{{route('report.create', $invoices->id)}}">
                             <div class="item-button">
@@ -77,6 +85,7 @@
                             </div>
                         </a>
                     @endcan
+                    <br>
                 </div>
                 <table>
                     <tr>
