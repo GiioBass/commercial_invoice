@@ -1,9 +1,6 @@
 @extends('template')
 @section('content')
-    {{--TODO provisional--}}
-    @php
-        $documentType = App\DocumentType::all();
-    @endphp
+
     @if(session('message'))
         <div>{{session('message')}}</div>
     @endif

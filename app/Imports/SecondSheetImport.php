@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
 {
     use Importable;
-    //TODO No importa la segunda hoja de excel, queda en blanco
 
     /**
      * @inheritDoc

@@ -2,7 +2,7 @@
 @section('content')
     {{--TODO provisional--}}
     @php
-        $documentType = App\DocumentType::all();
+
     @endphp
     @can('client.create')
         <div class="container-menu">

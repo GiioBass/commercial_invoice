@@ -1,28 +1,23 @@
 @extends('template')
 @section('content')
-    {{--TODO provisional--}}
-    @php
-        $documentType = App\DocumentType::all();
-    @endphp
 
-    {{--            --}}
     @if(session('message'))
         {{session('message')}}
     @endif
-    {{--            --}}
-    {{--    <div class="content-errors">--}}
-    {{--        <div class="errors">--}}
-    {{--            @if($errors->any())--}}
-    {{--                <div>--}}
-    {{--                    <ul>--}}
-    {{--                        @foreach($errors->all() as $error)--}}
-    {{--                            <li>{{$error}}</li>--}}
-    {{--                        @endforeach--}}
-    {{--                    </ul>--}}
-    {{--                </div>--}}
-    {{--            @endif--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+
+        <div class="content-errors">
+            <div class="errors">
+                @if($errors->any())
+                    <div>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
     <div class="content-form">
         <div class="board-form">
             <div class="content-title">

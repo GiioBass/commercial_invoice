@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\DocumentType;
 use App\Exports\ClientsExport;
 use App\Imports\ClientsImport;
 use Illuminate\Contracts\View\Factory;
@@ -30,13 +31,13 @@ class ClientController extends Controller
     {
         $id = $request->get('id');
 
-
+        $documentType = DocumentType::all();
         return view('Clients.index', [
             'clients' => Client::orderBy('id', 'asc')
                 ->with('document_type')
                 ->id($id)
                 ->paginate(10),
-        ], compact('id'));
+        ], compact('id', 'documentType' ));
     }
 
     /**
@@ -46,7 +47,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('Clients.create');
+        $documentType = DocumentType::all();
+        return view('Clients.create', compact('documentType'));
     }
 
 
@@ -97,10 +99,11 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
+        $documentType = DocumentType::all();
         $client = Client::findOrfail($id);
         return view('Clients.edit', [
             'client' => $client,
-        ]);
+        ], compact('documentType'));
     }
 
     /**
