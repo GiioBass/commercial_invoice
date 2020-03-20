@@ -40,12 +40,12 @@ class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
     public function customValidationMessages()
     {
         return[
-            'quantity.required' => 'la cantidad es requerida',
-            'quantity.numeric' => 'la cantidad debe ser númerica',
-            'invoice_id.required' => 'El id de la factura es requerido',
-            'invoice_id.numeric' => 'El id de la factura debe ser númerico ',
-            'product_id.required' => 'El id del producto es requerido',
-            'product_id.numeric' => 'El id del producto debe ser númerico',
+            'quantity.required' => 'la cantidad de la orden es requerida',
+            'quantity.numeric' => 'la cantidad de la orden debe ser númerica',
+            'invoice_id.required' => 'El id de la factura en la orden es requerido',
+            'invoice_id.numeric' => 'El id de la factura en la orden debe ser númerico ',
+            'product_id.required' => 'El id del producto en la orden es requerido',
+            'product_id.numeric' => 'El id del producto en la orden debe ser númerico',
         ];
     }
 
