@@ -74,21 +74,6 @@
                             </a>
                         </td>
                     @endcan
-
-                    @can('client.edit')
-                        <td>
-                            <a href="{{route('client.edit', $client->id)}}">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        </td>
-                    @endcan
-                    @can('client.delete')
-                        <td>
-                            <a href="{{route('client.delete', $client->id)}}">
-                                <i class="material-icons">delete_outline</i>
-                            </a>
-                        </td>
-                    @endcan
                 </tr>
             @endforeach
         </table>
