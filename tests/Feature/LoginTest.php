@@ -133,26 +133,12 @@ class LoginTest extends TestCase
         $response->assertStatus(403);
     }
 
-    /**
-     * @test
-     */
-    public function SuccessViewClientsIndexAsignedRole()
-    {
-        $user = factory(User::class)->create();
-        $roleAdmin = factory(Role::class)->create();
 
-        DB::table('role_user')->insert([
-            'role_id' => $roleAdmin->id,
-            'user_id' => $user->id
-        ]);
-        $response = $this->actingAs($user)->get(route('client.index'));
-        $response->assertOk();
-    }
 
     /**
      * @test
      */
-    public function SuccessViewInvoicesIndexAsignedRole()
+    public function SuccessViewIndexInvoicesAsignedRole()
     {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
@@ -165,10 +151,12 @@ class LoginTest extends TestCase
         $response->assertOk();
     }
 
+
+
     /**
      * @test
      */
-    public function SuccessViewClientsCreateAsignedRole()
+    public function SuccessViewCreateProductsAsignedRole()
     {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
