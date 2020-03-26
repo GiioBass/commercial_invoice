@@ -65,7 +65,7 @@ class ClientController extends Controller
             'last_name' => 'required',
             'phone_number' => 'required',
             'address' => 'required',
-            'email' => 'required'
+            'email' => 'requir ed|email:rfc'
         ]);
 
         $client = new Client();
@@ -78,7 +78,7 @@ class ClientController extends Controller
         $client->email  = $validData['email'];
         $client->save();
 
-        return redirect()->route('client.create');
+        return redirect()->route('client.create')->with('El cliente fue creado');
     }
 
     /**
@@ -148,7 +148,7 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('El cliente se elimino');
     }
 
     /**
