@@ -8,6 +8,7 @@ class DocumentType extends Model
 {
     protected $primaryKey = 'id';
     protected $table = 'document_types';
+    public $timestamps = false;
 
     public function clients()
     {
