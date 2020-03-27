@@ -157,6 +157,7 @@ class ControlReportController extends Controller
                 $this->store(
                     $response->requestId,
                     $response->status()->status(),
+                    $response->status()->message(),
                     $response->processUrl,
                     $invoice->id
                 );
@@ -176,15 +177,17 @@ class ControlReportController extends Controller
      * @param $requestReportId
      * @param $requestStatus
      * @param $requestUrl
+     * @param $requestMessage
      * @param $id
      */
-    public function store($requestReportId, $requestStatus, $requestUrl, $id)
+    public function store($requestReportId, $requestStatus, $requestMessage, $requestUrl, $id)
     {
         $controlReport = new ControlReport;
 
         $controlReport->requestId = $requestReportId;
         $controlReport->status = $requestStatus;
         $controlReport->processUrl = $requestUrl;
+        $controlReport->message = $requestMessage;
         $controlReport->save();
 
         $controlReport->invoices()->attach($id);
@@ -240,6 +243,7 @@ class ControlReportController extends Controller
 
                 $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                 return redirect()->route('invoice.show', $invoice->id);
+//                return back();
             } else {
                 // There was some error with the connection so check the message
                 print_r($response->status()->message() . " Error de conexion \n");
@@ -271,5 +275,26 @@ class ControlReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStateInvoice(){
+        $placetopay = $this->credentials();
+        $controlReport = ControlReport::all();
+        foreach ($controlReport as $controlReports) {
+
+            $requestId = $controlReports->requestId;
+
+            try {
+                $response = $placetopay->query($requestId);
+                $report = ControlReport::findorFail($controlReports->id);
+                $report->status = $response->status()->status();
+                $report->message = $response->status()->message();
+                $report->save();
+                return back()->with('Actualizadas correctamente');
+
+            } catch (Exception $e) {
+                var_dump($e->getMessage());
+            }
+        }
     }
 }

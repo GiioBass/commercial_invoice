@@ -30,6 +30,7 @@
                     <th>Id</th>
                     <th>Request Id</th>
                     <th>Status</th>
+                    <th>Message</th>
                     <th>Fecha de Creacion</th>
                     <th>Fecha de Actualizacion</th>
                 </tr>
@@ -40,12 +41,23 @@
                     <td>{{$reports->id}}</td>
                     <td>{{$reports->requestId}}</td>
                     <td>{{$reports->status}}</td>
+                    <td>{{$reports->message}}</td>
                     <td>{{$reports->created_at}}</td>
-                    <td>{{$reports->updated_at}}</td>
+                    <td><a href="{{$reports->processUrl}}">Continuar el pago</a>
+
+                    </td>
 
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a class="item-menu" href="{{route('url.redirection', $invoices)}}">
+            <div class="item-button">
+                Actualizar
+            </div>
+        </a>
+
     </div>
     <div>
         <a class="item-menu" href="{{route('invoice.show', $invoices->id)}}">

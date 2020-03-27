@@ -51,7 +51,7 @@ $factory->define(Product::class, function (Faker $faker) {
 $factory->define(Invoice::class, function (Faker $faker) {
     return [
         'id' => $faker->numberBetween($min = 10000000, $max = 99999999),
-        'state' => $faker->randomElement($array = array('Por Pagar', 'Pagado')),
+        'state' => 'Por Pagar',
         'total' => 0,
         'iva' => 0,
         'subtotal' => 0,

@@ -11,11 +11,20 @@
                     </div>
                 </a>
             @endcan
-            <a class="item-menu" href="/orders/updateInvoices">
-                <div class="item-button">
-                    Actualizar Facturas
-                </div>
-            </a>
+            @can('orders.updateInvoices')
+                <a class="item-menu" href="{{route('orders.updateInvoices')}}">
+                    <div class="item-button">
+                        Actualizar Facturas
+                    </div>
+                </a>
+            @endcan
+            @can('orders.updateInvoices')
+                <a class="item-menu" href="{{route('placetopay.updateStates')}}">
+                    <div class="item-button">
+                        Actualizar Estados de Facturas
+                    </div>
+                </a>
+            @endcan
         </div>
     </div>
     <div>
