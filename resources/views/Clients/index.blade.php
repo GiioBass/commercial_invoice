@@ -1,9 +1,8 @@
 @extends('template')
 @section('content')
-    {{--TODO provisional--}}
-    @php
-
-    @endphp
+    @if(session('message'))
+        {{session('message')}}
+    @endif
     @can('client.create')
         <div class="container-menu">
             <div class="container-item">

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\ControlReport;
+use App\Http\Controllers\ConnectionPlacetopay\Redirection;
 use App\Invoice;
 use Dnetix\Redirection\PlacetoPay;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
 
 class ControlReportController extends Controller
@@ -18,19 +22,11 @@ class ControlReportController extends Controller
     {
     }
 
-    public function credentials()
-    {
-        return new PlacetoPay([
-            'login' =>config('redirection_credentials.login'),
-            'tranKey' => config('redirection_credentials.trankey'),
-            'url' => config('redirection_credentials.url'),
-        ]);
-    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -39,12 +35,12 @@ class ControlReportController extends Controller
 
     /**
      * @param Invoice $invoice
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     * @throws \Dnetix\Redirection\Exceptions\PlacetoPayException
+     * @return RedirectResponse|Redirector
      */
     public function create(Invoice $invoice)
     {
-        $placetopay = $this->credentials();
+        $instance = Redirection::getInstance();
+        $placetopay = $instance->getConn();
 
         $reference = $invoice->id;
 //            'TEST_' . time();
@@ -197,7 +193,7 @@ class ControlReportController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -209,13 +205,13 @@ class ControlReportController extends Controller
 
     /**
      * @param Invoice $invoice
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Invoice $invoice)
     {
 //        return view('ControlReport.update');
-
-        $placetopay = $this->credentials();
+        $instance = Redirection::getInstance();
+        $placetopay = $instance->getConn();
 
         $requestId = $invoice->controlReport->last()->requestId;
 
@@ -233,12 +229,21 @@ class ControlReportController extends Controller
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
                     $state->save();
+                    $report = ControlReport::findorFail($invoice->controlReport->last()->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
                 // This is additional information about it
 //                    print_r($response->toArray());
                 } else {
-//                    $message = ($requestId . ' ' . $response->status()->message() . "\n");
+                    /*$message = ($requestId . ' ' . $response->status()->message() . "\n");
 //                    return $message;
-                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
+                    dd($message);
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);*/
+                    $report = ControlReport::findorFail($invoice->controlReport->last()->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
                 }
 
                 $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
@@ -257,7 +262,7 @@ class ControlReportController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($status, $id)
     {
@@ -270,7 +275,7 @@ class ControlReportController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -278,19 +283,38 @@ class ControlReportController extends Controller
     }
 
     public function updateStateInvoice(){
-        $placetopay = $this->credentials();
+
+//        TODO por arreglar
+
+        $instance = Redirection::getInstance();
+        $placetopay = $instance->getConn();
+
         $controlReport = ControlReport::all();
+        $invoice = Invoice::all();
         foreach ($controlReport as $controlReports) {
 
             $requestId = $controlReports->requestId;
 
             try {
                 $response = $placetopay->query($requestId);
-                $report = ControlReport::findorFail($controlReports->id);
-                $report->status = $response->status()->status();
-                $report->message = $response->status()->message();
-                $report->save();
-                return back()->with('Actualizadas correctamente');
+                if ($response->status()->isApproved()){
+
+                    $state = Invoice::findOrFail($controlReports->invoices);
+                    dd($state->state);
+                    $state->state = "Pagado";
+                    $state->save();
+                    $report = ControlReport::findorFail($controlReports->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
+                }else{
+                    $report = ControlReport::findorFail($controlReports->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
+                    return back();
+                }
+
 
             } catch (Exception $e) {
                 var_dump($e->getMessage());

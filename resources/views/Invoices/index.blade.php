@@ -1,6 +1,9 @@
 @extends('template')
 
 @section('content')
+    @if(session('message'))
+        {{session('message')}}
+    @endif
 
     <div class="container-menu">
         <div class="container-item">
