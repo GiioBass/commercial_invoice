@@ -41,7 +41,7 @@ class ControlReportController extends Controller
     {
         $instance = Redirection::getInstance();
         $placetopay = $instance->getConn();
-        dd($placetopay);
+
         $reference = $invoice->id;
 //            'TEST_' . time();
 
@@ -211,8 +211,7 @@ class ControlReportController extends Controller
     {
 //        return view('ControlReport.update');
         $instance = Redirection::getInstance();
-        $placetopay = $instance->getCredentials();
-        dd($placetopay);
+        $placetopay = $instance->getConn();
 
         $requestId = $invoice->controlReport->last()->requestId;
 
@@ -230,12 +229,21 @@ class ControlReportController extends Controller
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
                     $state->save();
+                    $report = ControlReport::findorFail($invoice->controlReport->last()->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
                 // This is additional information about it
 //                    print_r($response->toArray());
                 } else {
-//                    $message = ($requestId . ' ' . $response->status()->message() . "\n");
+                    /*$message = ($requestId . ' ' . $response->status()->message() . "\n");
 //                    return $message;
-                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
+                    dd($message);
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);*/
+                    $report = ControlReport::findorFail($invoice->controlReport->last()->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
                 }
 
                 $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
@@ -275,21 +283,38 @@ class ControlReportController extends Controller
     }
 
     public function updateStateInvoice(){
+
+//        TODO por arreglar
+
         $instance = Redirection::getInstance();
-        $placetopay = $instance->getCredentials();
-        dd($placetopay);
+        $placetopay = $instance->getConn();
+
         $controlReport = ControlReport::all();
+        $invoice = Invoice::all();
         foreach ($controlReport as $controlReports) {
 
             $requestId = $controlReports->requestId;
 
             try {
                 $response = $placetopay->query($requestId);
-                $report = ControlReport::findorFail($controlReports->id);
-                $report->status = $response->status()->status();
-                $report->message = $response->status()->message();
-                $report->save();
-                return back()->with('Actualizadas correctamente');
+                if ($response->status()->isApproved()){
+
+                    $state = Invoice::findOrFail($controlReports->invoices);
+                    dd($state->state);
+                    $state->state = "Pagado";
+                    $state->save();
+                    $report = ControlReport::findorFail($controlReports->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
+                }else{
+                    $report = ControlReport::findorFail($controlReports->id);
+                    $report->status = $response->status()->status();
+                    $report->message = $response->status()->message();
+                    $report->save();
+                    return back();
+                }
+
 
             } catch (Exception $e) {
                 var_dump($e->getMessage());
