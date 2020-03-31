@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/commercial_invoice/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="_css/style.css" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/commercial_invoice/app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Client.php.html#8">App\Client</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/ProductsImport.php.html#8">App\Imports\ProductsImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#11">App\Http\Controllers\api\ApiSellerController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/LoginController.php.html#9">App\Http\Controllers\api\LoginController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#7">App\Http\Middleware\Authenticate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#8">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedDocumentType.php.html#10">App\Http\View\Composers\CachedDocumentType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedProducts.php.html#9">App\Http\View\Composers\CachedProducts</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/ClientsImport.php.html#8">App\Imports\ClientsImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/FirstSheetImport.php.html#12">App\Imports\FirstSheetImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/InvoicesImport.php.html#8">App\Imports\InvoicesImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SecondSheetImport.php.html#11">App\Imports\SecondSheetImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#13">App\Http\Controllers\api\ApiInvoiceProductController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SellersImport.php.html#8">App\Imports\SellersImport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#10">App\Invoice</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice_product.php.html#8">App\Invoice_product</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#7">App\Product</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#7">App\Providers\AppServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/AuthServiceProvider.php.html#9">App\Providers\AuthServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#8">App\Providers\BroadcastServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/EventServiceProvider.php.html#10">App\Providers\EventServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/RouteServiceProvider.php.html#8">App\Providers\RouteServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/ViewComposerProvider.php.html#11">App\Providers\ViewComposerProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#11">App\Http\Controllers\api\ApiProductController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#11">App\Http\Controllers\api\ApiInvoiceController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Console/Kernel.php.html#8">App\Console\Kernel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#11">App\Http\Controllers\Auth\RegisterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ControlReport.php.html#7">App\ControlReport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DocumentType.php.html#7">App\DocumentType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#8">App\Exceptions\Handler</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ClientsExport.php.html#10">App\Exports\ClientsExport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/InvoicesExport.php.html#11">App\Exports\InvoicesExport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ProductsExport.php.html#10">App\Exports\ProductsExport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/SellersExport.php.html#10">App\Exports\SellersExport</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ConfirmPasswordController.php.html#8">App\Http\Controllers\Auth\ConfirmPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/LoginController.php.html#8">App\Http\Controllers\Auth\LoginController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerificationController.php.html#8">App\Http\Controllers\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#11">App\Http\Controllers\api\ApiClientController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#17">App\Http\Controllers\ClientController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#9">App\Http\Controllers\ConnectionPlacetopay\Redirection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#15">App\Http\Controllers\ControlReportController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#5">App\Http\Controllers\HomeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#16">App\Http\Controllers\InvoiceController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#14">App\Http\Controllers\InvoiceProductController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#16">App\Http\Controllers\ProductController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#10">App\Http\Controllers\RoleController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#16">App\Http\Controllers\SellerController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#10">App\Http\Controllers\UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seller.php.html#8">App\Seller</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Invoice.php.html#10">App\Invoice</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#15">App\Http\Controllers\ControlReportController</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#16">App\Http\Controllers\InvoiceController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#14">App\Http\Controllers\InvoiceProductController</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Client.php.html#8">App\Client</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#9">App\Http\Controllers\ConnectionPlacetopay\Redirection</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Product.php.html#7">App\Product</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Seller.php.html#8">App\Seller</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/api/LoginController.php.html#9">App\Http\Controllers\api\LoginController</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#7">App\Http\Middleware\Authenticate</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#8">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Client.php.html#23"><abbr title="App\Client::invoices">invoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#28"><abbr title="App\Http\Controllers\api\ApiProductController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#20"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#30"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#41"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#66"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#77"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#89"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#115"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceProductController.php.html#123"><abbr title="App\Http\Controllers\api\ApiInvoiceProductController::updateOrder">updateOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#18"><abbr title="App\Http\Controllers\api\ApiProductController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#39"><abbr title="App\Http\Controllers\api\ApiProductController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#93"><abbr title="App\Http\Controllers\api\ApiInvoiceController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#64"><abbr title="App\Http\Controllers\api\ApiProductController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#75"><abbr title="App\Http\Controllers\api\ApiProductController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#87"><abbr title="App\Http\Controllers\api\ApiProductController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiProductController.php.html#112"><abbr title="App\Http\Controllers\api\ApiProductController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#18"><abbr title="App\Http\Controllers\api\ApiSellerController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#28"><abbr title="App\Http\Controllers\api\ApiSellerController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#39"><abbr title="App\Http\Controllers\api\ApiSellerController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#66"><abbr title="App\Http\Controllers\api\ApiSellerController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#77"><abbr title="App\Http\Controllers\api\ApiSellerController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#128"><abbr title="App\Http\Controllers\api\ApiInvoiceController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#82"><abbr title="App\Http\Controllers\api\ApiInvoiceController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#115"><abbr title="App\Http\Controllers\api\ApiSellerController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#105"><abbr title="App\Http\Controllers\UserController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#158"><abbr title="App\Http\Controllers\SellerController::export">export</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#167"><abbr title="App\Http\Controllers\SellerController::import">import</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#12"><abbr title="App\Http\Controllers\UserController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#21"><abbr title="App\Http\Controllers\UserController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#32"><abbr title="App\Http\Controllers\UserController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#43"><abbr title="App\Http\Controllers\UserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#65"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#75"><abbr title="App\Http\Controllers\UserController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#89"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#18"><abbr title="App\Http\Controllers\api\ApiClientController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#71"><abbr title="App\Http\Controllers\api\ApiInvoiceController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#28"><abbr title="App\Http\Controllers\api\ApiClientController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#39"><abbr title="App\Http\Controllers\api\ApiClientController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#70"><abbr title="App\Http\Controllers\api\ApiClientController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#81"><abbr title="App\Http\Controllers\api\ApiClientController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#93"><abbr title="App\Http\Controllers\api\ApiClientController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiClientController.php.html#125"><abbr title="App\Http\Controllers\api\ApiClientController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#18"><abbr title="App\Http\Controllers\api\ApiInvoiceController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#28"><abbr title="App\Http\Controllers\api\ApiInvoiceController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiInvoiceController.php.html#39"><abbr title="App\Http\Controllers\api\ApiInvoiceController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/ApiSellerController.php.html#88"><abbr title="App\Http\Controllers\api\ApiSellerController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/api/LoginController.php.html#11"><abbr title="App\Http\Controllers\api\LoginController::login">login</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#136"><abbr title="App\Http\Controllers\SellerController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#24"><abbr title="App\Providers\AppServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#100"><abbr title="App\Invoice::scopeState">scopeState</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#112"><abbr title="App\Invoice::scopeId">scopeId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#124"><abbr title="App\Invoice::scopeSeller">scopeSeller</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#136"><abbr title="App\Invoice::scopeClient">scopeClient</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#149"><abbr title="App\Invoice::scopeDates">scopeDates</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice_product.php.html#21"><abbr title="App\Invoice_product::invoice">invoice</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#19"><abbr title="App\Product::invoices">invoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Product.php.html#29"><abbr title="App\Product::scopeId">scopeId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#14"><abbr title="App\Providers\AppServiceProvider::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/AuthServiceProvider.php.html#25"><abbr title="App\Providers\AuthServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#81"><abbr title="App\Invoice::getIvaAttribute">getIvaAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#15"><abbr title="App\Providers\BroadcastServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/EventServiceProvider.php.html#28"><abbr title="App\Providers\EventServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/RouteServiceProvider.php.html#24"><abbr title="App\Providers\RouteServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/RouteServiceProvider.php.html#36"><abbr title="App\Providers\RouteServiceProvider::map">map</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/RouteServiceProvider.php.html#52"><abbr title="App\Providers\RouteServiceProvider::mapWebRoutes">mapWebRoutes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/RouteServiceProvider.php.html#66"><abbr title="App\Providers\RouteServiceProvider::mapApiRoutes">mapApiRoutes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/ViewComposerProvider.php.html#18"><abbr title="App\Providers\ViewComposerProvider::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/ViewComposerProvider.php.html#28"><abbr title="App\Providers\ViewComposerProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seller.php.html#21"><abbr title="App\Seller::invoices">invoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#90"><abbr title="App\Invoice::getTotalAttribute">getTotalAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#67"><abbr title="App\Invoice::getSubTotalAttribute">getSubTotalAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#15"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/InvoicesImport.php.html#14"><abbr title="App\Imports\InvoicesImport::sheets">sheets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedDocumentType.php.html#19"><abbr title="App\Http\View\Composers\CachedDocumentType::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedDocumentType.php.html#31"><abbr title="App\Http\View\Composers\CachedDocumentType::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedProducts.php.html#24"><abbr title="App\Http\View\Composers\CachedProducts::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/View/Composers/CachedProducts.php.html#36"><abbr title="App\Http\View\Composers\CachedProducts::compose">compose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/ClientsImport.php.html#15"><abbr title="App\Imports\ClientsImport::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/FirstSheetImport.php.html#16"><abbr title="App\Imports\FirstSheetImport::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/FirstSheetImport.php.html#31"><abbr title="App\Imports\FirstSheetImport::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/FirstSheetImport.php.html#46"><abbr title="App\Imports\FirstSheetImport::customValidationMessages">customValidationMessages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/InvoicesImport.php.html#26"><abbr title="App\Imports\InvoicesImport::chunkSize">chunkSize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#58"><abbr title="App\Invoice::controlReport">controlReport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/ProductsImport.php.html#15"><abbr title="App\Imports\ProductsImport::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SecondSheetImport.php.html#18"><abbr title="App\Imports\SecondSheetImport::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SecondSheetImport.php.html#31"><abbr title="App\Imports\SecondSheetImport::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SecondSheetImport.php.html#39"><abbr title="App\Imports\SecondSheetImport::customValidationMessages">customValidationMessages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Imports/SellersImport.php.html#15"><abbr title="App\Imports\SellersImport::model">model</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#29"><abbr title="App\Invoice::client">client</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#37"><abbr title="App\Invoice::seller">seller</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#45"><abbr title="App\Invoice::invoice_products">invoice_products</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Invoice.php.html#53"><abbr title="App\Invoice::products">products</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#147"><abbr title="App\Http\Controllers\SellerController::confirmDelete">confirmDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#109"><abbr title="App\Http\Controllers\SellerController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Client.php.html#28"><abbr title="App\Client::document_type">document_type</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#33"><abbr title="App\Http\Controllers\ConnectionPlacetopay\Redirection::getInstance">getInstance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#59"><abbr title="App\Http\Controllers\ClientController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#90"><abbr title="App\Http\Controllers\ClientController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#100"><abbr title="App\Http\Controllers\ClientController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#116"><abbr title="App\Http\Controllers\ClientController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#147"><abbr title="App\Http\Controllers\ClientController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#158"><abbr title="App\Http\Controllers\ClientController::confirmDelete">confirmDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#169"><abbr title="App\Http\Controllers\ClientController::export">export</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#178"><abbr title="App\Http\Controllers\ClientController::import">import</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#21"><abbr title="App\Http\Controllers\ConnectionPlacetopay\Redirection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#45"><abbr title="App\Http\Controllers\ConnectionPlacetopay\Redirection::getConn">getConn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#30"><abbr title="App\Http\Controllers\ClientController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#21"><abbr title="App\Http\Controllers\ControlReportController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#31"><abbr title="App\Http\Controllers\ControlReportController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#40"><abbr title="App\Http\Controllers\ControlReportController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#179"><abbr title="App\Http\Controllers\ControlReportController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#198"><abbr title="App\Http\Controllers\ControlReportController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#210"><abbr title="App\Http\Controllers\ControlReportController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#267"><abbr title="App\Http\Controllers\ControlReportController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#280"><abbr title="App\Http\Controllers\ControlReportController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#285"><abbr title="App\Http\Controllers\ControlReportController::updateStateInvoice">updateStateInvoice</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#48"><abbr title="App\Http\Controllers\ClientController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ClientController.php.html#22"><abbr title="App\Http\Controllers\ClientController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#22"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/InvoicesExport.php.html#14"><abbr title="App\Exports\InvoicesExport::query">query</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Client.php.html#38"><abbr title="App\Client::scopeId">scopeId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Console/Kernel.php.html#25"><abbr title="App\Console\Kernel::schedule">schedule</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Console/Kernel.php.html#36"><abbr title="App\Console\Kernel::commands">commands</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ControlReport.php.html#18"><abbr title="App\ControlReport::invoices">invoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DocumentType.php.html#13"><abbr title="App\DocumentType::clients">clients</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#35"><abbr title="App\Exceptions\Handler::report">report</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#47"><abbr title="App\Exceptions\Handler::render">render</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ClientsExport.php.html#15"><abbr title="App\Exports\ClientsExport::collection">collection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ClientsExport.php.html#20"><abbr title="App\Exports\ClientsExport::headings">headings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/InvoicesExport.php.html#38"><abbr title="App\Exports\InvoicesExport::headings">headings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerificationController.php.html#35"><abbr title="App\Http\Controllers\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ProductsExport.php.html#15"><abbr title="App\Exports\ProductsExport::collection">collection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/ProductsExport.php.html#20"><abbr title="App\Exports\ProductsExport::headings">headings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/SellersExport.php.html#15"><abbr title="App\Exports\SellersExport::collection">collection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exports/SellersExport.php.html#20"><abbr title="App\Exports\SellersExport::headings">headings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/ConfirmPasswordController.php.html#35"><abbr title="App\Http\Controllers\Auth\ConfirmPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/LoginController.php.html#35"><abbr title="App\Http\Controllers\Auth\LoginController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#38"><abbr title="App\Http\Controllers\Auth\RegisterController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#49"><abbr title="App\Http\Controllers\Auth\RegisterController::validator">validator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisterController.php.html#64"><abbr title="App\Http\Controllers\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/HomeController.php.html#12"><abbr title="App\Http\Controllers\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#18"><abbr title="App\Http\Controllers\InvoiceController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#94"><abbr title="App\Http\Controllers\SellerController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#32"><abbr title="App\Http\Controllers\RoleController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#79"><abbr title="App\Http\Controllers\ProductController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#90"><abbr title="App\Http\Controllers\ProductController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#105"><abbr title="App\Http\Controllers\ProductController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#130"><abbr title="App\Http\Controllers\ProductController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#141"><abbr title="App\Http\Controllers\ProductController::confirmDelete">confirmDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#152"><abbr title="App\Http\Controllers\ProductController::export">export</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#161"><abbr title="App\Http\Controllers\ProductController::import">import</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#12"><abbr title="App\Http\Controllers\RoleController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#21"><abbr title="App\Http\Controllers\RoleController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#45"><abbr title="App\Http\Controllers\RoleController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#43"><abbr title="App\Http\Controllers\ProductController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#61"><abbr title="App\Http\Controllers\RoleController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#71"><abbr title="App\Http\Controllers\RoleController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#86"><abbr title="App\Http\Controllers\RoleController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RoleController.php.html#100"><abbr title="App\Http\Controllers\RoleController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#18"><abbr title="App\Http\Controllers\SellerController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#28"><abbr title="App\Http\Controllers\SellerController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#44"><abbr title="App\Http\Controllers\SellerController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#54"><abbr title="App\Http\Controllers\SellerController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/SellerController.php.html#83"><abbr title="App\Http\Controllers\SellerController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#54"><abbr title="App\Http\Controllers\ProductController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#27"><abbr title="App\Http\Controllers\ProductController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#28"><abbr title="App\Http\Controllers\InvoiceController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#212"><abbr title="App\Http\Controllers\InvoiceController::import">import</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#55"><abbr title="App\Http\Controllers\InvoiceController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#66"><abbr title="App\Http\Controllers\InvoiceController::createCode">createCode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#82"><abbr title="App\Http\Controllers\InvoiceController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#113"><abbr title="App\Http\Controllers\InvoiceController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#127"><abbr title="App\Http\Controllers\InvoiceController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#142"><abbr title="App\Http\Controllers\InvoiceController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#177"><abbr title="App\Http\Controllers\InvoiceController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#188"><abbr title="App\Http\Controllers\InvoiceController::confirmDelete">confirmDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#201"><abbr title="App\Http\Controllers\InvoiceController::export">export</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#19"><abbr title="App\Http\Controllers\InvoiceProductController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ProductController.php.html#18"><abbr title="App\Http\Controllers\ProductController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#28"><abbr title="App\Http\Controllers\InvoiceProductController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#38"><abbr title="App\Http\Controllers\InvoiceProductController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#52"><abbr title="App\Http\Controllers\InvoiceProductController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#77"><abbr title="App\Http\Controllers\InvoiceProductController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#88"><abbr title="App\Http\Controllers\InvoiceProductController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#100"><abbr title="App\Http\Controllers\InvoiceProductController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#112"><abbr title="App\Http\Controllers\InvoiceProductController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#125"><abbr title="App\Http\Controllers\InvoiceProductController::import">import</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#137"><abbr title="App\Http\Controllers\InvoiceProductController::updateOrder">updateOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#147"><abbr title="App\Http\Controllers\InvoiceProductController::updateInvoices">updateInvoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seller.php.html#31"><abbr title="App\Seller::scopeId">scopeId</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#210"><abbr title="App\Http\Controllers\ControlReportController::update">update</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#285"><abbr title="App\Http\Controllers\ControlReportController::updateStateInvoice">updateStateInvoice</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/ControlReportController.php.html#40"><abbr title="App\Http\Controllers\ControlReportController::create">create</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Invoice.php.html#149"><abbr title="App\Invoice::scopeDates">scopeDates</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Client.php.html#38"><abbr title="App\Client::scopeId">scopeId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Invoice.php.html#100"><abbr title="App\Invoice::scopeState">scopeState</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Product.php.html#29"><abbr title="App\Product::scopeId">scopeId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Invoice.php.html#136"><abbr title="App\Invoice::scopeClient">scopeClient</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Invoice.php.html#124"><abbr title="App\Invoice::scopeSeller">scopeSeller</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Invoice.php.html#112"><abbr title="App\Invoice::scopeId">scopeId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Invoice.php.html#67"><abbr title="App\Invoice::getSubTotalAttribute">getSubTotalAttribute</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/ConnectionPlacetopay/Redirection.php.html#33"><abbr title="App\Http\Controllers\ConnectionPlacetopay\Redirection::getInstance">getInstance</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#15"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/api/LoginController.php.html#11"><abbr title="App\Http\Controllers\api\LoginController::login">login</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceProductController.php.html#147"><abbr title="App\Http\Controllers\InvoiceProductController::updateInvoices">updateInvoices</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/InvoiceController.php.html#66"><abbr title="App\Http\Controllers\InvoiceController::createCode">createCode</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Seller.php.html#31"><abbr title="App\Seller::scopeId">scopeId</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 7.0.10</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.24-0ubuntu0.18.04.3</a> with <a href="https://xdebug.org/">Xdebug 2.9.1</a> and <a href="https://phpunit.de/">PHPUnit 8.5.2</a> at Mon Mar 30 23:32:55 -05 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js" type="text/javascript"></script>
+  <script src="_js/d3.min.js" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([49,0,0,0,0,0,0,0,0,0,0,11], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([192,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,4,"<a href=\"Client.php.html#8\">App\\Client<\/a>"],[0,2,"<a href=\"Console\/Kernel.php.html#8\">App\\Console\\Kernel<\/a>"],[0,1,"<a href=\"ControlReport.php.html#7\">App\\ControlReport<\/a>"],[100,0,"<a href=\"ControlReportInvoice.php.html#7\">App\\ControlReportInvoice<\/a>"],[0,1,"<a href=\"DocumentType.php.html#7\">App\\DocumentType<\/a>"],[0,2,"<a href=\"Exceptions\/Handler.php.html#8\">App\\Exceptions\\Handler<\/a>"],[0,2,"<a href=\"Exports\/ClientsExport.php.html#10\">App\\Exports\\ClientsExport<\/a>"],[0,2,"<a href=\"Exports\/InvoicesExport.php.html#11\">App\\Exports\\InvoicesExport<\/a>"],[0,2,"<a href=\"Exports\/ProductsExport.php.html#10\">App\\Exports\\ProductsExport<\/a>"],[0,2,"<a href=\"Exports\/SellersExport.php.html#10\">App\\Exports\\SellersExport<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ConfirmPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Auth\/ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ForgotPasswordController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/LoginController.php.html#8\">App\\Http\\Controllers\\Auth\\LoginController<\/a>"],[0,3,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#11\">App\\Http\\Controllers\\Auth\\RegisterController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Auth\/ResetPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/VerificationController.php.html#8\">App\\Http\\Controllers\\Auth\\VerificationController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/ClientController.php.html#17\">App\\Http\\Controllers\\ClientController<\/a>"],[0,4,"<a href=\"Http\/Controllers\/ConnectionPlacetopay\/Redirection.php.html#9\">App\\Http\\Controllers\\ConnectionPlacetopay\\Redirection<\/a>"],[0,17,"<a href=\"Http\/Controllers\/ControlReportController.php.html#15\">App\\Http\\Controllers\\ControlReportController<\/a>"],[100,0,"<a href=\"Http\/Controllers\/Controller.php.html#10\">App\\Http\\Controllers\\Controller<\/a>"],[0,2,"<a href=\"Http\/Controllers\/HomeController.php.html#5\">App\\Http\\Controllers\\HomeController<\/a>"],[0,13,"<a href=\"Http\/Controllers\/InvoiceController.php.html#16\">App\\Http\\Controllers\\InvoiceController<\/a>"],[0,12,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#14\">App\\Http\\Controllers\\InvoiceProductController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/ProductController.php.html#16\">App\\Http\\Controllers\\ProductController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/RoleController.php.html#10\">App\\Http\\Controllers\\RoleController<\/a>"],[0,11,"<a href=\"Http\/Controllers\/SellerController.php.html#16\">App\\Http\\Controllers\\SellerController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/UserController.php.html#10\">App\\Http\\Controllers\\UserController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#11\">App\\Http\\Controllers\\api\\ApiClientController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#11\">App\\Http\\Controllers\\api\\ApiInvoiceController<\/a>"],[0,8,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#13\">App\\Http\\Controllers\\api\\ApiInvoiceProductController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#11\">App\\Http\\Controllers\\api\\ApiProductController<\/a>"],[0,7,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#11\">App\\Http\\Controllers\\api\\ApiSellerController<\/a>"],[0,2,"<a href=\"Http\/Controllers\/api\/LoginController.php.html#9\">App\\Http\\Controllers\\api\\LoginController<\/a>"],[100,0,"<a href=\"Http\/Kernel.php.html#7\">App\\Http\\Kernel<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#7\">App\\Http\\Middleware\\Authenticate<\/a>"],[100,0,"<a href=\"Http\/Middleware\/CheckForMaintenanceMode.php.html#7\">App\\Http\\Middleware\\CheckForMaintenanceMode<\/a>"],[100,0,"<a href=\"Http\/Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[0,2,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#8\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[100,0,"<a href=\"Http\/Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"],[0,2,"<a href=\"Http\/View\/Composers\/CachedDocumentType.php.html#10\">App\\Http\\View\\Composers\\CachedDocumentType<\/a>"],[0,2,"<a href=\"Http\/View\/Composers\/CachedProducts.php.html#9\">App\\Http\\View\\Composers\\CachedProducts<\/a>"],[0,1,"<a href=\"Imports\/ClientsImport.php.html#8\">App\\Imports\\ClientsImport<\/a>"],[0,3,"<a href=\"Imports\/FirstSheetImport.php.html#12\">App\\Imports\\FirstSheetImport<\/a>"],[0,2,"<a href=\"Imports\/InvoicesImport.php.html#8\">App\\Imports\\InvoicesImport<\/a>"],[0,1,"<a href=\"Imports\/ProductsImport.php.html#8\">App\\Imports\\ProductsImport<\/a>"],[0,3,"<a href=\"Imports\/SecondSheetImport.php.html#11\">App\\Imports\\SecondSheetImport<\/a>"],[0,1,"<a href=\"Imports\/SellersImport.php.html#8\">App\\Imports\\SellersImport<\/a>"],[0,20,"<a href=\"Invoice.php.html#10\">App\\Invoice<\/a>"],[0,1,"<a href=\"Invoice_product.php.html#8\">App\\Invoice_product<\/a>"],[0,3,"<a href=\"Product.php.html#7\">App\\Product<\/a>"],[0,2,"<a href=\"Providers\/AppServiceProvider.php.html#7\">App\\Providers\\AppServiceProvider<\/a>"],[0,1,"<a href=\"Providers\/AuthServiceProvider.php.html#9\">App\\Providers\\AuthServiceProvider<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#8\">App\\Providers\\BroadcastServiceProvider<\/a>"],[0,1,"<a href=\"Providers\/EventServiceProvider.php.html#10\">App\\Providers\\EventServiceProvider<\/a>"],[0,4,"<a href=\"Providers\/RouteServiceProvider.php.html#8\">App\\Providers\\RouteServiceProvider<\/a>"],[0,2,"<a href=\"Providers\/ViewComposerProvider.php.html#11\">App\\Providers\\ViewComposerProvider<\/a>"],[0,3,"<a href=\"Seller.php.html#8\">App\\Seller<\/a>"],[100,0,"<a href=\"User.php.html#10\">App\\User<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Client.php.html#23\">App\\Client::invoices<\/a>"],[0,1,"<a href=\"Client.php.html#28\">App\\Client::document_type<\/a>"],[0,2,"<a href=\"Client.php.html#38\">App\\Client::scopeId<\/a>"],[0,1,"<a href=\"Console\/Kernel.php.html#25\">App\\Console\\Kernel::schedule<\/a>"],[0,1,"<a href=\"Console\/Kernel.php.html#36\">App\\Console\\Kernel::commands<\/a>"],[0,1,"<a href=\"ControlReport.php.html#18\">App\\ControlReport::invoices<\/a>"],[0,1,"<a href=\"DocumentType.php.html#13\">App\\DocumentType::clients<\/a>"],[0,1,"<a href=\"Exceptions\/Handler.php.html#35\">App\\Exceptions\\Handler::report<\/a>"],[0,1,"<a href=\"Exceptions\/Handler.php.html#47\">App\\Exceptions\\Handler::render<\/a>"],[0,1,"<a href=\"Exports\/ClientsExport.php.html#15\">App\\Exports\\ClientsExport::collection<\/a>"],[0,1,"<a href=\"Exports\/ClientsExport.php.html#20\">App\\Exports\\ClientsExport::headings<\/a>"],[0,1,"<a href=\"Exports\/InvoicesExport.php.html#14\">App\\Exports\\InvoicesExport::query<\/a>"],[0,1,"<a href=\"Exports\/InvoicesExport.php.html#38\">App\\Exports\\InvoicesExport::headings<\/a>"],[0,1,"<a href=\"Exports\/ProductsExport.php.html#15\">App\\Exports\\ProductsExport::collection<\/a>"],[0,1,"<a href=\"Exports\/ProductsExport.php.html#20\">App\\Exports\\ProductsExport::headings<\/a>"],[0,1,"<a href=\"Exports\/SellersExport.php.html#15\">App\\Exports\\SellersExport::collection<\/a>"],[0,1,"<a href=\"Exports\/SellersExport.php.html#20\">App\\Exports\\SellersExport::headings<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/ConfirmPasswordController.php.html#35\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/LoginController.php.html#35\">App\\Http\\Controllers\\Auth\\LoginController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#38\">App\\Http\\Controllers\\Auth\\RegisterController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#49\">App\\Http\\Controllers\\Auth\\RegisterController::validator<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/RegisterController.php.html#64\">App\\Http\\Controllers\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/VerificationController.php.html#35\">App\\Http\\Controllers\\Auth\\VerificationController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#22\">App\\Http\\Controllers\\ClientController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#30\">App\\Http\\Controllers\\ClientController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#48\">App\\Http\\Controllers\\ClientController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#59\">App\\Http\\Controllers\\ClientController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#90\">App\\Http\\Controllers\\ClientController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#100\">App\\Http\\Controllers\\ClientController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#116\">App\\Http\\Controllers\\ClientController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#147\">App\\Http\\Controllers\\ClientController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#158\">App\\Http\\Controllers\\ClientController::confirmDelete<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#169\">App\\Http\\Controllers\\ClientController::export<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ClientController.php.html#178\">App\\Http\\Controllers\\ClientController::import<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ConnectionPlacetopay\/Redirection.php.html#21\">App\\Http\\Controllers\\ConnectionPlacetopay\\Redirection::__construct<\/a>"],[0,2,"<a href=\"Http\/Controllers\/ConnectionPlacetopay\/Redirection.php.html#33\">App\\Http\\Controllers\\ConnectionPlacetopay\\Redirection::getInstance<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ConnectionPlacetopay\/Redirection.php.html#45\">App\\Http\\Controllers\\ConnectionPlacetopay\\Redirection::getConn<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#21\">App\\Http\\Controllers\\ControlReportController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#31\">App\\Http\\Controllers\\ControlReportController::index<\/a>"],[0,3,"<a href=\"Http\/Controllers\/ControlReportController.php.html#40\">App\\Http\\Controllers\\ControlReportController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#179\">App\\Http\\Controllers\\ControlReportController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#198\">App\\Http\\Controllers\\ControlReportController::show<\/a>"],[0,4,"<a href=\"Http\/Controllers\/ControlReportController.php.html#210\">App\\Http\\Controllers\\ControlReportController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#267\">App\\Http\\Controllers\\ControlReportController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ControlReportController.php.html#280\">App\\Http\\Controllers\\ControlReportController::destroy<\/a>"],[0,4,"<a href=\"Http\/Controllers\/ControlReportController.php.html#285\">App\\Http\\Controllers\\ControlReportController::updateStateInvoice<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#12\">App\\Http\\Controllers\\HomeController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/HomeController.php.html#22\">App\\Http\\Controllers\\HomeController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#18\">App\\Http\\Controllers\\InvoiceController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#28\">App\\Http\\Controllers\\InvoiceController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#55\">App\\Http\\Controllers\\InvoiceController::create<\/a>"],[0,2,"<a href=\"Http\/Controllers\/InvoiceController.php.html#66\">App\\Http\\Controllers\\InvoiceController::createCode<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#82\">App\\Http\\Controllers\\InvoiceController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#113\">App\\Http\\Controllers\\InvoiceController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#127\">App\\Http\\Controllers\\InvoiceController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#142\">App\\Http\\Controllers\\InvoiceController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#177\">App\\Http\\Controllers\\InvoiceController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#188\">App\\Http\\Controllers\\InvoiceController::confirmDelete<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#201\">App\\Http\\Controllers\\InvoiceController::export<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceController.php.html#212\">App\\Http\\Controllers\\InvoiceController::import<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#19\">App\\Http\\Controllers\\InvoiceProductController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#28\">App\\Http\\Controllers\\InvoiceProductController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#38\">App\\Http\\Controllers\\InvoiceProductController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#52\">App\\Http\\Controllers\\InvoiceProductController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#77\">App\\Http\\Controllers\\InvoiceProductController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#88\">App\\Http\\Controllers\\InvoiceProductController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#100\">App\\Http\\Controllers\\InvoiceProductController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#112\">App\\Http\\Controllers\\InvoiceProductController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#125\">App\\Http\\Controllers\\InvoiceProductController::import<\/a>"],[0,1,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#137\">App\\Http\\Controllers\\InvoiceProductController::updateOrder<\/a>"],[0,2,"<a href=\"Http\/Controllers\/InvoiceProductController.php.html#147\">App\\Http\\Controllers\\InvoiceProductController::updateInvoices<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#18\">App\\Http\\Controllers\\ProductController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#27\">App\\Http\\Controllers\\ProductController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#43\">App\\Http\\Controllers\\ProductController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#54\">App\\Http\\Controllers\\ProductController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#79\">App\\Http\\Controllers\\ProductController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#90\">App\\Http\\Controllers\\ProductController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#105\">App\\Http\\Controllers\\ProductController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#130\">App\\Http\\Controllers\\ProductController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#141\">App\\Http\\Controllers\\ProductController::confirmDelete<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#152\">App\\Http\\Controllers\\ProductController::export<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ProductController.php.html#161\">App\\Http\\Controllers\\ProductController::import<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#12\">App\\Http\\Controllers\\RoleController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#21\">App\\Http\\Controllers\\RoleController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#32\">App\\Http\\Controllers\\RoleController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#45\">App\\Http\\Controllers\\RoleController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#61\">App\\Http\\Controllers\\RoleController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#71\">App\\Http\\Controllers\\RoleController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#86\">App\\Http\\Controllers\\RoleController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/RoleController.php.html#100\">App\\Http\\Controllers\\RoleController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#18\">App\\Http\\Controllers\\SellerController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#28\">App\\Http\\Controllers\\SellerController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#44\">App\\Http\\Controllers\\SellerController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#54\">App\\Http\\Controllers\\SellerController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#83\">App\\Http\\Controllers\\SellerController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#94\">App\\Http\\Controllers\\SellerController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#109\">App\\Http\\Controllers\\SellerController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#136\">App\\Http\\Controllers\\SellerController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#147\">App\\Http\\Controllers\\SellerController::confirmDelete<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#158\">App\\Http\\Controllers\\SellerController::export<\/a>"],[0,1,"<a href=\"Http\/Controllers\/SellerController.php.html#167\">App\\Http\\Controllers\\SellerController::import<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#12\">App\\Http\\Controllers\\UserController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#21\">App\\Http\\Controllers\\UserController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#32\">App\\Http\\Controllers\\UserController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#43\">App\\Http\\Controllers\\UserController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#65\">App\\Http\\Controllers\\UserController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#75\">App\\Http\\Controllers\\UserController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#89\">App\\Http\\Controllers\\UserController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#105\">App\\Http\\Controllers\\UserController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#18\">App\\Http\\Controllers\\api\\ApiClientController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#28\">App\\Http\\Controllers\\api\\ApiClientController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#39\">App\\Http\\Controllers\\api\\ApiClientController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#70\">App\\Http\\Controllers\\api\\ApiClientController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#81\">App\\Http\\Controllers\\api\\ApiClientController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#93\">App\\Http\\Controllers\\api\\ApiClientController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiClientController.php.html#125\">App\\Http\\Controllers\\api\\ApiClientController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#18\">App\\Http\\Controllers\\api\\ApiInvoiceController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#28\">App\\Http\\Controllers\\api\\ApiInvoiceController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#39\">App\\Http\\Controllers\\api\\ApiInvoiceController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#71\">App\\Http\\Controllers\\api\\ApiInvoiceController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#82\">App\\Http\\Controllers\\api\\ApiInvoiceController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#93\">App\\Http\\Controllers\\api\\ApiInvoiceController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceController.php.html#128\">App\\Http\\Controllers\\api\\ApiInvoiceController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#20\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#30\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#41\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#66\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#77\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#89\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#115\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiInvoiceProductController.php.html#123\">App\\Http\\Controllers\\api\\ApiInvoiceProductController::updateOrder<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#18\">App\\Http\\Controllers\\api\\ApiProductController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#28\">App\\Http\\Controllers\\api\\ApiProductController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#39\">App\\Http\\Controllers\\api\\ApiProductController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#64\">App\\Http\\Controllers\\api\\ApiProductController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#75\">App\\Http\\Controllers\\api\\ApiProductController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#87\">App\\Http\\Controllers\\api\\ApiProductController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiProductController.php.html#112\">App\\Http\\Controllers\\api\\ApiProductController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#18\">App\\Http\\Controllers\\api\\ApiSellerController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#28\">App\\Http\\Controllers\\api\\ApiSellerController::create<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#39\">App\\Http\\Controllers\\api\\ApiSellerController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#66\">App\\Http\\Controllers\\api\\ApiSellerController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#77\">App\\Http\\Controllers\\api\\ApiSellerController::edit<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#88\">App\\Http\\Controllers\\api\\ApiSellerController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/api\/ApiSellerController.php.html#115\">App\\Http\\Controllers\\api\\ApiSellerController::destroy<\/a>"],[0,2,"<a href=\"Http\/Controllers\/api\/LoginController.php.html#11\">App\\Http\\Controllers\\api\\LoginController::login<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#15\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,2,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,1,"<a href=\"Http\/View\/Composers\/CachedDocumentType.php.html#19\">App\\Http\\View\\Composers\\CachedDocumentType::__construct<\/a>"],[0,1,"<a href=\"Http\/View\/Composers\/CachedDocumentType.php.html#31\">App\\Http\\View\\Composers\\CachedDocumentType::compose<\/a>"],[0,1,"<a href=\"Http\/View\/Composers\/CachedProducts.php.html#24\">App\\Http\\View\\Composers\\CachedProducts::__construct<\/a>"],[0,1,"<a href=\"Http\/View\/Composers\/CachedProducts.php.html#36\">App\\Http\\View\\Composers\\CachedProducts::compose<\/a>"],[0,1,"<a href=\"Imports\/ClientsImport.php.html#15\">App\\Imports\\ClientsImport::model<\/a>"],[0,1,"<a href=\"Imports\/FirstSheetImport.php.html#16\">App\\Imports\\FirstSheetImport::model<\/a>"],[0,1,"<a href=\"Imports\/FirstSheetImport.php.html#31\">App\\Imports\\FirstSheetImport::rules<\/a>"],[0,1,"<a href=\"Imports\/FirstSheetImport.php.html#46\">App\\Imports\\FirstSheetImport::customValidationMessages<\/a>"],[0,1,"<a href=\"Imports\/InvoicesImport.php.html#14\">App\\Imports\\InvoicesImport::sheets<\/a>"],[0,1,"<a href=\"Imports\/InvoicesImport.php.html#26\">App\\Imports\\InvoicesImport::chunkSize<\/a>"],[0,1,"<a href=\"Imports\/ProductsImport.php.html#15\">App\\Imports\\ProductsImport::model<\/a>"],[0,1,"<a href=\"Imports\/SecondSheetImport.php.html#18\">App\\Imports\\SecondSheetImport::model<\/a>"],[0,1,"<a href=\"Imports\/SecondSheetImport.php.html#31\">App\\Imports\\SecondSheetImport::rules<\/a>"],[0,1,"<a href=\"Imports\/SecondSheetImport.php.html#39\">App\\Imports\\SecondSheetImport::customValidationMessages<\/a>"],[0,1,"<a href=\"Imports\/SellersImport.php.html#15\">App\\Imports\\SellersImport::model<\/a>"],[0,1,"<a href=\"Invoice.php.html#29\">App\\Invoice::client<\/a>"],[0,1,"<a href=\"Invoice.php.html#37\">App\\Invoice::seller<\/a>"],[0,1,"<a href=\"Invoice.php.html#45\">App\\Invoice::invoice_products<\/a>"],[0,1,"<a href=\"Invoice.php.html#53\">App\\Invoice::products<\/a>"],[0,1,"<a href=\"Invoice.php.html#58\">App\\Invoice::controlReport<\/a>"],[0,2,"<a href=\"Invoice.php.html#67\">App\\Invoice::getSubTotalAttribute<\/a>"],[0,1,"<a href=\"Invoice.php.html#81\">App\\Invoice::getIvaAttribute<\/a>"],[0,1,"<a href=\"Invoice.php.html#90\">App\\Invoice::getTotalAttribute<\/a>"],[0,2,"<a href=\"Invoice.php.html#100\">App\\Invoice::scopeState<\/a>"],[0,2,"<a href=\"Invoice.php.html#112\">App\\Invoice::scopeId<\/a>"],[0,2,"<a href=\"Invoice.php.html#124\">App\\Invoice::scopeSeller<\/a>"],[0,2,"<a href=\"Invoice.php.html#136\">App\\Invoice::scopeClient<\/a>"],[0,3,"<a href=\"Invoice.php.html#149\">App\\Invoice::scopeDates<\/a>"],[0,1,"<a href=\"Invoice_product.php.html#21\">App\\Invoice_product::invoice<\/a>"],[0,1,"<a href=\"Product.php.html#19\">App\\Product::invoices<\/a>"],[0,2,"<a href=\"Product.php.html#29\">App\\Product::scopeId<\/a>"],[0,1,"<a href=\"Providers\/AppServiceProvider.php.html#14\">App\\Providers\\AppServiceProvider::register<\/a>"],[0,1,"<a href=\"Providers\/AppServiceProvider.php.html#24\">App\\Providers\\AppServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/AuthServiceProvider.php.html#25\">App\\Providers\\AuthServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#15\">App\\Providers\\BroadcastServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/EventServiceProvider.php.html#28\">App\\Providers\\EventServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/RouteServiceProvider.php.html#24\">App\\Providers\\RouteServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/RouteServiceProvider.php.html#36\">App\\Providers\\RouteServiceProvider::map<\/a>"],[0,1,"<a href=\"Providers\/RouteServiceProvider.php.html#52\">App\\Providers\\RouteServiceProvider::mapWebRoutes<\/a>"],[0,1,"<a href=\"Providers\/RouteServiceProvider.php.html#66\">App\\Providers\\RouteServiceProvider::mapApiRoutes<\/a>"],[0,1,"<a href=\"Providers\/ViewComposerProvider.php.html#18\">App\\Providers\\ViewComposerProvider::register<\/a>"],[0,1,"<a href=\"Providers\/ViewComposerProvider.php.html#28\">App\\Providers\\ViewComposerProvider::boot<\/a>"],[0,1,"<a href=\"Seller.php.html#21\">App\\Seller::invoices<\/a>"],[0,2,"<a href=\"Seller.php.html#31\">App\\Seller::scopeId<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

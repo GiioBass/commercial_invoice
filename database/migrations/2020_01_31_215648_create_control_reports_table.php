@@ -16,6 +16,7 @@ class CreateControlReportsTable extends Migration
         Schema::create('control_reports', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('status', 20);
+            $table->string('message', 100);
             $table->unsignedInteger('requestId');
             $table->string('processUrl');
             $table->timestamps();

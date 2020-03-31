@@ -204,6 +204,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/import', 'InvoiceProductController@import')->name('orders.import')
         ->middleware('can:orders.import');
 
+    Route::get('/placetopay/update/states', 'ControlReportController@updateStateInvoice')->name('placetopay.updateStates')
+        ->middleware('can:orders.updateInvoices');
+
     //  Panel control de accesos
     Route::middleware('can:access_api')->get('access_api', function () {
         return view('ApiAccess.control_panel');

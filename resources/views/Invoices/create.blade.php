@@ -36,12 +36,8 @@
                     <div class="items-form">
 
                         <label for="">Estado</label>
-                        <div class="list">
-                            <select class="list-select" name="state" id="">
-                                <option value="Por pagar">Por Pagar</option>
-                                <option value="Pagado">Pagado</option>
-                            </select>
-                        </div>
+                        <input type="text" name="state" id="" value="Por pagar" readonly>
+
                         <label for="">Fecha Expedición</label>
 
                         <input type="date" name="expedition_date" id="" placeholder="aaaa-mm-dd"
