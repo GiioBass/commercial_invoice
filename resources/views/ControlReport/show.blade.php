@@ -1,7 +1,9 @@
 @extends('template')
 @section('content')
     {{--TODO provisional--}}
-
+    @if(session('message'))
+        {{session('message')}}
+    @endif
   {{--  <div class="container-menu">
         <div class="container-item">
             <a class="item-menu" href="{{route('client.create')}}">
