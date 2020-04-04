@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers\ConnectionPlacetopay;
-
 
 use Dnetix\Redirection\PlacetoPay;
 

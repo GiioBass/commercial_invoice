@@ -5,33 +5,12 @@ namespace App\Http\Controllers;
 use App\ControlReport;
 use App\Http\Controllers\ConnectionPlacetopay\Redirection;
 use App\Invoice;
-use Dnetix\Redirection\PlacetoPay;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
-use Illuminate\Routing\Route;
 
 class ControlReportController extends Controller
 {
-
-    /**
-     * ControlReportController constructor.
-     */
-    public function __construct()
-    {
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return void
-     */
-    public function index()
-    {
-    }
-
 
     /**
      * @param Invoice $invoice
@@ -71,22 +50,23 @@ class ControlReportController extends Controller
             "payment" => [
                 "reference" => $reference,
                 "description" => "Iusto sit et voluptatem.",
+//                factura de venta # XXXX cod_num
+
                 "amount" => [
                     /* "taxes" => [
                          [
+
+                    iva
                              "kind" => "ice",
                              "amount" => 0,
                              "base" => 0
                          ],
-                         [
-                             "kind" => "valueAddedTax",
-                             "amount" => 0,
-                             "base" => 0
-                         ]
+                    base del iva
+                    valor neto * 0.19
                      ],
                      "details" => [
                          [
-                             "kind" => "shipping",
+                             "kind" => "shipping", costo envio
                              "amount" => 0
                          ],
 
@@ -114,7 +94,8 @@ class ControlReportController extends Controller
                          "tax" => 89.3
                      ]
                  ],*/
-//                VENDEDOR
+//                Comprador -> $client info de donde se va a enviar el productor
+//              comprador y pagador pueden ser diferente
                 "shipping" => [
                     "name" => $invoice->seller->first_name,
                     "surname" => $invoice->seller->last_name,
@@ -134,14 +115,12 @@ class ControlReportController extends Controller
                 "allowPartial" => false
             ],
             "expiration" => date('c', strtotime('+1 hour')),
+//            el objeto request muestra la ip y el agente -> controles antifraude
             "ipAddress" => "127.0.0.1",
             "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
             "returnUrl" => route('url.redirection', $invoice->id),
             "cancelUrl" => route('url.redirection', $invoice->id),
-            "skipResult" => false,
-            "noBuyerFill" => false,
-            "captureAddress" => false,
-            "paymentMethod" => null
+
         ];
 
         try {
@@ -164,8 +143,11 @@ class ControlReportController extends Controller
             }
             var_dump($response);
         } catch (Exception $e) {
-            var_dump($e->getMessage());
+//      manejo de excepciones
+//            var_dump($e->getMessage());
+            return 'Ocurrio un error';
         }
+
     }
 
 
@@ -195,6 +177,7 @@ class ControlReportController extends Controller
      * @param  int  $id
      * @return Response
      */
+//    implicit model binding
     public function show($id)
     {
         return view('ControlReport.show', [
@@ -303,6 +286,7 @@ class ControlReportController extends Controller
                     dd($state->state);
                     $state->state = "Pagado";
                     $state->save();
+
                     $report = ControlReport::findorFail($controlReports->id);
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();
