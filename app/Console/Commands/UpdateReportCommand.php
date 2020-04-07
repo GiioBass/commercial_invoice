@@ -20,7 +20,7 @@ class UpdateReportCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Update state report place to pay';
+    protected $description = 'Update state report consult status place to pay';
 
     /**
      * Create a new command instance.
@@ -40,7 +40,7 @@ class UpdateReportCommand extends Command
     public function handle()
     {
         $response = App::make(UpdateReportStatus::class);
-          dd($response->updateReportStatusInvoice());
+          $response->updateReportStatusInvoice();
 
     }
 }
