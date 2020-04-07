@@ -79,9 +79,10 @@
                     @endcan
                     <br>
                     @can('report.create')
-                        <a class="item-menu" href="{{route('report.create', $invoices->id)}}">
+                        <a class="item-menu" href="{{route('report.create', $invoices->id)}}"  style="display: {{$invoices->state == 'Pagado' ? 'none' : 'visibility'}}">
                             <div class="item-button">
-                                Realizar Pago
+
+                                {{$invoices->state == 'Pagado' ? 'Pago Realizado' : 'Realizar Pago'}}
                             </div>
                         </a>
                     @endcan

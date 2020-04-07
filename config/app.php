@@ -179,6 +179,8 @@ return [
         App\Providers\ViewComposerProvider::class,
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
+        App\Providers\PayInvoiceServicesProvider::class,
+
     ],
 
     /*

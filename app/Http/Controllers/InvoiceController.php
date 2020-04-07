@@ -112,10 +112,9 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        return view('Invoices.show', [
-            'invoices' => $invoice,
+        $invoices = $invoice;
 
-        ]);
+        return view('Invoices.show', compact('invoices'));
     }
 
     /**

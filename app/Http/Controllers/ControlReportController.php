@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ConnectionPlacetopay\Redirection;
 use App\ControlReport;
-use App\Http\Controllers\ConnectionPlacetopay\Redirection;
 use App\Invoice;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -16,7 +16,7 @@ class ControlReportController extends Controller
      * @param Invoice $invoice
      * @return RedirectResponse|Redirector
      */
-    public function create(Invoice $invoice)
+    public function redirectPlatformPay(Invoice $invoice)
     {
         $instance = Redirection::getInstance();
         $placetopay = $instance->getConn();
@@ -26,9 +26,9 @@ class ControlReportController extends Controller
 
         // Request Information
         $request = [
-//            Opcional
+         /*   Opcional
             "locale" => "es_CO",
-//            COMPRADOR -> Opcional
+            COMPRADOR -> Opcional
             "payer" => [
                 "name" => $invoice->client->first_name,
                 "surname" => $invoice->client->last_name,
@@ -37,7 +37,7 @@ class ControlReportController extends Controller
                 "document" => $invoice->client->id,
                 "mobile" => $invoice->client->phone_number,
                 "address" => $invoice->client->address
-            ],
+            ],*/
             "buyer" => [
                 "name" => $invoice->client->first_name,
                 "surname" => $invoice->client->last_name,
@@ -49,7 +49,7 @@ class ControlReportController extends Controller
             ],
             "payment" => [
                 "reference" => $reference,
-                "description" => "Iusto sit et voluptatem.",
+                "description" => "Factura de venta N°: " . $invoice->id  ,
 //                factura de venta # XXXX cod_num
 
                 "amount" => [
@@ -97,20 +97,13 @@ class ControlReportController extends Controller
 //                Comprador -> $client info de donde se va a enviar el productor
 //              comprador y pagador pueden ser diferente
                 "shipping" => [
-                    "name" => $invoice->seller->first_name,
-                    "surname" => $invoice->seller->last_name,
-                    "email" => $invoice->seller->email,
-                    "documentType" => "CC",
-                    "document" => "11111111111",
-                    "mobile" => $invoice->seller->phone_number,
-                    "address" => [
-                        "street" => "703 Dicki Island Apt. 609",
-                        "city" => "North Randallstad",
-                        "state" => "Antioquia",
-                        "postalCode" => "46292",
-                        "country" => "US",
-                        "phone" => "363-547-1441 x383"
-                    ]
+                    "name" => $invoice->client->first_name,
+                    "surname" => $invoice->client->last_name,
+                    "email" => $invoice->client->email,
+                    "documentType" => $invoice->client->document_type->documentType,
+                    "document" => $invoice->client->id,
+                    "mobile" => $invoice->client->phone_number,
+                    "address" => $invoice->client->address
                 ],
                 "allowPartial" => false
             ],
@@ -129,7 +122,7 @@ class ControlReportController extends Controller
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
                 // $response->processUrl();
-                $this->store(
+                $this->storePayReport(
                     $response->requestId,
                     $response->status()->status(),
                     $response->status()->message(),
@@ -144,8 +137,8 @@ class ControlReportController extends Controller
             var_dump($response);
         } catch (Exception $e) {
 //      manejo de excepciones
-//            var_dump($e->getMessage());
-            return 'Ocurrio un error';
+            var_dump($e->getMessage());
+
         }
 
     }
@@ -158,7 +151,7 @@ class ControlReportController extends Controller
      * @param $requestMessage
      * @param $id
      */
-    public function store($requestReportId, $requestStatus, $requestMessage, $requestUrl, $id)
+    public function storePayReport($requestReportId, $requestStatus, $requestMessage, $requestUrl, $id)
     {
         $controlReport = new ControlReport;
 
@@ -180,9 +173,9 @@ class ControlReportController extends Controller
 //    implicit model binding
     public function show($id)
     {
-        return view('ControlReport.show', [
-        'invoices' => Invoice::findOrFail($id)
-    ]);
+        $invoices = Invoice::findOrFail($id);
+
+        return view('ControlReport.show', compact('invoices'));
     }
 
 
@@ -190,7 +183,7 @@ class ControlReportController extends Controller
      * @param Invoice $invoice
      * @return RedirectResponse
      */
-    public function update(Invoice $invoice)
+    public function updatePayReport(Invoice $invoice)
     {
 //        return view('ControlReport.update');
         $instance = Redirection::getInstance();
@@ -254,16 +247,7 @@ class ControlReportController extends Controller
         $report->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 
     public function updateStateInvoice(){
 
