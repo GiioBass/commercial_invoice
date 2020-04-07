@@ -16,7 +16,7 @@ class ControlReportController extends Controller
      * @param Invoice $invoice
      * @return RedirectResponse|Redirector
      */
-    public function create(Invoice $invoice)
+    public function redirectPlatformPay(Invoice $invoice)
     {
         $instance = Redirection::getInstance();
         $placetopay = $instance->getConn();
@@ -122,7 +122,7 @@ class ControlReportController extends Controller
             if ($response->isSuccessful()) {
                 // Redirect the client to the processUrl or display it on the JS extension
                 // $response->processUrl();
-                $this->store(
+                $this->storePayReport(
                     $response->requestId,
                     $response->status()->status(),
                     $response->status()->message(),
@@ -151,7 +151,7 @@ class ControlReportController extends Controller
      * @param $requestMessage
      * @param $id
      */
-    public function store($requestReportId, $requestStatus, $requestMessage, $requestUrl, $id)
+    public function storePayReport($requestReportId, $requestStatus, $requestMessage, $requestUrl, $id)
     {
         $controlReport = new ControlReport;
 
@@ -183,7 +183,7 @@ class ControlReportController extends Controller
      * @param Invoice $invoice
      * @return RedirectResponse
      */
-    public function update(Invoice $invoice)
+    public function updatePayReport(Invoice $invoice)
     {
 //        return view('ControlReport.update');
         $instance = Redirection::getInstance();
@@ -247,16 +247,7 @@ class ControlReportController extends Controller
         $report->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 
     public function updateStateInvoice(){
 
