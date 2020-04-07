@@ -4,15 +4,15 @@
     @if(session('message'))
         {{session('message')}}
     @endif
-  {{--  <div class="container-menu">
-        <div class="container-item">
-            <a class="item-menu" href="{{route('client.create')}}">
-                <div class="item-button">
-                    Reporte de Pagos
-                </div>
-            </a>
-        </div>
-    </div>--}}
+    {{--  <div class="container-menu">
+          <div class="container-item">
+              <a class="item-menu" href="{{route('client.create')}}">
+                  <div class="item-button">
+                      Reporte de Pagos
+                  </div>
+              </a>
+          </div>
+      </div>--}}
     {{--<form class="form" action="" method="get">
         <div class="items-form">
 
@@ -34,19 +34,21 @@
                     <th>Status</th>
                     <th>Message</th>
                     <th>Fecha de Creacion</th>
-                    <th>Fecha de Actualizacion</th>
+                    <th>Url</th>
                 </tr>
             </div>
             @foreach($invoices->controlReport as $reports)
 
-                 <tr>
+                <tr>
                     <td>{{$reports->id}}</td>
                     <td>{{$reports->requestId}}</td>
                     <td>{{$reports->status}}</td>
                     <td>{{$reports->message}}</td>
                     <td>{{$reports->created_at}}</td>
-                    <td><a href="{{$reports->processUrl}}">Continuar el pago</a>
 
+                    <td>
+                        <a href="{{($reports->status == 'APPROVED' ? '#' : $reports->processUrl )}}">
+                            {{($reports->status == 'APPROVED' ? 'Pago Realizado' : 'Continuar / Verificar')}}</a>
                     </td>
 
                 </tr>
