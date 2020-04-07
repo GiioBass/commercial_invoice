@@ -45,7 +45,7 @@
                     <td>{{$reports->status}}</td>
                     <td>{{$reports->message}}</td>
                     <td>{{$reports->created_at}}</td>
-
+{{--TODO no olvidar colocar la fecha de pago realizado ultima fecha actualizacion(?)--}}
                     <td>
                         <a href="{{($reports->status == 'APPROVED' ? '#' : $reports->processUrl )}}">
                             {{($reports->status == 'APPROVED' ? 'Pago Realizado' : 'Continuar / Verificar')}}</a>
@@ -54,14 +54,6 @@
                 </tr>
             @endforeach
         </table>
-    </div>
-    <div>
-        <a class="item-menu" href="{{route('url.redirection', $invoices)}}">
-            <div class="item-button">
-                Actualizar
-            </div>
-        </a>
-
     </div>
     <div>
         <a class="item-menu" href="{{route('invoice.show', $invoices->id)}}">
