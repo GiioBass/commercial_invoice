@@ -187,16 +187,18 @@ Route::middleware(['auth'])->group(function () {
 
     //  Routes report
 
-    Route::get('/invoice/{invoice}/report/update', 'ControlReportController@update')->name('url.redirection')
+    Route::get('/invoice/{invoice}/report/update', 'ControlReportController@updatePayReport')->name('url.redirection')
         ->middleware('can:report.create');
     Route::get('/invoice/{id}/report/show', 'ControlReportController@show')->name('report.show')
         ->middleware('can:report.show');
-    Route::get('/invoice/{invoice}/report/create', 'ControlReportController@create')->name('report.create')
+    Route::get('/invoice/{invoice}/report/create', 'ControlReportController@redirectPlatformPay')->name('report.create')
         ->middleware('can:report.create');
+
     Route::get('/invoice/{invoice}/invoice_product/create', 'InvoiceProductController@create')->name('order.create')
         ->middleware('can:order.create');
     Route::post('/invoice/{invoice}/invoice_product', 'InvoiceProductController@store')->name('order.store')
         ->middleware('can:order.create');
+
     Route::get('/invoice/{invoice}/invoice_product/{id}/destroy', 'InvoiceProductController@destroy')->name('order.delete')
         ->middleware('can:order.delete');
     Route::get('/orders/updateInvoices', 'InvoiceProductController@updateInvoices')->name('orders.updateInvoices')
@@ -204,8 +206,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/import', 'InvoiceProductController@import')->name('orders.import')
         ->middleware('can:orders.import');
 
-    Route::get('/placetopay/update/states', 'ControlReportController@updateStateInvoice')->name('placetopay.updateStates')
-        ->middleware('can:orders.updateInvoices');
+//    Route::get('/placetopay/update/states', 'ControlReportController@updateStateInvoice')->name('placetopay.updateStates')
+//        ->middleware('can:orders.updateInvoices');
 
     //  Panel control de accesos
     Route::middleware('can:access_api')->get('access_api', function () {
