@@ -66,14 +66,14 @@
                     </li>
                 </a>
             @endcan
-            @can('access_api')
+      {{--      @can('access_api')
                 <a class="title-button" href="{{route('access_api')}}">
                     <i class="material-icons">person_outline</i>
                     <li class="link">
                         Accesos API
                     </li>
                 </a>
-            @endcan
+            @endcan--}}
 
         </ul>
     </div>
