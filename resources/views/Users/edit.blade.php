@@ -53,6 +53,11 @@
                     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
                 </div>
                 {!! Form::close() !!}
+                <br>
+                <br>
+                <div id="app">
+                    <passport-personal-access-tokens></passport-personal-access-tokens>
+                </div>
             @endcan
             <a class="item-menu" href="{{route('user.index')}}">
                 <div class="item-button">
@@ -61,4 +66,5 @@
             </a>
         </div>
     </div>
+    script src="{{asset('js/app.js')}}"></script>
 @endsection
