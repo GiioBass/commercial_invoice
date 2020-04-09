@@ -17,7 +17,7 @@ class InvoicesExport implements FromQuery, WithHeadings, ShouldAutoSize
             ->join('products', 'invoice_product.product_id', '=', 'products.id')
             ->join('invoices', 'invoice_product.invoice_id', '=', 'invoices.id')
             ->select(
-                'invoices.code',
+                'invoices.id',
                 'invoices.state',
                 'invoices.expedition_date',
                 'invoices.expiration_date',
