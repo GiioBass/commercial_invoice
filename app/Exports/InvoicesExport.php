@@ -2,55 +2,65 @@
 
 namespace App\Exports;
 
-use Illuminate\Support\Facades\DB;
+use App\Invoice;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class InvoicesExport implements FromQuery, WithHeadings, ShouldAutoSize
+class InvoicesExport implements FromQuery, ShouldQueue, WithMapping, WithHeadings
 {
-    use exportable;
-    public function query()
-    {
-        $invoice_product = DB::table('invoice_product')
-            ->join('products', 'invoice_product.product_id', '=', 'products.id')
-            ->join('invoices', 'invoice_product.invoice_id', '=', 'invoices.id')
-            ->select(
-                'invoices.id',
-                'invoices.state',
-                'invoices.expedition_date',
-                'invoices.expiration_date',
-                'products.id',
-                'products.name',
-                'invoice_product.quantity',
-                'invoices.subtotal',
-                'invoices.iva',
-                'invoices.total',
-                'invoices.seller_id',
-                'invoices.client_id'
-            )
-            ->orderBy('invoice_product.invoice_id');
+    use Exportable;
 
-        return $invoice_product;
+    /**
+     * @return Builder|\Illuminate\Database\Query\Builder
+     */
+    public function query()
+   {
+       return Invoice::query();
+   }
+
+    /**
+     * @return array
+     * @var Invoice $invoice
+     */
+    public function map($invoice): array
+    {
+        return [
+
+            $invoice->id,
+            $invoice->state,
+            $invoice->subTotal,
+            $invoice->total,
+            $invoice->iva,
+            $invoice->created_at,
+            $invoice->expiration_date,
+            $invoice->client->id,
+            $invoice->seller->id,
+            $invoice->invoice_products
+        ];
     }
 
     public function headings(): array
     {
         return [
-            'Factura ID',
-            'Estado',
-            'Fecha Expedición',
-            'Fecha Expiración',
-            'Producto id',
-            'Producto',
-            'Cantidad',
-            'SubTotal',
-            'Iva',
+            'Id factura',
+            'Estado factura',
+            'Subtotal',
             'Total',
-            'cliente id',
-            'vendedor id',
-
+            'iva',
+            'Fecha de creación',
+            'Fecha de expiracion',
+            'Id cliente',
+            'Id vendedor',
+            'Productos'
         ];
     }
+
+
+
+
 }
