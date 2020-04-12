@@ -22,6 +22,7 @@ class CreateInvoicesTable extends Migration
             $table->double('iva');
             $table->double('total');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unsignedInteger('seller_id');
             $table->unsignedInteger('client_id');

@@ -139,10 +139,11 @@ class ControlReportController extends Controller
             var_dump($response);
         } catch (Exception $e) {
 //      manejo de excepciones
+
 //            var_dump($e->getMessage());
 return view('errors.404');
-        }
 
+        }
     }
 
 
@@ -251,7 +252,8 @@ return view('errors.404');
 
 
 
-    public function updateStateInvoice(){
+    public function updateStateInvoice()
+    {
 
 //        TODO por arreglar
 
@@ -261,13 +263,11 @@ return view('errors.404');
         $controlReport = ControlReport::all();
         $invoice = Invoice::all();
         foreach ($controlReport as $controlReports) {
-
             $requestId = $controlReports->requestId;
 
             try {
                 $response = $placetopay->query($requestId);
-                if ($response->status()->isApproved()){
-
+                if ($response->status()->isApproved()) {
                     $state = Invoice::findOrFail($controlReports->invoices);
                     dd($state->state);
                     $state->state = "Pagado";
@@ -277,15 +277,13 @@ return view('errors.404');
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();
                     $report->save();
-                }else{
+                } else {
                     $report = ControlReport::findorFail($controlReports->id);
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();
                     $report->save();
                     return back();
                 }
-
-
             } catch (Exception $e) {
                 var_dump($e->getMessage());
             }

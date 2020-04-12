@@ -74,7 +74,7 @@ class ClientTest extends TestCase
 
         ];
 
-        $this->actingAs($user)->post(route('client.store'), $data )
+        $this->actingAs($user)->post(route('client.store'), $data)
             ->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('clients', $data);
@@ -84,7 +84,8 @@ class ClientTest extends TestCase
     /**
      * @test
     */
-    public function SuccessDeleteClient(){
+    public function SuccessDeleteClient()
+    {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
         $documentType = factory(DocumentType::class)->create();
@@ -104,7 +105,8 @@ class ClientTest extends TestCase
     /**
      * @test
     */
-    public function SuccessUpdateClient(){
+    public function SuccessUpdateClient()
+    {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
         $documentType = factory(DocumentType::class)->create();
@@ -129,6 +131,4 @@ class ClientTest extends TestCase
 
         $this->assertDatabaseHas('clients', $data);
     }
-
-
 }

@@ -15,7 +15,7 @@ class SecondSheetImport implements ToModel, WithHeadingRow, WithValidation
     /**
      * @inheritDoc
      */
-    public function model(Array $row)
+    public function model(array $row)
     {
         return new Invoice_product([
             'quantity' => $row['quantity'],

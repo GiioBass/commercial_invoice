@@ -13,7 +13,7 @@ class FirstSheetImport implements ToModel, WithValidation, WithHeadingRow
 {
     use Importable;
 
-    public function model(Array $row)
+    public function model(array $row)
     {
         return new Invoice([
                 'id' => $row['id'],

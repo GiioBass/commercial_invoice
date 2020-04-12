@@ -13,4 +13,3 @@ $factory->define(DocumentType::class, function (Faker $faker) {
         'documentName' => 'Cedula de Ciudadania'
         ];
 });
-
