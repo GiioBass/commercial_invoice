@@ -19,27 +19,13 @@ class ControlReportController extends Controller
      */
     public function redirectPlatformPay(Invoice $invoice, Request $request)
     {
-
         $instance = Redirection::getInstance();
         $placetopay = $instance->getConn();
 
         $reference = $invoice->id;
-//            'TEST_' . time();
 
-        // Request Information
         $request = [
-         /*   Opcional
-            "locale" => "es_CO",
-            COMPRADOR -> Opcional
-            "payer" => [
-                "name" => $invoice->client->first_name,
-                "surname" => $invoice->client->last_name,
-                "email" => $invoice->client->email,
-                "documentType" => $invoice->client->document_type->documentType,
-                "document" => $invoice->client->id,
-                "mobile" => $invoice->client->phone_number,
-                "address" => $invoice->client->address
-            ],*/
+
             "buyer" => [
                 "name" => $invoice->client->first_name,
                 "surname" => $invoice->client->last_name,
@@ -52,50 +38,10 @@ class ControlReportController extends Controller
             "payment" => [
                 "reference" => $reference,
                 "description" => "Factura de venta N°: " . $invoice->id  ,
-//                factura de venta # XXXX cod_num
-
                 "amount" => [
-                    /* "taxes" => [
-                         [
-
-                    iva
-                             "kind" => "ice",
-                             "amount" => 0,
-                             "base" => 0
-                         ],
-                    base del iva
-                    valor neto * 0.19
-                     ],
-                     "details" => [
-                         [
-                             "kind" => "shipping", costo envio
-                             "amount" => 0
-                         ],
-
-                         [
-                             "kind" => "tip",
-                             "amount" => 0
-                         ],
-                         [
-                             "kind" => "subtotal",
-                             "amount" => $invoice->client->subTotal
-                         ]
-                     ],*/
-//                    TODO Mostrar tipo moneda al crear o pagar la cuenta
                     "currency" => "COP",
                     "total" => $invoice->total
                 ],
-                /* "items" => [
-                     [
-
-                         "sku" => 26443,
-                         "name" => "Qui voluptatem excepturi.",
-                         "category" => "physical",
-                         "qty" => 1,
-                         "price" => 940,
-                         "tax" => 89.3
-                     ]
-                 ],*/
                 "shipping" => [
                     "name" => $invoice->client->first_name,
                     "surname" => $invoice->client->last_name,
@@ -121,8 +67,6 @@ class ControlReportController extends Controller
             $response = $placetopay->request($request);
 
             if ($response->isSuccessful()) {
-                // Redirect the client to the processUrl or display it on the JS extension
-                // $response->processUrl();
                 $this->storePayReport(
                     $response->requestId,
                     $response->status()->status(),
@@ -130,19 +74,14 @@ class ControlReportController extends Controller
                     $response->processUrl,
                     $invoice->id
                 );
-//                return redirect($response->processUrl());
             } else {
-                // There was some error so check the message
 //                $response->status()->message();
                 return view('errors.404');
             }
             var_dump($response);
         } catch (Exception $e) {
-//      manejo de excepciones
-
 //            var_dump($e->getMessage());
-return view('errors.404');
-
+            return view('errors.404');
         }
     }
 
