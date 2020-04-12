@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\InvoicesExport;
 use App\Imports\InvoicesImport;
 use App\Invoice;
+use App\Jobs\NotifyUserCompleteExport;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -200,9 +201,14 @@ class InvoiceController extends Controller
     public function export(Request $request)
     {
         $typeFile = $request->get('typeFile');
-
-        return Excel::download(new InvoicesExport, 'invoices-' . date('Y-m-d') . '.' . $typeFile);
+        $user = auth()->user();
+        $nameFile = ('invoices-' . date('Ymd-Gis') . '.' . $typeFile);
+        $filePath = asset('storage/' . $nameFile);
+        Excel::store(new InvoicesExport, $nameFile)
+        ->chain([new NotifyUserCompleteExport($user, $filePath)]);
+        return back()->withSuccess('Export started!');
     }
+
 
     /**
      * @param Request $request
