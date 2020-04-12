@@ -7,7 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
@@ -19,9 +18,9 @@ class InvoicesExport implements FromQuery, ShouldQueue, WithMapping, WithHeading
      * @return Builder|\Illuminate\Database\Query\Builder
      */
     public function query()
-   {
-       return Invoice::query();
-   }
+    {
+        return Invoice::query();
+    }
 
     /**
      * @return array
@@ -59,8 +58,4 @@ class InvoicesExport implements FromQuery, ShouldQueue, WithMapping, WithHeading
             'Productos'
         ];
     }
-
-
-
-
 }

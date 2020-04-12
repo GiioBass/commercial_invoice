@@ -70,4 +70,3 @@ $factory->define(Invoice_product::class, function (Faker $faker) {
         'product_id' => Product::all()->random()->id,
     ];
 });
-

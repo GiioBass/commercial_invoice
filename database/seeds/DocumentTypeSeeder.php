@@ -16,11 +16,11 @@ class DocumentTypeSeeder extends Seeder
 
     public function run()
     {
-      /*  Schema::disableForeignKeyConstraints();
+        /*  Schema::disableForeignKeyConstraints();
 
-        DB::table('document_types')->truncate();
+          DB::table('document_types')->truncate();
 
-        Schema::enableForeignKeyConstraints();*/
+          Schema::enableForeignKeyConstraints();*/
 
         DB::table('document_types')->insert([
            ['id' => 1, 'documentType' => 'CC', 'documentName' => 'Cedula de Ciudadania'],

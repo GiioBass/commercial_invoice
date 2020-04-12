@@ -68,7 +68,7 @@ class ProductTest extends TestCase
 
         ];
 
-        $this->actingAs($user)->post(route('product.store'), $data )
+        $this->actingAs($user)->post(route('product.store'), $data)
             ->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('products', $data);
@@ -78,7 +78,8 @@ class ProductTest extends TestCase
     /**
      * @test
      */
-    public function SuccessDeleteProduct(){
+    public function SuccessDeleteProduct()
+    {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
 
@@ -97,7 +98,8 @@ class ProductTest extends TestCase
     /**
      * @test
      */
-    public function SuccessUpdateProduct(){
+    public function SuccessUpdateProduct()
+    {
         $user = factory(User::class)->create();
         $roleAdmin = factory(Role::class)->create();
         $product = factory(Product::class)->create();
@@ -118,5 +120,4 @@ class ProductTest extends TestCase
 
         $this->assertDatabaseHas('products', $data);
     }
-
 }

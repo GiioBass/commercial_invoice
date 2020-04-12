@@ -23,7 +23,7 @@ class NotifyUserCompleteExport implements ShouldQueue
      *
      * @param user $user
      */
-    public function __construct( $user, $filePath)
+    public function __construct($user, $filePath)
     {
         $this->user = $user;
         $this->filePath = $filePath;
@@ -36,6 +36,6 @@ class NotifyUserCompleteExport implements ShouldQueue
      */
     public function handle()
     {
-       $this->user->notify(new ExportReady($this->filePath));
+        $this->user->notify(new ExportReady($this->filePath));
     }
 }

@@ -40,7 +40,6 @@ class UpdateReportCommand extends Command
     public function handle()
     {
         $response = App::make(UpdateReportStatus::class);
-          $response->updateReportStatusInvoice();
-
+        $response->updateReportStatusInvoice();
     }
 }

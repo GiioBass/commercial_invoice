@@ -16,13 +16,13 @@ class UserAdminSeeder extends Seeder
      */
     public function run()
     {
-       /* Schema::disableForeignKeyConstraints();
+        /* Schema::disableForeignKeyConstraints();
 
-        DB::table('users')->truncate();
-        DB::table('role_user')->truncate();
-        DB::table('roles')->truncate();
+         DB::table('users')->truncate();
+         DB::table('role_user')->truncate();
+         DB::table('roles')->truncate();
 
-        Schema::enableForeignKeyConstraints();*/
+         Schema::enableForeignKeyConstraints();*/
 
 
         DB::table('users')->insert([
