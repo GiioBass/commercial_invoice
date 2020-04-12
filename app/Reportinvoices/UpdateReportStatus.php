@@ -3,7 +3,6 @@
 
 namespace App\Reportinvoices;
 
-
 use App\ConnectionPlacetopay\Redirection;
 use App\ControlReport;
 use Illuminate\Support\Facades\DB;
@@ -22,10 +21,7 @@ class UpdateReportStatus
                 $response = $placetopay->query($report->requestId);
 
                 if ($report->status == 'OK' or $report->status == 'PENDING') {
-
                     foreach ($report->invoices as $invoice) {
-
-
                         DB::table('invoices')
                             ->where('id', $invoice->id)
                             ->update(['state' => 'Pagado']);
@@ -39,13 +35,11 @@ class UpdateReportStatus
                             ]);
                     }
                 } else {
-
                     var_dump('approved');
                 }
             }
         } catch (Exception $e) {
             var_dump($e->getMessage());
         }
-
     }
 }

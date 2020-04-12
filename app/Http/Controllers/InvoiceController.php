@@ -203,10 +203,11 @@ class InvoiceController extends Controller
         $typeFile = $request->get('typeFile');
         $user = auth()->user();
         $nameFile = ('invoices-' . date('Ymd-Gis') . '.' . $typeFile);
-        $filePath = asset('storage/' . $nameFile);
-        Excel::store(new InvoicesExport, $nameFile)
-        ->chain([new NotifyUserCompleteExport($user, $filePath)]);
-        return back()->withSuccess('Export started!');
+        $filePath = asset('storage/' . $nameFile, 'public');
+        (new InvoicesExport)->store($nameFile, 'public')->chain([
+            new NotifyUserCompleteExport($user, $filePath)
+        ]);
+        return back();
     }
 
 

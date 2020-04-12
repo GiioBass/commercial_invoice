@@ -13,11 +13,11 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-      /*  Schema::disableForeignKeyConstraints();
+        /*  Schema::disableForeignKeyConstraints();
 
-        DB::table('permissions')->truncate();
+          DB::table('permissions')->truncate();
 
-        Schema::enableForeignKeyConstraints();*/
+          Schema::enableForeignKeyConstraints();*/
 
         //      Clients
         Permission::create([
