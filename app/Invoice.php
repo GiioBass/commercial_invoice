@@ -23,6 +23,7 @@ class Invoice extends Model
         'client_id',
     ];
 
+
     /**
      * @return BelongsTo
      */
