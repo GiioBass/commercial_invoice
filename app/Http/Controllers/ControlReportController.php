@@ -85,7 +85,6 @@ class ControlReportController extends Controller
         }
     }
 
-
     /**
      * @param $requestReportId
      * @param $requestStatus
