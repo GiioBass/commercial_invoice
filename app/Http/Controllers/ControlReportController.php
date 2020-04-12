@@ -6,6 +6,7 @@ use App\ConnectionPlacetopay\Redirection;
 use App\ControlReport;
 use App\Invoice;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
@@ -16,8 +17,9 @@ class ControlReportController extends Controller
      * @param Invoice $invoice
      * @return RedirectResponse|Redirector
      */
-    public function redirectPlatformPay(Invoice $invoice)
+    public function redirectPlatformPay(Invoice $invoice, Request $request)
     {
+
         $instance = Redirection::getInstance();
         $placetopay = $instance->getConn();
 
@@ -94,8 +96,6 @@ class ControlReportController extends Controller
                          "tax" => 89.3
                      ]
                  ],*/
-//                Comprador -> $client info de donde se va a enviar el productor
-//              comprador y pagador pueden ser diferente
                 "shipping" => [
                     "name" => $invoice->client->first_name,
                     "surname" => $invoice->client->last_name,
@@ -108,9 +108,10 @@ class ControlReportController extends Controller
                 "allowPartial" => false
             ],
             "expiration" => date('c', strtotime('+1 hour')),
-//            el objeto request muestra la ip y el agente -> controles antifraude
+//TODO error curl...
             "ipAddress" => "127.0.0.1",
-            "userAgent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36",
+//                $request->ip(),
+            "userAgent" => $request->userAgent(),
             "returnUrl" => route('url.redirection', $invoice->id),
             "cancelUrl" => route('url.redirection', $invoice->id),
 
@@ -129,16 +130,17 @@ class ControlReportController extends Controller
                     $response->processUrl,
                     $invoice->id
                 );
-                return redirect($response->processUrl());
+//                return redirect($response->processUrl());
             } else {
                 // There was some error so check the message
-                $response->status()->message();
+//                $response->status()->message();
+                return view('errors.404');
             }
             var_dump($response);
         } catch (Exception $e) {
 //      manejo de excepciones
-            var_dump($e->getMessage());
-
+//            var_dump($e->getMessage());
+return view('errors.404');
         }
 
     }
