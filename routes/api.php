@@ -24,4 +24,5 @@ Route::middleware('auth:api')->prefix('/user')->group(function () {
     Route::resource('product', 'api\ApiProductController');
     Route::resource('invoice', 'api\ApiInvoiceController');
     Route::resource('invoice_product', 'api\ApiInvoiceProductController');
+    Route::delete('/invoice/{invoice}/invoice_product/{id}/destroy', 'api\ApiInvoiceProductController@destroy');
 });

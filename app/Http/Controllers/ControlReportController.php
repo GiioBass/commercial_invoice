@@ -149,7 +149,7 @@ class ControlReportController extends Controller
                     $report->message = $response->status()->message();
                     $report->save();
                 } else {
-                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);*/
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                     $report = ControlReport::findorFail($invoice->controlReport->last()->id);
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();

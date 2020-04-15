@@ -112,7 +112,7 @@ class ApiInvoiceProductController extends Controller
      * @param Invoice $invoice
      * @return Response
      */
-    public function destroy($id, Invoice $invoice)
+    public function destroy( Invoice $invoice, $id)
     {
         $invoiceProduct = Invoice_product::findOrFail($id);
         $invoiceProduct->delete();
