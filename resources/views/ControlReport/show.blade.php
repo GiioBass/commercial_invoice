@@ -34,6 +34,7 @@
                     <th>Status</th>
                     <th>Message</th>
                     <th>Fecha de Creacion</th>
+                    <th>Fecha de actualización</th>
                     <th>Url</th>
                 </tr>
             </div>
@@ -45,6 +46,7 @@
                     <td>{{$reports->status}}</td>
                     <td>{{$reports->message}}</td>
                     <td>{{$reports->created_at}}</td>
+                    <td>{{$reports->updated_at}}</td>
 {{--TODO no olvidar colocar la fecha de pago realizado ultima fecha actualizacion(?)--}}
                     <td>
                         <a href="{{($reports->status == 'APPROVED' ? '#' : $reports->processUrl )}}">
