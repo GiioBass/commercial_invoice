@@ -15,6 +15,7 @@ class ControlReportController extends Controller
 
     /**
      * @param Invoice $invoice
+     * @param Request $request
      * @return RedirectResponse|Redirector
      */
     public function redirectPlatformPay(Invoice $invoice, Request $request)
@@ -139,9 +140,6 @@ class ControlReportController extends Controller
                 // In order to use the functions please refer to the RedirectInformation class
 
                 if ($response->status()->isApproved()) {
-                    // The payment has been approved
-//                    $message = ($requestId .$response->status()->message() . "\n");
-//                    return $message;
                     $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                     $state = Invoice::findOrFail($invoice->id);
                     $state->state = "Pagado";
@@ -150,12 +148,7 @@ class ControlReportController extends Controller
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();
                     $report->save();
-                // This is additional information about it
-//                    print_r($response->toArray());
                 } else {
-                    /*$message = ($requestId . ' ' . $response->status()->message() . "\n");
-//                    return $message;
-                    dd($message);
                     $this->edit($response->status()->status(), $invoice->controlReport->last()->id);*/
                     $report = ControlReport::findorFail($invoice->controlReport->last()->id);
                     $report->status = $response->status()->status();
@@ -165,66 +158,28 @@ class ControlReportController extends Controller
 
                 $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                 return redirect()->route('invoice.show', $invoice->id);
-//                return back();
             } else {
                 // There was some error with the connection so check the message
-                print_r($response->status()->message() . " Error de conexion \n");
+//                print_r($response->status()->message() . " Error de conexion \n");
+                return view('errors.404');
             }
         } catch (Exception $e) {
-            var_dump($e->getMessage());
+            return view('errors.404');
+//            var_dump($e->getMessage());
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param $status
+     * @param int $id
+     * @return void
      */
     public function edit($status, $id)
     {
         $report = ControlReport::findOrFail($id);
         $report->status = $status;
         $report->save();
-    }
-
-
-
-    public function updateStateInvoice()
-    {
-
-//        TODO por arreglar
-
-        $instance = Redirection::getInstance();
-        $placetopay = $instance->getConn();
-
-        $controlReport = ControlReport::all();
-        $invoice = Invoice::all();
-        foreach ($controlReport as $controlReports) {
-            $requestId = $controlReports->requestId;
-
-            try {
-                $response = $placetopay->query($requestId);
-                if ($response->status()->isApproved()) {
-                    $state = Invoice::findOrFail($controlReports->invoices);
-                    dd($state->state);
-                    $state->state = "Pagado";
-                    $state->save();
-
-                    $report = ControlReport::findorFail($controlReports->id);
-                    $report->status = $response->status()->status();
-                    $report->message = $response->status()->message();
-                    $report->save();
-                } else {
-                    $report = ControlReport::findorFail($controlReports->id);
-                    $report->status = $response->status()->status();
-                    $report->message = $response->status()->message();
-                    $report->save();
-                    return back();
-                }
-            } catch (Exception $e) {
-                var_dump($e->getMessage());
-            }
-        }
     }
 }
