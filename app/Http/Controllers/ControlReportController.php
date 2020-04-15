@@ -79,7 +79,7 @@ class ControlReportController extends Controller
 //                $response->status()->message();
                 return view('errors.404');
             }
-            var_dump($response);
+//            var_dump($response);
         } catch (Exception $e) {
 //            var_dump($e->getMessage());
             return view('errors.404');
@@ -149,7 +149,7 @@ class ControlReportController extends Controller
                     $report->message = $response->status()->message();
                     $report->save();
                 } else {
-                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);*/
+                    $this->edit($response->status()->status(), $invoice->controlReport->last()->id);
                     $report = ControlReport::findorFail($invoice->controlReport->last()->id);
                     $report->status = $response->status()->status();
                     $report->message = $response->status()->message();
