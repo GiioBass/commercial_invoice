@@ -75,11 +75,12 @@ class ControlReportController extends Controller
                     $response->processUrl,
                     $invoice->id
                 );
+                return redirect($response->processUrl());
             } else {
 //                $response->status()->message();
                 return view('errors.404');
             }
-//            var_dump($response);
+//
         } catch (Exception $e) {
 //            var_dump($e->getMessage());
             return view('errors.404');
