@@ -55,6 +55,7 @@
                 <div>
                     <p>
                         Estado de la Factura: {{$invoices->state}}
+{{--                        - {{($reports->status == 'PENDING' ? 'Pendiente' : ' ')}}--}}
                     </p>
                 </div>
                 <div>
